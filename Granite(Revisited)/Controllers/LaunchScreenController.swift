@@ -42,18 +42,32 @@ class LaunchScreenViewController: UIViewController {
     }
     
     private func configureEnterButton() {
-        let shapeLayer = CAShapeLayer()
+        var shapeLayer = CAShapeLayer()
         
         let position = CGPoint(x: 153, y: 754)
         
         let circularPath = UIBezierPath(arcCenter: position, radius: 50, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         shapeLayer.path = circularPath.cgPath
+        shapeLayer.strokeEnd = 0
         shapeLayer.strokeColor = UIColor(hexString: "98c9a3").cgColor
         shapeLayer.lineWidth = 10
         
+        animateStroke(with: &shapeLayer)
+        
         
         self.view.layer.addSublayer(shapeLayer)
+    }
+    
+    private func animateStroke(with shapeLayer: inout CAShapeLayer) {
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        
+        basicAnimation.toValue = 1
+        basicAnimation.duration = 1
+        basicAnimation.fillMode = .forwards
+        basicAnimation.isRemovedOnCompletion = false
+        
+        shapeLayer.add(basicAnimation, forKey: "strokeAnimation")
     }
 
 }
