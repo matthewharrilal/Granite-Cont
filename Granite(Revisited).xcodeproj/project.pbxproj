@@ -16,6 +16,9 @@
 		1CCCC1BB226787500012DA75 /* Granite_Revisited_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1BA226787500012DA75 /* Granite_Revisited_Tests.swift */; };
 		1CCCC1D022678A750012DA75 /* launchAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1CF22678A750012DA75 /* launchAnimation.json */; };
 		1CCCC1D3226797ED0012DA75 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1D2226797ED0012DA75 /* UIColor+Extension.swift */; };
+		1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1D42267CD340012DA75 /* LoginView.swift */; };
+		1CCCC1D72267CD3F0012DA75 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1D62267CD3F0012DA75 /* LoginView.xib */; };
+		1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1D82267CFFE0012DA75 /* LogInViewController.swift */; };
 		3976AD8F7A28E77D632467A6 /* Pods_Granite_Revisited_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B3489A0C4D9EEF06640D /* Pods_Granite_Revisited_.framework */; };
 		B8CE4BD28BC36E1E373B29F7 /* Pods_Granite_Revisited_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCEA62147E5CE8310AFF610 /* Pods_Granite_Revisited_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -44,6 +47,9 @@
 		1CCCC1BC226787500012DA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CCCC1CF22678A750012DA75 /* launchAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchAnimation.json; sourceTree = "<group>"; };
 		1CCCC1D2226797ED0012DA75 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		1CCCC1D42267CD340012DA75 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1CCCC1D62267CD3F0012DA75 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		1CCCC1D82267CFFE0012DA75 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		26370F436F68BA75E87CB213 /* Pods-Granite(Revisited)Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Granite(Revisited)Tests.debug.xcconfig"; path = "Target Support Files/Pods-Granite(Revisited)Tests/Pods-Granite(Revisited)Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7901E567461C465DB3952FBB /* Pods-Granite(Revisited).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Granite(Revisited).debug.xcconfig"; path = "Target Support Files/Pods-Granite(Revisited)/Pods-Granite(Revisited).debug.xcconfig"; sourceTree = "<group>"; };
 		93437AD8EB850571D28585C3 /* Pods-Granite(Revisited).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Granite(Revisited).release.xcconfig"; path = "Target Support Files/Pods-Granite(Revisited)/Pods-Granite(Revisited).release.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */,
+				1CCCC1D82267CFFE0012DA75 /* LogInViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -161,6 +168,8 @@
 		1CCCC1CA226788740012DA75 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1CCCC1D42267CD340012DA75 /* LoginView.swift */,
+				1CCCC1D62267CD3F0012DA75 /* LoginView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,6 +289,7 @@
 				1CCCC1B0226787500012DA75 /* LaunchScreen.storyboard in Resources */,
 				1CCCC1AD226787500012DA75 /* Assets.xcassets in Resources */,
 				1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */,
+				1CCCC1D72267CD3F0012DA75 /* LoginView.xib in Resources */,
 				1CCCC1D022678A750012DA75 /* launchAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,7 +381,9 @@
 			files = (
 				1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */,
 				1CCCC1AB2267874E0012DA75 /* Granite_Revisited_.xcdatamodeld in Sources */,
+				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */,
+				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,
 				1CCCC1D3226797ED0012DA75 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
