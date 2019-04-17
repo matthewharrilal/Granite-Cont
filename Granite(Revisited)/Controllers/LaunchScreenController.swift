@@ -12,6 +12,16 @@ import Lottie
 class LaunchScreenViewController: UIViewController {
     
     let enterButton = UIButton(frame: CGRect(x: 153, y: 754, width: 109, height: 30))
+    
+    
+    // MARK: FIX Add label to center of shape layer that denotes this is where they enter
+//    let enterLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "Enter"
+//        label.textAlignment = .center
+//        label.font = UIFont.boldSystemFont(ofSize: 20)
+//        return label
+//    }()
    
     
     override func viewDidLoad() {
