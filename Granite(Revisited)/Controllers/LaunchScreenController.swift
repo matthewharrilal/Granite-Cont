@@ -24,7 +24,7 @@ class LaunchScreenViewController: UIViewController {
         let animationView = LOTAnimationView(name: "launchAnimation")
         animationView.contentMode = .scaleAspectFit
         
-        self.view.backgroundColor = .clear
+        self.view.backgroundColor = .green
         
         animationView.loopAnimation = true
         self.view.addSubview(animationView)
