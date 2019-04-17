@@ -44,9 +44,9 @@ class LaunchScreenViewController: UIViewController {
     private func configureEnterButton() {
         var shapeLayer = CAShapeLayer()
         
-        let position = CGPoint(x: 153, y: 754)
+        let position = CGPoint(x: self.view.center.x, y: 700)
         
-        let circularPath = UIBezierPath(arcCenter: position, radius: 50, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: position, radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         shapeLayer.path = circularPath.cgPath
         shapeLayer.strokeEnd = 0
