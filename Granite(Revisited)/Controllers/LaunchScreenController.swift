@@ -15,16 +15,17 @@ class LaunchScreenViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // MARK: FIX Display animation then transition to initial view of the screen
         configureAnimation()
     }
     
     
     private func configureAnimation() {
-        
+        self.view.backgroundColor = UIColor(hexString: "c9ddff")
+
         let animationView = LOTAnimationView(name: "launchAnimation")
         animationView.contentMode = .scaleAspectFit
         
-        self.view.backgroundColor = .green
         
         animationView.loopAnimation = true
         self.view.addSubview(animationView)
