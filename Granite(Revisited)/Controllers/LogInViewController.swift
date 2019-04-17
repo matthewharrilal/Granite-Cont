@@ -8,38 +8,21 @@
 
 import Foundation
 import UIKit
-
+import Lottie
 
 class LogInViewController: UIViewController {
     
+    var configuredView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        drawArch()
         
-//        let loginView = LoginView()
-//
-//        loginView.frame = self.view.bounds
-//
-//        self.view.addSubview(loginView)
+        addConfiguredView()
         
-        drawArch()
-    }
-    
-    
-    func drawArch() {
-        let shapeLayer = CAShapeLayer()
-        
-        let center = CGPoint(x: self.view.center.x, y: self.view.center.y)
-        
-        let radius = self.view.frame.width / 2
-        
-        let semiCirclePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
-        
-        shapeLayer.path = semiCirclePath.cgPath
-        shapeLayer.strokeEnd = 0
-        shapeLayer.strokeColor = UIColor(hexString: "98c9a3").cgColor
-        shapeLayer.lineWidth = 10
-        
-        self.view.layer.addSublayer(shapeLayer)
+        configureAnimation()
         
     }
+    
 }
+
