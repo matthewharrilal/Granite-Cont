@@ -86,38 +86,19 @@ class LaunchScreenViewController: UIViewController {
         shapeLayer.add(basicAnimation, forKey: "strokeAnimation")
     }
     
-    private func configurePulsatingLayer() {
-        self.pulsatingLayer = CAShapeLayer()
-        
-        let circularPath = UIBezierPath(arcCenter: .zero , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
-        self.pulsatingLayer.path = circularPath.cgPath
-        
-        self.pulsatingLayer.position = CGPoint(x: self.view.center.x, y: 700)
-        
-        self.pulsatingLayer.strokeColor = UIColor.clear.cgColor
-        
-        self.pulsatingLayer.fillColor = UIColor(hexString: "98c9a3").cgColor
-        
-        self.pulsatingLayer.lineCap = .round
-        
-        self.pulsatingLayer.strokeEnd = 0
-
-        self.view.layer.addSublayer(pulsatingLayer)
-    }
-    
-    private func animatePulsatingLayer() {
-        let animation = CABasicAnimation(keyPath: "transform.scale")
-        
-        animation.toValue = 1.3
-        
-        animation.duration = 0.75
-        
-        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-        animation.autoreverses = true
-        animation.repeatCount = Float.infinity
-        
-        self.pulsatingLayer.add(animation, forKey: "pulse")
-    }
-    
 }
+
+
+//override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//    let touch = touches.first // Get the first touch of the user
+//    
+//    guard let point = touch?.location(in: self.view),
+//        let sublayers = self.view.layer.sublayers as? [CAShapeLayer] else {return}
+//    
+//    for layer in sublayers {
+//        // Unwrap the path and check if layer contains the point user touched on
+//        if let path = layer.path, path.contains(point) {
+//            print("User touched enter button")
+//        }
+//    }
+//}
