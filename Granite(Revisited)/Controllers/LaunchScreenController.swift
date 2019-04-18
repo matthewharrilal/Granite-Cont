@@ -61,6 +61,8 @@ class LaunchScreenViewController: UIViewController {
         
         animationView.frame = self.view.bounds
         
+        animationView.animationSpeed = 2
+        
         animationView.play { (completed) in
             print("Has completed animation? -> \(completed)")
         }
@@ -109,11 +111,18 @@ class LaunchScreenViewController: UIViewController {
         // Have to check if the path of the shape layer contains the point not the shape layer itself
         if let path = self.shapeLayer.path, path.contains(convertedPoint) {
             print("Contains point in path")
+            transitionToLogin()
         }
             
         else {
             print("Does not contain point in path")
         }
+    }
+    
+    // TODO: MARK Handle tap
+    private func transitionToLogin() {
+        let loginViewController = LogInViewController()
+        self.present(loginViewController, animated: true, completion: nil)
     }
 }
 
