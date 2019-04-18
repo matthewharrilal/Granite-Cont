@@ -15,6 +15,9 @@ class LaunchScreenViewController: UIViewController {
     
     var pulsatingLayer: CAShapeLayer!
     
+    
+    
+    
     // MARK: FIX Add label to center of shape layer that denotes this is where they enter
     //    let enterLabel: UILabel = {
     //        let label = UILabel()
@@ -86,19 +89,20 @@ class LaunchScreenViewController: UIViewController {
         shapeLayer.add(basicAnimation, forKey: "strokeAnimation")
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first // Get the first touch of the user
+    
+        guard let point = touch?.location(in: self.view),
+            let sublayers = self.view.layer.sublayers as? [CAShapeLayer] else {return}
+    
+        for layer in sublayers {
+            // Unwrap the path and check if layer contains the point user touched on
+            if let path = layer.path, path.contains(point) {
+                print("User touched enter button")
+            }
+        }
+    }
 }
 
 
-//override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//    let touch = touches.first // Get the first touch of the user
-//    
-//    guard let point = touch?.location(in: self.view),
-//        let sublayers = self.view.layer.sublayers as? [CAShapeLayer] else {return}
-//    
-//    for layer in sublayers {
-//        // Unwrap the path and check if layer contains the point user touched on
-//        if let path = layer.path, path.contains(point) {
-//            print("User touched enter button")
-//        }
-//    }
-//}
+
