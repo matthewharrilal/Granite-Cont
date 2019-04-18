@@ -8,6 +8,7 @@ target 'Granite(Revisited)' do
   # Pods for Granite(Revisited)
   pod 'lottie-ios'
   pod 'CircleMenu'
+  pod 'Hero'
   target 'Granite(Revisited)Tests' do
     inherit! :search_paths
     # Pods for testing

@@ -1,20 +1,24 @@
 PODS:
   - CircleMenu (3.0.4)
+  - Hero (1.2.0)
   - lottie-ios (2.5.0)
 
 DEPENDENCIES:
   - CircleMenu
+  - Hero
   - lottie-ios
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CircleMenu
+    - Hero
     - lottie-ios
 
 SPEC CHECKSUMS:
   CircleMenu: 0f589199f154e4ce93e0831ce3462950f59510fd
+  Hero: 33dadf2cd1c98af71e213dcbc2902e6e03622a4e
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
 
-PODFILE CHECKSUM: 77bd53eae11abd574b7614102829d716fd6c461e
+PODFILE CHECKSUM: 6c45b1131262a560f1613903414a274baa8e500e
 
 COCOAPODS: 1.6.1
