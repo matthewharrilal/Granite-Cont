@@ -11,12 +11,13 @@ import Lottie
 
 class LaunchScreenViewController: UIViewController {
     
-    let enterButton = UIButton(frame: CGRect(x: 153, y: 754, width: 109, height: 30))
+    var enterButton: UIButton!
+    
+    var shapeLayer: CAShapeLayer!
     
     var pulsatingLayer: CAShapeLayer!
     
-    
-    
+    var touchView: UIView!
     
     // MARK: FIX Add label to center of shape layer that denotes this is where they enter
     //    let enterLabel: UILabel = {
@@ -33,10 +34,20 @@ class LaunchScreenViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // MARK: FIX Display animation then transition to initial view of the screen
+        
+        // TODO: MARK Why is our subview's layers not appearing
+        //        configureTouchView()
+        
         configureAnimation()
         configureEnterButton()
     }
     
+    private func configureTouchView() {
+        let frame = CGRect(x: self.view.center.x, y: 700, width: 400, height: 400)
+        self.touchView = UIView(frame: frame)
+        touchView.backgroundColor = .red
+        self.view.addSubview(touchView)
+    }
     
     private func configureAnimation() {
         self.view.backgroundColor = UIColor(hexString: "c9ddff")
@@ -56,16 +67,17 @@ class LaunchScreenViewController: UIViewController {
     }
     
     private func configureEnterButton() {
-        var shapeLayer = CAShapeLayer()
+        shapeLayer = CAShapeLayer()
         
         let position = CGPoint(x: self.view.center.x, y: 700)
         
-        var circularPath = UIBezierPath(arcCenter: position , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: position , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         shapeLayer.path = circularPath.cgPath
         shapeLayer.strokeEnd = 0
         shapeLayer.strokeColor = UIColor(hexString: "98c9a3").cgColor
         shapeLayer.lineWidth = 10
+        
         
         configurePulsatingLayer()
         
@@ -74,8 +86,6 @@ class LaunchScreenViewController: UIViewController {
         animateStroke(with: &shapeLayer)
         
         self.view.layer.addSublayer(shapeLayer)
-        
-       
     }
     
     private func animateStroke(with shapeLayer: inout CAShapeLayer) {
@@ -91,15 +101,18 @@ class LaunchScreenViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first // Get the first touch of the user
-    
-        guard let point = touch?.location(in: self.view),
-            let sublayers = self.view.layer.sublayers as? [CAShapeLayer] else {return}
-    
-        for layer in sublayers {
-            // Unwrap the path and check if layer contains the point user touched on
-            if let path = layer.path, path.contains(point) {
-                print("User touched enter button")
-            }
+        
+        guard let point = touch?.location(in: self.view) else {return}
+        
+        let convertedPoint = self.view.layer.convert(point, to: self.shapeLayer)
+        
+        // Have to check if the path of the shape layer contains the point not the shape layer itself
+        if let path = self.shapeLayer.path, path.contains(convertedPoint) {
+            print("Contains point in path")
+        }
+            
+        else {
+            print("Does not contain point in path")
         }
     }
 }
