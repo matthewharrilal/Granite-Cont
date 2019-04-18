@@ -64,13 +64,15 @@ class LaunchScreenViewController: UIViewController {
         shapeLayer.strokeColor = UIColor(hexString: "98c9a3").cgColor
         shapeLayer.lineWidth = 10
         
+        configurePulsatingLayer()
+        
+        animatePulsatingLayer()
+        
         animateStroke(with: &shapeLayer)
         
         self.view.layer.addSublayer(shapeLayer)
         
-        configurePulsatingLayer()
-        
-        animatePulsatingLayer()
+       
     }
     
     private func animateStroke(with shapeLayer: inout CAShapeLayer) {
@@ -107,9 +109,9 @@ class LaunchScreenViewController: UIViewController {
     private func animatePulsatingLayer() {
         let animation = CABasicAnimation(keyPath: "transform.scale")
         
-        animation.toValue = 1.5
+        animation.toValue = 1.3
         
-        animation.duration = 2
+        animation.duration = 0.75
         
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         animation.autoreverses = true
