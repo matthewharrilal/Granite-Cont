@@ -16,12 +16,12 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        drawArch()
         
         addConfiguredView()
         
         configureAnimation()
         
+        // TODO: MARK Add UIElements for email and password
     }
     
 }

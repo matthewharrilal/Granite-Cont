@@ -57,9 +57,7 @@ class LaunchScreenViewController: UIViewController {
         
         let position = CGPoint(x: self.view.center.x, y: 700)
         
-        var circularPath = UIBezierPath(arcCenter: position, radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
-        
+        var circularPath = UIBezierPath(arcCenter: position , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         shapeLayer.path = circularPath.cgPath
         shapeLayer.strokeEnd = 0
@@ -70,7 +68,7 @@ class LaunchScreenViewController: UIViewController {
         
         self.view.layer.addSublayer(shapeLayer)
         
-        configurePulsatingLayer(with: &circularPath)
+        configurePulsatingLayer()
         
         animatePulsatingLayer()
     }
@@ -78,7 +76,7 @@ class LaunchScreenViewController: UIViewController {
     private func animateStroke(with shapeLayer: inout CAShapeLayer) {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         
-        basicAnimation.toValue = 1
+        basicAnimation.toValue = 1.5
         basicAnimation.duration = 1
         basicAnimation.fillMode = .forwards
         basicAnimation.isRemovedOnCompletion = false
@@ -86,18 +84,20 @@ class LaunchScreenViewController: UIViewController {
         shapeLayer.add(basicAnimation, forKey: "strokeAnimation")
     }
     
-    private func configurePulsatingLayer(with circularPath: inout UIBezierPath) {
+    private func configurePulsatingLayer() {
         self.pulsatingLayer = CAShapeLayer()
+        
+        let circularPath = UIBezierPath(arcCenter: .zero , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         self.pulsatingLayer.path = circularPath.cgPath
         
+        self.pulsatingLayer.position = CGPoint(x: self.view.center.x, y: 700)
+        
         self.pulsatingLayer.strokeColor = UIColor.clear.cgColor
         
-        self.pulsatingLayer.fillColor = UIColor.yellow.cgColor
+        self.pulsatingLayer.fillColor = UIColor(hexString: "98c9a3").cgColor
         
         self.pulsatingLayer.lineCap = .round
-        
-//        self.pulsatingLayer.position = self.view.center
         
         self.pulsatingLayer.strokeEnd = 0
 
