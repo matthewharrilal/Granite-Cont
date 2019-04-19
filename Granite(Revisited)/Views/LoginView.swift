@@ -13,6 +13,8 @@ class LoginView: UIView {
     
     var shapeLayer: CAShapeLayer!
     
+    var configuredView: UIView!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -20,30 +22,14 @@ class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        drawArch()
-    }
-    
-    func drawArch() {
-        shapeLayer = CAShapeLayer()
         
-        let center = CGPoint(x: self.center.x, y: self.center.y)
+//        addConfiguredView()
         
-        let radius = self.frame.width / 2
-        
-        let semiCirclePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
-        
-        shapeLayer.path = semiCirclePath.cgPath
-        shapeLayer.strokeEnd = 0
-        shapeLayer.strokeColor = UIColor(hexString: "98c9a3").cgColor
-        shapeLayer.lineWidth = 10
-        
-        self.layer.addSublayer(shapeLayer)
-        
+//        configureAnimation()
     }
     
     private func commonInit() {
-        print("Loading")
+        print("Loading login view")
         Bundle.main.loadNibNamed("LoginView", owner: self, options: nil)
-        self.backgroundColor = .red
     }
 }

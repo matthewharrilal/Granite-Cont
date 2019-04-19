@@ -11,16 +11,17 @@ import UIKit
 import Lottie
 
 class LogInViewController: UIViewController {
-    
-    var configuredView: UIView!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addConfiguredView()
+        let loginView = LoginView()
         
-        configureAnimation()
+        loginView.frame = self.view.bounds
         
+        self.view.addSubview(loginView)
+        
+        loginView.configureAnimation()
         // TODO: MARK Add UIElements for email and password
     }
     

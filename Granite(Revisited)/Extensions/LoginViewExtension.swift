@@ -10,27 +10,10 @@ import Foundation
 import UIKit
 import Lottie
 
-extension LogInViewController {
-    func drawArch() {
-        let shapeLayer = CAShapeLayer()
-        
-        let center = CGPoint(x: self.view.center.x, y: self.view.center.y)
-        
-        let radius = self.view.frame.width / 2
-        
-        let semiCirclePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
-        
-        shapeLayer.path = semiCirclePath.cgPath
-        shapeLayer.strokeEnd = 0
-        shapeLayer.strokeColor = UIColor(hexString: "98c9a3").cgColor
-        shapeLayer.lineWidth = 10
-        
-        self.view.layer.addSublayer(shapeLayer)
-        
-    }
+extension LoginView {
     
     func configureAnimation() {
-        self.view.backgroundColor = UIColor(hexString: "c9ddff")
+        self.backgroundColor = UIColor(hexString: "c9ddff")
         
         let animationView = LOTAnimationView(name: "lazyNight")
         animationView.contentMode = .scaleAspectFit
@@ -41,9 +24,9 @@ extension LogInViewController {
         animationView.layer.shadowOffset = .zero
         
         animationView.loopAnimation = true
-        self.configuredView.addSubview(animationView)
+        self.addSubview(animationView)
         
-        animationView.frame = self.configuredView.bounds
+        animationView.frame = self.bounds
         
         animationView.play { (completed) in
             print("Has completed animation? -> \(completed)")
@@ -52,12 +35,12 @@ extension LogInViewController {
     
     
     func addConfiguredView() {
-        let frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: self.view.frame.height / 2)
+        let frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: self.frame.height / 2)
         configuredView = UIView(frame: frame)
         
-        //        configuredView.backgroundColor = .red
+        configuredView.backgroundColor = .red
         
-        self.view.addSubview(configuredView)
+        self.addSubview(configuredView)
         
     }
 }
