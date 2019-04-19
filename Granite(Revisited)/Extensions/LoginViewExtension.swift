@@ -35,6 +35,10 @@ extension LogInViewController {
         let animationView = LOTAnimationView(name: "lazyNight")
         animationView.contentMode = .scaleAspectFit
         
+        animationView.layer.shadowColor = UIColor.black.cgColor
+        animationView.layer.shadowOpacity = 1
+        animationView.layer.shadowRadius = 10
+        animationView.layer.shadowOffset = .zero
         
         animationView.loopAnimation = true
         self.configuredView.addSubview(animationView)

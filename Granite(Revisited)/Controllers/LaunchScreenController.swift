@@ -60,6 +60,11 @@ class LaunchScreenViewController: UIViewController {
         animationView.loopAnimation = true
         self.view.addSubview(animationView)
         
+//        animationView.layer.shadowColor = UIColor.black.cgColor
+//        animationView.layer.shadowOpacity = 1
+//        animationView.layer.shadowRadius = 10
+//        animationView.layer.shadowOffset = .zero
+        
         animationView.frame = self.view.bounds
         
         animationView.animationSpeed = 2
@@ -80,6 +85,11 @@ class LaunchScreenViewController: UIViewController {
         shapeLayer.strokeEnd = 0
         shapeLayer.strokeColor = UIColor(hexString: "98c9a3").cgColor
         shapeLayer.lineWidth = 10
+        
+        shapeLayer.shadowColor = UIColor.black.cgColor
+        shapeLayer.shadowOpacity = 1
+        shapeLayer.shadowRadius = 10
+        shapeLayer.shadowOffset = .zero
         
         
         configurePulsatingLayer()
@@ -123,6 +133,9 @@ class LaunchScreenViewController: UIViewController {
     // TODO: MARK Handle tap
     private func transitionToLogin() {
         let loginViewController = LogInViewController()
+        loginViewController.hero.isEnabled = true
+        
+        loginViewController.hero.modalAnimationType = .fade
         self.present(loginViewController, animated: true, completion: nil)
     }
 }
