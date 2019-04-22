@@ -2,23 +2,27 @@ PODS:
   - CircleMenu (3.0.4)
   - Hero (1.2.0)
   - lottie-ios (2.5.0)
+  - TextFieldEffects (1.4.0)
 
 DEPENDENCIES:
   - CircleMenu
   - Hero
   - lottie-ios
+  - TextFieldEffects
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CircleMenu
     - Hero
     - lottie-ios
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   CircleMenu: 0f589199f154e4ce93e0831ce3462950f59510fd
   Hero: 33dadf2cd1c98af71e213dcbc2902e6e03622a4e
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
+  TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: 46da8da7c6b6bf1ec0a5f29898bd2bb408999a74
+PODFILE CHECKSUM: b1ba60b5725cf66c1dc46b2adaae80549e50effd
 
 COCOAPODS: 1.6.1

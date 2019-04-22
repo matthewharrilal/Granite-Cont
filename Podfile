@@ -9,6 +9,7 @@ target 'Granite(Revisited)' do
   pod 'lottie-ios'
   pod 'CircleMenu'
   pod 'Hero'
+pod 'TextFieldEffects'
 
   target 'Granite(Revisited)Tests' do
     inherit! :search_paths
