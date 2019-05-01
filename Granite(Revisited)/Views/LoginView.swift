@@ -17,6 +17,7 @@ class LoginView: UIView {
     
     @IBOutlet weak var lockView: UIView!
     
+    
     var shapeLayer: CAShapeLayer!
     
     var configuredView: UIView!
