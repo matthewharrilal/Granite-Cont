@@ -16,6 +16,7 @@ class LoginView: UIView {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var createAccountButton: UIButton!
     
     @IBOutlet weak var lockView: UIView!
     
@@ -47,6 +48,12 @@ class LoginView: UIView {
         whiteLoginView.addSubview(self.emailTextField)
         whiteLoginView.addSubview(self.passwordTextField)
         whiteLoginView.addSubview(loginButton)
+        addSubview(createAccountButton)
+        
+//        whiteLoginView.layer.shadowColor = UIColor.black.cgColor
+//        whiteLoginView.layer.shadowOpacity = 4
+//        whiteLoginView.layer.shadowOffset = .zero
+//        whiteLoginView.layer.shadowRadius = 10
     }
     
     

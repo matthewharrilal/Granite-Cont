@@ -9,9 +9,8 @@ target 'Granite(Revisited)' do
   pod 'lottie-ios'
   pod 'CircleMenu'
   pod 'Hero'
-  pod 'TextFieldEffects'
   pod 'DWAnimatedLabel', '~> 1.1'
-  
+  pod 'paper-onboarding'
   target 'Granite(Revisited)Tests' do
     inherit! :search_paths
     # Pods for testing
