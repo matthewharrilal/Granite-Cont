@@ -20,16 +20,6 @@ class LaunchScreenViewController: UIViewController {
     
     var touchView: UIView!
     
-    // MARK: FIX Add label to center of shape layer that denotes this is where they enter
-    //    let enterLabel: UILabel = {
-    //        let label = UILabel()
-    //        label.text = "Enter"
-    //        label.textAlignment = .center
-    //        label.font = UIFont.boldSystemFont(ofSize: 20)
-    //        return label
-    //    }()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -59,11 +49,6 @@ class LaunchScreenViewController: UIViewController {
         
         animationView.loopAnimation = true
         self.view.addSubview(animationView)
-        
-//        animationView.layer.shadowColor = UIColor.black.cgColor
-//        animationView.layer.shadowOpacity = 1
-//        animationView.layer.shadowRadius = 10
-//        animationView.layer.shadowOffset = .zero
         
         animationView.frame = self.view.bounds
         
