@@ -9,6 +9,7 @@
 import UIKit
 import Lottie
 import Hero
+import DWAnimatedLabel
 
 class LaunchScreenViewController: UIViewController {
     
@@ -19,6 +20,10 @@ class LaunchScreenViewController: UIViewController {
     var pulsatingLayer: CAShapeLayer!
     
     var touchView: UIView!
+    
+    var graniteLabel: DWAnimatedLabel!
+    
+    var descriptionLabel: DWAnimatedLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +36,8 @@ class LaunchScreenViewController: UIViewController {
         
         configureAnimation()
         configureEnterButton()
-    }
-    
-    private func configureTouchView() {
-        let frame = CGRect(x: self.view.center.x, y: 700, width: 400, height: 400)
-        self.touchView = UIView(frame: frame)
-        touchView.backgroundColor = .red
-        self.view.addSubview(touchView)
+        configureGraniteLabel()
+        configureDescriptionLabel()
     }
     
     private func configureAnimation() {
@@ -123,6 +123,8 @@ class LaunchScreenViewController: UIViewController {
         loginViewController.hero.modalAnimationType = .fade
         self.present(loginViewController, animated: true, completion: nil)
     }
+    
+    
 }
 
 
