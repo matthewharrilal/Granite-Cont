@@ -12,8 +12,10 @@ import Lottie
 
 class LoginView: UIView {
     
+    @IBOutlet weak var whiteLoginView: UIView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var lockView: UIView!
     
@@ -38,9 +40,13 @@ class LoginView: UIView {
     private func commonInit() {
         print("Loading login view")
         Bundle.main.loadNibNamed("LoginView", owner: self, options: nil)
-        addSubview(lockView)
-        addSubview(self.emailTextField)
-        addSubview(self.passwordTextField)
+        addSubview(whiteLoginView)
+        whiteLoginView.layer.cornerRadius = 5
+        whiteLoginView.layer.masksToBounds = true
+        whiteLoginView.addSubview(lockView)
+        whiteLoginView.addSubview(self.emailTextField)
+        whiteLoginView.addSubview(self.passwordTextField)
+        whiteLoginView.addSubview(loginButton)
     }
     
     

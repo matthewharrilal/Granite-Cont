@@ -52,10 +52,10 @@ extension LaunchScreenViewController {
         self.graniteLabel.animationType = .fade
         self.view.addSubview(graniteLabel)
         
-        self.graniteLabel.text = "Loading"
+        self.graniteLabel.text = "Granite"
         self.graniteLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         
-        self.graniteLabel.startAnimation(duration: 1.85) {
+        self.graniteLabel.startAnimation(duration: 1.65) {
             print("Label animating")
         }
     }
@@ -63,6 +63,7 @@ extension LaunchScreenViewController {
     func configureDescriptionLabel() {
         let frame = CGRect(x: self.view.center.x, y: 70, width: self.view.frame.width, height: 100)
         self.descriptionLabel = DWAnimatedLabel(frame: frame)
+        
         self.descriptionLabel.center.x = self.view.center.x
         self.descriptionLabel.animationType = .typewriter
         self.view.addSubview(descriptionLabel)

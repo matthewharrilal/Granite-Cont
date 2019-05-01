@@ -25,7 +25,6 @@ class LogInViewController: UIViewController {
         loginView.addConfiguredView()
         loginView.configureAnimation()
         loginView.configureLockAnimation()
-//         TODO: MARK Add UIElements for email and password
     }
     
 }
