@@ -22,8 +22,6 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     
     var onboardingInfoItems: [OnboardingItemInfo]?
     
-    var manager: UndoManager?
-    
     var user: User?
     
     var githubProfileUsernameTextField: UITextField!
@@ -69,17 +67,6 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     }
     
     func onboardingWillTransitonToIndex(_ index : Int) {
-        
-        guard let currentItem = self.onboardingInfoItems?[index] as? OnboardingItemInfo,
-        let email = self.emailTextField.text,
-        let username = self.usernameTextField.text,
-        let password = self.passwordTextField.text,
-        let githubUsername = self.githubProfileUsernameTextField.text,
-        let languages = self.languagesTextField.text
-        else {return}
-        
-        self.user = User(email: email, password: password, username: username)
-        
         switch index {
         case 0:
             configureTextFields(textFields: self.emailTextField, self.usernameTextField, self.passwordTextField)
@@ -88,23 +75,47 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             self.passwordTextField.isHidden = false
             
             
-            clearTextFields(textFields: emailTextField, usernameTextField, passwordTextField)
-            
         case 1:
             configureTextFields(textFields: self.githubProfileUsernameTextField, self.languagesTextField)
             self.passwordTextField.isHidden = true
-            
             self.githubProfileUsernameTextField.placeholder = "Github Profile Username"
             self.languagesTextField.placeholder = "Languages"
             
-            self.user?.githubProfileUsername = githubUsername
-            self.user?.languages = languages.components(separatedBy: ",")
-
-            clearTextFields(textFields: emailTextField, usernameTextField, passwordTextField)
+            
         default:
-            self.emailTextField.placeholder = ""
+            break
         }
         
+        print(user?.languages)
+    }
+    
+    func onboardingDidTransitonToIndex(_ index: Int) {
+        
+        guard let email = self.emailTextField.text,
+            let username = self.usernameTextField.text,
+            let password = self.passwordTextField.text,
+            let githubUsername = self.githubProfileUsernameTextField.text,
+            let languages = self.languagesTextField.text
+            else {return}
+        
+        switch index {
+        case 1:
+            // MARK: TODO Error handling for empty text attributes
+            self.user = User(email: email, password: password, username: username)
+            
+            // After transitioning to corresponding index clear text fields
+            clearTextFields(textFields: emailTextField, usernameTextField, passwordTextField)
+            
+        case 0:
+            user?.languages = languages.components(separatedBy: ",")
+            user?.githubProfileUsername = githubUsername
+            
+            clearTextFields(textFields: githubProfileUsernameTextField, languagesTextField)
+        default:
+            break
+        }
+        
+        print(user)
     }
     
     func clearTextFields(textFields: UITextField...) {
@@ -112,7 +123,6 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             textField.text = ""
         }
     }
-    
     
 }
 
