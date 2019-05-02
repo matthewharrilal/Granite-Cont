@@ -20,6 +20,11 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     
     let onboardingView = PaperOnboarding()
     
+    var onboardingInfoItems: [OnboardingItemInfo]?
+    
+    var manager: UndoManager?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         onboardingView.dataSource = self
@@ -51,14 +56,28 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         let titleFont = UIFont(name: "AvenirNext-Bold", size: 24)!
         let descirptionFont = UIFont(name: "AvenirNext-Regular", size: 18)!
         let image = UIImage(imageLiteralResourceName: "lorem.jpg")
-        return [
+        self.onboardingInfoItems =  [
             OnboardingItemInfo(informationImage: image, title: "", description: "", pageIcon: image, color: UIColor(hexString: "c9ddff"), titleColor: .red, descriptionColor: .orange, titleFont: titleFont, descriptionFont: descirptionFont),
             OnboardingItemInfo(informationImage: image, title: "", description: "", pageIcon: image, color: UIColor(hexString: "ff9b71"), titleColor: .red, descriptionColor: .orange, titleFont: titleFont, descriptionFont: descirptionFont)
-            ][index] as OnboardingItemInfo
+        ]
+        
+        return self.onboardingInfoItems![index] as OnboardingItemInfo
     }
     
-    func onboardingConfigurationItem(_ item: OnboardingContentViewItem, index _: Int) {
-//        item.imageView?.center = CGPoint(x: self.view.center.x, y: 100)
+    func onboardingWillTransitonToIndex(_ index : Int) {
+        guard let currentItem = self.onboardingInfoItems?[index] as? OnboardingItemInfo else {return}
+        
+        
+        switch index {
+        case 0:
+            self.emailTextField.placeholder = "Email"
+            
+        case 1:
+            self.emailTextField.placeholder = "Github Profile Username"
+        default:
+            self.emailTextField.placeholder = ""
+        }
+        
     }
     
     func configureFields() {
@@ -70,6 +89,11 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         self.emailTextField.placeholder = "Email"
         self.onboardingView.addSubview(self.emailTextField)
         self.emailTextField.borderStyle = .roundedRect
+        
+        guard let undoManager = manager else {return}
+        
+        self.emailTextField.isEnabled = undoManager.canUndo
+        self.emailTextField.isEnabled = undoManager.canRedo
         
     }
     
@@ -94,4 +118,5 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         self.onboardingView.addSubview(self.passwordTextField)
         self.passwordTextField.borderStyle = .roundedRect
     }
+    
 }
