@@ -41,19 +41,9 @@ class LoginView: UIView {
     private func commonInit() {
         print("Loading login view")
         Bundle.main.loadNibNamed("LoginView", owner: self, options: nil)
-        addSubview(whiteLoginView)
-        whiteLoginView.layer.cornerRadius = 5
-        whiteLoginView.layer.masksToBounds = true
-        whiteLoginView.addSubview(lockView)
-        whiteLoginView.addSubview(self.emailTextField)
-        whiteLoginView.addSubview(self.passwordTextField)
-        whiteLoginView.addSubview(loginButton)
-        addSubview(createAccountButton)
-        
-//        whiteLoginView.layer.shadowColor = UIColor.black.cgColor
-//        whiteLoginView.layer.shadowOpacity = 4
-//        whiteLoginView.layer.shadowOffset = .zero
-//        whiteLoginView.layer.shadowRadius = 10
+        addSubviews(views: whiteLoginView, createAccountButton)
+        whiteLoginView.addSubviews(views: lockView, emailTextField, passwordTextField, loginButton)
+
     }
     
     
@@ -78,5 +68,11 @@ class LoginView: UIView {
         
         animationView.loopAnimation = true
         animationView.animationSpeed = 2
+    }
+}
+
+extension UIView {
+    func addSubviews(views: UIView...) {
+        views.forEach({addSubview($0)})
     }
 }
