@@ -8,13 +8,18 @@
 
 import Foundation
 
-struct User {
+class User {
     var email: String
     var username: String
     var password: String
     var githubProfileUsername: String?
     var languages: [String]
-    
+//
+//    convenience init(email: String, password: String) {
+//        self.email = email
+//        self.password = password
+//    }
+//
     init(email: String, username: String, password: String, githubProfileUsername: String?, languages: [String]) {
         self.email = email
         self.username = username
@@ -24,7 +29,6 @@ struct User {
     }
     
     convenience init(email: String, password: String) {
-        self.email = email
-        self.password = password
+        self.init(email: email, password: password)
     }
 }
