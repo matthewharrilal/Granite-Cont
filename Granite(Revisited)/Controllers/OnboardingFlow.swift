@@ -71,9 +71,13 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         switch index {
         case 0:
             self.emailTextField.placeholder = "Email"
+            self.usernameTextField.placeholder = "Username"
+            self.passwordTextField.isHidden = false
             
         case 1:
             self.emailTextField.placeholder = "Github Profile Username"
+            self.usernameTextField.placeholder = "Languages"
+            self.passwordTextField.isHidden = true
         default:
             self.emailTextField.placeholder = ""
         }
