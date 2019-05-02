@@ -63,23 +63,36 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     }
     
     func onboardingWillTransitonToIndex(_ index : Int) {
-        guard let currentItem = self.onboardingInfoItems?[index] as? OnboardingItemInfo else {return}
+        guard let currentItem = self.onboardingInfoItems?[index] as? OnboardingItemInfo,
+        let email = self.emailTextField.text,
+        let username = self.usernameTextField.text,
+        let password = self.passwordTextField.text
+        else {return}
         
+        print(email, username, password)
         
         switch index {
         case 0:
             self.emailTextField.placeholder = "Email"
             self.usernameTextField.placeholder = "Username"
             self.passwordTextField.isHidden = false
+            clearTextFields(textFields: emailTextField, usernameTextField, passwordTextField)
             
         case 1:
             self.emailTextField.placeholder = "Github Profile Username"
             self.usernameTextField.placeholder = "Languages"
             self.passwordTextField.isHidden = true
+            clearTextFields(textFields: emailTextField, usernameTextField, passwordTextField)
         default:
             self.emailTextField.placeholder = ""
         }
         
+    }
+    
+    func clearTextFields(textFields: UITextField...) {
+        textFields.forEach { (textField) in
+            textField.text = ""
+        }
     }
 }
 
