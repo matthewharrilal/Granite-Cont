@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C1AA4D8227A2D03009802C5 /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA4D7227A2D03009802C5 /* OnboardingFlow.swift */; };
 		1C1AA4DA227A2EAA009802C5 /* lorem.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C1AA4D9227A2EAA009802C5 /* lorem.jpg */; };
+		1C226183227AA8E50072A638 /* OnboardingFlowController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226182227AA8E50072A638 /* OnboardingFlowController+Extension.swift */; };
 		1C326A482269AAC300E09F99 /* lock.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C326A472269AAC300E09F99 /* lock.json */; };
 		1C75417C2268E6680038D0E1 /* LaunchScreenController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		1C1AA4D7227A2D03009802C5 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
 		1C1AA4D9227A2EAA009802C5 /* lorem.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lorem.jpg; sourceTree = "<group>"; };
+		1C226182227AA8E50072A638 /* OnboardingFlowController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingFlowController+Extension.swift"; sourceTree = "<group>"; };
 		1C326A472269AAC300E09F99 /* lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lock.json; sourceTree = "<group>"; };
 		1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchScreenController+Extension.swift"; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +201,7 @@
 				1CCCC1D2226797ED0012DA75 /* UIColor+Extension.swift */,
 				1CCCC1DA2267D26D0012DA75 /* LoginViewExtension.swift */,
 				1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */,
+				1C226182227AA8E50072A638 /* OnboardingFlowController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				1CCCC1AB2267874E0012DA75 /* Granite_Revisited_.xcdatamodeld in Sources */,
 				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
+				1C226183227AA8E50072A638 /* OnboardingFlowController+Extension.swift in Sources */,
 				1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */,
 				1C1AA4D8227A2D03009802C5 /* OnboardingFlow.swift in Sources */,
 				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,

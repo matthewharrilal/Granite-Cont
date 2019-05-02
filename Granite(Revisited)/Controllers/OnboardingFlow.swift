@@ -44,8 +44,6 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         }
         
         configureFields()
-        configureUsernameField()
-        configurePasswordField()
     }
     
     func onboardingItemsCount() -> Int {
@@ -83,44 +81,6 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         }
         
     }
-    
-    func configureFields() {
-        let frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 150, height: 50)
-        self.emailTextField = UITextField(frame: frame)
-        self.emailTextField.center = self.view.center
-        
-        self.emailTextField.center.y += 100
-        self.emailTextField.placeholder = "Email"
-        self.onboardingView.addSubview(self.emailTextField)
-        self.emailTextField.borderStyle = .roundedRect
-        
-        guard let undoManager = manager else {return}
-        
-        self.emailTextField.isEnabled = undoManager.canUndo
-        self.emailTextField.isEnabled = undoManager.canRedo
-        
-    }
-    
-    func configureUsernameField() {
-        let frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 150, height: 50)
-        self.usernameTextField = UITextField(frame: frame)
-        self.usernameTextField.center = self.view.center
-        
-        self.usernameTextField.center.y += 180
-        self.usernameTextField.placeholder = "Username"
-        self.onboardingView.addSubview(self.usernameTextField)
-        self.usernameTextField.borderStyle = .roundedRect
-    }
-    
-    func configurePasswordField() {
-        let frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 150, height: 50)
-        self.passwordTextField = UITextField(frame: frame)
-        self.passwordTextField.center = self.view.center
-        
-        self.passwordTextField.center.y += 260
-        self.passwordTextField.placeholder = "Password"
-        self.onboardingView.addSubview(self.passwordTextField)
-        self.passwordTextField.borderStyle = .roundedRect
-    }
-    
 }
+
+
