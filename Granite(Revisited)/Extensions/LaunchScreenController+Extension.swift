@@ -48,6 +48,8 @@ extension LaunchScreenViewController {
     func configureGraniteLabel() {
         let frame = CGRect(x: self.view.center.x, y: 44, width: self.view.frame.width, height: 100)
         self.graniteLabel = DWAnimatedLabel(frame: frame)
+        
+        self.graniteLabel.textAlignment = .center
         self.graniteLabel.center.x = self.view.center.x
         self.graniteLabel.animationType = .fade
         self.view.addSubview(graniteLabel)
@@ -65,6 +67,8 @@ extension LaunchScreenViewController {
         self.descriptionLabel = DWAnimatedLabel(frame: frame)
         
         self.descriptionLabel.center.x = self.view.center.x
+        
+        self.descriptionLabel.textAlignment = .center
         self.descriptionLabel.animationType = .typewriter
         self.view.addSubview(descriptionLabel)
         

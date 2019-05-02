@@ -14,6 +14,10 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     
     var emailTextField: UITextField!
     
+    var usernameTextField: UITextField!
+    
+    var passwordTextField: UITextField!
+    
     let onboardingView = PaperOnboarding()
     
     override func viewDidLoad() {
@@ -35,6 +39,8 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         }
         
         configureFields()
+        configureUsernameField()
+        configurePasswordField()
     }
     
     func onboardingItemsCount() -> Int {
@@ -46,13 +52,13 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         let descirptionFont = UIFont(name: "AvenirNext-Regular", size: 18)!
         let image = UIImage(imageLiteralResourceName: "lorem.jpg")
         return [
-            OnboardingItemInfo(informationImage: image, title: "", description: "", pageIcon: image, color: .blue, titleColor: .red, descriptionColor: .orange, titleFont: titleFont, descriptionFont: descirptionFont),
-            OnboardingItemInfo(informationImage: image, title: "", description: "", pageIcon: image, color: .white, titleColor: .red, descriptionColor: .orange, titleFont: titleFont, descriptionFont: descirptionFont)
+            OnboardingItemInfo(informationImage: image, title: "", description: "", pageIcon: image, color: UIColor(hexString: "c9ddff"), titleColor: .red, descriptionColor: .orange, titleFont: titleFont, descriptionFont: descirptionFont),
+            OnboardingItemInfo(informationImage: image, title: "", description: "", pageIcon: image, color: UIColor(hexString: "ff9b71"), titleColor: .red, descriptionColor: .orange, titleFont: titleFont, descriptionFont: descirptionFont)
             ][index] as OnboardingItemInfo
     }
     
-    func onboardingConfigurationItem(item: OnboardingContentViewItem, index _: Int) {
-        
+    func onboardingConfigurationItem(_ item: OnboardingContentViewItem, index _: Int) {
+//        item.imageView?.center = CGPoint(x: self.view.center.x, y: 100)
     }
     
     func configureFields() {
@@ -60,10 +66,32 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         self.emailTextField = UITextField(frame: frame)
         self.emailTextField.center = self.view.center
         
-        self.emailTextField.center.y += 200
+        self.emailTextField.center.y += 100
         self.emailTextField.placeholder = "Email"
         self.onboardingView.addSubview(self.emailTextField)
         self.emailTextField.borderStyle = .roundedRect
         
+    }
+    
+    func configureUsernameField() {
+        let frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 150, height: 50)
+        self.usernameTextField = UITextField(frame: frame)
+        self.usernameTextField.center = self.view.center
+        
+        self.usernameTextField.center.y += 180
+        self.usernameTextField.placeholder = "Username"
+        self.onboardingView.addSubview(self.usernameTextField)
+        self.usernameTextField.borderStyle = .roundedRect
+    }
+    
+    func configurePasswordField() {
+        let frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 150, height: 50)
+        self.passwordTextField = UITextField(frame: frame)
+        self.passwordTextField.center = self.view.center
+        
+        self.passwordTextField.center.y += 260
+        self.passwordTextField.placeholder = "Password"
+        self.onboardingView.addSubview(self.passwordTextField)
+        self.passwordTextField.borderStyle = .roundedRect
     }
 }
