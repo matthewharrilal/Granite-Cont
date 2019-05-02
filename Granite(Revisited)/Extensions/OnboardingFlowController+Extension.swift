@@ -17,6 +17,9 @@ extension OnboardingFlow {
         self.usernameTextField = UITextField(frame: frame)
         self.passwordTextField = UITextField(frame: frame)
         
+        self.githubProfileUsernameTextField = UITextField(frame: frame)
+        self.languagesTextField = UITextField(frame: frame)
+        
         self.configureTextFields(textFields: self.emailTextField, self.usernameTextField, self.passwordTextField)
         
         self.emailTextField.placeholder = "Email"

@@ -23,8 +23,8 @@ class User: Decodable {
         self.languages = languages
     }
     
-    convenience init(email: String, password: String) {
-        self.init(email: email, password: password)
+    convenience init(email: String, password: String, username: String?) {
+        self.init(email: email, password: password, username: username)
     }
     
     private enum UserKeys: String, CodingKey {

@@ -24,6 +24,11 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     
     var manager: UndoManager?
     
+    var user: User?
+    
+    var githubProfileUsernameTextField: UITextField!
+    
+    var languagesTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +48,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             view.addConstraint(constraint)
         }
         
+        // In charge of configuring initial fields
         configureFields()
     }
     
@@ -63,25 +69,37 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     }
     
     func onboardingWillTransitonToIndex(_ index : Int) {
+        
         guard let currentItem = self.onboardingInfoItems?[index] as? OnboardingItemInfo,
         let email = self.emailTextField.text,
         let username = self.usernameTextField.text,
-        let password = self.passwordTextField.text
+        let password = self.passwordTextField.text,
+        let githubUsername = self.githubProfileUsernameTextField.text,
+        let languages = self.languagesTextField.text
         else {return}
         
-        print(email, username, password)
+        self.user = User(email: email, password: password, username: username)
         
         switch index {
         case 0:
+            configureTextFields(textFields: self.emailTextField, self.usernameTextField, self.passwordTextField)
             self.emailTextField.placeholder = "Email"
             self.usernameTextField.placeholder = "Username"
             self.passwordTextField.isHidden = false
+            
+            
             clearTextFields(textFields: emailTextField, usernameTextField, passwordTextField)
             
         case 1:
-            self.emailTextField.placeholder = "Github Profile Username"
-            self.usernameTextField.placeholder = "Languages"
+            configureTextFields(textFields: self.githubProfileUsernameTextField, self.languagesTextField)
             self.passwordTextField.isHidden = true
+            
+            self.githubProfileUsernameTextField.placeholder = "Github Profile Username"
+            self.languagesTextField.placeholder = "Languages"
+            
+            self.user?.githubProfileUsername = githubUsername
+            self.user?.languages = languages.components(separatedBy: ",")
+
             clearTextFields(textFields: emailTextField, usernameTextField, passwordTextField)
         default:
             self.emailTextField.placeholder = ""
@@ -94,6 +112,8 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             textField.text = ""
         }
     }
+    
+    
 }
 
 
