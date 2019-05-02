@@ -8,18 +8,13 @@
 
 import Foundation
 
-class User {
+class User: Decodable {
     var email: String
     var username: String
     var password: String
     var githubProfileUsername: String?
     var languages: [String]
-//
-//    convenience init(email: String, password: String) {
-//        self.email = email
-//        self.password = password
-//    }
-//
+
     init(email: String, username: String, password: String, githubProfileUsername: String?, languages: [String]) {
         self.email = email
         self.username = username
@@ -30,5 +25,25 @@ class User {
     
     convenience init(email: String, password: String) {
         self.init(email: email, password: password)
+    }
+    
+    private enum UserKeys: String, CodingKey {
+        case languages
+        case password
+        case email
+        case username
+        case githubProfile
+        case updatedAt
+    }
+    
+    required convenience init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UserKeys.self)
+        let languages = try container.decode([String].self, forKey: .languages)
+        let password = try container.decode(String.self, forKey: .password)
+        let email = try container.decode(String.self, forKey: .email)
+        let username = try container.decode(String.self, forKey: .email)
+        let githubProfileUsername = try container.decode(String.self, forKey: .githubProfile)
+        let updatedAt = try container.decode(String.self, forKey: .updatedAt)
+        self.init(email: email, username: username, password: password, githubProfileUsername: githubProfileUsername, languages: languages)
     }
 }
