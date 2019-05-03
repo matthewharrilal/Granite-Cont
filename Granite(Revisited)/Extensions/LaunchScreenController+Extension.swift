@@ -11,39 +11,6 @@ import UIKit
 import DWAnimatedLabel
 
 extension LaunchScreenViewController {
-    func configurePulsatingLayer(onView view: UIView, withPulsatingLayer pulsatingLayer:  CAShapeLayer) {
-        
-        let circularPath = UIBezierPath(arcCenter: .zero , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
-        pulsatingLayer.path = circularPath.cgPath
-        
-        pulsatingLayer.position = CGPoint(x: self.view.center.x, y: 700)
-        
-        pulsatingLayer.strokeColor = UIColor.clear.cgColor
-        
-        pulsatingLayer.fillColor = UIColor(hexString: "98c9a3").cgColor
-        
-        pulsatingLayer.lineCap = .round
-        
-        pulsatingLayer.strokeEnd = 0
-        
-        view.layer.addSublayer(pulsatingLayer)
-    }
-    
-    func animatePulsatingLayer(withPulsatingLayer pulsatingLayer: CAShapeLayer) {
-        let animation = CABasicAnimation(keyPath: "transform.scale")
-        
-        animation.toValue = 1.3
-        
-        animation.duration = 0.75
-        
-        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-        animation.autoreverses = true
-        animation.repeatCount = Float.infinity
-        
-        pulsatingLayer.add(animation, forKey: "pulse")
-    }
-    
     func configureGraniteLabel() {
         let frame = CGRect(x: self.view.center.x, y: 44, width: self.view.frame.width, height: 100)
         self.graniteLabel = DWAnimatedLabel(frame: frame)
