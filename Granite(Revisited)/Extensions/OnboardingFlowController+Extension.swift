@@ -28,9 +28,11 @@ extension OnboardingFlow {
     }
     
     func configureTextFields(_ view: UIView, textFields: UITextField...) {
-        var distanceCounter = self.view.center.y
+        // MARK: FIX Make dynamic for any view and constrain SUPER HARD CODED FOR IPHONE XS
+        var distanceCounter = self.view.center.y  - 50
+        
         textFields.forEach { (textField) in
-            let frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: self.view.frame.width / 1.5, height: 50)
+            let frame = CGRect(x: self.view.center.x, y: distanceCounter, width: self.view.frame.width / 1.5, height: 50)
             textField.frame = frame
             textField.center = self.view.center
             textField.textAlignment = .center
