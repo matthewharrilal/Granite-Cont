@@ -18,3 +18,10 @@ public enum HTTPTask {
     
     case requestParametersAndHeaders(bodyParameters: Parameters?, urlParameters: Parameters?, headers: HTTPHeaders?)
 }
+
+public protocol ParameterEncoder {
+    // In charge of configuring parameters on request passed by reference
+    static func encode(withRequest request: inout URLRequest, parameters: Parameters) throws
+}
+
+
