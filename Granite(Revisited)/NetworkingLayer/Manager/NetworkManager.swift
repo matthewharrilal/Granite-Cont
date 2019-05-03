@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias UserCompletion = (_ user: User?, _ error: Error?) -> ()
+typealias UserCompletion = (_ user: User?, _ error: String?) -> ()
 
 public struct NetworkManager {
     // In charge of containing our routers for each endpoint
@@ -54,19 +54,43 @@ fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<St
 }
 
 
-func authenticateUser(withUser user: User?, completion: @escaping UserCompletion) {
+func authenticateUser(withUser user: User?, completion: @escaping UserCompletion) -> Void {
     guard let user = user else {return}
     
     let userManager = NetworkManager().userAccess
     
-    userManager.request(withEndpoint: .createUser(user: user)) { (data, response, err) in
+    userManager.request(withEndpoint: .authenticateUser(email: user.email, username: user.username, password: user.password)) { (data, response, err) in
         if err != nil {
-            completion(nil, err)
+            return completion(nil, err?.localizedDescription)
         }
         
         // Converting response to gain more insight and access to the status code pertaining to the http protocol itself
         if let response = response as? HTTPURLResponse {
+            // Obtain description of request execution that the response' status code correlates to
+            let result = handleNetworkResponse(response)
             
+            switch (result) {
+            case .success(let requestExecutionDescription):
+                print("Request was success \(requestExecutionDescription)")
+                
+                // If data comes back and is nil
+                guard let data = data else {
+                    return completion(nil , NetworkResponse.noData.rawValue)
+                }
+                
+                // Try the deserialization of data that has come back from the request
+                do {
+                    let user = try JSONDecoder().decode(User.self, from: data)
+                    return completion(user, nil)
+                }
+                catch {
+                   return completion(nil, NetworkResponse.unableToDecode.rawValue)
+                }
+                
+            case .failure(let requestFailureDescription):
+                print("Request was a failiure \(requestFailureDescription)")
+            }
+           
         }
     }
 }
