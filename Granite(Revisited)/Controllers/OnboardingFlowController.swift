@@ -28,6 +28,10 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     
     var languagesTextField: UITextField!
     
+    var pulsatingLayer = CAShapeLayer()
+    
+    var shapeLayer = CAShapeLayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         onboardingView.dataSource = self
@@ -82,6 +86,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             self.languagesTextField.placeholder = "Languages"
             
             // MARK: TODO Add Create User Button
+            configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self.view)
             
         default:
             break
