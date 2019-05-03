@@ -16,15 +16,33 @@ enum UserAccess {
 
 extension UserAccess: EndpointType {
     var baseUrl: URL {
-        <#code#>
+        guard let url = URL(string: "localhost:3000/") else {return}
+        return url
     }
     
     var path: String {
-        <#code#>
+        switch self {
+        case .authenticateUser:
+            return "/login"
+            
+        case .createUser:
+            return "/signup"
+        }
     }
     
     var task: HTTPTask {
-        <#code#>
+        var headers: HTTPHeaders?
+        var parameters: Parameters?
+    
+        switch self {
+        case .authenticateUser( _ , let username, let password):
+            
+            headers = ["username": username, "password": password ]
+            return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, headers: headers)
+            
+        case .createUser(let user):
+            parameters = ["email": user.email, "username"]
+        }
     }
     
     var httpMethod: String {
