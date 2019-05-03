@@ -35,7 +35,10 @@ class LaunchScreenViewController: UIViewController {
         //        configureTouchView()
         
         configureAnimation()
-        configureEnterButton()
+        self.shapeLayer = CAShapeLayer()
+        self.pulsatingLayer = CAShapeLayer()
+        
+        configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self.view)
         configureGraniteLabel()
         configureDescriptionLabel()
     }
@@ -59,8 +62,7 @@ class LaunchScreenViewController: UIViewController {
         }
     }
     
-    private func configureEnterButton() {
-        shapeLayer = CAShapeLayer()
+    private func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer, withShapeLayer shapeLayer: inout CAShapeLayer, onView view: UIView) {
         
         let position = CGPoint(x: self.view.center.x, y: 700)
         
@@ -76,14 +78,13 @@ class LaunchScreenViewController: UIViewController {
         shapeLayer.shadowRadius = 10
         shapeLayer.shadowOffset = .zero
         
+        configurePulsatingLayer(onView: self.view, withPulsatingLayer: pulsatingLayer)
         
-        configurePulsatingLayer()
-        
-        animatePulsatingLayer()
+        animatePulsatingLayer(withPulsatingLayer: pulsatingLayer)
         
         animateStroke(with: &shapeLayer)
         
-        self.view.layer.addSublayer(shapeLayer)
+        view.layer.addSublayer(shapeLayer)
     }
     
     private func animateStroke(with shapeLayer: inout CAShapeLayer) {

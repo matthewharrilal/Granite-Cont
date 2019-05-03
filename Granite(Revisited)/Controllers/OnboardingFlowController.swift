@@ -47,6 +47,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         }
         
         // In charge of configuring initial fields
+        
         configureFields()
     }
     
@@ -70,8 +71,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         switch index {
         case 0:
             configureTextFields(self.view,textFields: self.emailTextField, self.usernameTextField, self.passwordTextField)
-            self.emailTextField.placeholder = "Email"
-            self.usernameTextField.placeholder = "Username"
+            
             self.passwordTextField.isHidden = false
             
             
@@ -81,6 +81,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             self.githubProfileUsernameTextField.placeholder = "Github Profile Username"
             self.languagesTextField.placeholder = "Languages"
             
+            // MARK: TODO Add Create User Button
             
         default:
             break
@@ -105,7 +106,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             
             // After transitioning to corresponding index clear text fields
             clearTextFields(textFields: emailTextField, usernameTextField, passwordTextField)
-                    
+            
             
         case 0:
             user?.languages = languages.components(separatedBy: ",")
@@ -117,6 +118,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             break
         }
     }
+    
     
     func clearTextFields(textFields: UITextField...) {
         textFields.forEach { (textField) in

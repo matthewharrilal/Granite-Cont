@@ -11,27 +11,26 @@ import UIKit
 import DWAnimatedLabel
 
 extension LaunchScreenViewController {
-    func configurePulsatingLayer() {
-        self.pulsatingLayer = CAShapeLayer()
+    func configurePulsatingLayer(onView view: UIView, withPulsatingLayer pulsatingLayer:  CAShapeLayer) {
         
         let circularPath = UIBezierPath(arcCenter: .zero , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         
-        self.pulsatingLayer.path = circularPath.cgPath
+        pulsatingLayer.path = circularPath.cgPath
         
-        self.pulsatingLayer.position = CGPoint(x: self.view.center.x, y: 700)
+        pulsatingLayer.position = CGPoint(x: self.view.center.x, y: 700)
         
-        self.pulsatingLayer.strokeColor = UIColor.clear.cgColor
+        pulsatingLayer.strokeColor = UIColor.clear.cgColor
         
-        self.pulsatingLayer.fillColor = UIColor(hexString: "98c9a3").cgColor
+        pulsatingLayer.fillColor = UIColor(hexString: "98c9a3").cgColor
         
-        self.pulsatingLayer.lineCap = .round
+        pulsatingLayer.lineCap = .round
         
-        self.pulsatingLayer.strokeEnd = 0
+        pulsatingLayer.strokeEnd = 0
         
-        self.view.layer.addSublayer(pulsatingLayer)
+        view.layer.addSublayer(pulsatingLayer)
     }
     
-    func animatePulsatingLayer() {
+    func animatePulsatingLayer(withPulsatingLayer pulsatingLayer: CAShapeLayer) {
         let animation = CABasicAnimation(keyPath: "transform.scale")
         
         animation.toValue = 1.3
@@ -42,7 +41,7 @@ extension LaunchScreenViewController {
         animation.autoreverses = true
         animation.repeatCount = Float.infinity
         
-        self.pulsatingLayer.add(animation, forKey: "pulse")
+        pulsatingLayer.add(animation, forKey: "pulse")
     }
     
     func configureGraniteLabel() {
