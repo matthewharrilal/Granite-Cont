@@ -75,8 +75,6 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     
     func onboardingWillTransitonToIndex(_ index : Int) {
         
-        var currentItem =  self.onboardingInfoItems![index]
-        
         switch index {
         case 0:
             configureTextFields(self.view,textFields: self.emailTextField, self.usernameTextField, self.passwordTextField)
@@ -84,14 +82,14 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             self.passwordTextField.isHidden = false
             
             self.onboardingView.pageView?.isHidden = false
-            guard (self.shapeLayer != nil) else {return}
+            
             self.shapeLayer.removeFromSuperlayer()
             self.pulsatingLayer.removeFromSuperlayer()
+            
         case 1:
             configureTextFields(self.view,textFields: self.githubProfileUsernameTextField, self.languagesTextField)
             self.passwordTextField.isHidden = true
-            self.githubProfileUsernameTextField.placeholder = "Github Profile Username"
-            self.languagesTextField.placeholder = "Languages"
+            
             
             // MARK: TODO Add Create User Button
             self.onboardingView.pageView?.isHidden = true

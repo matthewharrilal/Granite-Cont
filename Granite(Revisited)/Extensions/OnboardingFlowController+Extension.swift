@@ -27,6 +27,9 @@ extension OnboardingFlow {
         self.emailTextField.placeholder = "Email"
         self.usernameTextField.placeholder = "Username"
         self.passwordTextField.placeholder = "Password"
+        
+        self.githubProfileUsernameTextField.placeholder = "Github Profile Username"
+        self.languagesTextField.placeholder = "Languages"
     }
     
     func configureTextFields(_ view: UIView, textFields: UITextField...) {
@@ -54,14 +57,4 @@ extension OnboardingFlow {
         }
     }
     
-    func hideTextFields(_ view: UIView, textFields: UITextField...) {
-        textFields.forEach { (textField) in
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-                textField.alpha = 0
-                view.layoutIfNeeded()
-            }, completion: { (_) in
-                textField.removeFromSuperview()
-            })
-        }
-    }
 }
