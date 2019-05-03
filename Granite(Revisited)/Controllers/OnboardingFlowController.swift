@@ -86,7 +86,6 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             break
         }
         
-        print(user?.languages)
     }
     
     func onboardingDidTransitonToIndex(_ index: Int) {
@@ -106,12 +105,14 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             
             // After transitioning to corresponding index clear text fields
             clearTextFields(textFields: emailTextField, usernameTextField, passwordTextField)
+                    
             
         case 0:
             user?.languages = languages.components(separatedBy: ",")
             user?.githubProfileUsername = githubUsername
             
             clearTextFields(textFields: githubProfileUsernameTextField, languagesTextField)
+            
         default:
             break
         }

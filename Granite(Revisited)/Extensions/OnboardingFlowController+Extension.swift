@@ -30,9 +30,11 @@ extension OnboardingFlow {
     func configureTextFields(_ view: UIView, textFields: UITextField...) {
         var distanceCounter = self.view.center.y
         textFields.forEach { (textField) in
-            let frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 150, height: 50)
+            let frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: self.view.frame.width / 1.5, height: 50)
             textField.frame = frame
             textField.center = self.view.center
+            textField.textAlignment = .center
+            
             distanceCounter += 80
             textField.center.y = distanceCounter
             self.view.addSubview(textField)
@@ -45,6 +47,17 @@ extension OnboardingFlow {
                             textField.alpha = 1
                             view.layoutIfNeeded()
             }, completion: nil)
+        }
+    }
+    
+    func hideTextFields(_ view: UIView, textFields: UITextField...) {
+        textFields.forEach { (textField) in
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                textField.alpha = 0
+                view.layoutIfNeeded()
+            }, completion: { (_) in
+                textField.removeFromSuperview()
+            })
         }
     }
 }
