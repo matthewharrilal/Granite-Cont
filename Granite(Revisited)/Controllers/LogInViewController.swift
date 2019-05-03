@@ -12,10 +12,10 @@ import Lottie
 
 class LogInViewController: UIViewController {
     
+    let loginView = LoginView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let loginView = LoginView()
         
         loginView.frame = self.view.bounds
         
@@ -26,6 +26,7 @@ class LogInViewController: UIViewController {
         loginView.configureAnimation()
         loginView.configureLockAnimation()
         
+        loginView.loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         loginView.createAccountButton.addTarget(self, action: #selector(handleCreateAccount), for: .touchUpInside)
     }
     
@@ -36,6 +37,18 @@ class LogInViewController: UIViewController {
         
         onboardingFlowController.hero.modalAnimationType = .fade
         self.present(onboardingFlowController, animated: true, completion: nil)
+    }
+    
+    @objc func handleLogin() {
+        guard let email = loginView.emailTextField.text,
+            let password = loginView.passwordTextField.text,
+            let user = User(email: "test1@gmail.com", password: password)
+            else {return}
+        
+        user.username = "test1"
+        authenticateUser(withUser: user) { (user, err) in
+            print(user?.languages, err)
+        }
     }
 }
 
