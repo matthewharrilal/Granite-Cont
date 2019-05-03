@@ -59,6 +59,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         return 2
     }
     
+    
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
         let titleFont = UIFont(name: "AvenirNext-Bold", size: 24)!
         let descirptionFont = UIFont(name: "AvenirNext-Regular", size: 18)!
@@ -72,12 +73,14 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     }
     
     func onboardingWillTransitonToIndex(_ index : Int) {
+        
+        var currentItem =  self.onboardingInfoItems![index]
+        
         switch index {
         case 0:
             configureTextFields(self.view,textFields: self.emailTextField, self.usernameTextField, self.passwordTextField)
             
             self.passwordTextField.isHidden = false
-            
             
         case 1:
             configureTextFields(self.view,textFields: self.githubProfileUsernameTextField, self.languagesTextField)
@@ -86,6 +89,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             self.languagesTextField.placeholder = "Languages"
             
             // MARK: TODO Add Create User Button
+            self.onboardingView.pageView?.isHidden = true
             configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self.view)
             
         default:

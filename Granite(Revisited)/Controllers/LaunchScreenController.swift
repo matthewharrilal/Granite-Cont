@@ -27,12 +27,6 @@ class LaunchScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        // MARK: FIX Display animation then transition to initial view of the screen
-        
-        // TODO: MARK Why is our subview's layers not appearing
-        //        configureTouchView()
         
         configureAnimation()
         self.shapeLayer = CAShapeLayer()
