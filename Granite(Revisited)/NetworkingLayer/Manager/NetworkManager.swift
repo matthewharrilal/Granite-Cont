@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias UserCompletion = (_ user: User?, _ response: URLResponse?, _ error: Error?) -> ()
+typealias UserCompletion = (_ user: User?, _ error: Error?) -> ()
 
 public struct NetworkManager {
     // In charge of containing our routers for each endpoint
@@ -50,5 +50,23 @@ fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<St
     default:
         return .failure(NetworkResponse.failed.rawValue)
         
+    }
+}
+
+
+func authenticateUser(withUser user: User?, completion: @escaping UserCompletion) {
+    guard let user = user else {return}
+    
+    let userManager = NetworkManager().userAccess
+    
+    userManager.request(withEndpoint: .createUser(user: user)) { (data, response, err) in
+        if err != nil {
+            completion(nil, err)
+        }
+        
+        // Converting response to gain more insight and access to the status code pertaining to the http protocol itself
+        if let response = response as? HTTPURLResponse {
+            
+        }
     }
 }
