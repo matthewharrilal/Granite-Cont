@@ -16,7 +16,7 @@ enum UserAccess {
 
 extension UserAccess: EndpointType {
     var baseUrl: URL {
-        guard let url = URL(string: "localhost:3000/") else {fatalError("Base Url Could Not Be Configured")}
+        guard let url = URL(string: "http://127.0.0.1:3000") else {fatalError("Base Url Could Not Be Configured")}
         return url
     }
     
@@ -41,6 +41,7 @@ extension UserAccess: EndpointType {
             return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, headers: headers)
             
         case .createUser(let user):
+            // MARK: TODO Fix login to take email and not username or VICE VERSA have to remain consistent
             parameters = ["email": user.email, "username": user.username, "password": user.password, "githubProfile": String(describing: user.githubProfileUsername), "languages": user.languages]
             
             return .requestParameters(bodyParameters: parameters, urlParameters: nil)
