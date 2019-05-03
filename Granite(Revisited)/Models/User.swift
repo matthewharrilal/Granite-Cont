@@ -23,9 +23,9 @@ class User: Decodable {
         self.languages = languages
     }
     
-    convenience init?(email: String, password: String, username: String?) {
+    convenience init?(email: String, password: String) {
         // May not have username when instantiating the object
-        self.init(email: email, username: username ?? "", password: password, githubProfileUsername: "", languages: [""])
+        self.init(email: email, username: "", password: password, githubProfileUsername: "", languages: [""])
     }
     
     private enum UserKeys: String, CodingKey {
