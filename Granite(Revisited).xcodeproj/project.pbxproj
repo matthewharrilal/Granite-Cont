@@ -15,6 +15,11 @@
 		1C75417C2268E6680038D0E1 /* LaunchScreenController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */; };
 		1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F428227BCC2900BEA884 /* EndpointType.swift */; };
 		1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F42A227BCC8500BEA884 /* HTTPTask.swift */; };
+		1C83F42E227BCDC100BEA884 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F42D227BCDC100BEA884 /* Errors.swift */; };
+		1C83F430227BCDE200BEA884 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F42F227BCDE200BEA884 /* NetworkRouter.swift */; };
+		1C83F432227BCE8100BEA884 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F431227BCE8100BEA884 /* Router.swift */; };
+		1C83F434227BCEEB00BEA884 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F433227BCEEB00BEA884 /* JSONParameterEncoder.swift */; };
+		1C83F436227BCEF400BEA884 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F435227BCEF400BEA884 /* URLParameterEncoder.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
 		1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */; };
 		1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A62267874E0012DA75 /* Main.storyboard */; };
@@ -53,6 +58,11 @@
 		1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchScreenController+Extension.swift"; sourceTree = "<group>"; };
 		1C83F428227BCC2900BEA884 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		1C83F42A227BCC8500BEA884 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		1C83F42D227BCDC100BEA884 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		1C83F42F227BCDE200BEA884 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		1C83F431227BCE8100BEA884 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1C83F433227BCEEB00BEA884 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		1C83F435227BCEF400BEA884 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCCC1A22267874E0012DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
@@ -105,6 +115,8 @@
 			children = (
 				1C83F428227BCC2900BEA884 /* EndpointType.swift */,
 				1C83F42A227BCC8500BEA884 /* HTTPTask.swift */,
+				1C83F42F227BCDE200BEA884 /* NetworkRouter.swift */,
+				1C83F431227BCE8100BEA884 /* Router.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -112,6 +124,8 @@
 		1C83F425227BCBAA00BEA884 /* Encoding */ = {
 			isa = PBXGroup;
 			children = (
+				1C83F433227BCEEB00BEA884 /* JSONParameterEncoder.swift */,
+				1C83F435227BCEF400BEA884 /* URLParameterEncoder.swift */,
 			);
 			path = Encoding;
 			sourceTree = "<group>";
@@ -128,6 +142,14 @@
 			children = (
 			);
 			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		1C83F42C227BCDB600BEA884 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1C83F42D227BCDC100BEA884 /* Errors.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		1CCCC1962267874E0012DA75 = {
@@ -153,6 +175,7 @@
 		1CCCC1A12267874E0012DA75 /* Granite(Revisited) */ = {
 			isa = PBXGroup;
 			children = (
+				1C83F42C227BCDB600BEA884 /* Helpers */,
 				1CCCC1D1226797DD0012DA75 /* Extensions */,
 				1CCCC1CA226788740012DA75 /* Views */,
 				1CCCC1C92267884D0012DA75 /* Assets */,
@@ -456,15 +479,20 @@
 			files = (
 				1C75417C2268E6680038D0E1 /* LaunchScreenController+Extension.swift in Sources */,
 				1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */,
+				1C83F430227BCDE200BEA884 /* NetworkRouter.swift in Sources */,
 				1CCCC1AB2267874E0012DA75 /* Granite_Revisited_.xcdatamodeld in Sources */,
 				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
 				1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */,
+				1C83F42E227BCDC100BEA884 /* Errors.swift in Sources */,
+				1C83F436227BCEF400BEA884 /* URLParameterEncoder.swift in Sources */,
+				1C83F432227BCE8100BEA884 /* Router.swift in Sources */,
 				1C226183227AA8E50072A638 /* OnboardingFlowController+Extension.swift in Sources */,
 				1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */,
 				1C1AA4D8227A2D03009802C5 /* OnboardingFlowController.swift in Sources */,
 				1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */,
 				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,
+				1C83F434227BCEEB00BEA884 /* JSONParameterEncoder.swift in Sources */,
 				1CCCC1D3226797ED0012DA75 /* UIColor+Extension.swift in Sources */,
 				1C226186227AB0090072A638 /* User.swift in Sources */,
 			);
