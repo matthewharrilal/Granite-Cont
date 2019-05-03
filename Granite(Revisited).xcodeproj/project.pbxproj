@@ -20,6 +20,9 @@
 		1C83F432227BCE8100BEA884 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F431227BCE8100BEA884 /* Router.swift */; };
 		1C83F434227BCEEB00BEA884 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F433227BCEEB00BEA884 /* JSONParameterEncoder.swift */; };
 		1C83F436227BCEF400BEA884 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F435227BCEF400BEA884 /* URLParameterEncoder.swift */; };
+		1C83F438227BDB0500BEA884 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F437227BDB0500BEA884 /* NetworkManager.swift */; };
+		1C83F43A227BDB2800BEA884 /* UserAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F439227BDB2800BEA884 /* UserAccess.swift */; };
+		1C83F43C227BE03100BEA884 /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F43B227BE03100BEA884 /* HTTPMethods.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
 		1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */; };
 		1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A62267874E0012DA75 /* Main.storyboard */; };
@@ -63,6 +66,9 @@
 		1C83F431227BCE8100BEA884 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1C83F433227BCEEB00BEA884 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		1C83F435227BCEF400BEA884 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		1C83F437227BDB0500BEA884 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		1C83F439227BDB2800BEA884 /* UserAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccess.swift; sourceTree = "<group>"; };
+		1C83F43B227BE03100BEA884 /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCCC1A22267874E0012DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 		1C83F426227BCBB200BEA884 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				1C83F437227BDB0500BEA884 /* NetworkManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -140,6 +147,7 @@
 		1C83F427227BCBBC00BEA884 /* Endpoint */ = {
 			isa = PBXGroup;
 			children = (
+				1C83F439227BDB2800BEA884 /* UserAccess.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -148,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				1C83F42D227BCDC100BEA884 /* Errors.swift */,
+				1C83F43B227BE03100BEA884 /* HTTPMethods.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -477,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C83F438227BDB0500BEA884 /* NetworkManager.swift in Sources */,
 				1C75417C2268E6680038D0E1 /* LaunchScreenController+Extension.swift in Sources */,
 				1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */,
 				1C83F430227BCDE200BEA884 /* NetworkRouter.swift in Sources */,
@@ -484,6 +494,7 @@
 				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
 				1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */,
+				1C83F43A227BDB2800BEA884 /* UserAccess.swift in Sources */,
 				1C83F42E227BCDC100BEA884 /* Errors.swift in Sources */,
 				1C83F436227BCEF400BEA884 /* URLParameterEncoder.swift in Sources */,
 				1C83F432227BCE8100BEA884 /* Router.swift in Sources */,
@@ -495,6 +506,7 @@
 				1C83F434227BCEEB00BEA884 /* JSONParameterEncoder.swift in Sources */,
 				1CCCC1D3226797ED0012DA75 /* UIColor+Extension.swift in Sources */,
 				1C226186227AB0090072A638 /* User.swift in Sources */,
+				1C83F43C227BE03100BEA884 /* HTTPMethods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
