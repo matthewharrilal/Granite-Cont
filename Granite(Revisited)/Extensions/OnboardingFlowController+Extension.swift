@@ -20,14 +20,14 @@ extension OnboardingFlow {
         self.githubProfileUsernameTextField = UITextField(frame: frame)
         self.languagesTextField = UITextField(frame: frame)
         
-        self.configureTextFields(textFields: self.emailTextField, self.usernameTextField, self.passwordTextField)
+        self.configureTextFields(self.view,textFields: self.emailTextField, self.usernameTextField, self.passwordTextField)
         
         self.emailTextField.placeholder = "Email"
         self.usernameTextField.placeholder = "Username"
         self.passwordTextField.placeholder = "Password"
     }
     
-    func configureTextFields(textFields: UITextField...) {
+    func configureTextFields(_ view: UIView, textFields: UITextField...) {
         var distanceCounter = self.view.center.y
         textFields.forEach { (textField) in
             let frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 150, height: 50)
@@ -37,6 +37,14 @@ extension OnboardingFlow {
             textField.center.y = distanceCounter
             self.view.addSubview(textField)
             textField.borderStyle = .roundedRect
+            
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           options: .curveEaseOut, animations: {
+                            textField.alpha = 0
+                            textField.alpha = 1
+                            view.layoutIfNeeded()
+            }, completion: nil)
         }
     }
 }

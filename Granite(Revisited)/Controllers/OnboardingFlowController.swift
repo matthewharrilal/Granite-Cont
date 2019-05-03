@@ -69,14 +69,14 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     func onboardingWillTransitonToIndex(_ index : Int) {
         switch index {
         case 0:
-            configureTextFields(textFields: self.emailTextField, self.usernameTextField, self.passwordTextField)
+            configureTextFields(self.view,textFields: self.emailTextField, self.usernameTextField, self.passwordTextField)
             self.emailTextField.placeholder = "Email"
             self.usernameTextField.placeholder = "Username"
             self.passwordTextField.isHidden = false
             
             
         case 1:
-            configureTextFields(textFields: self.githubProfileUsernameTextField, self.languagesTextField)
+            configureTextFields(self.view,textFields: self.githubProfileUsernameTextField, self.languagesTextField)
             self.passwordTextField.isHidden = true
             self.githubProfileUsernameTextField.placeholder = "Github Profile Username"
             self.languagesTextField.placeholder = "Languages"
