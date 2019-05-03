@@ -60,7 +60,7 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
     
     let userManager = NetworkManager().userAccess
     
-    userManager.request(withEndpoint: .authenticateUser(email: user.email, username: user.username, password: user.password)) { (data, response, err) in
+    userManager.request(withEndpoint: .authenticateUser(username: user.username, password: user.password)) { (data, response, err) in
         if err != nil {
             return completion(nil, err?.localizedDescription)
         }

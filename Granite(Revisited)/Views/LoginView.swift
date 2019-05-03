@@ -13,7 +13,7 @@ import Lottie
 class LoginView: UIView {
     
     @IBOutlet weak var whiteLoginView: UIView!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
@@ -42,7 +42,7 @@ class LoginView: UIView {
         print("Loading login view")
         Bundle.main.loadNibNamed("LoginView", owner: self, options: nil)
         addSubviews(views: whiteLoginView, createAccountButton)
-        whiteLoginView.addSubviews(views: lockView, emailTextField, passwordTextField, loginButton)
+        whiteLoginView.addSubviews(views: lockView, usernameTextField, passwordTextField, loginButton)
 
     }
     

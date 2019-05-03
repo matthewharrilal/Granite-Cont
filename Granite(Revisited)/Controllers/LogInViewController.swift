@@ -40,12 +40,11 @@ class LogInViewController: UIViewController {
     }
     
     @objc func handleLogin() {
-        guard let email = loginView.emailTextField.text,
+        guard let username = loginView.usernameTextField.text,
             let password = loginView.passwordTextField.text,
-            let user = User(email: "test1@gmail.com", password: password)
+            let user = User(username: username , password: password)
             else {return}
         
-        user.username = "test1"
         authenticateUser(withUser: user) { (user, err) in
             print(user?.languages, err)
         }

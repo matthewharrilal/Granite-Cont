@@ -13,10 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginView" customModule="Granite_Revisited_" customModuleProvider="target">
             <connections>
                 <outlet property="createAccountButton" destination="KmT-l9-9rH" id="SG7-T6-DeZ"/>
-                <outlet property="emailTextField" destination="Kre-if-V5f" id="YVe-54-PJR"/>
                 <outlet property="lockView" destination="PJG-iL-QBH" id="PQH-Wt-Y64"/>
                 <outlet property="loginButton" destination="sgH-WF-dRf" id="aTi-th-GiB"/>
                 <outlet property="passwordTextField" destination="Te2-cN-Inp" id="inj-bi-LTh"/>
+                <outlet property="usernameTextField" destination="Kre-if-V5f" id="egy-eM-X36"/>
                 <outlet property="whiteLoginView" destination="eld-Zm-5qD" id="O3T-59-4Ew"/>
             </connections>
         </placeholder>
@@ -42,7 +42,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-cN-Inp">
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-cN-Inp">
                             <rect key="frame" x="71" y="141" width="178" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <nil key="textColor"/>
@@ -64,12 +64,12 @@
                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                             <state key="normal" title="Log In"/>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="Kre-if-V5f">
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="Kre-if-V5f">
                             <rect key="frame" x="71" y="70" width="178" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="yes" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                     <color key="value" red="0.54901960780000003" green="0.87450980389999999" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

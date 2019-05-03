@@ -9,7 +9,7 @@
 import Foundation
 
 enum UserAccess {
-    case authenticateUser(email: String, username: String, password: String)
+    case authenticateUser(username: String, password: String)
     case createUser(user: User)
 }
 
@@ -35,7 +35,7 @@ extension UserAccess: EndpointType {
         var parameters: Parameters?
     
         switch self {
-        case .authenticateUser( _ , let username, let password):
+        case .authenticateUser(let username, let password):
             
             headers = ["username": username, "password": password ]
             return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, headers: headers)
