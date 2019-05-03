@@ -101,7 +101,8 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         switch index {
         case 1:
             // MARK: TODO Error handling for empty text attributes
-            self.user = User(email: email, password: password, username: username)
+            self.user = User(email: email, password: password)
+            user?.username = username
             
             // After transitioning to corresponding index clear text fields
             clearTextFields(textFields: emailTextField, usernameTextField, passwordTextField)
