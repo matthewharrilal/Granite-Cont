@@ -180,7 +180,7 @@
 				1CCCC1CA226788740012DA75 /* Views */,
 				1CCCC1C92267884D0012DA75 /* Assets */,
 				1CCCC1C82267883B0012DA75 /* Storyboards */,
-				1CCCC1C72267882B0012DA75 /* Networking Layer */,
+				1CCCC1C72267882B0012DA75 /* NetworkingLayer */,
 				1CCCC1C6226788260012DA75 /* Models */,
 				1CCCC1C5226788210012DA75 /* Controllers */,
 				1CCCC1A22267874E0012DA75 /* AppDelegate.swift */,
@@ -217,7 +217,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		1CCCC1C72267882B0012DA75 /* Networking Layer */ = {
+		1CCCC1C72267882B0012DA75 /* NetworkingLayer */ = {
 			isa = PBXGroup;
 			children = (
 				1C83F427227BCBBC00BEA884 /* Endpoint */,
@@ -225,7 +225,7 @@
 				1C83F425227BCBAA00BEA884 /* Encoding */,
 				1C83F424227BCBA300BEA884 /* Service */,
 			);
-			path = "Networking Layer";
+			path = NetworkingLayer;
 			sourceTree = "<group>";
 		};
 		1CCCC1C82267883B0012DA75 /* Storyboards */ = {
