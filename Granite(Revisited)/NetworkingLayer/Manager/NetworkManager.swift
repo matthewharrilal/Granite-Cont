@@ -55,6 +55,7 @@ fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<St
 
 
 func authenticateUser(withUser user: User?, completion: @escaping UserCompletion) -> Void {
+    // MARK: TODO Should the user be optional when being passed in as an argument?
     guard let user = user else {return}
     
     let userManager = NetworkManager().userAccess
@@ -93,4 +94,9 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
            
         }
     }
+}
+
+func createUser(withUser user: User?, completion: @escaping UserCompletion) -> Void {
+    // MARK: TODO Should the user be optional when being passed in as an argument?
+    guard let user = user else {return}
 }
