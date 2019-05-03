@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer, withShapeLayer shapeLayer: inout CAShapeLayer, onView view: UIView) {
+func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer, withShapeLayer shapeLayer: inout CAShapeLayer, onView view: UIView) -> (CAShapeLayer, CAShapeLayer) {
     
     let position = CGPoint(x: view.center.x, y: 700)
     
@@ -32,6 +32,8 @@ func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer,
     animateStroke(with: &shapeLayer)
     
     view.layer.addSublayer(shapeLayer)
+    
+    return (shapeLayer, pulsatingLayer)
 }
 
 func configurePulsatingLayer(onView view: UIView, withPulsatingLayer pulsatingLayer:  CAShapeLayer) {
@@ -51,6 +53,7 @@ func configurePulsatingLayer(onView view: UIView, withPulsatingLayer pulsatingLa
     pulsatingLayer.strokeEnd = 0
     
     view.layer.addSublayer(pulsatingLayer)
+    
 }
 
 func animatePulsatingLayer(withPulsatingLayer pulsatingLayer: CAShapeLayer) {

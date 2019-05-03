@@ -32,6 +32,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
     
     var shapeLayer = CAShapeLayer()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         onboardingView.dataSource = self
@@ -82,6 +83,10 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             
             self.passwordTextField.isHidden = false
             
+            self.onboardingView.pageView?.isHidden = false
+            guard (self.shapeLayer != nil) else {return}
+            self.shapeLayer.removeFromSuperlayer()
+            self.pulsatingLayer.removeFromSuperlayer()
         case 1:
             configureTextFields(self.view,textFields: self.githubProfileUsernameTextField, self.languagesTextField)
             self.passwordTextField.isHidden = true
@@ -90,7 +95,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             
             // MARK: TODO Add Create User Button
             self.onboardingView.pageView?.isHidden = true
-            configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self.view)
+            (shapeLayer, pulsatingLayer) = configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self.view)
             
         default:
             break
