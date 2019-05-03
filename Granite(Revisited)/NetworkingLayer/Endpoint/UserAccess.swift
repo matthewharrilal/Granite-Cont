@@ -16,7 +16,7 @@ enum UserAccess {
 
 extension UserAccess: EndpointType {
     var baseUrl: URL {
-        guard let url = URL(string: "localhost:3000/") else {return}
+        guard let url = URL(string: "localhost:3000/") else {fatalError("Base Url Could Not Be Configured")}
         return url
     }
     
@@ -41,13 +41,13 @@ extension UserAccess: EndpointType {
             return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, headers: headers)
             
         case .createUser(let user):
-            parameters = ["email": user.email, "username"]
+            parameters = ["email": user.email, "username": user.username, "password": user.password, "githubProfile": String(describing: user.githubProfileUsername), "languages": user.languages]
+            
+            return .requestParameters(bodyParameters: parameters, urlParameters: nil)
         }
     }
     
     var httpMethod: String {
-        <#code#>
+        return HTTPMethods.post.rawValue
     }
-    
-    
 }
