@@ -85,13 +85,14 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
                     return completion(user, nil)
                 }
                 catch {
-                   return completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    return completion(nil, NetworkResponse.unableToDecode.rawValue)
                 }
                 
             case .failure(let requestFailureDescription):
                 print("Request was a failiure \(requestFailureDescription)")
+                return completion(nil, NetworkResponse.failed.rawValue)
             }
-           
+            
         }
     }
 }
@@ -99,4 +100,39 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
 func createUser(withUser user: User?, completion: @escaping UserCompletion) -> Void {
     // MARK: TODO Should the user be optional when being passed in as an argument?
     guard let user = user else {return}
+    
+    let userManager = NetworkManager().userAccess
+    
+    userManager.request(withEndpoint: .createUser(user: user)) { (data, response, err) in
+        if err != nil {
+            return completion(nil, err?.localizedDescription)
+        }
+        
+        if let response = response as? HTTPURLResponse {
+            let result = handleNetworkResponse(response)
+            
+            switch (result) {
+            case .success(let requestExecutionDescription):
+                print("Request was success \(requestExecutionDescription)")
+                
+                guard let data = data else {
+                    return completion(nil, NetworkResponse.noData.rawValue)
+                }
+                
+                do {
+                    let createdUser = try JSONDecoder().decode(User.self, from: data)
+                    return completion(createdUser, nil)
+                }
+                    
+                catch {
+                    return completion(nil, NetworkResponse.unableToDecode.rawValue)
+                }
+                
+            case .failure(let requestFailureDescription):
+                print("Request failed \(requestFailureDescription)")
+                
+                return completion(nil, NetworkResponse.failed.rawValue)
+            }
+        }
+    }
 }
