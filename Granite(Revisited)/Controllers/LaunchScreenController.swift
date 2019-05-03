@@ -62,41 +62,6 @@ class LaunchScreenViewController: UIViewController {
         }
     }
     
-    private func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer, withShapeLayer shapeLayer: inout CAShapeLayer, onView view: UIView) {
-        
-        let position = CGPoint(x: self.view.center.x, y: 700)
-        
-        let circularPath = UIBezierPath(arcCenter: position , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
-        shapeLayer.path = circularPath.cgPath
-        shapeLayer.strokeEnd = 0
-        shapeLayer.strokeColor = UIColor(hexString: "98c9a3").cgColor
-        shapeLayer.lineWidth = 10
-        
-        shapeLayer.shadowColor = UIColor.black.cgColor
-        shapeLayer.shadowOpacity = 1
-        shapeLayer.shadowRadius = 10
-        shapeLayer.shadowOffset = .zero
-        
-        configurePulsatingLayer(onView: self.view, withPulsatingLayer: pulsatingLayer)
-        
-        animatePulsatingLayer(withPulsatingLayer: pulsatingLayer)
-        
-        animateStroke(with: &shapeLayer)
-        
-        view.layer.addSublayer(shapeLayer)
-    }
-    
-    private func animateStroke(with shapeLayer: inout CAShapeLayer) {
-        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        
-        basicAnimation.toValue = 1.5
-        basicAnimation.duration = 1
-        basicAnimation.fillMode = .forwards
-        basicAnimation.isRemovedOnCompletion = false
-        
-        shapeLayer.add(basicAnimation, forKey: "strokeAnimation")
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first // Get the first touch of the user
