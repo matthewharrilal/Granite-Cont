@@ -114,8 +114,6 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         default:
             break
         }
-        
-        print(user)
     }
     
     func clearTextFields(textFields: UITextField...) {
