@@ -152,7 +152,7 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             self.user?.githubProfileUsername = githubProfileUsername
             self.user?.languages = languages.components(separatedBy: ",")
             createUser(withUser: self.user) { (user, err) in
-                print(user?.email)
+                
             }
         }
     }
