@@ -12,14 +12,14 @@ class User: Decodable {
     var email: String
     var username: String
     var password: String
-    var githubProfileUsername: String?
+    var githubProfileUsername: String
     var languages: [String]
 
-    init(email: String, username: String, password: String, githubProfileUsername: String?, languages: [String]) {
+    init(email: String, username: String, password: String, githubProfileUsername: String? = nil, languages: [String]) {
         self.email = email
         self.username = username
         self.password = password
-        self.githubProfileUsername = githubProfileUsername
+        self.githubProfileUsername = githubProfileUsername ?? ""
         self.languages = languages
     }
     

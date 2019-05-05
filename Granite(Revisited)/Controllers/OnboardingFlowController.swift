@@ -121,9 +121,6 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             
             
         case 0:
-            user?.languages = languages.components(separatedBy: ",")
-            user?.githubProfileUsername = githubUsername
-            
             clearTextFields(textFields: githubProfileUsernameTextField, languagesTextField)
             
         default:
@@ -147,11 +144,16 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         
         // Have to check if the path of the shape layer contains the point not the shape layer itself
         if let path = self.shapeLayer.path, path.contains(convertedPoint) {
-            print("Contains point in path")
-        }
             
-        else {
-            print("Does not contain point in path")
+            guard let githubProfileUsername = self.githubProfileUsernameTextField.text,
+                let languages = self.languagesTextField.text
+                else {return}
+            
+            self.user?.githubProfileUsername = githubProfileUsername
+            self.user?.languages = languages.components(separatedBy: ",")
+            createUser(withUser: self.user) { (user, err) in
+                print(user?.email)
+            }
         }
     }
     
