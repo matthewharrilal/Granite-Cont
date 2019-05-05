@@ -138,6 +138,23 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        
+        guard let point = touch?.location(in: self.view) else {return}
+        
+        let convertedPoint = self.view.layer.convert(point, to: self.shapeLayer)
+        
+        // Have to check if the path of the shape layer contains the point not the shape layer itself
+        if let path = self.shapeLayer.path, path.contains(convertedPoint) {
+            print("Contains point in path")
+        }
+            
+        else {
+            print("Does not contain point in path")
+        }
+    }
+    
 }
 
 

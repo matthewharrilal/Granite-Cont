@@ -27,7 +27,6 @@ class LaunchScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureAnimation()
         self.shapeLayer = CAShapeLayer()
         self.pulsatingLayer = CAShapeLayer()
@@ -66,12 +65,7 @@ class LaunchScreenViewController: UIViewController {
         
         // Have to check if the path of the shape layer contains the point not the shape layer itself
         if let path = self.shapeLayer.path, path.contains(convertedPoint) {
-            print("Contains point in path")
             transitionToLogin()
-        }
-            
-        else {
-            print("Does not contain point in path")
         }
     }
     
