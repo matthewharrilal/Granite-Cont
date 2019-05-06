@@ -35,7 +35,7 @@ class LaunchScreenViewController: UIViewController {
         configureGraniteLabel()
         configureDescriptionLabel()
     }
-    
+
     private func configureAnimation() {
         self.view.backgroundColor = UIColor(hexString: "c9ddff")
         
@@ -45,9 +45,9 @@ class LaunchScreenViewController: UIViewController {
         
         animationView.loopAnimation = true
         self.view.addSubview(animationView)
-                
+        
         let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
-        animationView.fillSuperview(padding: padding)
+        animationView.fillSuperview(withSuperview: self.view, padding: padding)
         
         animationView.frame = self.view.bounds
         
@@ -80,8 +80,6 @@ class LaunchScreenViewController: UIViewController {
         loginViewController.hero.modalAnimationType = .fade
         self.present(loginViewController, animated: true, completion: nil)
     }
-    
-    
 }
 
 

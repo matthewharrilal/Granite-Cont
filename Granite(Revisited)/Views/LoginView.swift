@@ -20,6 +20,7 @@ class LoginView: UIView {
     
     @IBOutlet weak var lockView: UIView!
     
+    var loginStackView: UIStackView!
     
     var shapeLayer: CAShapeLayer!
     
@@ -44,7 +45,7 @@ class LoginView: UIView {
         addSubviews(views: whiteLoginView, createAccountButton)
         whiteLoginView.addSubviews(views: lockView, usernameTextField, passwordTextField, loginButton)
         
-        let loginStackView = UIStackView(arrangedSubviews: [lockView, usernameTextField, passwordTextField, loginButton])
+        loginStackView = UIStackView(arrangedSubviews: [lockView, usernameTextField, passwordTextField, loginButton])
         let padding = UIEdgeInsets(top: whiteLoginView.frame.height / 2, left: 10, bottom: 0, right: -10)
         loginStackView.axis = .vertical
         
@@ -52,7 +53,7 @@ class LoginView: UIView {
         
         whiteLoginView.addSubview(loginStackView)
         
-        loginStackView.fillSuperview(padding: padding)
+        loginStackView.fillSuperview(withSuperview: whiteLoginView, padding: padding)
 
         loginStackView.centerInSuperview()
     }

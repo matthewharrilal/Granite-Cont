@@ -46,26 +46,20 @@ extension UIView {
         
     }
     
-    func fillSuperview(padding: UIEdgeInsets = .zero) {
+    func fillSuperview(withSuperview superview: UIView, padding: UIEdgeInsets = .zero) {
         // Enables autolayout
         translatesAutoresizingMaskIntoConstraints = false
         
-        if let superviewTopAnchor = superview?.topAnchor {
-            // Constrain the top anchor of the view that is currently calling this method
-            topAnchor.constraint(equalTo: superviewTopAnchor, constant: padding.top).isActive = true
-        }
         
-        if let superviewLeadingAnchor = superview?.leadingAnchor {
-            leadingAnchor.constraint(equalTo: superviewLeadingAnchor, constant: padding.left).isActive = true
-        }
+        // Constrain the top anchor of the view that is currently calling this method
+        topAnchor.constraint(equalTo: superview.topAnchor, constant: padding.top).isActive = true
         
-        if let superviewTrailingAnchor = superview?.trailingAnchor {
-            trailingAnchor.constraint(equalTo: superviewTrailingAnchor, constant: padding.right).isActive = true
-        }
+        leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: padding.left).isActive = true
         
-        if let superviewBottomAnchor = superview?.bottomAnchor {
-            bottomAnchor.constraint(equalTo: superviewBottomAnchor, constant: padding.bottom).isActive = true
-        }
+        trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: padding.right).isActive = true
+        
+        bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: padding.bottom).isActive = true
+        
     }
     
     func centerInSuperview(withSize size: CGSize = .zero) {

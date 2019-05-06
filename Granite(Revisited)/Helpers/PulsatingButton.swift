@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@discardableResult
 func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer, withShapeLayer shapeLayer: inout CAShapeLayer, onView view: UIView) -> (CAShapeLayer, CAShapeLayer) {
     
     let position = CGPoint(x: view.center.x, y: 700)

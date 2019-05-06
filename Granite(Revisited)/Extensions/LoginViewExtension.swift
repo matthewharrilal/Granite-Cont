@@ -27,6 +27,8 @@ extension LoginView {
         
         self.configuredView.addSubview(animationView)
         
+        animationView.anchorSize(toView: self.configuredView)
+        
         animationView.frame = self.configuredView.bounds
         
         animationView.play { (completed) in
