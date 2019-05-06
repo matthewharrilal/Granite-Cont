@@ -24,6 +24,7 @@
 		1C83F43A227BDB2800BEA884 /* UserAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F439227BDB2800BEA884 /* UserAccess.swift */; };
 		1C83F43C227BE03100BEA884 /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F43B227BE03100BEA884 /* HTTPMethods.swift */; };
 		1C83F43E227CD0AD00BEA884 /* PulsatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F43D227CD0AD00BEA884 /* PulsatingButton.swift */; };
+		1C83F4782280C64800BEA884 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F4772280C64800BEA884 /* UIView+Layout.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
 		1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */; };
 		1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A62267874E0012DA75 /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		1C83F439227BDB2800BEA884 /* UserAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccess.swift; sourceTree = "<group>"; };
 		1C83F43B227BE03100BEA884 /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
 		1C83F43D227CD0AD00BEA884 /* PulsatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsatingButton.swift; sourceTree = "<group>"; };
+		1C83F4772280C64800BEA884 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCCC1A22267874E0012DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				1C83F42D227BCDC100BEA884 /* Errors.swift */,
 				1C83F43B227BE03100BEA884 /* HTTPMethods.swift */,
 				1C83F43D227CD0AD00BEA884 /* PulsatingButton.swift */,
+				1C83F4772280C64800BEA884 /* UIView+Layout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				1C83F43E227CD0AD00BEA884 /* PulsatingButton.swift in Sources */,
 				1C83F42E227BCDC100BEA884 /* Errors.swift in Sources */,
 				1C83F436227BCEF400BEA884 /* URLParameterEncoder.swift in Sources */,
+				1C83F4782280C64800BEA884 /* UIView+Layout.swift in Sources */,
 				1C83F432227BCE8100BEA884 /* Router.swift in Sources */,
 				1C226183227AA8E50072A638 /* OnboardingFlowController+Extension.swift in Sources */,
 				1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */,

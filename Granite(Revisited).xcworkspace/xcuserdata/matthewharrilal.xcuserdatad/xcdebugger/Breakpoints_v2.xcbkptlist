@@ -9,54 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Granite(Revisited)/Controllers/OnboardingFlowController.swift"
-            timestampString = "578792125.6896729"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "touchesBegan(_:with:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Granite_Revisited_.OnboardingFlow.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "Granite(Revisited)"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/matthewharrilal/Desktop/Programming/Granite/Granite(Revisited)/Granite(Revisited)/Controllers/OnboardingFlowController.swift"
-                  timestampString = "578792078.064099"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "154"
-                  endingLineNumber = "154"
-                  offsetFromSymbolStart = "3108">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Granite_Revisited_.User&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in Granite_Revisited_.OnboardingFlow.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "Granite(Revisited)"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/matthewharrilal/Desktop/Programming/Granite/Granite(Revisited)/Granite(Revisited)/Controllers/OnboardingFlowController.swift"
-                  timestampString = "578792078.0690989"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "155"
-                  endingLineNumber = "155"
-                  offsetFromSymbolStart = "123">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Granite(Revisited)/NetworkingLayer/Manager/NetworkManager.swift"
             timestampString = "578792125.69012"
             startingColumnNumber = "9223372036854775807"
