@@ -46,6 +46,7 @@ class LoginView: UIView {
         whiteLoginView.addSubviews(views: lockView, usernameTextField, passwordTextField, loginButton)
         
         loginStackView = UIStackView(arrangedSubviews: [lockView, usernameTextField, passwordTextField, loginButton])
+        
         let padding = UIEdgeInsets(top: whiteLoginView.frame.height / 2, left: 10, bottom: 0, right: -10)
         loginStackView.axis = .vertical
         
@@ -56,6 +57,7 @@ class LoginView: UIView {
         loginStackView.fillSuperview(withSuperview: whiteLoginView, padding: padding)
 
         loginStackView.centerInSuperview()
+        
     }
     
     

@@ -25,11 +25,9 @@ class LogInViewController: UIViewController {
         loginView.configureAnimation()
         loginView.configureLockAnimation()
         
-//        loginView.configuredView.anchorSize(toView: self.view)
-//        
-        loginView.whiteLoginView.anchor(top: loginView.configuredView.bottomAnchor, leading: self.view.leadingAnchor , bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor)
-//
-//        loginView.anchorSize(toView: self.view)
+        let padding = UIEdgeInsets(top: -20, left: 20, bottom: 20, right: 20)
+        
+        loginView.whiteLoginView.anchor(top: loginView.configuredView.bottomAnchor, leading: self.view.leadingAnchor , bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: padding)
         
         loginView.loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         loginView.createAccountButton.addTarget(self, action: #selector(handleCreateAccount), for: .touchUpInside)
