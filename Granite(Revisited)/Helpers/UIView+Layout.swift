@@ -23,11 +23,11 @@ extension UIView {
         }
         
         if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: -padding.bottom).isActive = true
+            bottomAnchor.constraint(equalTo: bottom, constant: padding.bottom).isActive = true
         }
         
         if let trailing = trailing {
-            trailingAnchor.constraint(equalTo: trailing, constant: -padding.right).isActive = true
+            trailingAnchor.constraint(equalTo: trailing, constant: padding.right).isActive = true
         }
         
         
