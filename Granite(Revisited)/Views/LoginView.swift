@@ -43,7 +43,18 @@ class LoginView: UIView {
         Bundle.main.loadNibNamed("LoginView", owner: self, options: nil)
         addSubviews(views: whiteLoginView, createAccountButton)
         whiteLoginView.addSubviews(views: lockView, usernameTextField, passwordTextField, loginButton)
+        
+        let loginStackView = UIStackView(arrangedSubviews: [lockView, usernameTextField, passwordTextField, loginButton])
+        let padding = UIEdgeInsets(top: whiteLoginView.frame.height / 2, left: 10, bottom: 0, right: -10)
+        loginStackView.axis = .vertical
+        
+        loginStackView.spacing = 10
+        
+        whiteLoginView.addSubview(loginStackView)
+        
+        loginStackView.fillSuperview(padding: padding)
 
+        loginStackView.centerInSuperview()
     }
     
     

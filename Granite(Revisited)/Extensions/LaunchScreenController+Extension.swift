@@ -23,6 +23,9 @@ extension LaunchScreenViewController {
         self.graniteLabel.text = "Granite"
         self.graniteLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         
+        
+        self.graniteLabel.anchorSize(toView: self.view)
+        
         self.graniteLabel.startAnimation(duration: 1.65) {
             print("Label animating")
         }

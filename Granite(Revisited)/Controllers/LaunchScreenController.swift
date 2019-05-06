@@ -45,6 +45,9 @@ class LaunchScreenViewController: UIViewController {
         
         animationView.loopAnimation = true
         self.view.addSubview(animationView)
+                
+        let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
+        animationView.fillSuperview(padding: padding)
         
         animationView.frame = self.view.bounds
         
