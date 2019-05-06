@@ -43,31 +43,21 @@ class LoginView: UIView {
         print("Loading login view")
         Bundle.main.loadNibNamed("LoginView", owner: self, options: nil)
         addSubviews(views: whiteLoginView, createAccountButton)
-        whiteLoginView.addSubviews(views: lockView, usernameTextField, passwordTextField, loginButton)
+        whiteLoginView.addSubviews(views: usernameTextField, passwordTextField, loginButton)
         
-        let passwordLockStackView = UIStackView(arrangedSubviews: [lockView, passwordTextField])
-        
-        passwordLockStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        passwordLockStackView.axis = .horizontal
-        passwordLockStackView.distribution = .fillEqually
-        
-        passwordLockStackView.spacing = 5
-        
-        
-        loginStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordLockStackView , loginButton, createAccountButton])
+        loginStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField , loginButton, createAccountButton])
         loginStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let padding = UIEdgeInsets(top: 10, left: 10, bottom: -10 , right: -10)
         loginStackView.axis = .vertical
         
-        loginStackView.spacing = 10
+        loginStackView.spacing = 20
         
         loginStackView.distribution = .fillProportionally
         
         whiteLoginView.addSubview(loginStackView)
         
-//        loginStackView.anchorSize(toView: whiteLoginView)
+        //        loginStackView.anchorSize(toView: whiteLoginView)
         
         loginStackView.fillSuperview(withSuperview: whiteLoginView, padding: padding)
         

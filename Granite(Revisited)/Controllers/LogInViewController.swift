@@ -25,7 +25,7 @@ class LogInViewController: UIViewController {
         loginView.configureAnimation()
         loginView.configureLockAnimation()
         
-        let padding = UIEdgeInsets(top: -20, left: 20, bottom: 20, right: -20)
+        let padding = UIEdgeInsets(top: -50, left: 20, bottom: -50, right: -20)
         
         loginView.whiteLoginView.anchor(top: loginView.configuredView.bottomAnchor, leading: self.view.leadingAnchor , bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: padding)
         
