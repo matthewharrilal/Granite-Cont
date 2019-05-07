@@ -42,36 +42,28 @@ class LoginView: UIView {
     private func commonInit() {
         print("Loading login view")
         Bundle.main.loadNibNamed("LoginView", owner: self, options: nil)
-        addSubviews(views: whiteLoginView, createAccountButton)
+        addSubviews(views: whiteLoginView)
         
         let usernameView = UIView(frame: usernameTextField.frame)
-        
-        let passwordView = UIView(frame: passwordTextField.frame)
-        
         usernameView.addSubview(usernameTextField)
         
-        
+        let passwordView = UIView(frame: passwordTextField.frame)
         passwordView.addSubview(passwordTextField)
         passwordView.addSubview(lockView)
         
-        whiteLoginView.addSubviews(views: usernameView, passwordView, loginButton)
-        
-        whiteLoginView.layer.cornerRadius = 20
-      
         let loginButtonView = UIView(frame: loginButton.frame)
         loginButtonView.addSubview(loginButton)
         
         let createAccountButtonView = UIView(frame: createAccountButton.frame)
         createAccountButtonView.addSubview(createAccountButton)
         
+        
+    
         loginStackView = UIStackView(arrangedSubviews: [usernameView, passwordView, loginButtonView, createAccountButtonView])
         
+        
+        
         loginStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-//        loginButtonView.anchor(top: nil, leading: loginStackView.leadingAnchor, bottom: nil, trailing: loginStackView.trailingAnchor)
-        createAccountButton.anchor(top: nil, leading: loginStackView.leadingAnchor, bottom: loginStackView.bottomAnchor, trailing: loginStackView.trailingAnchor)
-        
-        
         
         let padding = UIEdgeInsets(top: 10, left: 10, bottom: -10 , right: -10)
         loginStackView.axis = .vertical
@@ -82,12 +74,10 @@ class LoginView: UIView {
         
         whiteLoginView.addSubview(loginStackView)
         
-        //        loginStackView.anchorSize(toView: whiteLoginView)
         
         loginStackView.fillSuperview(withSuperview: whiteLoginView, padding: padding)
         
-        loginStackView.centerInSuperview()
-        
+        whiteLoginView.layer.cornerRadius = 20
     }
     
     
