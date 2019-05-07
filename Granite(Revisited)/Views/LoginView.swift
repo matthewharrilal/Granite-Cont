@@ -46,19 +46,29 @@ class LoginView: UIView {
         
         let usernameView = UIView(frame: usernameTextField.frame)
         usernameView.addSubview(usernameTextField)
+        usernameTextField.centerInSuperview()
         
-        let passwordView = UIView(frame: passwordTextField.frame)
+        let passwordView = UIView()
         passwordView.addSubview(passwordTextField)
         passwordView.addSubview(lockView)
         
+        // MARK: TODO Create stack view that fills superview and move stack view to center of superview
+        
+        //        lockView.anchor(top: passwordView.topAnchor, leading: passwordView.leadingAnchor, bottom: passwordView.bottomAnchor, trailing: passwordTextField.trailingAncho)
+        
+        lockView.setContentCompressionResistancePriority(passwordTextField.contentCompressionResistancePriority(for: .horizontal) + 1, for: .horizontal)
+        
+//        passwordTextField.anchor(top: passwordView.topAnchor, leading: lockView.trailingAnchor, bottom: passwordView.bottomAnchor, trailing: passwordView.leadingAnchor)
+        
         let loginButtonView = UIView(frame: loginButton.frame)
         loginButtonView.addSubview(loginButton)
+        loginButton.centerInSuperview()
         
         let createAccountButtonView = UIView(frame: createAccountButton.frame)
         createAccountButtonView.addSubview(createAccountButton)
+        createAccountButton.centerInSuperview()
         
         
-    
         loginStackView = UIStackView(arrangedSubviews: [usernameView, passwordView, loginButtonView, createAccountButtonView])
         
         
@@ -70,7 +80,7 @@ class LoginView: UIView {
         
         loginStackView.spacing = 10
         
-        loginStackView.distribution = .fillProportionally
+        loginStackView.distribution = .fillEqually
         
         whiteLoginView.addSubview(loginStackView)
         

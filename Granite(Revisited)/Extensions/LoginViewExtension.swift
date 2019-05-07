@@ -40,10 +40,12 @@ extension LoginView {
     
     
     func addConfiguredView() {
-        let frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: self.frame.height / 2)
+        let frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: self.frame.height / 2.5)
         configuredView = UIView(frame: frame)
         
         self.addSubview(configuredView)
+        
+        configuredView.anchorSize(toView: self)
         
     }
 }
