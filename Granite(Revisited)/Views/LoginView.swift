@@ -43,19 +43,42 @@ class LoginView: UIView {
         print("Loading login view")
         Bundle.main.loadNibNamed("LoginView", owner: self, options: nil)
         addSubviews(views: whiteLoginView, createAccountButton)
-        whiteLoginView.addSubviews(views: usernameTextField, passwordTextField, loginButton)
+        
+        let usernameView = UIView(frame: usernameTextField.frame)
+        
+        let passwordView = UIView(frame: passwordTextField.frame)
+        
+        usernameView.addSubview(usernameTextField)
+        
+        
+        passwordView.addSubview(passwordTextField)
+        passwordView.addSubview(lockView)
+        
+        whiteLoginView.addSubviews(views: usernameView, passwordView, loginButton)
         
         whiteLoginView.layer.cornerRadius = 20
+      
+        let loginButtonView = UIView(frame: loginButton.frame)
+        loginButtonView.addSubview(loginButton)
         
-        loginStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField , loginButton, createAccountButton])
+        let createAccountButtonView = UIView(frame: createAccountButton.frame)
+        createAccountButtonView.addSubview(createAccountButton)
+        
+        loginStackView = UIStackView(arrangedSubviews: [usernameView, passwordView, loginButtonView, createAccountButtonView])
+        
         loginStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+//        loginButtonView.anchor(top: nil, leading: loginStackView.leadingAnchor, bottom: nil, trailing: loginStackView.trailingAnchor)
+        createAccountButton.anchor(top: nil, leading: loginStackView.leadingAnchor, bottom: loginStackView.bottomAnchor, trailing: loginStackView.trailingAnchor)
+        
+        
         
         let padding = UIEdgeInsets(top: 10, left: 10, bottom: -10 , right: -10)
         loginStackView.axis = .vertical
         
-        loginStackView.spacing = 20
+        loginStackView.spacing = 10
         
-        loginStackView.distribution = .fillEqually
+        loginStackView.distribution = .fillProportionally
         
         whiteLoginView.addSubview(loginStackView)
         
