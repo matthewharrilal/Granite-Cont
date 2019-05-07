@@ -27,11 +27,12 @@ class LaunchScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureAnimation()
+        
         self.shapeLayer = CAShapeLayer()
         self.pulsatingLayer = CAShapeLayer()
         
         configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self.view)
+        configureAnimation()
         configureGraniteLabel()
         configureDescriptionLabel()
     }
@@ -52,6 +53,11 @@ class LaunchScreenViewController: UIViewController {
         animationView.frame = self.view.bounds
         
         animationView.animationSpeed = 2
+        
+        let scaleFactor = self.pulsatingLayer.frame.maxY / self.view.frame.maxY
+        
+//        self.pulsatingLayer.position = CGPoint(x: self.view.center.x, y: self.view.frame.height * scaleFactor)
+//        self.shapeLayer.position = CGPoint(x: self.view.center.x, y: self.view.frame.height *  0.9)
         
         animationView.play { (completed) in
             print("Has completed animation? -> \(completed)")

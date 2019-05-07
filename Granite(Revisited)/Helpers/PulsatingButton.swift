@@ -11,8 +11,7 @@ import UIKit
 
 @discardableResult
 func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer, withShapeLayer shapeLayer: inout CAShapeLayer, onView view: UIView) -> (CAShapeLayer, CAShapeLayer) {
-    
-    let position = CGPoint(x: view.center.x, y: 700)
+    let position = CGPoint(x: view.center.x, y: view.frame.height * 0.9)
     
     let circularPath = UIBezierPath(arcCenter: position , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
     
@@ -34,6 +33,7 @@ func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer,
     
     view.layer.addSublayer(shapeLayer)
     
+    
     return (shapeLayer, pulsatingLayer)
 }
 
@@ -43,7 +43,7 @@ func configurePulsatingLayer(onView view: UIView, withPulsatingLayer pulsatingLa
     
     pulsatingLayer.path = circularPath.cgPath
     
-    pulsatingLayer.position = CGPoint(x: view.center.x, y: 700)
+    pulsatingLayer.position = CGPoint(x: view.center.x, y: view.frame.height * 0.9)
     
     pulsatingLayer.strokeColor = UIColor.clear.cgColor
     

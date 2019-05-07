@@ -45,6 +45,8 @@ class LoginView: UIView {
         addSubviews(views: whiteLoginView, createAccountButton)
         whiteLoginView.addSubviews(views: usernameTextField, passwordTextField, loginButton)
         
+        whiteLoginView.layer.cornerRadius = 20
+        
         loginStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField , loginButton, createAccountButton])
         loginStackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -53,7 +55,7 @@ class LoginView: UIView {
         
         loginStackView.spacing = 20
         
-        loginStackView.distribution = .fillProportionally
+        loginStackView.distribution = .fillEqually
         
         whiteLoginView.addSubview(loginStackView)
         
