@@ -44,29 +44,16 @@ class LoginView: UIView {
         Bundle.main.loadNibNamed("LoginView", owner: self, options: nil)
         addSubviews(views: whiteLoginView)
         
-        let usernameView = UIView(frame: usernameTextField.frame)
-        usernameView.addSubview(usernameTextField)
-        usernameTextField.centerInSuperview()
+        usernameTextField.borderStyle = .none
+        passwordTextField.borderStyle = .none
         
-        let passwordView = UIView()
-        passwordView.addSubview(passwordTextField)
-        passwordView.addSubview(lockView)
+        usernameTextField.textAlignment = .left
+        passwordTextField.textAlignment = .left
         
-        // MARK: TODO Create stack view that fills superview and move stack view to center of superview
         
-        //        lockView.anchor(top: passwordView.topAnchor, leading: passwordView.leadingAnchor, bottom: passwordView.bottomAnchor, trailing: passwordTextField.trailingAncho)
-        
-//        passwordTextField.anchor(top: passwordView.topAnchor, leading: lockView.trailingAnchor, bottom: passwordView.bottomAnchor, trailing: passwordView.leadingAnchor)
-        
-        let loginButtonView = UIView(frame: loginButton.frame)
+        let loginButtonView = UIView(frame: self.loginButton.frame)
         loginButtonView.addSubview(loginButton)
-        loginButton.centerInSuperview()
-        
-        let createAccountButtonView = UIView(frame: createAccountButton.frame)
-        createAccountButtonView.addSubview(createAccountButton)
-        createAccountButton.centerInSuperview()
-        
-        
+
         loginStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField, loginButton, createAccountButton])
         
         loginStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -114,5 +101,19 @@ class LoginView: UIView {
 extension UIView {
     func addSubviews(views: UIView...) {
         views.forEach({addSubview($0)})
+    }
+}
+
+extension UITextField {
+    
+    func useUnderline() {
+        
+        let border = CALayer()
+        let borderWidth = CGFloat(1.0)
+        border.borderColor = UIColor.black.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - borderWidth, width: self.frame.size.width, height: self.frame.size.height)
+        border.borderWidth = borderWidth
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
     }
 }

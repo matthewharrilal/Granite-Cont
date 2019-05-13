@@ -11,6 +11,7 @@ target 'Granite(Revisited)' do
   pod 'Hero'
   pod 'DWAnimatedLabel', '~> 1.1'
   pod 'paper-onboarding'
+  pod 'TextFieldEffects'
   target 'Granite(Revisited)Tests' do
     inherit! :search_paths
     # Pods for testing

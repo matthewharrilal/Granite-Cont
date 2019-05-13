@@ -31,6 +31,8 @@ class LogInViewController: UIViewController {
         
         loginView.loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         loginView.createAccountButton.addTarget(self, action: #selector(handleCreateAccount), for: .touchUpInside)
+        
+        self.navigationController?.title = "Welcome"
     }
     
     @objc func handleCreateAccount() {
