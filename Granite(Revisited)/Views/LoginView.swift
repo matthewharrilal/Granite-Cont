@@ -56,8 +56,6 @@ class LoginView: UIView {
         
         //        lockView.anchor(top: passwordView.topAnchor, leading: passwordView.leadingAnchor, bottom: passwordView.bottomAnchor, trailing: passwordTextField.trailingAncho)
         
-        lockView.setContentCompressionResistancePriority(passwordTextField.contentCompressionResistancePriority(for: .horizontal) + 1, for: .horizontal)
-        
 //        passwordTextField.anchor(top: passwordView.topAnchor, leading: lockView.trailingAnchor, bottom: passwordView.bottomAnchor, trailing: passwordView.leadingAnchor)
         
         let loginButtonView = UIView(frame: loginButton.frame)
@@ -69,9 +67,7 @@ class LoginView: UIView {
         createAccountButton.centerInSuperview()
         
         
-        loginStackView = UIStackView(arrangedSubviews: [usernameView, passwordView, loginButtonView, createAccountButtonView])
-        
-        
+        loginStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField, loginButton, createAccountButton])
         
         loginStackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -80,7 +76,7 @@ class LoginView: UIView {
         
         loginStackView.spacing = 10
         
-        loginStackView.distribution = .fillEqually
+        loginStackView.distribution = .fillProportionally
         
         whiteLoginView.addSubview(loginStackView)
         

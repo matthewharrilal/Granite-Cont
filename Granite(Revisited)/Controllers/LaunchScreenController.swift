@@ -41,6 +41,7 @@ class LaunchScreenViewController: UIViewController {
         configureAnimation()
         configureGraniteLabel()
         configureDescriptionLabel()
+        
         configureLogin()
         configureSignup()
     }
@@ -55,31 +56,16 @@ class LaunchScreenViewController: UIViewController {
         animationView.loopAnimation = true
         self.view.addSubview(animationView)
         
-        let padding = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: -10)
+        let padding = UIEdgeInsets(top: 0, left: 10, bottom: -100, right: -10)
         animationView.fillSuperview(withSuperview: self.view, padding: padding)
         
         animationView.frame = self.view.bounds
         
-        animationView.center.y = self.view.frame.height * 0.2
         
         animationView.animationSpeed = 2
         
         animationView.play { (completed) in
             print("Has completed animation? -> \(completed)")
-        }
-    }
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first // Get the first touch of the user
-        
-        guard let point = touch?.location(in: self.view) else {return}
-        
-        let convertedPoint = self.view.layer.convert(point, to: self.shapeLayer)
-        
-        // Have to check if the path of the shape layer contains the point not the shape layer itself
-        if let path = self.shapeLayer.path, path.contains(convertedPoint) {
-            transitionToLogin()
         }
     }
     
@@ -92,45 +78,32 @@ class LaunchScreenViewController: UIViewController {
         self.present(loginViewController, animated: true, completion: nil)
     }
     
+    // MARK: FIX Same logic as the configure login and sign up button
     private func configureLogin() {
-        let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.9, width: self.view.frame.width / 1.25, height: 50)
-        loginButton = UIButton(frame: frame)
+        let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.90, width: self.view.frame.width / 1.25, height: 50)
         
-        
-        loginButton.setTitle("I HAVE AN ACCOUNT", for: .normal)
-        
-        loginButton.center.x = self.view.center.x
-        
-        loginButton.layer.cornerRadius = loginButton.frame.height / 2
-        loginButton.clipsToBounds = true
-        
-        loginButton.setTitleColor(UIColor(hexString: "4f6d7a"), for: .normal)
-        
-        self.view.addSubview(loginButton)
-        loginButton.backgroundColor = UIColor(hexString: "c2f8cb")
-        loginButton.anchorSize(toView: self.view)
+        self.loginButton = UIButton(frame: frame)
+        configureButton(withButton: &loginButton, withTarget: #selector(handleLogin), withBackgroundColorHexString: "c2f8cb", withTextColorHexString: "4f6d7a" , withTitle: "I HAVE AN ACCOUNT ")
     }
-    
+        
     private func configureSignup() {
         
         let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.80, width: self.view.frame.width / 1.25, height: 50)
-        signupButton = UIButton(frame: frame)
         
-        
-        signupButton.setTitle("SIGN UP", for: .normal)
-        
-        signupButton.center.x = self.view.center.x
-        
-        signupButton.layer.cornerRadius = loginButton.frame.height / 2
-        signupButton.clipsToBounds = true
-        
-        signupButton.setTitleColor(UIColor(hexString: "c2f8cb"), for: .normal)
-        
-        self.view.addSubview(signupButton)
-        signupButton.backgroundColor = UIColor(hexString: "4f6d7a")
-        signupButton.anchorSize(toView: self.view)
+        self.signupButton = UIButton(frame: frame)
+        configureButton(withButton: &signupButton, withTarget: #selector(handleSignUp), withBackgroundColorHexString: "4f6d7a", withTextColorHexString: "c2f8cb", withTitle: "SIGN UP")
         
         // MARK: TODO Would it be better if these elements were arranged into a stack view?
+    }
+    
+    
+    @objc func handleLogin() {
+        print("Tapping Login")
+        transitionToLogin()
+    }
+    
+    @objc func handleSignUp() {
+        print("Tapping sign up")
     }
 }
 

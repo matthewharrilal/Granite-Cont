@@ -49,4 +49,22 @@ extension LaunchScreenViewController {
         }
     }
     
+    func configureButton(withButton button: inout UIButton, withTarget target: Selector, withBackgroundColorHexString backgroundHexString: String, withTextColorHexString titleHexString: String, withTitle title: String) {
+        
+        button.setTitle(title, for: .normal)
+        
+        button.center.x = self.view.center.x
+        
+        button.layer.cornerRadius = button.frame.height / 2
+        button.clipsToBounds = true
+        
+        // c2f8cb 4f6d7a
+        button.setTitleColor(UIColor(hexString: titleHexString ), for: .normal)
+        
+        self.view.addSubview(button)
+        button.backgroundColor = UIColor(hexString: backgroundHexString)
+        button.anchorSize(toView: self.view)
+        
+        button.addTarget(self, action: target, for: .touchUpInside)
+    }
 }
