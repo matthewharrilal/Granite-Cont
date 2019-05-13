@@ -25,18 +25,26 @@ class LaunchScreenViewController: UIViewController {
     
     var descriptionLabel: DWAnimatedLabel!
     
+    var signupButton: UIButton!
+    
+    var loginButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.shapeLayer = CAShapeLayer()
         self.pulsatingLayer = CAShapeLayer()
         
-        configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self.view)
+        //        configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self.view)
         configureAnimation()
         configureGraniteLabel()
         configureDescriptionLabel()
+        configureLogin()
+        configureSignup()
     }
-
+    
     private func configureAnimation() {
         self.view.backgroundColor = UIColor(hexString: "c9ddff")
         
@@ -47,15 +55,14 @@ class LaunchScreenViewController: UIViewController {
         animationView.loopAnimation = true
         self.view.addSubview(animationView)
         
-        let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
+        let padding = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: -10)
         animationView.fillSuperview(withSuperview: self.view, padding: padding)
         
         animationView.frame = self.view.bounds
         
+        animationView.center.y = self.view.frame.height * 0.2
+        
         animationView.animationSpeed = 2
-                
-//        self.pulsatingLayer.position = CGPoint(x: self.view.center.x, y: self.view.frame.height * scaleFactor)
-//        self.shapeLayer.position = CGPoint(x: self.view.center.x, y: self.view.frame.height *  0.9)
         
         animationView.play { (completed) in
             print("Has completed animation? -> \(completed)")
@@ -83,6 +90,47 @@ class LaunchScreenViewController: UIViewController {
         
         loginViewController.hero.modalAnimationType = .fade
         self.present(loginViewController, animated: true, completion: nil)
+    }
+    
+    private func configureLogin() {
+        let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.9, width: self.view.frame.width / 1.25, height: 50)
+        loginButton = UIButton(frame: frame)
+        
+        
+        loginButton.setTitle("I HAVE AN ACCOUNT", for: .normal)
+        
+        loginButton.center.x = self.view.center.x
+        
+        loginButton.layer.cornerRadius = loginButton.frame.height / 2
+        loginButton.clipsToBounds = true
+        
+        loginButton.setTitleColor(UIColor(hexString: "4f6d7a"), for: .normal)
+        
+        self.view.addSubview(loginButton)
+        loginButton.backgroundColor = UIColor(hexString: "c2f8cb")
+        loginButton.anchorSize(toView: self.view)
+    }
+    
+    private func configureSignup() {
+        
+        let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.80, width: self.view.frame.width / 1.25, height: 50)
+        signupButton = UIButton(frame: frame)
+        
+        
+        signupButton.setTitle("SIGN UP", for: .normal)
+        
+        signupButton.center.x = self.view.center.x
+        
+        signupButton.layer.cornerRadius = loginButton.frame.height / 2
+        signupButton.clipsToBounds = true
+        
+        signupButton.setTitleColor(UIColor(hexString: "c2f8cb"), for: .normal)
+        
+        self.view.addSubview(signupButton)
+        signupButton.backgroundColor = UIColor(hexString: "4f6d7a")
+        signupButton.anchorSize(toView: self.view)
+        
+        // MARK: TODO Would it be better if these elements were arranged into a stack view?
     }
 }
 

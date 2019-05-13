@@ -190,14 +190,14 @@
 		1CCCC1A12267874E0012DA75 /* Granite(Revisited) */ = {
 			isa = PBXGroup;
 			children = (
+				1CCCC1C6226788260012DA75 /* Models */,
+				1CCCC1C5226788210012DA75 /* Controllers */,
 				1C83F42C227BCDB600BEA884 /* Helpers */,
 				1CCCC1D1226797DD0012DA75 /* Extensions */,
 				1CCCC1CA226788740012DA75 /* Views */,
 				1CCCC1C92267884D0012DA75 /* Assets */,
 				1CCCC1C82267883B0012DA75 /* Storyboards */,
 				1CCCC1C72267882B0012DA75 /* NetworkingLayer */,
-				1CCCC1C6226788260012DA75 /* Models */,
-				1CCCC1C5226788210012DA75 /* Controllers */,
 				1CCCC1A22267874E0012DA75 /* AppDelegate.swift */,
 				1CCCC1B1226787500012DA75 /* Info.plist */,
 				1CCCC1A92267874E0012DA75 /* Granite_Revisited_.xcdatamodeld */,
