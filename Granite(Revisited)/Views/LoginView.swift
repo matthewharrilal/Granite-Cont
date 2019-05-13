@@ -12,6 +12,8 @@ import Lottie
 
 class LoginView: UIView {
     
+    // MARK: TODO Add Back Button
+    
     @IBOutlet weak var whiteLoginView: UIView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -49,6 +51,9 @@ class LoginView: UIView {
         
         usernameTextField.textAlignment = .left
         passwordTextField.textAlignment = .left
+        
+        
+        // MARK: FIX Have to fix the elements in the stack view sizing
         
         
         let loginButtonView = UIView(frame: self.loginButton.frame)

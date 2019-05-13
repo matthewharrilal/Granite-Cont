@@ -12,6 +12,12 @@
 		1C226183227AA8E50072A638 /* OnboardingFlowController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226182227AA8E50072A638 /* OnboardingFlowController+Extension.swift */; };
 		1C226186227AB0090072A638 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226185227AB0090072A638 /* User.swift */; };
 		1C326A482269AAC300E09F99 /* lock.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C326A472269AAC300E09F99 /* lock.json */; };
+		1C6FCB33228A1DB5000BC75A /* PlayfairDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB2D228A1CBD000BC75A /* PlayfairDisplay-Black.ttf */; };
+		1C6FCB34228A1DB5000BC75A /* PlayfairDisplay-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB2E228A1CBD000BC75A /* PlayfairDisplay-BlackItalic.ttf */; };
+		1C6FCB35228A1DB5000BC75A /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB32228A1CBF000BC75A /* PlayfairDisplay-Bold.ttf */; };
+		1C6FCB36228A1DB5000BC75A /* PlayfairDisplay-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB2F228A1CBD000BC75A /* PlayfairDisplay-BoldItalic.ttf */; };
+		1C6FCB37228A1DB5000BC75A /* PlayfairDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB31228A1CBE000BC75A /* PlayfairDisplay-Italic.ttf */; };
+		1C6FCB38228A1DB5000BC75A /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB30228A1CBD000BC75A /* PlayfairDisplay-Regular.ttf */; };
 		1C75417C2268E6680038D0E1 /* LaunchScreenController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */; };
 		1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F428227BCC2900BEA884 /* EndpointType.swift */; };
 		1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F42A227BCC8500BEA884 /* HTTPTask.swift */; };
@@ -60,6 +66,12 @@
 		1C226182227AA8E50072A638 /* OnboardingFlowController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingFlowController+Extension.swift"; sourceTree = "<group>"; };
 		1C226185227AB0090072A638 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1C326A472269AAC300E09F99 /* lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lock.json; sourceTree = "<group>"; };
+		1C6FCB2D228A1CBD000BC75A /* PlayfairDisplay-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Black.ttf"; sourceTree = "<group>"; };
+		1C6FCB2E228A1CBD000BC75A /* PlayfairDisplay-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-BlackItalic.ttf"; sourceTree = "<group>"; };
+		1C6FCB2F228A1CBD000BC75A /* PlayfairDisplay-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1C6FCB30228A1CBD000BC75A /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		1C6FCB31228A1CBE000BC75A /* PlayfairDisplay-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Italic.ttf"; sourceTree = "<group>"; };
+		1C6FCB32228A1CBF000BC75A /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchScreenController+Extension.swift"; sourceTree = "<group>"; };
 		1C83F428227BCC2900BEA884 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		1C83F42A227BCC8500BEA884 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
@@ -120,6 +132,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C6FCB2C228A1CB1000BC75A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1C6FCB2D228A1CBD000BC75A /* PlayfairDisplay-Black.ttf */,
+				1C6FCB2E228A1CBD000BC75A /* PlayfairDisplay-BlackItalic.ttf */,
+				1C6FCB32228A1CBF000BC75A /* PlayfairDisplay-Bold.ttf */,
+				1C6FCB2F228A1CBD000BC75A /* PlayfairDisplay-BoldItalic.ttf */,
+				1C6FCB31228A1CBE000BC75A /* PlayfairDisplay-Italic.ttf */,
+				1C6FCB30228A1CBD000BC75A /* PlayfairDisplay-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		1C83F424227BCBA300BEA884 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +215,7 @@
 		1CCCC1A12267874E0012DA75 /* Granite(Revisited) */ = {
 			isa = PBXGroup;
 			children = (
+				1C6FCB2C228A1CB1000BC75A /* Fonts */,
 				1CCCC1C6226788260012DA75 /* Models */,
 				1CCCC1C5226788210012DA75 /* Controllers */,
 				1C83F42C227BCDB600BEA884 /* Helpers */,
@@ -389,6 +415,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C6FCB33228A1DB5000BC75A /* PlayfairDisplay-Black.ttf in Resources */,
+				1C6FCB34228A1DB5000BC75A /* PlayfairDisplay-BlackItalic.ttf in Resources */,
+				1C6FCB35228A1DB5000BC75A /* PlayfairDisplay-Bold.ttf in Resources */,
+				1C6FCB36228A1DB5000BC75A /* PlayfairDisplay-BoldItalic.ttf in Resources */,
+				1C6FCB37228A1DB5000BC75A /* PlayfairDisplay-Italic.ttf in Resources */,
+				1C6FCB38228A1DB5000BC75A /* PlayfairDisplay-Regular.ttf in Resources */,
 				1CCCC1B0226787500012DA75 /* LaunchScreen.storyboard in Resources */,
 				1C326A482269AAC300E09F99 /* lock.json in Resources */,
 				1CCCC1AD226787500012DA75 /* Assets.xcassets in Resources */,

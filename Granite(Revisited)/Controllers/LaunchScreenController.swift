@@ -85,7 +85,7 @@ class LaunchScreenViewController: UIViewController {
         self.loginButton = UIButton(frame: frame)
         configureButton(withButton: &loginButton, withTarget: #selector(handleLogin), withBackgroundColorHexString: "c2f8cb", withTextColorHexString: "4f6d7a" , withTitle: "I HAVE AN ACCOUNT ")
     }
-        
+    
     private func configureSignup() {
         
         let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.80, width: self.view.frame.width / 1.25, height: 50)

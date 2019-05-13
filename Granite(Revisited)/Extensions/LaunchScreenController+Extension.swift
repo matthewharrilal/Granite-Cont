@@ -15,13 +15,23 @@ extension LaunchScreenViewController {
         let frame = CGRect(x: self.view.center.x, y: 44, width: self.view.frame.width, height: 100)
         self.graniteLabel = DWAnimatedLabel(frame: frame)
         
+        self.graniteLabel.font = UIFont(name: "PlayfairDisplay-Bold", size: 30)
+        
+        for family: String in UIFont.familyNames
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNames(forFamilyName: family)
+            {
+                print("== \(names)")
+            }
+        }
+        
         self.graniteLabel.textAlignment = .center
         self.graniteLabel.center.x = self.view.center.x
         self.graniteLabel.animationType = .fade
         self.view.addSubview(graniteLabel)
         
         self.graniteLabel.text = "Granite"
-        self.graniteLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         
         
         self.graniteLabel.anchorSize(toView: self.view)
@@ -36,13 +46,14 @@ extension LaunchScreenViewController {
         self.descriptionLabel = DWAnimatedLabel(frame: frame)
         
         self.descriptionLabel.center.x = self.view.center.x
+         self.descriptionLabel.font = UIFont(name: "PlayfairDisplay-Bold", size: 20)
         
         self.descriptionLabel.textAlignment = .center
         self.descriptionLabel.animationType = .typewriter
         self.view.addSubview(descriptionLabel)
         
         self.descriptionLabel.text = "Find developers near you"
-        self.descriptionLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+//        self.descriptionLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         self.descriptionLabel.startAnimation(duration: 1.5) {
             print("Label animating")
