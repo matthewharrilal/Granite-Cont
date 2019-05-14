@@ -36,7 +36,7 @@ class LogInViewController: UIViewController {
     
     @objc func handleCreateAccount() {
         // TODO: MARK Handle tap
-        let onboardingFlowController = OnboardingFlow()
+        let onboardingFlowController = OnboardingController()
         onboardingFlowController.hero.isEnabled = true
         
         onboardingFlowController.hero.modalAnimationType = .fade

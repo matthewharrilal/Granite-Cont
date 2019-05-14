@@ -80,18 +80,18 @@ class LaunchScreenViewController: UIViewController {
     
     // MARK: FIX Same logic as the configure login and sign up button
     private func configureLogin() {
-        let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.90, width: self.view.frame.width / 1.25, height: 50)
+        let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.86, width: self.view.frame.width / 1.25, height: 50)
         
         self.loginButton = UIButton(frame: frame)
-        configureButton(withButton: &loginButton, withTarget: #selector(handleLogin), withBackgroundColorHexString: "c2f8cb", withTextColorHexString: "4f6d7a" , withTitle: "I HAVE AN ACCOUNT ")
+        configureButton(withButton: &loginButton, withTarget: #selector(handleLogin), withBackgroundColorHexString: "61988e", withTextColorHexString: "9cfc97" , withTitle: "I HAVE AN ACCOUNT ")
     }
     
     private func configureSignup() {
         
-        let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.80, width: self.view.frame.width / 1.25, height: 50)
+        let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.78, width: self.view.frame.width / 1.25, height: 50)
         
         self.signupButton = UIButton(frame: frame)
-        configureButton(withButton: &signupButton, withTarget: #selector(handleSignUp), withBackgroundColorHexString: "4f6d7a", withTextColorHexString: "c2f8cb", withTitle: "SIGN UP")
+        configureButton(withButton: &signupButton, withTarget: #selector(handleSignUp), withBackgroundColorHexString: "9cfc97", withTextColorHexString: "61988e", withTitle: "SIGN UP")
         
         // MARK: TODO Would it be better if these elements were arranged into a stack view?
     }

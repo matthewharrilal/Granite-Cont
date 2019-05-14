@@ -88,8 +88,8 @@ class OnboardingFlow: UIViewController, PaperOnboardingDelegate, PaperOnboarding
             
         case 1:
             configureTextFields(self.view,textFields: self.githubProfileUsernameTextField, self.languagesTextField)
-            self.passwordTextField.isHidden = true
             
+            self.passwordTextField.isHidden = true
             
             // MARK: TODO Add Create User Button
             self.onboardingView.pageView?.isHidden = true

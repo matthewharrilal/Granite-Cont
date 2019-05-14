@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C1AA4D8227A2D03009802C5 /* OnboardingFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA4D7227A2D03009802C5 /* OnboardingFlowController.swift */; };
+		1C1AA4D8227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA4D7227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift */; };
 		1C1AA4DA227A2EAA009802C5 /* lorem.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C1AA4D9227A2EAA009802C5 /* lorem.jpg */; };
 		1C226183227AA8E50072A638 /* OnboardingFlowController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226182227AA8E50072A638 /* OnboardingFlowController+Extension.swift */; };
 		1C226186227AB0090072A638 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226185227AB0090072A638 /* User.swift */; };
@@ -18,6 +18,9 @@
 		1C6FCB36228A1DB5000BC75A /* PlayfairDisplay-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB2F228A1CBD000BC75A /* PlayfairDisplay-BoldItalic.ttf */; };
 		1C6FCB37228A1DB5000BC75A /* PlayfairDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB31228A1CBE000BC75A /* PlayfairDisplay-Italic.ttf */; };
 		1C6FCB38228A1DB5000BC75A /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB30228A1CBD000BC75A /* PlayfairDisplay-Regular.ttf */; };
+		1C6FCB3B228B34DE000BC75A /* FirstOnboardingScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB3A228B34DE000BC75A /* FirstOnboardingScreen.xib */; };
+		1C6FCB3D228B34F5000BC75A /* FirstOnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FCB3C228B34F5000BC75A /* FirstOnboardingScreen.swift */; };
+		1C6FCB3F228B36D1000BC75A /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FCB3E228B36D1000BC75A /* OnboardingController.swift */; };
 		1C75417C2268E6680038D0E1 /* LaunchScreenController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */; };
 		1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F428227BCC2900BEA884 /* EndpointType.swift */; };
 		1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F42A227BCC8500BEA884 /* HTTPTask.swift */; };
@@ -61,7 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C1AA4D7227A2D03009802C5 /* OnboardingFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowController.swift; sourceTree = "<group>"; };
+		1C1AA4D7227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeprecatedOnboardingFlowController.swift; sourceTree = "<group>"; };
 		1C1AA4D9227A2EAA009802C5 /* lorem.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lorem.jpg; sourceTree = "<group>"; };
 		1C226182227AA8E50072A638 /* OnboardingFlowController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingFlowController+Extension.swift"; sourceTree = "<group>"; };
 		1C226185227AB0090072A638 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -72,6 +75,9 @@
 		1C6FCB30228A1CBD000BC75A /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		1C6FCB31228A1CBE000BC75A /* PlayfairDisplay-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Italic.ttf"; sourceTree = "<group>"; };
 		1C6FCB32228A1CBF000BC75A /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		1C6FCB3A228B34DE000BC75A /* FirstOnboardingScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstOnboardingScreen.xib; sourceTree = "<group>"; };
+		1C6FCB3C228B34F5000BC75A /* FirstOnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingScreen.swift; sourceTree = "<group>"; };
+		1C6FCB3E228B36D1000BC75A /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 		1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchScreenController+Extension.swift"; sourceTree = "<group>"; };
 		1C83F428227BCC2900BEA884 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		1C83F42A227BCC8500BEA884 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
@@ -245,7 +251,8 @@
 			children = (
 				1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */,
 				1CCCC1D82267CFFE0012DA75 /* LogInViewController.swift */,
-				1C1AA4D7227A2D03009802C5 /* OnboardingFlowController.swift */,
+				1C1AA4D7227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift */,
+				1C6FCB3E228B36D1000BC75A /* OnboardingController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -296,6 +303,8 @@
 			children = (
 				1CCCC1D42267CD340012DA75 /* LoginView.swift */,
 				1CCCC1D62267CD3F0012DA75 /* LoginView.xib */,
+				1C6FCB3A228B34DE000BC75A /* FirstOnboardingScreen.xib */,
+				1C6FCB3C228B34F5000BC75A /* FirstOnboardingScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -420,6 +429,7 @@
 				1C6FCB35228A1DB5000BC75A /* PlayfairDisplay-Bold.ttf in Resources */,
 				1C6FCB36228A1DB5000BC75A /* PlayfairDisplay-BoldItalic.ttf in Resources */,
 				1C6FCB37228A1DB5000BC75A /* PlayfairDisplay-Italic.ttf in Resources */,
+				1C6FCB3B228B34DE000BC75A /* FirstOnboardingScreen.xib in Resources */,
 				1C6FCB38228A1DB5000BC75A /* PlayfairDisplay-Regular.ttf in Resources */,
 				1CCCC1B0226787500012DA75 /* LaunchScreen.storyboard in Resources */,
 				1C326A482269AAC300E09F99 /* lock.json in Resources */,
@@ -527,12 +537,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C83F438227BDB0500BEA884 /* NetworkManager.swift in Sources */,
+				1C6FCB3D228B34F5000BC75A /* FirstOnboardingScreen.swift in Sources */,
 				1C75417C2268E6680038D0E1 /* LaunchScreenController+Extension.swift in Sources */,
 				1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */,
 				1C83F430227BCDE200BEA884 /* NetworkRouter.swift in Sources */,
 				1CCCC1AB2267874E0012DA75 /* Granite_Revisited_.xcdatamodeld in Sources */,
 				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
+				1C6FCB3F228B36D1000BC75A /* OnboardingController.swift in Sources */,
 				1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */,
 				1C83F43A227BDB2800BEA884 /* UserAccess.swift in Sources */,
 				1C83F43E227CD0AD00BEA884 /* PulsatingButton.swift in Sources */,
@@ -542,7 +554,7 @@
 				1C83F432227BCE8100BEA884 /* Router.swift in Sources */,
 				1C226183227AA8E50072A638 /* OnboardingFlowController+Extension.swift in Sources */,
 				1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */,
-				1C1AA4D8227A2D03009802C5 /* OnboardingFlowController.swift in Sources */,
+				1C1AA4D8227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift in Sources */,
 				1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */,
 				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,
 				1C83F434227BCEEB00BEA884 /* JSONParameterEncoder.swift in Sources */,

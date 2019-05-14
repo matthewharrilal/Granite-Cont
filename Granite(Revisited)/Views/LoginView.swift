@@ -48,16 +48,27 @@ class LoginView: UIView {
         usernameTextField.textAlignment = .left
         passwordTextField.textAlignment = .left
         
-        loginButton.titleLabel?.font = UIFont(name: "PlayfairDisplay-Bold", size: 20)
+        loginButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         
-        createAccountButton.titleLabel?.font = UIFont(name: "PlayfairDisplay-Bold", size: 20)
+        createAccountButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         
         
         // MARK: FIX Have to fix the elements in the stack view sizing
         
         
-        let loginButtonView = UIView(frame: self.loginButton.frame)
-        loginButtonView.addSubview(loginButton)
+        loginButton.backgroundColor = .clear
+        
+//        createAccountButton.backgroundColor = .red
+        
+//        let buttonStackView = UIStackView(arrangedSubviews: [loginButton, createAccountButton])
+//
+//        buttonStackView.spacing = 2
+//
+//        buttonStackView.axis = .vertical
+//
+//        buttonStackView.backgroundColor = .red
+//
+//        buttonStackView.distribution = .fillProportionally
 
         loginStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField, loginButton, createAccountButton])
         
