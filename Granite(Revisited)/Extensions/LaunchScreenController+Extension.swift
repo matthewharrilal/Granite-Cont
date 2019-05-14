@@ -15,7 +15,7 @@ extension LaunchScreenViewController {
         let frame = CGRect(x: self.view.center.x, y: 44, width: self.view.frame.width, height: 100)
         self.graniteLabel = DWAnimatedLabel(frame: frame)
         
-        self.graniteLabel.font = UIFont(name: "PlayfairDisplay-Bold", size: 30)
+        self.graniteLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 24)
         
         for family: String in UIFont.familyNames
         {
@@ -46,7 +46,7 @@ extension LaunchScreenViewController {
         self.descriptionLabel = DWAnimatedLabel(frame: frame)
         
         self.descriptionLabel.center.x = self.view.center.x
-         self.descriptionLabel.font = UIFont(name: "PlayfairDisplay-Bold", size: 20)
+         self.descriptionLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 22)
         
         self.descriptionLabel.textAlignment = .center
         self.descriptionLabel.animationType = .typewriter
@@ -71,6 +71,8 @@ extension LaunchScreenViewController {
         
         // c2f8cb 4f6d7a
         button.setTitleColor(UIColor(hexString: titleHexString ), for: .normal)
+        
+        button.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
         
         self.view.addSubview(button)
         button.backgroundColor = UIColor(hexString: backgroundHexString)

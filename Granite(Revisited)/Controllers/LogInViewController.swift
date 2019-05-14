@@ -23,7 +23,6 @@ class LogInViewController: UIViewController {
         
         loginView.addConfiguredView()
         loginView.configureAnimation()
-        loginView.configureLockAnimation()
         
         let padding = UIEdgeInsets(top: 0, left: 20, bottom: -50, right: -20)
         

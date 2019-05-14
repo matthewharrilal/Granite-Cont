@@ -35,10 +35,6 @@ class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        
-        //        addConfiguredView()
-        
-        //        configureAnimation()
     }
     
     private func commonInit() {
@@ -51,6 +47,10 @@ class LoginView: UIView {
         
         usernameTextField.textAlignment = .left
         passwordTextField.textAlignment = .left
+        
+        loginButton.titleLabel?.font = UIFont(name: "PlayfairDisplay-Bold", size: 20)
+        
+        createAccountButton.titleLabel?.font = UIFont(name: "PlayfairDisplay-Bold", size: 20)
         
         
         // MARK: FIX Have to fix the elements in the stack view sizing
