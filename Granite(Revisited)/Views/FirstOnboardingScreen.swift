@@ -41,18 +41,20 @@ class FirstOnboardingScreen: UIView {
         welcomeLabel.alpha = 0.0
         descriptionLabel.alpha = 0.0
         
+        createTransitionButton()
         
         
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
         
-        descriptionLabel.anchor(top: welcomeLabel.safeAreaLayoutGuide.bottomAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 5, left: 20, bottom: 0, right: -20))
+        descriptionLabel.anchor(top: welcomeLabel.safeAreaLayoutGuide.bottomAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: -20))
         descriptionLabel.sizeToFit()
         
     }
     
     func animateLabels() {
-        UIView.animate(withDuration: 3.0) {
+        UIView.animate(withDuration: 2.0) {
+            let animation = CAAnimation()
             self.welcomeLabel.alpha = 1.0
             self.descriptionLabel.alpha = 1.0
         }
@@ -67,5 +69,18 @@ class FirstOnboardingScreen: UIView {
         attributedString.addAttribute(.paragraphStyle, value: paragraph, range: NSMakeRange(0, attributedString.length))
         
         return attributedString
+    }
+    
+    func createTransitionButton() {
+        let frame = CGRect(x: self.center.x, y: self.frame.height * 0.9, width: 40, height: 40)
+        let button = UIButton(frame: frame)
+        
+        button.layer.cornerRadius = button.frame.height / 2
+        button.setTitle("H", for: .normal)
+        button.backgroundColor = .red
+        
+        button.center.x = self.center.x
+        
+        addSubview(button)
     }
 }
