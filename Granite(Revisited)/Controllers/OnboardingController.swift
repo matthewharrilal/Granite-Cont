@@ -18,8 +18,6 @@ class OnboardingController: UIViewController {
         
         firstOnboardingScreen = FirstOnboardingScreen(frame: self.view.frame)
         self.view.addSubview(firstOnboardingScreen)
-        
-//        self.view.backgroundColor = .red
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,5 +28,7 @@ class OnboardingController: UIViewController {
         super.viewDidAppear(true)
         
         firstOnboardingScreen.animateLabels()
+        
+        firstOnboardingScreen.startAnimation()
     }
 }

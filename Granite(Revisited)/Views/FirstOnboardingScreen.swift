@@ -13,6 +13,11 @@ class FirstOnboardingScreen: UIView {
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    lazy var pulsatingLayer = CAShapeLayer()
+    lazy var shapeLayer = CAShapeLayer()
+    
+    lazy var transitionButton = UIButton()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,7 +46,7 @@ class FirstOnboardingScreen: UIView {
         welcomeLabel.alpha = 0.0
         descriptionLabel.alpha = 0.0
         
-        createTransitionButton()
+//        createTransitionButton()
         
         
         descriptionLabel.numberOfLines = 0
@@ -72,15 +77,24 @@ class FirstOnboardingScreen: UIView {
     }
     
     func createTransitionButton() {
-        let frame = CGRect(x: self.center.x, y: self.frame.height * 0.9, width: 40, height: 40)
-        let button = UIButton(frame: frame)
+        let frame = CGRect(x: self.center.x, y: self.frame.height * 0.88, width: 60, height: 60)
         
-        button.layer.cornerRadius = button.frame.height / 2
-        button.setTitle("H", for: .normal)
-        button.backgroundColor = .red
+        transitionButton.frame = frame
         
-        button.center.x = self.center.x
+        transitionButton.layer.cornerRadius = transitionButton.frame.height / 2
+        transitionButton.setTitle("H", for: .normal)
+        transitionButton.backgroundColor = .red
         
-        addSubview(button)
+        transitionButton.center.x = self.center.x
+        
+        self.pulsatingLayer.addSublayer(self.transitionButton.layer)
+    }
+    
+    func startAnimation() {
+//        configurePulsatingLayer(onView: self, withPulsatingLayer: self.pulsatingLayer)
+//
+//        animatePulsatingLayer(withPulsatingLayer: self.pulsatingLayer)
+        
+        configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self)
     }
 }

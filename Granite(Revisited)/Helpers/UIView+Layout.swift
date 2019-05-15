@@ -97,6 +97,7 @@ extension UIView {
         
         if let superviewYAnchor = superview?.centerYAnchor {
             centerYAnchor.constraint(equalTo: superviewYAnchor).isActive = true
+            
         }
     }
     

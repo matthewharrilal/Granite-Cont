@@ -11,25 +11,27 @@ import UIKit
 
 @discardableResult
 func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer, withShapeLayer shapeLayer: inout CAShapeLayer, onView view: UIView) -> (CAShapeLayer, CAShapeLayer) {
-    let position = CGPoint(x: view.center.x, y: view.frame.height * 0.9)
+    let position = CGPoint(x: view.center.x, y: view.frame.height * 0.88)
     
-    let circularPath = UIBezierPath(arcCenter: position , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+    shapeLayer.fillColor = UIColor(hexString: "0b3142").cgColor
+    
+    let circularPath = UIBezierPath(arcCenter: position , radius: 40, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
     
     shapeLayer.path = circularPath.cgPath
     shapeLayer.strokeEnd = 0
-    shapeLayer.strokeColor = UIColor(hexString: "98c9a3").cgColor
+    shapeLayer.strokeColor = UIColor(hexString: "0b3142").cgColor
     shapeLayer.lineWidth = 10
-    
-    shapeLayer.shadowColor = UIColor.black.cgColor
-    shapeLayer.shadowOpacity = 1
-    shapeLayer.shadowRadius = 10
-    shapeLayer.shadowOffset = .zero
+//
+//    shapeLayer.shadowColor = UIColor.black.cgColor
+//    shapeLayer.shadowOpacity = 1
+//    shapeLayer.shadowRadius = 10
+//    shapeLayer.shadowOffset = .zero
     
     configurePulsatingLayer(onView: view, withPulsatingLayer: pulsatingLayer)
     
     animatePulsatingLayer(withPulsatingLayer: pulsatingLayer)
     
-    animateStroke(with: &shapeLayer)
+//    animateStroke(with: &shapeLayer)
     
     view.layer.addSublayer(shapeLayer)
     
@@ -39,15 +41,15 @@ func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer,
 
 func configurePulsatingLayer(onView view: UIView, withPulsatingLayer pulsatingLayer:  CAShapeLayer) {
     
-    let circularPath = UIBezierPath(arcCenter: .zero , radius: 50, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+    let circularPath = UIBezierPath(arcCenter: .zero , radius: 40, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
     
     pulsatingLayer.path = circularPath.cgPath
     
-    pulsatingLayer.position = CGPoint(x: view.center.x, y: view.frame.height * 0.9)
+    pulsatingLayer.position = CGPoint(x: view.center.x, y: view.frame.height * 0.88)
     
     pulsatingLayer.strokeColor = UIColor.clear.cgColor
     
-    pulsatingLayer.fillColor = UIColor(hexString: "98c9a3").cgColor
+    pulsatingLayer.fillColor = UIColor(hexString: "0b3142").cgColor
     
     pulsatingLayer.lineCap = .round
     
@@ -62,11 +64,12 @@ func animatePulsatingLayer(withPulsatingLayer pulsatingLayer: CAShapeLayer) {
     
     animation.toValue = 1.3
     
-    animation.duration = 0.75
+    animation.duration = 1.0
     
     animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
     animation.autoreverses = true
     animation.repeatCount = Float.infinity
+    
     
     pulsatingLayer.add(animation, forKey: "pulse")
 }
