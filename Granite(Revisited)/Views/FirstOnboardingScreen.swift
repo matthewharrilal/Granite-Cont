@@ -46,7 +46,7 @@ class FirstOnboardingScreen: UIView {
         welcomeLabel.alpha = 0.0
         descriptionLabel.alpha = 0.0
         
-//        createTransitionButton()
+        //        createTransitionButton()
         
         
         descriptionLabel.numberOfLines = 0
@@ -87,14 +87,15 @@ class FirstOnboardingScreen: UIView {
         
         transitionButton.center.x = self.center.x
         
-        self.pulsatingLayer.addSublayer(self.transitionButton.layer)
+        addSubview(transitionButton)
+        
+//        self.pulsatingLayer.addSublayer(self.transitionButton.layer)
     }
     
     func startAnimation() {
-//        configurePulsatingLayer(onView: self, withPulsatingLayer: self.pulsatingLayer)
-//
-//        animatePulsatingLayer(withPulsatingLayer: self.pulsatingLayer)
         
-        configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self)
+        
+//        configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self)
+        
     }
 }

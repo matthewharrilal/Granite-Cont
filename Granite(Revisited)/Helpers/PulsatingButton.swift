@@ -14,6 +14,7 @@ func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer,
     let position = CGPoint(x: view.center.x, y: view.frame.height * 0.88)
     
     shapeLayer.fillColor = UIColor(hexString: "0b3142").cgColor
+    shapeLayer.position = position
     
     let circularPath = UIBezierPath(arcCenter: position , radius: 40, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
     
@@ -21,17 +22,35 @@ func configureEnterButton(withPulsatingLayer pulsatingLayer: inout CAShapeLayer,
     shapeLayer.strokeEnd = 0
     shapeLayer.strokeColor = UIColor(hexString: "0b3142").cgColor
     shapeLayer.lineWidth = 10
-//
-//    shapeLayer.shadowColor = UIColor.black.cgColor
-//    shapeLayer.shadowOpacity = 1
-//    shapeLayer.shadowRadius = 10
-//    shapeLayer.shadowOffset = .zero
+    //
+    //    shapeLayer.shadowColor = UIColor.black.cgColor
+    //    shapeLayer.shadowOpacity = 1
+    //    shapeLayer.shadowRadius = 10
+    //    shapeLayer.shadowOffset = .zero
     
     configurePulsatingLayer(onView: view, withPulsatingLayer: pulsatingLayer)
     
     animatePulsatingLayer(withPulsatingLayer: pulsatingLayer)
     
-//    animateStroke(with: &shapeLayer)
+    //    animateStroke(with: &shapeLayer)
+    
+    shapeLayer.bounds = CGRect(x: view.center.x, y: view.frame.height * 0.88, width: 20, height: 20)
+//    shapeLayer.bounds = view.frame
+    
+//    shapeLayer.bounds = view.frame
+    
+    let image = UIImage(named: "downArrow")
+//    let imageView = UIImageView(image: image)
+//
+//    let sampleView = UIView(frame: shapeLayer.frame)
+//    sampleView.addSubview(imageView)
+//
+//    sampleView.bounds = shapeLayer.frame
+    
+    
+    shapeLayer.contents = image?.cgImage
+    shapeLayer.contentsGravity = .center
+//    shapeLayer.masksToBounds = true
     
     view.layer.addSublayer(shapeLayer)
     
