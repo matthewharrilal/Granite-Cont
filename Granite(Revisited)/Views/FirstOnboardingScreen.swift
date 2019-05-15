@@ -29,7 +29,10 @@ class FirstOnboardingScreen: UIView {
         self.backgroundColor = .white
         
         welcomeLabel.text = "Welcome to Granite"
-        descriptionLabel.text = "Before we connect you with other developers, we have a few questions that will help improve your experience"
+        
+        let descriptionText = createLabelSpacing(withLabelText: "Before we connect you with other developers, we have a few questions that will help improve your experience")
+        
+        descriptionLabel.attributedText = descriptionText
         
         welcomeLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         descriptionLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
@@ -38,6 +41,14 @@ class FirstOnboardingScreen: UIView {
         welcomeLabel.alpha = 0.0
         descriptionLabel.alpha = 0.0
         
+        
+        
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        
+        descriptionLabel.anchor(top: welcomeLabel.safeAreaLayoutGuide.bottomAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 5, left: 20, bottom: 0, right: -20))
+        descriptionLabel.sizeToFit()
+        
     }
     
     func animateLabels() {
@@ -45,5 +56,16 @@ class FirstOnboardingScreen: UIView {
             self.welcomeLabel.alpha = 1.0
             self.descriptionLabel.alpha = 1.0
         }
+    }
+    
+    func createLabelSpacing(withLabelText labelText: String) -> NSMutableAttributedString {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineSpacing = 10
+        
+        let attributedString = NSMutableAttributedString(string: labelText)
+        
+        attributedString.addAttribute(.paragraphStyle, value: paragraph, range: NSMakeRange(0, attributedString.length))
+        
+        return attributedString
     }
 }

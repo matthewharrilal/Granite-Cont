@@ -49,46 +49,46 @@ class LoginView: UIView {
         passwordTextField.textAlignment = .left
         
         loginButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
-        
         createAccountButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
+        
+        createAccountButton.backgroundColor = .clear
         
         
         // MARK: FIX Have to fix the elements in the stack view sizing
-        
-        
         loginButton.backgroundColor = .clear
         
-//        createAccountButton.backgroundColor = .red
+        loginButton.constrainHeight(withHeight: loginButton.frame.height)
+        createAccountButton.constrainHeight(withHeight: createAccountButton.frame.height)
         
-//        let buttonStackView = UIStackView(arrangedSubviews: [loginButton, createAccountButton])
-//
-//        buttonStackView.spacing = 2
-//
-//        buttonStackView.axis = .vertical
-//
-//        buttonStackView.backgroundColor = .red
-//
-//        buttonStackView.distribution = .fillProportionally
+        
+        let textFieldComponentsStackview = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField])
 
-        loginStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField, loginButton, createAccountButton])
+        let loginComponentsStackview = UIStackView(arrangedSubviews: [loginButton, createAccountButton])
+
+        textFieldComponentsStackview.distribution = .fillProportionally
+        textFieldComponentsStackview.axis = .vertical
+//
+//        loginComponentsStackview.distribution = .fillEqually
+//        loginComponentsStackview.axis = .vertical
         
-        loginStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        let padding = UIEdgeInsets(top: 10, left: 10, bottom: -10 , right: -10)
+        loginStackView = UIStackView(arrangedSubviews: [textFieldComponentsStackview, loginButton, createAccountButton])
+        
+//        createAccountButton.anchor(top: loginButton.bottomAnchor, leading: loginStackView.leadingAnchor, bottom: loginStackView.bottomAnchor, trailing: loginStackView.trailingAnchor)
+        
         loginStackView.axis = .vertical
-        
         loginStackView.spacing = 10
+        loginStackView.distribution = .fillEqually
         
-        loginStackView.distribution = .fillProportionally
+//        usernameTextField.
+        
         
         whiteLoginView.addSubview(loginStackView)
-        
-        
+        let padding = UIEdgeInsets(top: 10, left: 10, bottom: -10 , right: -10)
         loginStackView.fillSuperview(withSuperview: whiteLoginView, padding: padding)
         
         whiteLoginView.layer.cornerRadius = 20
     }
-    
     
     func configureLockAnimation() {
         

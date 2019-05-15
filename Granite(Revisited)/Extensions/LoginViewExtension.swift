@@ -46,6 +46,6 @@ extension LoginView {
         self.addSubview(configuredView)
         
         configuredView.anchorSize(toView: self)
-        
+
     }
 }
