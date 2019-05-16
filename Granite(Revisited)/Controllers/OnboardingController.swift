@@ -19,7 +19,6 @@ class OnboardingController: UIViewController {
         firstOnboardingScreen = FirstOnboardingScreen(frame: self.view.frame)
         firstOnboardingScreen.bounds = firstOnboardingScreen.frame
         self.view.addSubview(firstOnboardingScreen)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,9 +28,9 @@ class OnboardingController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        firstOnboardingScreen.animateLabels()
-        
         firstOnboardingScreen.createTransitionButton()
-        
+        firstOnboardingScreen.animateLabels()
+        firstOnboardingScreen.applyTransformation(withButton: firstOnboardingScreen.transitionButton)
+        firstOnboardingScreen.configureAnimation()
     }
 }

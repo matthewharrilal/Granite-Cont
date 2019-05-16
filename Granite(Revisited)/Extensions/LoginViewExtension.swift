@@ -15,14 +15,8 @@ extension LoginView {
     func configureAnimation() {
         self.backgroundColor = UIColor(hexString: "c9ddff")
         
-        let animationView = LOTAnimationView(name: "lazyNight")
+        let animationView = LOTAnimationView(name: "office")
         animationView.contentMode = .scaleAspectFit
-        
-        animationView.layer.shadowColor = UIColor.black.cgColor
-        animationView.layer.shadowOpacity = 1
-        animationView.layer.shadowRadius = 10
-        animationView.layer.shadowOffset = .zero
-        
        
         
         self.configuredView.addSubview(animationView)
@@ -45,7 +39,7 @@ extension LoginView {
         
         self.addSubview(configuredView)
         
-        configuredView.anchorSize(toView: self)
+        configuredView.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: self.whiteLoginView.topAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 20, left: 0, bottom: -20, right: -40))
 
     }
 }

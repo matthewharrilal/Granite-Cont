@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Lottie
 
 class FirstOnboardingScreen: UIView {
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -45,6 +46,7 @@ class FirstOnboardingScreen: UIView {
         // Start off invisible then animate the difference
         welcomeLabel.alpha = 0.0
         descriptionLabel.alpha = 0.0
+        transitionButton.alpha = 0.0
         
         //        createTransitionButton()
         
@@ -62,12 +64,13 @@ class FirstOnboardingScreen: UIView {
             let animation = CAAnimation()
             self.welcomeLabel.alpha = 1.0
             self.descriptionLabel.alpha = 1.0
+            self.transitionButton.alpha = 1.0
         }
     }
     
     func createLabelSpacing(withLabelText labelText: String) -> NSMutableAttributedString {
         let paragraph = NSMutableParagraphStyle()
-        paragraph.lineSpacing = 10
+        paragraph.lineSpacing = 15
         
         let attributedString = NSMutableAttributedString(string: labelText)
         
@@ -82,23 +85,52 @@ class FirstOnboardingScreen: UIView {
         transitionButton.frame = frame
         
         transitionButton.layer.cornerRadius = transitionButton.frame.height / 2
-        transitionButton.setTitle("H", for: .normal)
-        transitionButton.backgroundColor = .red
+        transitionButton.setTitle("", for: .normal)
+        transitionButton.backgroundColor = UIColor(hexString: "585b6d")
+//        transitionButton.backgroundColor = UIColor(hexString: "919098")
+        
         
         transitionButton.center.x = self.center.x
         
+        let image = UIImage(named: "down")
+        
+        let imageView = UIImageView(image: image)
+        
+        transitionButton.addSubview(imageView)
+        imageView.constrainHeight(withHeight: 40)
+        imageView.constrainWidth(withWidth: 40)
+        
+        imageView.centerInSuperview()
+        
         addSubview(transitionButton)
         
-        applyTransformation(withButton: transitionButton)
+        transitionButton.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         
-//        self.pulsatingLayer.addSublayer(self.transitionButton.layer)
     }
     
     func applyTransformation(withButton button: UIButton) {
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat], animations: {
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
             button.transform = CGAffineTransform(translationX: 2, y: -40)
         }) { (_) in
-//            button.transform = CGAffineTransform.identity
+            //            button.transform = CGAffineTransform.identity
         }
+    }
+    
+    @objc func handleTap() {
+        print("Transition Button Being Tapped")
+    }
+    
+    func configureAnimation() {
+        
+        let animationView = LOTAnimationView(name: "success")
+        animationView.contentMode = .scaleAspectFit
+        
+        animationView.play()
+        
+        animationView.animationSpeed = 0.5
+        
+        addSubview(animationView)
+        
+        animationView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 20, bottom: -20, right: -20))
     }
 }
