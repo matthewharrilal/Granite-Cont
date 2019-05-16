@@ -77,7 +77,7 @@ class FirstOnboardingScreen: UIView {
     }
     
     func createTransitionButton() {
-        let frame = CGRect(x: self.center.x, y: self.frame.height * 0.88, width: 60, height: 60)
+        let frame = CGRect(x: self.center.x, y: self.frame.height * 0.88, width: 80, height: 80)
         
         transitionButton.frame = frame
         
@@ -89,13 +89,16 @@ class FirstOnboardingScreen: UIView {
         
         addSubview(transitionButton)
         
+        applyTransformation(withButton: transitionButton)
+        
 //        self.pulsatingLayer.addSublayer(self.transitionButton.layer)
     }
     
-    func startAnimation() {
-        
-        
-//        configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self)
-        
+    func applyTransformation(withButton button: UIButton) {
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat], animations: {
+            button.transform = CGAffineTransform(translationX: 2, y: -40)
+        }) { (_) in
+//            button.transform = CGAffineTransform.identity
+        }
     }
 }
