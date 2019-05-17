@@ -163,7 +163,7 @@ class FirstOnboardingScreen: UIView {
         
         // The first thing that we have to do is add the curve after the initial point
         path.addCurve(to: .init(x: self.bounds.origin.x + 30, y: 20), // ending point
-                      controlPoint1: .init(x: self.bounds.origin.x + 30, y: 32), controlPoint2: .init(x: self.bounds.origin.x + 30, y: 28))
+                      controlPoint1: .init(x: self.bounds.origin.x + 15, y: 32), controlPoint2: .init(x: self.bounds.origin.x + 15, y: 28))
         
         path.close()
         
