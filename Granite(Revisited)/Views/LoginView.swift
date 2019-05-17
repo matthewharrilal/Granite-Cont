@@ -88,6 +88,10 @@ class LoginView: UIView {
         loginStackView.fillSuperview(withSuperview: whiteLoginView, padding: padding)
         
         whiteLoginView.layer.cornerRadius = 20
+        
+        loginStackView.layoutMargins = .init(top: 0, left: 0, bottom: 0, right: -10)
+        loginStackView.isLayoutMarginsRelativeArrangement = true
+
     }
     
     func configureLockAnimation() {

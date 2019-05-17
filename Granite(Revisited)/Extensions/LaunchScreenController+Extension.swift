@@ -15,7 +15,7 @@ extension LaunchScreenViewController {
         let frame = CGRect(x: self.view.center.x, y: 44, width: self.view.frame.width, height: 100)
         self.graniteLabel = DWAnimatedLabel(frame: frame)
         
-        self.graniteLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 24)
+        self.graniteLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 40)
         
         for family: String in UIFont.familyNames
         {
@@ -42,7 +42,7 @@ extension LaunchScreenViewController {
     }
     
     func configureDescriptionLabel() {
-        let frame = CGRect(x: self.view.center.x, y: 70, width: self.view.frame.width, height: 100)
+        let frame = CGRect(x: self.view.center.x, y: 78, width: self.view.frame.width, height: 100)
         self.descriptionLabel = DWAnimatedLabel(frame: frame)
         
         self.descriptionLabel.center.x = self.view.center.x
