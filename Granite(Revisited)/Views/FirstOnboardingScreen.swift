@@ -160,19 +160,39 @@ class FirstOnboardingScreen: UIView {
         let middleOfScreenX = self.frame.width / 2
         var middleOfScreenY = self.frame.height / 2
         let endOfScreenX = self.frame.width
+        let startPoint = CGPoint(x: bounds.minX, y: bounds.midY)
         
-        bezierPath.move(to: .init(x: self.frame.minX, y: self.frame.midY))
+        //        bezierPath.move(to: .init(x: self.frame.minX, y: self.frame.midY))
         //        bezierPath.addLine(to: .init(x: self.frame.width, y: self.frame.height / 2))
         
-        bezierPath.addCurve(to: .init(x: middleOfScreenX, y: middleOfScreenY),
-                            controlPoint1: .init(x: self.frame.minX, y: middleOfScreenY + 20),
-                            controlPoint2: .init(x: middleOfScreenX, y: middleOfScreenY + 20))
+        //        bezierPath.addCurve(to: .init(x: middleOfScreenX, y: middleOfScreenY),
+        //                            controlPoint1: .init(x: self.frame.minX, y: middleOfScreenY + 20),
+        //                            controlPoint2: .init(x: middleOfScreenX, y: middleOfScreenY + 20))
+        //
+        //        //        bezierPath.addLine(to: .init(x: self.frame.width, y: middleOfScreenY))
+        //
+        //        bezierPath.addCurve(to: .init(x: endOfScreenX, y: middleOfScreenY),
+        //                            controlPoint1: .init(x: middleOfScreenX, y: middleOfScreenY - 20),
+        //                            controlPoint2: .init(x: endOfScreenX, y: middleOfScreenY - 20))
         
-        //        bezierPath.addLine(to: .init(x: self.frame.width, y: middleOfScreenY))
         
-        bezierPath.addCurve(to: .init(x: endOfScreenX, y: middleOfScreenY),
-                            controlPoint1: .init(x: middleOfScreenX, y: middleOfScreenY - 20),
-                            controlPoint2: .init(x: endOfScreenX, y: middleOfScreenY - 20))
+        bezierPath.move(to: startPoint)
+        
+        
+        //        bezierPath.addCurve(to: CGPoint(x: bounds.minX + 120 ,y: bounds.midY + 35), controlPoint1: startPoint, controlPoint2: CGPoint(x: bounds.minX - 80, y:bounds.midY - 400))
+        bezierPath.addCurve(to: CGPoint(x: middleOfScreenX ,y: bounds.midY - 20),
+                            controlPoint1: startPoint,
+                            controlPoint2: CGPoint(x: middleOfScreenX / 2, y:bounds.midY + 100))
+        
+        bezierPath.move(to: .init(x: middleOfScreenX, y: middleOfScreenY - 20))
+        
+        let remainingScreenWidth = (self.frame.width - middleOfScreenX) // Gives us two equal remaining portion of the screen
+        
+        bezierPath.addCurve(to: .init(x: endOfScreenX, y: middleOfScreenY - 70),
+                            controlPoint1: .init(x: middleOfScreenX, y: middleOfScreenY - 20) ,
+                            controlPoint2: .init(x: middleOfScreenX + 60, y: middleOfScreenY - 50))
+        
+        //        bezierPath.addCurve(to: .init(x: endOfScreenX, y: middleOfScreenY), controlPoint1: .init(x: middleOfScreenX + 50, y: middleOfScreenY - 8), controlPoint2: .init(x: endOfScreenX, y: middleOfScreenY))
         
         shape.path = bezierPath.cgPath
         
