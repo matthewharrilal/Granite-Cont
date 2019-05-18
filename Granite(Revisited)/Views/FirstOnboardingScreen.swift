@@ -190,7 +190,7 @@ class FirstOnboardingScreen: UIView {
         bezierPath.move(to: .init(x: updatedX, y:updatedY))
 
         bezierPath.addCurve(to: .init(x: endOfScreenX, y: middleOfScreenY - 30), // May have to chaneg the y pos
-                            controlPoint1: .init(x: updatedX - 34, y: updatedY + 13),
+                            controlPoint1: .init(x: updatedX, y: updatedY),
                             controlPoint2: .init(x: updatedX + 38, y: updatedY - 15))
         
         
