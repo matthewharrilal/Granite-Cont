@@ -159,18 +159,31 @@ class FirstOnboardingScreen: UIView {
         
         let middleOfScreenX = self.frame.width / 2
         var middleOfScreenY = self.frame.height / 2
+        let endOfScreenX = self.frame.width
         
         bezierPath.move(to: .init(x: self.frame.minX, y: self.frame.midY))
-//        bezierPath.addLine(to: .init(x: self.frame.width, y: self.frame.height / 2))
+        //        bezierPath.addLine(to: .init(x: self.frame.width, y: self.frame.height / 2))
         
-        bezierPath.addCurve(to: .init(x: middleOfScreenX, y: middleOfScreenY), controlPoint1: .init(x: self.frame.minX, y: middleOfScreenY + 20), controlPoint2: .init(x: middleOfScreenX, y: middleOfScreenY + 20))
+        bezierPath.addCurve(to: .init(x: middleOfScreenX, y: middleOfScreenY),
+                            controlPoint1: .init(x: self.frame.minX, y: middleOfScreenY + 20),
+                            controlPoint2: .init(x: middleOfScreenX, y: middleOfScreenY + 20))
         
-        bezierPath.addLine(to: .init(x: self.frame.width, y: middleOfScreenY))
+        //        bezierPath.addLine(to: .init(x: self.frame.width, y: middleOfScreenY))
+        
+        bezierPath.addCurve(to: .init(x: endOfScreenX, y: middleOfScreenY),
+                            controlPoint1: .init(x: middleOfScreenX, y: middleOfScreenY - 20),
+                            controlPoint2: .init(x: endOfScreenX, y: middleOfScreenY - 20))
         
         shape.path = bezierPath.cgPath
         
-        shape.lineWidth = 1
+        //        shape.lineWidth = 1
         shape.strokeColor = UIColor.orange.cgColor
+        
+        shape.fillColor = UIColor.white.cgColor
+        
+        let underView = UIView(frame: shape.frame)
+        
+        underView.backgroundColor = .orange
         
         sampleView.layer.addSublayer(shape)
     }
