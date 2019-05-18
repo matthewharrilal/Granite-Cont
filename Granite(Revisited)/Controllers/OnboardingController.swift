@@ -19,6 +19,7 @@ class OnboardingController: UIViewController {
         firstOnboardingScreen = FirstOnboardingScreen(frame: self.view.frame)
         firstOnboardingScreen.bounds = firstOnboardingScreen.frame
         self.view.addSubview(firstOnboardingScreen)
+        
     }
     
     override func didReceiveMemoryWarning() {
