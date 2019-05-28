@@ -16,6 +16,7 @@ class FirstOnboardingScreen: UIView {
     
     lazy var pulsatingLayer = CAShapeLayer()
     lazy var shapeLayer = CAShapeLayer()
+    var animationView: LOTAnimationView!
     
     lazy var transitionButton = UIButton()
     
@@ -61,7 +62,6 @@ class FirstOnboardingScreen: UIView {
     
     func animateLabels() {
         UIView.animate(withDuration: 2.0) {
-            let animation = CAAnimation()
             self.welcomeLabel.alpha = 1.0
             self.descriptionLabel.alpha = 1.0
             self.transitionButton.alpha = 1.0
@@ -104,7 +104,7 @@ class FirstOnboardingScreen: UIView {
         
         addSubview(transitionButton)
         
-        transitionButton.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
         
     }
     
@@ -115,26 +115,47 @@ class FirstOnboardingScreen: UIView {
         }
     }
     
-    @objc func handleTap() {
+    @objc func handleTap(sender: UIButton ) {
         print("Transition Button Being Tapped")
         
         let view = UIView(frame: self.bounds)
         
-        self.alpha = 0.0
-        view.backgroundColor = .red
+        // MARK: TODO Add the next pair of custom views
+        view.backgroundColor = .white
+        view.alpha = 0.0
+        self.addSubview(view)
         
-        UIView.animate(withDuration: 2.0, delay: 0.0, options: .curveLinear, animations: {
-            self.addSubview(view)
+        
+        UIView.animateKeyframes(withDuration: 3.0, delay: 0.0, options: .calculationModeCubic, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1.5, animations: {
+                self.welcomeLabel.alpha = 0.0
+                self.descriptionLabel.alpha = 0.0
+                self.animationView.alpha = 0.0
+                self.transitionButton.alpha = 0.0
+                
+            })
             
-            self.center.y -= self.bounds.height
-            self.alpha = 1.0
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 1.5, animations: {
+                self.transformViews(views: self.welcomeLabel, self.descriptionLabel, self.animationView)
+                view.alpha = 1.0
+                view.isHidden = false
+            })
+        
+        }) { (_) in
+            self.transitionButton.removeFromSuperview()
+            view.addSubview(self.transitionButton)
             
-        }, completion: nil)
+            UIView.animate(withDuration: 1.0, animations: {
+                self.transitionButton.alpha = 1.0
+                
+            })
+        }
+        
     }
     
     func configureAnimation() {
         
-        let animationView = LOTAnimationView(name: "success")
+        animationView = LOTAnimationView(name: "success")
         animationView.contentMode = .scaleAspectFit
         
         animationView.play()
@@ -146,69 +167,102 @@ class FirstOnboardingScreen: UIView {
         animationView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 20, bottom: -20, right: -20))
     }
     
-    func createCurvedBezierPath() {
-        // In charge of creating the curved animation
-        
-        let bezierPath = UIBezierPath()
-        let shape = CAShapeLayer()
-        
-        let sampleView = UIView(frame: self.frame)
-        
-        sampleView.backgroundColor = .white
-        addSubview(sampleView)
-        
-        let middleOfScreenX = self.frame.width / 2
-        var middleOfScreenY = self.frame.height / 2
-        let endOfScreenX = self.frame.width
-        let startPoint = CGPoint(x: bounds.minX, y: bounds.midY)
-        
-        var updatedX: CGFloat = 0
-        var updatedY: CGFloat = 0
-        
-        
-        bezierPath.move(to: startPoint)
-        
-        
-        //        bezierPath.addCurve(to: CGPoint(x: bounds.minX + 120 ,y: bounds.midY + 35), controlPoint1: startPoint, controlPoint2: CGPoint(x: bounds.minX - 80, y:bounds.midY - 400))
-        bezierPath.addCurve(to: CGPoint(x: middleOfScreenX ,y: bounds.midY - 20),
-                            controlPoint1: startPoint,
-                            controlPoint2: CGPoint(x: middleOfScreenX / 2, y:bounds.midY + 100))
-        
-        updatedX = middleOfScreenX
-        updatedY = middleOfScreenY - 20
-        bezierPath.move(to: .init(x: updatedX, y: updatedY))
-        
-        //        let remainingScreenWidth = (self.frame.width - middleOfScreenX) // Gives us two equal remaining portion of the screen
-        
-        bezierPath.addCurve(to: .init(x: middleOfScreenX + 80, y: middleOfScreenY - 61),
-                            controlPoint1: .init(x: updatedX, y: updatedY) ,// To match the previous end point
-            controlPoint2: .init(x: middleOfScreenX + 14, y: middleOfScreenY - 40))
-        
-        updatedX = middleOfScreenX + 80
-        updatedY = middleOfScreenY - 61
-
-        bezierPath.move(to: .init(x: updatedX, y:updatedY))
-
-        bezierPath.addCurve(to: .init(x: endOfScreenX, y: middleOfScreenY - 30), // May have to chaneg the y pos
-                            controlPoint1: .init(x: updatedX, y: updatedY),
-                            controlPoint2: .init(x: updatedX + 38, y: updatedY - 15))
-        
-        
-        
-        //        bezierPath.addCurve(to: .init(x: endOfScreenX, y: middleOfScreenY), controlPoint1: .init(x: middleOfScreenX + 50, y: middleOfScreenY - 8), controlPoint2: .init(x: endOfScreenX, y: middleOfScreenY))
-        
-        shape.path = bezierPath.cgPath
-        
-        //        shape.lineWidth = 1
-        shape.strokeColor = UIColor.orange.cgColor
-        
-        shape.fillColor = UIColor.white.cgColor
-        
-        let underView = UIView(frame: shape.frame)
-        
-        underView.backgroundColor = .orange
-        
-        sampleView.layer.addSublayer(shape)
+    func removeChildViews(views: UIView...) {
+        views.forEach { (view) in
+            view.removeFromSuperview()
+        }
     }
+    
+    func transformViews(views: UIView...) {
+        views.forEach { (view) in
+            view.transform = CGAffineTransform(translationX: 0, y: -self.frame.maxY)
+        }
+    }
+    
+    //    func createCurvedBezierPath() {
+    //        // In charge of creating the curved animation
+    //
+    //        let bezierPath = UIBezierPath()
+    //        let shape = CAShapeLayer()
+    //
+    //        let sampleView = UIView(frame: self.frame)
+    //
+    //        sampleView.backgroundColor = .white
+    //        addSubview(sampleView)
+    //
+    //        let middleOfScreenX = self.frame.width / 2
+    //        var middleOfScreenY = self.frame.height / 2
+    //        let endOfScreenX = self.frame.width
+    //        let startPoint = CGPoint(x: frame.minX, y: frame.midY)
+    //
+    //        var updatedX: CGFloat = 0
+    //        var updatedY: CGFloat = 0
+    //
+    //
+    //        bezierPath.move(to: startPoint)
+    //
+    //
+    //        //        bezierPath.addCurve(to: CGPoint(x: bounds.minX + 120 ,y: bounds.midY + 35), controlPoint1: startPoint, controlPoint2: CGPoint(x: bounds.minX - 80, y:bounds.midY - 400))
+    //        bezierPath.addCurve(to: CGPoint(x: middleOfScreenX ,y: bounds.midY - 20),
+    //                            controlPoint1: startPoint,
+    //                            controlPoint2: CGPoint(x: middleOfScreenX / 2, y:bounds.midY + 100))
+    //
+    //        updatedX = middleOfScreenX
+    //        updatedY = middleOfScreenY - 20
+    //        bezierPath.move(to: .init(x: updatedX, y: updatedY))
+    //
+    //        //        let remainingScreenWidth = (self.frame.width - middleOfScreenX) // Gives us two equal remaining portion of the screen
+    //
+    //        bezierPath.addCurve(to: .init(x: middleOfScreenX + 80, y: middleOfScreenY - 61),
+    //                            controlPoint1: .init(x: updatedX, y: updatedY) ,// To match the previous end point
+    //            controlPoint2: .init(x: middleOfScreenX + 14, y: middleOfScreenY - 40))
+    //
+    //        updatedX = middleOfScreenX + 80
+    //        updatedY = middleOfScreenY - 61
+    //
+    //        bezierPath.move(to: .init(x: updatedX, y:updatedY))
+    //
+    //        bezierPath.addCurve(to: .init(x: endOfScreenX, y: middleOfScreenY - 30), // May have to chaneg the y pos
+    //            controlPoint1: .init(x: updatedX, y: updatedY),
+    //            controlPoint2: .init(x: updatedX + 38, y: updatedY - 15))
+    //
+    //        updatedX = endOfScreenX
+    //        updatedY = middleOfScreenY - 30
+    //
+    //        bezierPath.move(to: .init(x: updatedX, y: updatedY))
+    //
+    //        // First Line
+    //        bezierPath.addLine(to: .init(x: self.frame.maxX, y: self.frame.maxY))
+    //
+    //        updatedX = self.frame.maxX
+    //        updatedY = self.frame.maxY
+    //
+    //        // Second Line
+    //        bezierPath.addLine(to: .init(x: self.frame.minX, y: self.frame.maxY))
+    //
+    //        updatedX = self.frame.minX
+    //
+    //
+    //
+    //        bezierPath.move(to: .init(x: updatedX, y: updatedY))
+    //
+    //        // Third Line
+    //        bezierPath.addLine(to: startPoint)
+    //
+    //        bezierPath.close()
+    //
+    //
+    //        shape.path = bezierPath.cgPath
+    //
+    //        shape.strokeColor = UIColor.orange.cgColor
+    //        shape.lineWidth = 4
+    //
+    //
+    //        shape.fillColor = UIColor.red.cgColor
+    //
+    //
+    //        sampleView.layer.addSublayer(shape)
+    //
+    //    }
     
 }
