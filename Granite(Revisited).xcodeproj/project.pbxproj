@@ -39,6 +39,9 @@
 		1C83F43C227BE03100BEA884 /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F43B227BE03100BEA884 /* HTTPMethods.swift */; };
 		1C83F43E227CD0AD00BEA884 /* PulsatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F43D227CD0AD00BEA884 /* PulsatingButton.swift */; };
 		1C83F4782280C64800BEA884 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F4772280C64800BEA884 /* UIView+Layout.swift */; };
+		1CA0F7CC229DF2C700089583 /* SecondOnboardingScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA0F7CB229DF2C700089583 /* SecondOnboardingScreen.xib */; };
+		1CA0F7CE229DF2D600089583 /* SecondOnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7CD229DF2D600089583 /* SecondOnboardingScreen.swift */; };
+		1CA0F7D0229DF6F500089583 /* SecondOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7CF229DF6F500089583 /* SecondOnboardingController.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
 		1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */; };
 		1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A62267874E0012DA75 /* Main.storyboard */; };
@@ -101,6 +104,9 @@
 		1C83F43B227BE03100BEA884 /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
 		1C83F43D227CD0AD00BEA884 /* PulsatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsatingButton.swift; sourceTree = "<group>"; };
 		1C83F4772280C64800BEA884 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		1CA0F7CB229DF2C700089583 /* SecondOnboardingScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondOnboardingScreen.xib; sourceTree = "<group>"; };
+		1CA0F7CD229DF2D600089583 /* SecondOnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingScreen.swift; sourceTree = "<group>"; };
+		1CA0F7CF229DF6F500089583 /* SecondOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingController.swift; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCCC1A22267874E0012DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
@@ -263,6 +269,7 @@
 				1CCCC1D82267CFFE0012DA75 /* LogInViewController.swift */,
 				1C1AA4D7227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift */,
 				1C6FCB3E228B36D1000BC75A /* OnboardingController.swift */,
+				1CA0F7CF229DF6F500089583 /* SecondOnboardingController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -320,6 +327,8 @@
 				1CCCC1D62267CD3F0012DA75 /* LoginView.xib */,
 				1C6FCB3A228B34DE000BC75A /* FirstOnboardingScreen.xib */,
 				1C6FCB3C228B34F5000BC75A /* FirstOnboardingScreen.swift */,
+				1CA0F7CB229DF2C700089583 /* SecondOnboardingScreen.xib */,
+				1CA0F7CD229DF2D600089583 /* SecondOnboardingScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,6 +460,7 @@
 				1CCCC1B0226787500012DA75 /* LaunchScreen.storyboard in Resources */,
 				1C326A482269AAC300E09F99 /* lock.json in Resources */,
 				1C4113A3228D0D9F00CBBCFB /* office.json in Resources */,
+				1CA0F7CC229DF2C700089583 /* SecondOnboardingScreen.xib in Resources */,
 				1C41139F228D03E600CBBCFB /* loading.json in Resources */,
 				1CCCC1AD226787500012DA75 /* Assets.xcassets in Resources */,
 				1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */,
@@ -564,6 +574,7 @@
 				1CCCC1AB2267874E0012DA75 /* Granite_Revisited_.xcdatamodeld in Sources */,
 				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
+				1CA0F7CE229DF2D600089583 /* SecondOnboardingScreen.swift in Sources */,
 				1C6FCB3F228B36D1000BC75A /* OnboardingController.swift in Sources */,
 				1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */,
 				1C83F43A227BDB2800BEA884 /* UserAccess.swift in Sources */,
@@ -575,6 +586,7 @@
 				1C226183227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift in Sources */,
 				1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */,
 				1C1AA4D8227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift in Sources */,
+				1CA0F7D0229DF6F500089583 /* SecondOnboardingController.swift in Sources */,
 				1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */,
 				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,
 				1C83F434227BCEEB00BEA884 /* JSONParameterEncoder.swift in Sources */,

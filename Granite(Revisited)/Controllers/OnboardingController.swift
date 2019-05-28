@@ -32,9 +32,5 @@ class OnboardingController: UIViewController {
         
         firstOnboardingScreen.createTransitionButton()
         firstOnboardingScreen.animateLabels()
-        firstOnboardingScreen.applyTransformation(withButton: firstOnboardingScreen.transitionButton)
-        firstOnboardingScreen.configureAnimation()
-
-//        firstOnboardingScreen.createCurvedBezierPath()
     }
 }
