@@ -36,4 +36,50 @@ class OnboardingController: UIViewController {
         firstOnboardingScreen.animateLabels()
         firstOnboardingScreen.transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
     }
+    
+    @objc func handleTap(sender: UIButton ) {
+        print("Transition Button Being Tapped")
+        
+        // MARK: TODO Make this view the next onboarding screen and EACH VIEW WILL HAVE ITS OWN HANDLE TAP METHOD
+        let view = SecondOnboardingScreen(frame: self.view.bounds)
+        
+        // MARK: TODO Add the next pair of custom views
+        view.backgroundColor = .white
+        view.alpha = 0.0
+        self.view.addSubview(view)
+        
+        
+        // MARK
+        UIView.animateKeyframes(withDuration: 2.5, delay: 0.0, options: .calculationModeCubic, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1, animations: {
+                self.firstOnboardingScreen.welcomeLabel.alpha = 0.0
+                self.firstOnboardingScreen.descriptionLabel.alpha = 0.0
+                self.firstOnboardingScreen.animationView.alpha = 0.0
+                
+                //                self.transitionButton.layer.removeAllAnimations()
+                
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
+                self.firstOnboardingScreen.transitionButton.alpha = 0.0
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
+                self.firstOnboardingScreen.transformViews(views: self.firstOnboardingScreen.welcomeLabel, self.firstOnboardingScreen.descriptionLabel, self.firstOnboardingScreen.animationView)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 1.5, relativeDuration: 1, animations: {
+                view.alpha = 1.0
+            })
+            
+        }) { (_) in
+            self.firstOnboardingScreen.removeChildViews(views: self.firstOnboardingScreen.welcomeLabel, self.firstOnboardingScreen.descriptionLabel, self.firstOnboardingScreen.transitionButton)
+            self.firstOnboardingScreen.addSubview(self.firstOnboardingScreen.transitionButton)
+            
+            UIView.animate(withDuration: 1.0, animations: {
+                self.firstOnboardingScreen.transitionButton.alpha = 1.0
+            })
+        }
+        
+    }
 }

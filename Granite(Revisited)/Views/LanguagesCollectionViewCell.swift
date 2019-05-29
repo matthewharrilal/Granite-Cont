@@ -11,11 +11,13 @@ import UIKit
 
 class LanguagesCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var languageName: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,6 +26,12 @@ class LanguagesCollectionViewCell: UICollectionViewCell {
     
     func commonInit() {
         Bundle.main.loadNibNamed("LanguagesCollectionViewCell", owner: self, options: nil)
-        addSubviews(views: languageName, imageView)
+
+        containerView.addSubviews(views: imageView, languageName)
+        addSubview(containerView)
+        
+        containerView.anchorSize(toView: self)
+        imageView.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: languageName.topAnchor, trailing: containerView.trailingAnchor)
+        languageName.anchor(top: imageView.bottomAnchor, leading: containerView.leadingAnchor, bottom: containerView.bottomAnchor, trailing: containerView.trailingAnchor)
     }
 }

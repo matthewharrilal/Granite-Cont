@@ -32,6 +32,7 @@ class SecondOnboardingScreen: UIView, UICollectionViewDataSource, UICollectionVi
         
         collectionView.register(LanguagesCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         addSubviews(views: preferredLanguageLabel, descriptionLabel, collectionView)
+//        collectionView?.contentInset = UIEdgeInsets(top: 23, left: 16, bottom: 10, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -44,7 +45,7 @@ class SecondOnboardingScreen: UIView, UICollectionViewDataSource, UICollectionVi
         cell.imageView.image = #imageLiteral(resourceName: "lorem")
         return cell
     }
-    
+//
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
         return CGSize(width: itemSize, height: itemSize)

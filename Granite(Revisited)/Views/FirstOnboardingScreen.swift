@@ -113,7 +113,7 @@ class FirstOnboardingScreen: UIView {
         imageView.centerInSuperview()
         
         addSubview(transitionButton)
-                
+        
     }
     
     func applyTransformation(withButton button: UIButton) {
@@ -123,50 +123,7 @@ class FirstOnboardingScreen: UIView {
         }
     }
     
-    @objc func handleTap(sender: UIButton ) {
-        print("Transition Button Being Tapped")
-        
-        // MARK: TODO Make this view the next onboarding screen and EACH VIEW WILL HAVE ITS OWN HANDLE TAP METHOD
-        let view = SecondOnboardingScreen(frame: self.bounds)
-        
-        // MARK: TODO Add the next pair of custom views
-        view.backgroundColor = .white
-        view.alpha = 0.0
-        self.addSubview(view)
-        
-        // MARK
-        UIView.animateKeyframes(withDuration: 2.5, delay: 0.0, options: .calculationModeCubic, animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1, animations: {
-                self.welcomeLabel.alpha = 0.0
-                self.descriptionLabel.alpha = 0.0
-                self.animationView.alpha = 0.0
-                
-//                self.transitionButton.layer.removeAllAnimations()
-        
-            })
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
-                self.transitionButton.alpha = 0.0
-            })
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.transformViews(views: self.welcomeLabel, self.descriptionLabel, self.animationView)
-            })
-            
-            UIView.addKeyframe(withRelativeStartTime: 1.5, relativeDuration: 1, animations: {
-                view.alpha = 1.0
-            })
-        
-        }) { (_) in
-            self.removeChildViews(views: self.welcomeLabel, self.descriptionLabel, self.transitionButton)
-            view.addSubview(self.transitionButton)
-            
-            UIView.animate(withDuration: 1.0, animations: {
-                self.transitionButton.alpha = 1.0
-            })
-        }
-        
-    }
+   
     
     func configureAnimation() {
         
