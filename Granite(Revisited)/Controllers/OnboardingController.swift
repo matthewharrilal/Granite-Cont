@@ -41,12 +41,12 @@ class OnboardingController: UIViewController {
         print("Transition Button Being Tapped")
         
         // MARK: TODO Make this view the next onboarding screen and EACH VIEW WILL HAVE ITS OWN HANDLE TAP METHOD
-        let view = SecondOnboardingScreen(frame: self.view.bounds)
+        secondOnboardingScreen = SecondOnboardingScreen(frame: self.view.bounds)
         
         // MARK: TODO Add the next pair of custom views
-        view.backgroundColor = .white
-        view.alpha = 0.0
-        self.view.addSubview(view)
+        secondOnboardingScreen.backgroundColor = .white
+        secondOnboardingScreen.alpha = 0.0
+        self.view.addSubview(secondOnboardingScreen)
         
         
         // MARK
@@ -69,12 +69,13 @@ class OnboardingController: UIViewController {
             })
             
             UIView.addKeyframe(withRelativeStartTime: 1.5, relativeDuration: 1, animations: {
-                view.alpha = 1.0
+                self.secondOnboardingScreen.alpha = 1.0
             })
             
         }) { (_) in
             self.firstOnboardingScreen.removeChildViews(views: self.firstOnboardingScreen.welcomeLabel, self.firstOnboardingScreen.descriptionLabel, self.firstOnboardingScreen.transitionButton)
-            self.firstOnboardingScreen.addSubview(self.firstOnboardingScreen.transitionButton)
+            
+            self.secondOnboardingScreen.addSubview(self.firstOnboardingScreen.transitionButton)
             
             UIView.animate(withDuration: 1.0, animations: {
                 self.firstOnboardingScreen.transitionButton.alpha = 1.0

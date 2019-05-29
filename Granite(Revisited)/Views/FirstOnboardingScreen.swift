@@ -123,8 +123,6 @@ class FirstOnboardingScreen: UIView {
         }
     }
     
-   
-    
     func configureAnimation() {
         
         animationView = LOTAnimationView(name: "success")
