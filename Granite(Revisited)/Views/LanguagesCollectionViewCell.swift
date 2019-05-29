@@ -30,8 +30,16 @@ class LanguagesCollectionViewCell: UICollectionViewCell {
         containerView.addSubviews(views: imageView, languageName)
         addSubview(containerView)
         
+        containerView.layer.cornerRadius = 20
+        
         containerView.anchorSize(toView: self)
-        imageView.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: languageName.topAnchor, trailing: containerView.trailingAnchor)
-        languageName.anchor(top: imageView.bottomAnchor, leading: containerView.leadingAnchor, bottom: containerView.bottomAnchor, trailing: containerView.trailingAnchor)
+        containerView.backgroundColor = .red
+        imageView.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: languageName.topAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 10, left: 0, bottom: -5, right: 0))
+        imageView.constrainWidth(withWidth: containerView.frame.width)
+        imageView.constrainHeight(withHeight: containerView.frame.height / 3)
+        
+        languageName.anchor(top: imageView.bottomAnchor, leading: containerView.leadingAnchor, bottom: containerView.safeAreaLayoutGuide.bottomAnchor, trailing: containerView.trailingAnchor)
+        languageName.constrainWidth(withWidth: containerView.frame.width)
+        languageName.constrainHeight(withHeight: containerView.frame.height / 2)
     }
 }
