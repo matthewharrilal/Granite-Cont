@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class SecondOnboardingScreen: UIView {
+class SecondOnboardingScreen: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var preferredLanguageLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,12 +27,27 @@ class SecondOnboardingScreen: UIView {
     
     fileprivate func commonInit() {
         Bundle.main.loadNibNamed("SecondOnboardingScreen", owner: self, options: nil)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorStyle = .none
-        tableView.register(LanguagesTableViewCell.self, forCellReuseIdentifier: "cell")
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
-        addSubviews(views: preferredLanguageLabel, descriptionLabel, tableView)
+        collectionView.register(LanguagesCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        addSubviews(views: preferredLanguageLabel, descriptionLabel, collectionView)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LanguagesCollectionViewCell
+        cell.languageName.text = "Swift"
+        cell.imageView.image = #imageLiteral(resourceName: "lorem")
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
+        return CGSize(width: itemSize, height: itemSize)
     }
 }
 

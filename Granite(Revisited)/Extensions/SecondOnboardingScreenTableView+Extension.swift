@@ -11,14 +11,19 @@ import UIKit
 
 extension SecondOnboardingScreen: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? LanguagesTableViewCell {
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        return UITableViewCell()
+        
+        return cell
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return .init(100)
     }
 }

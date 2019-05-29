@@ -41,9 +41,9 @@
 		1C83F4782280C64800BEA884 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F4772280C64800BEA884 /* UIView+Layout.swift */; };
 		1CA0F7CC229DF2C700089583 /* SecondOnboardingScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA0F7CB229DF2C700089583 /* SecondOnboardingScreen.xib */; };
 		1CA0F7CE229DF2D600089583 /* SecondOnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7CD229DF2D600089583 /* SecondOnboardingScreen.swift */; };
-		1CA0F7D4229DF90600089583 /* LanguagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7D3229DF90600089583 /* LanguagesTableViewCell.swift */; };
-		1CA0F7D6229E054B00089583 /* LanguagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7D5229E054B00089583 /* LanguagesCollectionViewCell.swift */; };
 		1CA0F7D8229E110900089583 /* SecondOnboardingScreenTableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7D7229E110900089583 /* SecondOnboardingScreenTableView+Extension.swift */; };
+		1CA0F7E0229EDA8800089583 /* LanguagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA0F7DF229EDA8800089583 /* LanguagesCollectionViewCell.xib */; };
+		1CA0F7E2229EDB3A00089583 /* LanguagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7E1229EDB3A00089583 /* LanguagesCollectionViewCell.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
 		1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */; };
 		1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A62267874E0012DA75 /* Main.storyboard */; };
@@ -108,9 +108,9 @@
 		1C83F4772280C64800BEA884 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		1CA0F7CB229DF2C700089583 /* SecondOnboardingScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondOnboardingScreen.xib; sourceTree = "<group>"; };
 		1CA0F7CD229DF2D600089583 /* SecondOnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingScreen.swift; sourceTree = "<group>"; };
-		1CA0F7D3229DF90600089583 /* LanguagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewCell.swift; sourceTree = "<group>"; };
-		1CA0F7D5229E054B00089583 /* LanguagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		1CA0F7D7229E110900089583 /* SecondOnboardingScreenTableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondOnboardingScreenTableView+Extension.swift"; sourceTree = "<group>"; };
+		1CA0F7DF229EDA8800089583 /* LanguagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagesCollectionViewCell.xib; sourceTree = "<group>"; };
+		1CA0F7E1229EDB3A00089583 /* LanguagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCCC1A22267874E0012DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
@@ -332,8 +332,8 @@
 				1C6FCB3C228B34F5000BC75A /* FirstOnboardingScreen.swift */,
 				1CA0F7CB229DF2C700089583 /* SecondOnboardingScreen.xib */,
 				1CA0F7CD229DF2D600089583 /* SecondOnboardingScreen.swift */,
-				1CA0F7D3229DF90600089583 /* LanguagesTableViewCell.swift */,
-				1CA0F7D5229E054B00089583 /* LanguagesCollectionViewCell.swift */,
+				1CA0F7DF229EDA8800089583 /* LanguagesCollectionViewCell.xib */,
+				1CA0F7E1229EDB3A00089583 /* LanguagesCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,6 +465,7 @@
 				1C6FCB38228A1DB5000BC75A /* PlayfairDisplay-Regular.ttf in Resources */,
 				1CCCC1B0226787500012DA75 /* LaunchScreen.storyboard in Resources */,
 				1C326A482269AAC300E09F99 /* lock.json in Resources */,
+				1CA0F7E0229EDA8800089583 /* LanguagesCollectionViewCell.xib in Resources */,
 				1C4113A3228D0D9F00CBBCFB /* office.json in Resources */,
 				1CA0F7CC229DF2C700089583 /* SecondOnboardingScreen.xib in Resources */,
 				1C41139F228D03E600CBBCFB /* loading.json in Resources */,
@@ -577,14 +578,12 @@
 				1C75417C2268E6680038D0E1 /* LaunchScreenController+Extension.swift in Sources */,
 				1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */,
 				1C83F430227BCDE200BEA884 /* NetworkRouter.swift in Sources */,
-				1CA0F7D4229DF90600089583 /* LanguagesTableViewCell.swift in Sources */,
 				1CCCC1AB2267874E0012DA75 /* Granite_Revisited_.xcdatamodeld in Sources */,
 				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
 				1CA0F7CE229DF2D600089583 /* SecondOnboardingScreen.swift in Sources */,
 				1CA0F7D8229E110900089583 /* SecondOnboardingScreenTableView+Extension.swift in Sources */,
 				1C6FCB3F228B36D1000BC75A /* OnboardingController.swift in Sources */,
-				1CA0F7D6229E054B00089583 /* LanguagesCollectionViewCell.swift in Sources */,
 				1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */,
 				1C83F43A227BDB2800BEA884 /* UserAccess.swift in Sources */,
 				1C83F43E227CD0AD00BEA884 /* PulsatingButton.swift in Sources */,
@@ -596,6 +595,7 @@
 				1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */,
 				1C1AA4D8227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift in Sources */,
 				1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */,
+				1CA0F7E2229EDB3A00089583 /* LanguagesCollectionViewCell.swift in Sources */,
 				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,
 				1C83F434227BCEEB00BEA884 /* JSONParameterEncoder.swift in Sources */,
 				1CCCC1D3226797ED0012DA75 /* UIColor+Extension.swift in Sources */,

@@ -12,11 +12,13 @@ import UIKit
 class OnboardingController: UIViewController {
     
     var firstOnboardingScreen: FirstOnboardingScreen!
+    var secondOnboardingScreen: SecondOnboardingScreen!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         firstOnboardingScreen = FirstOnboardingScreen(frame: self.view.frame)
+        secondOnboardingScreen = SecondOnboardingScreen(frame: self.view.frame)
 
         firstOnboardingScreen.bounds = firstOnboardingScreen.frame
         self.view.addSubview(firstOnboardingScreen)
@@ -32,5 +34,6 @@ class OnboardingController: UIViewController {
         
         firstOnboardingScreen.createTransitionButton()
         firstOnboardingScreen.animateLabels()
+        firstOnboardingScreen.transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
     }
 }

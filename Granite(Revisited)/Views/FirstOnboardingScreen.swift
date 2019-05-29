@@ -113,9 +113,7 @@ class FirstOnboardingScreen: UIView {
         imageView.centerInSuperview()
         
         addSubview(transitionButton)
-        
-        transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
-        
+                
     }
     
     func applyTransformation(withButton button: UIButton) {
