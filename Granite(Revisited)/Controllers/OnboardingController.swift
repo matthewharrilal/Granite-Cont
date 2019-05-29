@@ -19,10 +19,10 @@ class OnboardingController: UIViewController {
         
         firstOnboardingScreen = FirstOnboardingScreen(frame: self.view.frame)
         secondOnboardingScreen = SecondOnboardingScreen(frame: self.view.frame)
-
+        
         firstOnboardingScreen.bounds = firstOnboardingScreen.frame
         self.view.addSubview(firstOnboardingScreen)
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,7 +75,9 @@ class OnboardingController: UIViewController {
         }) { (_) in
             self.firstOnboardingScreen.removeChildViews(views: self.firstOnboardingScreen.welcomeLabel, self.firstOnboardingScreen.descriptionLabel, self.firstOnboardingScreen.transitionButton)
             
+            
             self.secondOnboardingScreen.addSubview(self.firstOnboardingScreen.transitionButton)
+            
             
             UIView.animate(withDuration: 1.0, animations: {
                 self.firstOnboardingScreen.transitionButton.alpha = 1.0
