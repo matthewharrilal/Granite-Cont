@@ -32,7 +32,7 @@ class SecondOnboardingScreen: UIView {
         
         collectionView.register(LanguagesCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         addSubviews(views: preferredLanguageLabel, descriptionLabel, collectionView)
-        collectionView?.contentInset = UIEdgeInsets(top: 23, left: 16, bottom: 10, right: 16)
+        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
     }
 }
 
