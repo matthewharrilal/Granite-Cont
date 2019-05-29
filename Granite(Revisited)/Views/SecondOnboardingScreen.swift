@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class SecondOnboardingScreen: UIView {
+    
     @IBOutlet weak var preferredLanguageLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -26,6 +27,11 @@ class SecondOnboardingScreen: UIView {
     
     fileprivate func commonInit() {
         Bundle.main.loadNibNamed("SecondOnboardingScreen", owner: self, options: nil)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        tableView.register(LanguagesTableViewCell.self, forCellReuseIdentifier: "cell")
+        
         addSubviews(views: preferredLanguageLabel, descriptionLabel, tableView)
     }
 }
