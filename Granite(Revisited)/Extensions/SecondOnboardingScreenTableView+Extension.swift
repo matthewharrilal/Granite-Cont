@@ -28,5 +28,14 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //
+        guard let cell = collectionView.cellForItem(at: indexPath) as? LanguagesCollectionViewCell else {return}
+        print("Tapping on collection view cell")
+        
+        UIView.animate(withDuration: 0.50) {
+            cell.containerView.backgroundColor = .blue
+            cell.languageName.textColor = .white
+        }
+        
+        
     }
 }
