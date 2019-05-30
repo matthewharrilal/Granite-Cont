@@ -80,6 +80,9 @@ class OnboardingController: UIViewController {
             
             
             UIView.animate(withDuration: 1.0, animations: {
+                self.secondOnboardingScreen.preferredLanguageLabel.alpha = 1.0
+                self.secondOnboardingScreen.descriptionLabel.alpha = 1.0
+                self.secondOnboardingScreen.collectionView.alpha = 1.0
                 self.firstOnboardingScreen.transitionButton.alpha = 1.0
             })
         }

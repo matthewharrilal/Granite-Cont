@@ -44,6 +44,7 @@
 		1CA0F7D8229E110900089583 /* SecondOnboardingScreenTableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7D7229E110900089583 /* SecondOnboardingScreenTableView+Extension.swift */; };
 		1CA0F7E0229EDA8800089583 /* LanguagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA0F7DF229EDA8800089583 /* LanguagesCollectionViewCell.xib */; };
 		1CA0F7E2229EDB3A00089583 /* LanguagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7E1229EDB3A00089583 /* LanguagesCollectionViewCell.swift */; };
+		1CA0F7E4229F0D1E00089583 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7E3229F0D1E00089583 /* HelperFunctions.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
 		1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */; };
 		1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A62267874E0012DA75 /* Main.storyboard */; };
@@ -111,6 +112,7 @@
 		1CA0F7D7229E110900089583 /* SecondOnboardingScreenTableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondOnboardingScreenTableView+Extension.swift"; sourceTree = "<group>"; };
 		1CA0F7DF229EDA8800089583 /* LanguagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		1CA0F7E1229EDB3A00089583 /* LanguagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		1CA0F7E3229F0D1E00089583 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCCC1A22267874E0012DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				1C83F43B227BE03100BEA884 /* HTTPMethods.swift */,
 				1C83F43D227CD0AD00BEA884 /* PulsatingButton.swift */,
 				1C83F4772280C64800BEA884 /* UIView+Layout.swift */,
+				1CA0F7E3229F0D1E00089583 /* HelperFunctions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */,
 				1C83F430227BCDE200BEA884 /* NetworkRouter.swift in Sources */,
 				1CCCC1AB2267874E0012DA75 /* Granite_Revisited_.xcdatamodeld in Sources */,
+				1CA0F7E4229F0D1E00089583 /* HelperFunctions.swift in Sources */,
 				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
 				1CA0F7CE229DF2D600089583 /* SecondOnboardingScreen.swift in Sources */,

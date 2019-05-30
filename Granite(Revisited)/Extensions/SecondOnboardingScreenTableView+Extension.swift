@@ -17,7 +17,8 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LanguagesCollectionViewCell
         cell.languageName.text = "Swift"
-        cell.imageView.image = #imageLiteral(resourceName: "lorem")
+//        let templateImage = #imageLiteral(resourceName: "swiftLogo").withRenderingMode(.alwaysTemplate)
+        cell.imageView.image = #imageLiteral(resourceName: "swiftLogo")
         return cell
     }
     //
@@ -31,11 +32,14 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
         guard let cell = collectionView.cellForItem(at: indexPath) as? LanguagesCollectionViewCell else {return}
         print("Tapping on collection view cell")
         
-        UIView.animate(withDuration: 0.50) {
-            cell.containerView.backgroundColor = .blue
-            cell.languageName.textColor = .white
+        UIView.animate(withDuration: 0.25) {
+            let color = cell.containerView.backgroundColor == UIColor.blue ? UIColor(hexString: "b4c5e4", alpha: 0.5) : UIColor.blue
+            let textColor = cell.languageName.textColor == UIColor.white ? UIColor.black: UIColor.white
+            let originalColor = cell.imageView.tintColor
+//            let tintColor = cell.imageView.tintColor == UIColor.white ? originalColor: UIColor.white
+//            cell.imageView.tintColor = tintColor
+            cell.containerView.backgroundColor = color
+            cell.languageName.textColor = textColor
         }
-        
-        
     }
 }

@@ -78,17 +78,6 @@ class FirstOnboardingScreen: UIView {
         }
     }
     
-    func createLabelSpacing(withLabelText labelText: String) -> NSMutableAttributedString {
-        let paragraph = NSMutableParagraphStyle()
-        paragraph.lineSpacing = 15
-        
-        let attributedString = NSMutableAttributedString(string: labelText)
-        
-        attributedString.addAttribute(.paragraphStyle, value: paragraph, range: NSMakeRange(0, attributedString.length))
-        
-        return attributedString
-    }
-    
     func createTransitionButton() {
         let frame = CGRect(x: self.center.x, y: self.frame.height * 0.88, width: 80, height: 80)
         
@@ -102,9 +91,11 @@ class FirstOnboardingScreen: UIView {
         
         transitionButton.center.x = self.center.x
         
-        let image = UIImage(named: "down")
+        let templateImage = #imageLiteral(resourceName: "down").withRenderingMode(.alwaysTemplate)
         
-        let imageView = UIImageView(image: image)
+        
+        let imageView = UIImageView(image: templateImage)
+        imageView.tintColor = .white
         
         transitionButton.addSubview(imageView)
         imageView.constrainHeight(withHeight: 40)

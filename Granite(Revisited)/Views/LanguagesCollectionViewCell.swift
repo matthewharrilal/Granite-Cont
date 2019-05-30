@@ -33,7 +33,7 @@ class LanguagesCollectionViewCell: UICollectionViewCell {
         containerView.layer.cornerRadius = 20
         
         containerView.anchorSize(toView: self)
-        containerView.backgroundColor = .red
+        containerView.backgroundColor = UIColor(hexString: "b4c5e4", alpha: 0.5)
         imageView.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: languageName.topAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 10, left: 0, bottom: -5, right: 0))
         imageView.constrainWidth(withWidth: containerView.frame.width)
         imageView.constrainHeight(withHeight: containerView.frame.height / 3)
