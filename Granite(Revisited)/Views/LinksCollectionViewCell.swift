@@ -32,12 +32,21 @@ class LinksCollectionViewCell: UICollectionViewCell {
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
         
-        linkName.constrainWidth(withWidth: self.frame.width / 2)
-        linkLogo.constrainWidth(withWidth: self.frame.width / 3)
+//        linkName.constrainWidth(withWidth: self.frame.width / 2)
+//        linkLogo.constrainWidth(withWidth: self.frame.width / 3)
         
-        containerView.addSubview(stackView)
+//        containerView.addSubview(stackView)
         
-        stackView.anchorSize(toView: containerView)
+//        containerView.backgroundColor = .blue
+        
+//        stackView.backgroundColor = .red
+        
+//        stackView.anchorSize(toView: containerView)
         containerView.anchorSize(toView: self)
+        containerView.constrainHeight(withHeight: self.frame.height)
+        
+        containerView.addSubview(linkName)
+        
+        linkName.centerInSuperview()
     }
 }
