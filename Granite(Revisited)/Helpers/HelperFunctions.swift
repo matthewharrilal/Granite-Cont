@@ -54,6 +54,11 @@ func createTransitionButton(withView view: UIView) -> UIButton {
     
 }
 
+func removeChildViews(views: UIView...) {
+    views.forEach { (view) in
+        view.removeFromSuperview()
+    }
+}
 
 func applyTransformation(withButton button: UIButton) {
     UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {

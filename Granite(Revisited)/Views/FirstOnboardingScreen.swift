@@ -95,12 +95,6 @@ class FirstOnboardingScreen: UIView {
         animationView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 20, bottom: -20, right: -20))
     }
     
-    func removeChildViews(views: UIView...) {
-        views.forEach { (view) in
-            view.removeFromSuperview()
-        }
-    }
-    
     func transformViews(views: UIView...) {
         views.forEach { (view) in
             view.transform = CGAffineTransform(translationX: 0, y: -self.frame.maxY)

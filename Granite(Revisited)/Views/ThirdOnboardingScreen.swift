@@ -13,13 +13,16 @@ class ThirdOnboardingScreen: UIView {
     @IBOutlet weak var moreAboutYourself: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    var transitionButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError()
+        super.init(coder: aDecoder)
+        commonInit()
     }
     
     func commonInit() {
@@ -30,6 +33,9 @@ class ThirdOnboardingScreen: UIView {
         moreAboutYourself.text =  "Tell us more about yourself"
         descriptionLabel.text = "Provide some useful links to help developers get to know you better"
         
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .red
         collectionView.register(LinksCollectionViewCell.self, forCellWithReuseIdentifier: "linkCell")
     }
 }

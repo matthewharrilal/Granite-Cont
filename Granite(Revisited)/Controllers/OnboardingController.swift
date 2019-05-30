@@ -75,7 +75,8 @@ class OnboardingController: UIViewController {
             })
             
         }) { (_) in
-            self.firstOnboardingScreen.removeChildViews(views: self.firstOnboardingScreen.welcomeLabel, self.firstOnboardingScreen.descriptionLabel, self.firstOnboardingScreen.transitionButton)
+            removeChildViews(views: self.firstOnboardingScreen.welcomeLabel, self.firstOnboardingScreen.descriptionLabel, self.firstOnboardingScreen.transitionButton)
+            
             applyTransformation(withButton: self.secondOnboardingScreen.transitionButton)
             
             UIView.animate(withDuration: 1.0, animations: {

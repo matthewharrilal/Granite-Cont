@@ -26,7 +26,6 @@ class SecondOnboardingScreen: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
     }
     
     fileprivate func commonInit() {
@@ -45,11 +44,18 @@ class SecondOnboardingScreen: UIView {
         self.transitionButton.alpha = 0.0
         addSubviews(views: preferredLanguageLabel, descriptionLabel, collectionView)
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        transitionButton.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        self.transitionButton.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
     }
     
     @objc func handleTap() {
         print(self.languageSet)
+        removeChildViews(views: self.preferredLanguageLabel, self.descriptionLabel, self.transitionButton, self.collectionView)
+        let thirdOnboardingScreen = ThirdOnboardingScreen(frame: self.frame)
+        
+        self.addSubview(thirdOnboardingScreen)
+        thirdOnboardingScreen.transitionButton = createTransitionButton(withView: thirdOnboardingScreen)
+        applyTransformation(withButton: thirdOnboardingScreen.transitionButton)
     }
+   
 }
 
