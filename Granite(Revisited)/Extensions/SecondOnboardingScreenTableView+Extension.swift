@@ -29,13 +29,23 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //
-        guard let cell = collectionView.cellForItem(at: indexPath) as? LanguagesCollectionViewCell else {return}
+        guard let cell = collectionView.cellForItem(at: indexPath) as? LanguagesCollectionViewCell,
+            let text = cell.languageName.text
+            else {return}
         print("Tapping on collection view cell")
+        
+        if self.languageSet.contains(text) {
+            self.languageSet.remove(text)
+        }
+        
+        else {
+            self.languageSet.insert(text)
+        }
         
         UIView.animate(withDuration: 0.25) {
             let color = cell.containerView.backgroundColor == UIColor.blue ? UIColor(hexString: "b4c5e4", alpha: 0.5) : UIColor.blue
             let textColor = cell.languageName.textColor == UIColor.white ? UIColor.black: UIColor.white
-
+            
             cell.containerView.backgroundColor = color
             cell.languageName.textColor = textColor
         }

@@ -16,7 +16,7 @@ class SecondOnboardingScreen: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     var transitionButton: UIButton!
     
-    
+    lazy var languageSet = Set<String>()
     var languagesArray: [(UIImage, String)] = [(#imageLiteral(resourceName: "javascript"), "Javascript"), (#imageLiteral(resourceName: "go"), "Golang"), (#imageLiteral(resourceName: "python"), "Python"), (#imageLiteral(resourceName: "ruby"),"Ruby"), (#imageLiteral(resourceName: "c"), "C++"), (#imageLiteral(resourceName: "java"), "Java"), (#imageLiteral(resourceName: "rust"), "Rust"), (#imageLiteral(resourceName: "php"), "PHP"), (#imageLiteral(resourceName: "swift"), "Swift") ]
     
     override init(frame: CGRect) {
@@ -41,9 +41,15 @@ class SecondOnboardingScreen: UIView {
         preferredLanguageLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         descriptionLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 17)
 //
-        
+        self.transitionButton = createTransitionButton(withView: self)
+        self.transitionButton.alpha = 0.0
         addSubviews(views: preferredLanguageLabel, descriptionLabel, collectionView)
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        transitionButton.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+    }
+    
+    @objc func handleTap() {
+        print(self.languageSet)
     }
 }
 

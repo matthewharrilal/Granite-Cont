@@ -50,6 +50,7 @@ class OnboardingController: UIViewController {
         self.view.addSubview(secondOnboardingScreen)
         
         
+        
         // MARK
         UIView.animateKeyframes(withDuration: 2.5, delay: 0.0, options: .calculationModeCubic, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1, animations: {
@@ -75,14 +76,13 @@ class OnboardingController: UIViewController {
             
         }) { (_) in
             self.firstOnboardingScreen.removeChildViews(views: self.firstOnboardingScreen.welcomeLabel, self.firstOnboardingScreen.descriptionLabel, self.firstOnboardingScreen.transitionButton)
-            self.secondOnboardingScreen.transitionButton = createTransitionButton(withView: self.secondOnboardingScreen)
             applyTransformation(withButton: self.secondOnboardingScreen.transitionButton)
             
             UIView.animate(withDuration: 1.0, animations: {
                 self.secondOnboardingScreen.preferredLanguageLabel.alpha = 1.0
                 self.secondOnboardingScreen.descriptionLabel.alpha = 1.0
                 self.secondOnboardingScreen.collectionView.alpha = 1.0
-                self.firstOnboardingScreen.transitionButton.alpha = 1.0
+                self.secondOnboardingScreen.transitionButton.alpha = 1.0
             })
         }
         
