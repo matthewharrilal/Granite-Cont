@@ -35,7 +35,7 @@ class ThirdOnboardingScreen: UIView {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .red
+//        collectionView.backgroundColor = .red
         collectionView.register(LinksCollectionViewCell.self, forCellWithReuseIdentifier: "linkCell")
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
     }

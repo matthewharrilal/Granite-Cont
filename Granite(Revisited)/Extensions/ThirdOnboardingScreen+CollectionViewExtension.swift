@@ -18,13 +18,19 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "linkCell", for: indexPath) as! LinksCollectionViewCell
         
+        cell.containerView.layer.cornerRadius = 20
+        cell.containerView.layer.masksToBounds = true
+        
         cell.linkName.text = "Medium"
-//        cell.linkLogo.image = #imageLiteral(resourceName: "downArrow")
-        cell.backgroundColor = .lightGray
+        //        cell.linkLogo.image = #imageLiteral(resourceName: "downArrow")
+//        cell.backgroundColor = .lightGray
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        
+        
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
         }

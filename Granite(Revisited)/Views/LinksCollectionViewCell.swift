@@ -25,7 +25,7 @@ class LinksCollectionViewCell: UICollectionViewCell {
     
     func commonInit() {
         Bundle.main.loadNibNamed("LinksCollectionViewCell", owner: self, options: nil)
-        addSubview(containerView)
+        self.contentView.addSubview(containerView)
         
         let stackView = UIStackView(arrangedSubviews: [linkName, linkLogo])
         
@@ -42,11 +42,20 @@ class LinksCollectionViewCell: UICollectionViewCell {
 //        stackView.backgroundColor = .red
         
 //        stackView.anchorSize(toView: containerView)
-        containerView.anchorSize(toView: self)
+        containerView.layer.cornerRadius = 20
+        containerView.layer.masksToBounds = true
+        
+        containerView.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: self.safeAreaLayoutGuide.bottomAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 10, bottom: -10, right: -10))
+        
         containerView.constrainHeight(withHeight: self.frame.height)
         
         containerView.addSubview(linkName)
         
+        
+        
+        containerView.backgroundColor = .yellow
+                
         linkName.centerInSuperview()
+        
     }
 }
