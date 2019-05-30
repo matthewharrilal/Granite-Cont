@@ -60,7 +60,8 @@ class LinksCollectionViewCell: UICollectionViewCell {
         
         // Have constraints on positioning now constrain widths
         linkName.constrainWidth(withWidth: self.frame.width / 2)
-        linkLogo.constrainWidth(withWidth: self.frame.width / 2)
+        linkLogo.constrainWidth(withWidth: self.frame.width / 3)
+        linkLogo.constrainHeight(withHeight: self.frame.height - 10)
         
         containerView.backgroundColor = .yellow
         

@@ -12,7 +12,7 @@ import UIKit
 extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return self.imageToColor.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -21,8 +21,13 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         cell.containerView.layer.cornerRadius = 20
         cell.containerView.layer.masksToBounds = true
         
-        cell.linkName.text = "eantrjhtpierutiouhteoriuthoieruhtoieurht"
-        cell.linkLogo.image = #imageLiteral(resourceName: "rust")
+        cell.linkName.text = self.imageName[indexPath.row]
+        cell.linkName.textColor = .white
+        
+        cell.linkLogo.image = self.imageToColor[indexPath.row].0
+        cell.containerView.backgroundColor = self.imageToColor[indexPath.row].1
+        
+        cell.linkLogo.contentMode = .scaleAspectFit
 
         return cell
     }
@@ -34,7 +39,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             layout.scrollDirection = .vertical
         }
         
-        return .init(width: self.frame.width, height: 100)
+        return .init(width: self.frame.width, height: 120)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

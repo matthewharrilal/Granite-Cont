@@ -14,10 +14,13 @@ class ThirdOnboardingScreen: UIView {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     var transitionButton: UIButton!
+    var imageToColor:[(UIImage, UIColor)] = [(#imageLiteral(resourceName: "mediumLogo"), .black), (#imageLiteral(resourceName: "githubLogo"), .lightGray), (#imageLiteral(resourceName: "twitterLogo"), .green)]
+    var imageName: [String] = ["Medium", "Github", "Twitter"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +40,7 @@ class ThirdOnboardingScreen: UIView {
         collectionView.dataSource = self
 //        collectionView.backgroundColor = .red
         collectionView.register(LinksCollectionViewCell.self, forCellWithReuseIdentifier: "linkCell")
-        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        collectionView?.contentInset = UIEdgeInsets(top: 40, left: 16, bottom: 10, right: 16)
     }
 }
 
