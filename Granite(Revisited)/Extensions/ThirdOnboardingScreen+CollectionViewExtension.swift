@@ -21,21 +21,20 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         cell.containerView.layer.cornerRadius = 20
         cell.containerView.layer.masksToBounds = true
         
-        cell.linkName.text = "Medium"
-        //        cell.linkLogo.image = #imageLiteral(resourceName: "downArrow")
-//        cell.backgroundColor = .lightGray
+        cell.linkName.text = "eantrjhtpierutiouhteoriuthoieruhtoieurht"
+        cell.linkLogo.image = #imageLiteral(resourceName: "rust")
+
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         
-        
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
         }
         
-        return .init(width: self.frame.width, height: 50)
+        return .init(width: self.frame.width, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

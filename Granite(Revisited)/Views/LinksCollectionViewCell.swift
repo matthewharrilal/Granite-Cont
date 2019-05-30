@@ -25,23 +25,22 @@ class LinksCollectionViewCell: UICollectionViewCell {
     
     func commonInit() {
         Bundle.main.loadNibNamed("LinksCollectionViewCell", owner: self, options: nil)
-        self.contentView.addSubview(containerView)
+        self.addSubview(containerView)
         
         let stackView = UIStackView(arrangedSubviews: [linkName, linkLogo])
         
         stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         
-//        linkName.constrainWidth(withWidth: self.frame.width / 2)
-//        linkLogo.constrainWidth(withWidth: self.frame.width / 3)
+        stackView.alignment = .center
         
-//        containerView.addSubview(stackView)
+        containerView.addSubview(stackView)
+
+        stackView.anchorSize(toView: containerView)
+        stackView.frame = containerView.frame
         
-//        containerView.backgroundColor = .blue
         
-//        stackView.backgroundColor = .red
         
-//        stackView.anchorSize(toView: containerView)
         containerView.layer.cornerRadius = 20
         containerView.layer.masksToBounds = true
         
@@ -49,13 +48,21 @@ class LinksCollectionViewCell: UICollectionViewCell {
         
         containerView.constrainHeight(withHeight: self.frame.height)
         
-        containerView.addSubview(linkName)
+        containerView.addSubviews(views: linkName, linkLogo)
         
         
+//        linkName.constrainWidth(withWidth: containerView.frame.width / 2)
+//        linkLogo.constrainWidth(withWidth: containerView.frame.width / 3)
+        
+        linkName.anchor(top: containerView.safeAreaLayoutGuide.topAnchor, leading: containerView.safeAreaLayoutGuide.leadingAnchor, bottom: containerView.safeAreaLayoutGuide.bottomAnchor, trailing: linkLogo.safeAreaLayoutGuide.leadingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 0))
+        
+        linkLogo.anchor(top: containerView.safeAreaLayoutGuide.topAnchor, leading: linkName.safeAreaLayoutGuide.trailingAnchor, bottom: containerView.safeAreaLayoutGuide.bottomAnchor, trailing: containerView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 0))
+        
+        // Have constraints on positioning now constrain widths
+        linkName.constrainWidth(withWidth: self.frame.width / 2)
+        linkLogo.constrainWidth(withWidth: self.frame.width / 2)
         
         containerView.backgroundColor = .yellow
-                
-        linkName.centerInSuperview()
         
     }
 }
