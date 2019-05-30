@@ -11,19 +11,18 @@ import UIKit
 
 extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return languagesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LanguagesCollectionViewCell
-        cell.languageName.text = "Swift"
-//        let templateImage = #imageLiteral(resourceName: "swiftLogo").withRenderingMode(.alwaysTemplate)
-        cell.imageView.image = #imageLiteral(resourceName: "swiftLogo")
+        cell.languageName.text = languagesArray[indexPath.row].1
+        cell.imageView.image = languagesArray[indexPath.row].0
         return cell
     }
     //
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 20)) / 2
+        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 30)) / 2
         return CGSize(width: itemSize, height: itemSize)
     }
     
@@ -35,9 +34,7 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
         UIView.animate(withDuration: 0.25) {
             let color = cell.containerView.backgroundColor == UIColor.blue ? UIColor(hexString: "b4c5e4", alpha: 0.5) : UIColor.blue
             let textColor = cell.languageName.textColor == UIColor.white ? UIColor.black: UIColor.white
-            let originalColor = cell.imageView.tintColor
-//            let tintColor = cell.imageView.tintColor == UIColor.white ? originalColor: UIColor.white
-//            cell.imageView.tintColor = tintColor
+
             cell.containerView.backgroundColor = color
             cell.languageName.textColor = textColor
         }
