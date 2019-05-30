@@ -23,6 +23,9 @@ class OnboardingController: UIViewController {
         firstOnboardingScreen.bounds = firstOnboardingScreen.frame
         self.view.addSubview(firstOnboardingScreen)
         
+        firstOnboardingScreen.animateLabels()
+        firstOnboardingScreen.transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,9 +35,7 @@ class OnboardingController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        firstOnboardingScreen.createTransitionButton()
-        firstOnboardingScreen.animateLabels()
-        firstOnboardingScreen.transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
+        
     }
     
     @objc func handleTap(sender: UIButton ) {
@@ -74,10 +75,8 @@ class OnboardingController: UIViewController {
             
         }) { (_) in
             self.firstOnboardingScreen.removeChildViews(views: self.firstOnboardingScreen.welcomeLabel, self.firstOnboardingScreen.descriptionLabel, self.firstOnboardingScreen.transitionButton)
-            
-            
-            self.secondOnboardingScreen.addSubview(self.firstOnboardingScreen.transitionButton)
-            
+            self.secondOnboardingScreen.transitionButton = createTransitionButton(withView: self.secondOnboardingScreen)
+            applyTransformation(withButton: self.secondOnboardingScreen.transitionButton)
             
             UIView.animate(withDuration: 1.0, animations: {
                 self.secondOnboardingScreen.preferredLanguageLabel.alpha = 1.0

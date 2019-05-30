@@ -18,7 +18,7 @@ class FirstOnboardingScreen: UIView {
     lazy var shapeLayer = CAShapeLayer()
     var animationView: LOTAnimationView!
     
-    lazy var transitionButton = UIButton()
+    var transitionButton: UIButton!
     
     
     override init(frame: CGRect) {
@@ -35,6 +35,8 @@ class FirstOnboardingScreen: UIView {
         self.addSubviews(views: welcomeLabel, descriptionLabel)
         self.backgroundColor = .white
         
+        self.transitionButton = createTransitionButton(withView: self)
+        
         welcomeLabel.text = "Welcome to Granite"
         
         let descriptionText = createLabelSpacing(withLabelText: "Before we connect you with other developers, we have a few questions that will help improve your experience")
@@ -49,7 +51,7 @@ class FirstOnboardingScreen: UIView {
         descriptionLabel.alpha = 0.0
         transitionButton.alpha = 0.0
         
-        //        createTransitionButton()
+        
         
         
         descriptionLabel.numberOfLines = 0
@@ -74,45 +76,10 @@ class FirstOnboardingScreen: UIView {
             })
         }) { (_) in
             self.configureAnimation()
-            self.applyTransformation(withButton: self.transitionButton)
+            applyTransformation(withButton: self.transitionButton)
         }
     }
     
-    func createTransitionButton() {
-        let frame = CGRect(x: self.center.x, y: self.frame.height * 0.88, width: 80, height: 80)
-        
-        transitionButton.frame = frame
-        
-        transitionButton.layer.cornerRadius = transitionButton.frame.height / 2
-        transitionButton.setTitle("", for: .normal)
-        transitionButton.backgroundColor = UIColor(hexString: "585b6d")
-        //        transitionButton.backgroundColor = UIColor(hexString: "919098")
-        
-        
-        transitionButton.center.x = self.center.x
-        
-        let templateImage = #imageLiteral(resourceName: "down").withRenderingMode(.alwaysTemplate)
-        
-        
-        let imageView = UIImageView(image: templateImage)
-        imageView.tintColor = .white
-        
-        transitionButton.addSubview(imageView)
-        imageView.constrainHeight(withHeight: 40)
-        imageView.constrainWidth(withWidth: 40)
-        
-        imageView.centerInSuperview()
-        
-        addSubview(transitionButton)
-        
-    }
-    
-    func applyTransformation(withButton button: UIButton) {
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
-            button.transform = CGAffineTransform(translationX: 0, y: -30)
-        }) { (_) in
-        }
-    }
     
     func configureAnimation() {
         
