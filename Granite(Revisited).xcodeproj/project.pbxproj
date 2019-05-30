@@ -45,6 +45,11 @@
 		1CA0F7E0229EDA8800089583 /* LanguagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA0F7DF229EDA8800089583 /* LanguagesCollectionViewCell.xib */; };
 		1CA0F7E2229EDB3A00089583 /* LanguagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7E1229EDB3A00089583 /* LanguagesCollectionViewCell.swift */; };
 		1CA0F7E4229F0D1E00089583 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7E3229F0D1E00089583 /* HelperFunctions.swift */; };
+		1CA0F7E622A07A0E00089583 /* ThirdOnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7E522A07A0E00089583 /* ThirdOnboardingScreen.swift */; };
+		1CA0F7E822A07A6400089583 /* ThirdOnboardingScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA0F7E722A07A6400089583 /* ThirdOnboardingScreen.xib */; };
+		1CA0F7EA22A07B9A00089583 /* LinksCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA0F7E922A07B9A00089583 /* LinksCollectionViewCell.xib */; };
+		1CA0F7EC22A07D8900089583 /* LinksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7EB22A07D8900089583 /* LinksCollectionViewCell.swift */; };
+		1CA0F7EE22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7ED22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
 		1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */; };
 		1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A62267874E0012DA75 /* Main.storyboard */; };
@@ -113,6 +118,11 @@
 		1CA0F7DF229EDA8800089583 /* LanguagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		1CA0F7E1229EDB3A00089583 /* LanguagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		1CA0F7E3229F0D1E00089583 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		1CA0F7E522A07A0E00089583 /* ThirdOnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingScreen.swift; sourceTree = "<group>"; };
+		1CA0F7E722A07A6400089583 /* ThirdOnboardingScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdOnboardingScreen.xib; sourceTree = "<group>"; };
+		1CA0F7E922A07B9A00089583 /* LinksCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinksCollectionViewCell.xib; sourceTree = "<group>"; };
+		1CA0F7EB22A07D8900089583 /* LinksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCollectionViewCell.swift; sourceTree = "<group>"; };
+		1CA0F7ED22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThirdOnboardingScreen+CollectionViewExtension.swift"; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCCC1A22267874E0012DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
@@ -337,6 +347,10 @@
 				1CA0F7CD229DF2D600089583 /* SecondOnboardingScreen.swift */,
 				1CA0F7DF229EDA8800089583 /* LanguagesCollectionViewCell.xib */,
 				1CA0F7E1229EDB3A00089583 /* LanguagesCollectionViewCell.swift */,
+				1CA0F7E522A07A0E00089583 /* ThirdOnboardingScreen.swift */,
+				1CA0F7E722A07A6400089583 /* ThirdOnboardingScreen.xib */,
+				1CA0F7E922A07B9A00089583 /* LinksCollectionViewCell.xib */,
+				1CA0F7EB22A07D8900089583 /* LinksCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -349,6 +363,7 @@
 				1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */,
 				1C226182227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift */,
 				1CA0F7D7229E110900089583 /* SecondOnboardingScreenTableView+Extension.swift */,
+				1CA0F7ED22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -465,6 +480,7 @@
 				1C6FCB37228A1DB5000BC75A /* PlayfairDisplay-Italic.ttf in Resources */,
 				1C6FCB3B228B34DE000BC75A /* FirstOnboardingScreen.xib in Resources */,
 				1C4113A1228D04D500CBBCFB /* success.json in Resources */,
+				1CA0F7EA22A07B9A00089583 /* LinksCollectionViewCell.xib in Resources */,
 				1C6FCB38228A1DB5000BC75A /* PlayfairDisplay-Regular.ttf in Resources */,
 				1CCCC1B0226787500012DA75 /* LaunchScreen.storyboard in Resources */,
 				1C326A482269AAC300E09F99 /* lock.json in Resources */,
@@ -473,6 +489,7 @@
 				1CA0F7CC229DF2C700089583 /* SecondOnboardingScreen.xib in Resources */,
 				1C41139F228D03E600CBBCFB /* loading.json in Resources */,
 				1CCCC1AD226787500012DA75 /* Assets.xcassets in Resources */,
+				1CA0F7E822A07A6400089583 /* ThirdOnboardingScreen.xib in Resources */,
 				1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */,
 				1C1AA4DA227A2EAA009802C5 /* lorem.jpg in Resources */,
 				1CCCC1D72267CD3F0012DA75 /* LoginView.xib in Resources */,
@@ -587,7 +604,9 @@
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
 				1CA0F7CE229DF2D600089583 /* SecondOnboardingScreen.swift in Sources */,
 				1CA0F7D8229E110900089583 /* SecondOnboardingScreenTableView+Extension.swift in Sources */,
+				1CA0F7EC22A07D8900089583 /* LinksCollectionViewCell.swift in Sources */,
 				1C6FCB3F228B36D1000BC75A /* OnboardingController.swift in Sources */,
+				1CA0F7E622A07A0E00089583 /* ThirdOnboardingScreen.swift in Sources */,
 				1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */,
 				1C83F43A227BDB2800BEA884 /* UserAccess.swift in Sources */,
 				1C83F43E227CD0AD00BEA884 /* PulsatingButton.swift in Sources */,
@@ -601,6 +620,7 @@
 				1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */,
 				1CA0F7E2229EDB3A00089583 /* LanguagesCollectionViewCell.swift in Sources */,
 				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,
+				1CA0F7EE22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift in Sources */,
 				1C83F434227BCEEB00BEA884 /* JSONParameterEncoder.swift in Sources */,
 				1CCCC1D3226797ED0012DA75 /* UIColor+Extension.swift in Sources */,
 				1C226186227AB0090072A638 /* User.swift in Sources */,
