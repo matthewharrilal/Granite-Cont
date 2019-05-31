@@ -70,7 +70,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         self.blurView.backgroundColor = cell.containerView.backgroundColor
         
         
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
             self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.frame.width / 1.3, height: self.frame.height / 2)
             self.redView.center = self.center
             self.blurView.alpha = 1.0

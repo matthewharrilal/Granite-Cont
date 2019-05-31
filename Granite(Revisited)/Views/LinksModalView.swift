@@ -12,10 +12,14 @@ import UIKit
 class LinksModalView: UIView {
     @IBOutlet weak var linkName: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var pleaseEnterLabel: UILabel!
+    @IBOutlet weak var usernameTextField: UITextField!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+        configureContainerView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,5 +44,15 @@ class LinksModalView: UIView {
         containerView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 75, left: 0, bottom: 0, right: 0))
         
         containerView.layer.cornerRadius = 20
+    }
+    
+    func configureContainerView() {
+        
+        self.containerView.addSubviews(views: logoImageView, pleaseEnterLabel, usernameTextField)
+        self.logoImageView.image = #imageLiteral(resourceName: "go")
+        
+        self.pleaseEnterLabel.text = "Please enter your username"
+        
+        self.usernameTextField.placeholder = "Username"
     }
 }

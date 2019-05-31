@@ -17,6 +17,10 @@ class OnboardingController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         firstOnboardingScreen = FirstOnboardingScreen(frame: self.view.frame)
         secondOnboardingScreen = SecondOnboardingScreen(frame: self.view.frame)
         
@@ -25,7 +29,7 @@ class OnboardingController: UIViewController {
         
         firstOnboardingScreen.animateLabels()
         firstOnboardingScreen.transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
-        
+        applyTransformation(withButton: firstOnboardingScreen.transitionButton)
     }
     
     override func didReceiveMemoryWarning() {

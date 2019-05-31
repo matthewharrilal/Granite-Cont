@@ -61,12 +61,14 @@ func removeChildViews(views: UIView...) {
 }
 
 func applyTransformation(withButton button: UIButton) {
+    print("ANIMATING TRANSITION BUTTON")
     button.transform = CGAffineTransform(translationX: 0, y: -30).scaledBy(x: 0.7, y: 0.7)
 //    button.frame.size =
-    
+    button.layer.shadowColor = UIColor.black.cgColor
+//    button.layer.shaw
     UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
         button.transform = .identity
     }) { (_) in
-        
+
     }
 }

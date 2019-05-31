@@ -63,7 +63,7 @@ class FirstOnboardingScreen: UIView {
     }
     
     func animateLabels() {
-        UIView.animateKeyframes(withDuration: 2.0, delay: 0.0, options: .calculationModeCubic, animations: {
+        UIView.animateKeyframes(withDuration: 0.7, delay: 0.0, options: .calculationModeCubic, animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1.0, animations: {
                 self.welcomeLabel.alpha = 1.0
@@ -76,7 +76,6 @@ class FirstOnboardingScreen: UIView {
             })
         }) { (_) in
             self.configureAnimation()
-            applyTransformation(withButton: self.transitionButton)
         }
     }
     

@@ -22,6 +22,7 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
         cell.imageView.image = languagesArray[indexPath.row].0
         cell.imageView.backgroundColor = .clear
         
+        
         return cell
     }
     //
@@ -46,7 +47,7 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
         }
         
         UIView.animate(withDuration: 0.25) {
-            let color = cell.containerView.backgroundColor == UIColor.blue ? UIColor(hexString: "b4c5e4", alpha: 0.5) : UIColor.blue
+            let color = cell.containerView.backgroundColor == UIColor(hexString: "4790e6") ? UIColor(hexString: "b4c5e4", alpha: 0.5) : UIColor(hexString: "4790e6")
             let textColor = cell.languageName.textColor == UIColor.white ? UIColor.black: UIColor.white
             
             cell.containerView.backgroundColor = color
