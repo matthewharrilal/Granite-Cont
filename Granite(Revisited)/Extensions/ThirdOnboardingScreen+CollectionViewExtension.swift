@@ -21,30 +21,31 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         cell.containerView.layer.cornerRadius = 25
         cell.containerView.layer.masksToBounds = true
-//
+        //
         cell.linkName.text = self.imageName[indexPath.row].0
         cell.linkName.textColor =  self.imageName[indexPath.row].1
-
+        
         cell.linkLogo.image = self.imageToColor[indexPath.row].0
         cell.containerView.backgroundColor = self.imageToColor[indexPath.row].1
         
         cell.linkLogo.contentMode = .scaleAspectFit
-
+        
+        cell.isExclusiveTouch = true
+        cell.containerView.isExclusiveTouch = true
+        
+        for child in cell.subviews {
+            child.isExclusiveTouch = true
+        }
+        
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: Fix Everytime view is instatiated new cell is being registered on top
-        if self.didTap == true {
-            return
-        }
-        else {
-            self.didTap = true
-        }
+        
         
         guard let cell = collectionView.cellForItem(at: indexPath) as? LinksCollectionViewCell else {return}
-        print("Link chosen \(cell.linkName.text)")
-        
         self.startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil)
         
         
@@ -71,26 +72,34 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             self.redView.center = self.center
             self.blurView.alpha = 1.0
             self.redView.alpha = 1.0
+            self.redView.linkName.constrainWidth(withWidth: self.redView.frame.width)
+            self.blurView.layoutIfNeeded()
             
         }) { (_) in
+            print("Selected \(cell.linkName.text)")
             print("")
+            
         }
+        
+        print("")
+        
     }
     
     @objc func dismissModal(sender: UITapGestureRecognizer) {
         guard let startingFrame = self.startingFrame else {return}
-        self.blurView.layer.cornerRadius = 20
         
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+        self.blurView.layer.cornerRadius = 20
+  
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             sender.view?.frame = startingFrame
-            self.blurView.frame = startingFrame
             self.blurView.alpha = 0.0
             sender.view?.alpha = 0.0
+            sender.view?.layoutIfNeeded()
+            self.layoutIfNeeded()
         }) { (_) in
-            print("")
             sender.view?.removeFromSuperview()
             self.blurView.removeFromSuperview()
-            self.didTap = false
+            
         }
         
     }

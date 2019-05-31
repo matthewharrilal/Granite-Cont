@@ -35,7 +35,9 @@ class LinksModalView: UIView {
         self.backgroundColor = .blue
         containerView.backgroundColor = .white
         
-        containerView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 50, left: 0, bottom: 0, right: 0))
+        linkName.constrainHeight(withHeight: self.frame.height - (self.frame.height - 75))
+        
+        containerView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 75, left: 0, bottom: 0, right: 0))
         
         containerView.layer.cornerRadius = 20
     }
