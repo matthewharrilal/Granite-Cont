@@ -39,8 +39,8 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         self.startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil)
         
-        let redView = UIView(frame: startingFrame!)
-        redView.backgroundColor = .red
+        let redView = LinksModalView(frame: startingFrame!)
+//        redView.backgroundColor = .red
         redView.layer.cornerRadius = 20
         
         redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
@@ -55,6 +55,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         self.blurView.alpha = 0.0
         redView.alpha = 0.0
         self.blurView.contentView.addSubview(redView)
+        self.blurView.backgroundColor = cell.containerView.backgroundColor
         
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             redView.frame = .init(x: self.center.x, y: self.center.y, width: self.frame.width / 1.5, height: self.frame.height / 2)

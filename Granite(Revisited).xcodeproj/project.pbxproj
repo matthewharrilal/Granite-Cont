@@ -51,6 +51,8 @@
 		1CA0F7EC22A07D8900089583 /* LinksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7EB22A07D8900089583 /* LinksCollectionViewCell.swift */; };
 		1CA0F7EE22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7ED22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift */; };
 		1CA0F7F022A082CC00089583 /* SecondOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7EF22A082CC00089583 /* SecondOnboardingController.swift */; };
+		1CA0F7F222A0BEFC00089583 /* LinksModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA0F7F122A0BEFC00089583 /* LinksModalView.xib */; };
+		1CA0F7F422A0BF0A00089583 /* LinksModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7F322A0BF0A00089583 /* LinksModalView.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
 		1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */; };
 		1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A62267874E0012DA75 /* Main.storyboard */; };
@@ -125,6 +127,8 @@
 		1CA0F7EB22A07D8900089583 /* LinksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCollectionViewCell.swift; sourceTree = "<group>"; };
 		1CA0F7ED22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThirdOnboardingScreen+CollectionViewExtension.swift"; sourceTree = "<group>"; };
 		1CA0F7EF22A082CC00089583 /* SecondOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingController.swift; sourceTree = "<group>"; };
+		1CA0F7F122A0BEFC00089583 /* LinksModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinksModalView.xib; sourceTree = "<group>"; };
+		1CA0F7F322A0BF0A00089583 /* LinksModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksModalView.swift; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCCC1A22267874E0012DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 				1CA0F7E722A07A6400089583 /* ThirdOnboardingScreen.xib */,
 				1CA0F7E922A07B9A00089583 /* LinksCollectionViewCell.xib */,
 				1CA0F7EB22A07D8900089583 /* LinksCollectionViewCell.swift */,
+				1CA0F7F122A0BEFC00089583 /* LinksModalView.xib */,
+				1CA0F7F322A0BF0A00089583 /* LinksModalView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -489,6 +495,7 @@
 				1C326A482269AAC300E09F99 /* lock.json in Resources */,
 				1CA0F7E0229EDA8800089583 /* LanguagesCollectionViewCell.xib in Resources */,
 				1C4113A3228D0D9F00CBBCFB /* office.json in Resources */,
+				1CA0F7F222A0BEFC00089583 /* LinksModalView.xib in Resources */,
 				1CA0F7CC229DF2C700089583 /* SecondOnboardingScreen.xib in Resources */,
 				1C41139F228D03E600CBBCFB /* loading.json in Resources */,
 				1CCCC1AD226787500012DA75 /* Assets.xcassets in Resources */,
@@ -602,6 +609,7 @@
 				1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */,
 				1C83F430227BCDE200BEA884 /* NetworkRouter.swift in Sources */,
 				1CCCC1AB2267874E0012DA75 /* Granite_Revisited_.xcdatamodeld in Sources */,
+				1CA0F7F422A0BF0A00089583 /* LinksModalView.swift in Sources */,
 				1CA0F7E4229F0D1E00089583 /* HelperFunctions.swift in Sources */,
 				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
