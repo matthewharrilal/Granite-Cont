@@ -32,6 +32,18 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? LinksCollectionViewCell else {return}
+        print("Link chosen \(cell.linkName.text)")
+        
+        guard let startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil) else {return}
+        
+        let redView = UIView(frame: startingFrame)
+        redView.backgroundColor = .red
+        
+        self.addSubview(redView)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         
