@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    // MARK: TODO Collection View shadow and cell shadow VERY SUBTLE ... LIGHTER BLUE ON SELECTED CELLS
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return languagesArray.count
     }

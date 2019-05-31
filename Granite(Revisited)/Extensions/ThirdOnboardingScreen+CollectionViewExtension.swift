@@ -34,16 +34,25 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // MARK: Fix Everytime view is instatiated new cell is being registered on top
+        if self.didTap == true {
+            return
+        }
+        else {
+            self.didTap = true
+        }
+        
         guard let cell = collectionView.cellForItem(at: indexPath) as? LinksCollectionViewCell else {return}
         print("Link chosen \(cell.linkName.text)")
         
         self.startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil)
         
-        let redView = LinksModalView(frame: startingFrame!)
-//        redView.backgroundColor = .red
-        redView.layer.cornerRadius = 20
         
-        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
+        self.redView.backgroundColor = .blue
+        self.redView.layer.cornerRadius = 20
+        
+        
+        self.redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
         
         
         // BLUR OUT Background
@@ -57,11 +66,11 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         self.blurView.contentView.addSubview(redView)
         self.blurView.backgroundColor = cell.containerView.backgroundColor
         
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            redView.frame = .init(x: self.center.x, y: self.center.y, width: self.frame.width / 1.5, height: self.frame.height / 2)
-            redView.center = self.center
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
+            self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.frame.width / 1.3, height: self.frame.height / 2)
+            self.redView.center = self.center
             self.blurView.alpha = 1.0
-            redView.alpha = 1.0
+            self.redView.alpha = 1.0
             
         }) { (_) in
             print("")
@@ -81,6 +90,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             print("")
             sender.view?.removeFromSuperview()
             self.blurView.removeFromSuperview()
+            self.didTap = false
         }
         
     }

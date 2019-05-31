@@ -23,10 +23,13 @@ class LinksModalView: UIView {
     }
     
     func commonInit() {
+        // MARK: TODO Add shadow to container view
         Bundle.main.loadNibNamed("LinksModalView", owner: self, options: nil)
         addSubviews(views: linkName, containerView)
         
         linkName.textAlignment = .center
+        
+        // MARK: TODO Translation in whole view's Y and alpha 0 initially
         
         containerView.frame = .init(x: self.center.x, y: self.center.y, width: self.frame.width, height: self.frame.height)
         self.backgroundColor = .blue

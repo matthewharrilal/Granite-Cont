@@ -18,6 +18,8 @@ class ThirdOnboardingScreen: UIView {
     var imageName: [(String, UIColor)] = [("Medium", .white), ("Github", .black), ("Twitter", .black)]
     var startingFrame: CGRect?
     var blurView: UIVisualEffectView!
+    var didTap = false
+    lazy var redView = LinksModalView(frame: startingFrame!)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
