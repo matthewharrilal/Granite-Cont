@@ -61,8 +61,12 @@ func removeChildViews(views: UIView...) {
 }
 
 func applyTransformation(withButton button: UIButton) {
+    button.transform = CGAffineTransform(translationX: 0, y: -30).scaledBy(x: 0.7, y: 0.7)
+//    button.frame.size =
+    
     UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
-        button.transform = CGAffineTransform(translationX: 0, y: -30)
+        button.transform = .identity
     }) { (_) in
+        
     }
 }

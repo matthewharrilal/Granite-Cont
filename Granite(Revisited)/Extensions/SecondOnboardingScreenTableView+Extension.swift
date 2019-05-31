@@ -21,6 +21,7 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
         cell.languageName.text = languagesArray[indexPath.row].1
         cell.imageView.image = languagesArray[indexPath.row].0
         cell.imageView.backgroundColor = .clear
+        
         return cell
     }
     //

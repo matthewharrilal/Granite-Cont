@@ -28,6 +28,8 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         cell.linkLogo.image = self.imageToColor[indexPath.row].0
         cell.containerView.backgroundColor = self.imageToColor[indexPath.row].1
         
+        cell.containerView.layer.masksToBounds = true
+        
         cell.linkLogo.contentMode = .scaleAspectFit
         
         cell.isExclusiveTouch = true
@@ -67,22 +69,19 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         self.blurView.contentView.addSubview(redView)
         self.blurView.backgroundColor = cell.containerView.backgroundColor
         
+        
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
             self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.frame.width / 1.3, height: self.frame.height / 2)
             self.redView.center = self.center
             self.blurView.alpha = 1.0
             self.redView.alpha = 1.0
             self.redView.linkName.constrainWidth(withWidth: self.redView.frame.width)
-            self.blurView.layoutIfNeeded()
             
         }) { (_) in
             print("Selected \(cell.linkName.text)")
             print("")
             
         }
-        
-        print("")
-        
     }
     
     @objc func dismissModal(sender: UITapGestureRecognizer) {
