@@ -16,6 +16,8 @@ class ThirdOnboardingScreen: UIView {
     var transitionButton: UIButton!
     var imageToColor:[(UIImage, UIColor)] = [(#imageLiteral(resourceName: "mediumLogo"), .black), (#imageLiteral(resourceName: "githubLogo"), .init(hexString: "ffe66d")), (#imageLiteral(resourceName: "twitterLogo"), .init(hexString: "dff2d8"))]
     var imageName: [(String, UIColor)] = [("Medium", .white), ("Github", .black), ("Twitter", .black)]
+    var startingFrame: CGRect?
+    var blurView: UIVisualEffectView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -11,6 +11,7 @@ import UIKit
 
 extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.imageToColor.count
     }
@@ -36,12 +37,51 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         guard let cell = collectionView.cellForItem(at: indexPath) as? LinksCollectionViewCell else {return}
         print("Link chosen \(cell.linkName.text)")
         
-        guard let startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil) else {return}
+        self.startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil)
         
-        let redView = UIView(frame: startingFrame)
+        let redView = UIView(frame: startingFrame!)
         redView.backgroundColor = .red
+        redView.layer.cornerRadius = 20
         
-        self.addSubview(redView)
+        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
+        
+        
+        // BLUR OUT Background
+        let blurEffect = UIBlurEffect(style: .prominent)
+        self.blurView = UIVisualEffectView(effect: blurEffect)
+        self.blurView.frame = self.frame
+        self.blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.addSubview(self.blurView)
+        self.blurView.alpha = 0.0
+        redView.alpha = 0.0
+        self.blurView.contentView.addSubview(redView)
+        
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            redView.frame = .init(x: self.center.x, y: self.center.y, width: self.frame.width / 1.5, height: self.frame.height / 2)
+            redView.center = self.center
+            self.blurView.alpha = 1.0
+            redView.alpha = 1.0
+            
+        }) { (_) in
+            print("")
+        }
+    }
+    
+    @objc func dismissModal(sender: UITapGestureRecognizer) {
+        guard let startingFrame = self.startingFrame else {return}
+        self.blurView.layer.cornerRadius = 20
+        
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            sender.view?.frame = startingFrame
+            self.blurView.frame = startingFrame
+            self.blurView.alpha = 0.0
+            sender.view?.alpha = 0.0
+        }) { (_) in
+            print("")
+            sender.view?.removeFromSuperview()
+            self.blurView.removeFromSuperview()
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
