@@ -14,8 +14,8 @@ class ThirdOnboardingScreen: UIView {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     var transitionButton: UIButton!
-    var imageToColor:[(UIImage, UIColor)] = [(#imageLiteral(resourceName: "mediumLogo"), .black), (#imageLiteral(resourceName: "githubLogo"), .lightGray), (#imageLiteral(resourceName: "twitterLogo"), .green)]
-    var imageName: [String] = ["Medium", "Github", "Twitter"]
+    var imageToColor:[(UIImage, UIColor)] = [(#imageLiteral(resourceName: "mediumLogo"), .black), (#imageLiteral(resourceName: "githubLogo"), .init(hexString: "ffe66d")), (#imageLiteral(resourceName: "twitterLogo"), .init(hexString: "dff2d8"))]
+    var imageName: [(String, UIColor)] = [("Medium", .white), ("Github", .black), ("Twitter", .black)]
     
     override init(frame: CGRect) {
         super.init(frame: frame)

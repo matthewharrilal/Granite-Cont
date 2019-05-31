@@ -38,13 +38,9 @@ class LinksCollectionViewCell: UICollectionViewCell {
 
         stackView.anchorSize(toView: containerView)
         stackView.frame = containerView.frame
+
         
-        
-        
-        containerView.layer.cornerRadius = 20
-        containerView.layer.masksToBounds = true
-        
-        containerView.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: self.safeAreaLayoutGuide.bottomAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 10, bottom: -10, right: -10))
+        containerView.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: self.safeAreaLayoutGuide.bottomAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 20, bottom: -10, right: -20))
         
         containerView.constrainHeight(withHeight: self.frame.height)
         

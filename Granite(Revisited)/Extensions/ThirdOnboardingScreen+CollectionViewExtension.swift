@@ -18,12 +18,12 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "linkCell", for: indexPath) as! LinksCollectionViewCell
         
-        cell.containerView.layer.cornerRadius = 20
+        cell.containerView.layer.cornerRadius = 25
         cell.containerView.layer.masksToBounds = true
-        
-        cell.linkName.text = self.imageName[indexPath.row]
-        cell.linkName.textColor = .white
-        
+//
+        cell.linkName.text = self.imageName[indexPath.row].0
+        cell.linkName.textColor =  self.imageName[indexPath.row].1
+
         cell.linkLogo.image = self.imageToColor[indexPath.row].0
         cell.containerView.backgroundColor = self.imageToColor[indexPath.row].1
         
