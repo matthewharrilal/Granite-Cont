@@ -48,11 +48,36 @@ class LinksModalView: UIView {
     
     func configureContainerView() {
         
-        self.containerView.addSubviews(views: logoImageView, pleaseEnterLabel, usernameTextField)
+        
         self.logoImageView.image = #imageLiteral(resourceName: "go")
         
-        self.pleaseEnterLabel.text = "Please enter your username"
+        
+        let stackView = UIStackView(arrangedSubviews: [logoImageView, self.pleaseEnterLabel, self.usernameTextField])
+        stackView.alignment = .center
+        stackView.spacing = 5
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        
+        self.containerView.addSubview(stackView)
+     
+        
+        self.logoImageView.constrainWidth(withWidth: 80)
+        self.logoImageView.constrainHeight(withHeight: 80)
+        
+        stackView.frame = self.containerView.frame
+        stackView.anchor(top: self.containerView.topAnchor, leading: self.containerView.leadingAnchor, bottom: self.containerView.bottomAnchor, trailing: self.containerView.trailingAnchor)
+        
+        stackView.backgroundColor =  .red
+        
+
+//        self.pleaseEnterLabel.constrainWidth(withWidth: self.containerView.safeAreaLayoutGuide.layoutFrame.width)
+        
+        self.pleaseEnterLabel.text = "Enter Your Username"
         
         self.usernameTextField.placeholder = "Username"
+//        self.logoImageView.centerXInSuperview()
+        
+//        self.usernameTextField.constrainWidth(withWidth: self.containerView.safeAreaLayoutGuide.layoutFrame.width)
     }
+    
 }

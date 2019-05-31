@@ -76,12 +76,15 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             self.blurView.alpha = 1.0
             self.redView.alpha = 1.0
             self.redView.linkName.constrainWidth(withWidth: self.redView.frame.width)
+            self.redView.layoutSubviews()
             
         }) { (_) in
             print("Selected \(cell.linkName.text)")
             print("")
             
         }
+        
+        print("")
     }
     
     @objc func dismissModal(sender: UITapGestureRecognizer) {
