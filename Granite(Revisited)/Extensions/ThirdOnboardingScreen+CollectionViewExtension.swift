@@ -67,8 +67,6 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         
         // BLUR OUT Background
-        
-       
         redView.alpha = 0.0
         self.blurView.backgroundColor = cell.containerView.backgroundColor
         
@@ -91,6 +89,8 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     @objc func dismissModal(sender: UITapGestureRecognizer) {
+        self.isUserInteractionEnabled = false
+
         guard let startingFrame = self.startingFrame else {return}
         
         self.blurView.layer.cornerRadius = 20
@@ -101,9 +101,12 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             sender.view?.alpha = 0.0
            
         }) { (_) in
+            
+            // Making sure that views have been removed MARK: FIX make sure that references of these views are deallocated as well
             sender.view?.removeFromSuperview()
             self.blurView.removeFromSuperview()
             print("Blur view removed")
+            self.isUserInteractionEnabled = true
         }
         
     }
