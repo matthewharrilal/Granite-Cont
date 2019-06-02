@@ -52,6 +52,11 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         // SET HERE but being used before set
         self.startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil)
         
+        if let image = cell.linkLogo.image {
+            self.redView.containerView.logoImage = image
+        }
+        
+        
 //        var redView = LinksModalView(frame: startingFrame!)
         let blurEffect = UIBlurEffect(style: .prominent)
         self.blurView = UIVisualEffectView(effect: blurEffect)
