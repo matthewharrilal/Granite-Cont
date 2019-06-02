@@ -48,9 +48,17 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         
         guard let cell = collectionView.cellForItem(at: indexPath) as? LinksCollectionViewCell else {return}
+        
+        // SET HERE but being used before set
         self.startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil)
         
-        
+        let blurEffect = UIBlurEffect(style: .prominent)
+        self.blurView = UIVisualEffectView(effect: blurEffect)
+        self.blurView.frame = self.frame
+        self.blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.addSubview(self.blurView)
+        self.blurView.alpha = 0.0
+        self.blurView.contentView.addSubview(self.redView)
         self.redView.backgroundColor = .blue
         self.redView.layer.cornerRadius = 20
         
@@ -59,29 +67,23 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         
         // BLUR OUT Background
-        let blurEffect = UIBlurEffect(style: .prominent)
-        self.blurView = UIVisualEffectView(effect: blurEffect)
-        self.blurView.frame = self.frame
-        self.blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.addSubview(self.blurView)
-        self.blurView.alpha = 0.0
+        
+       
         redView.alpha = 0.0
-        self.blurView.contentView.addSubview(redView)
         self.blurView.backgroundColor = cell.containerView.backgroundColor
         
-        
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
-            self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.frame.width / 1.3, height: self.frame.height / 2)
+            self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.bounds.width / 1.3, height: self.bounds.height / 2)
             self.redView.center = self.center
             self.blurView.alpha = 1.0
             self.redView.alpha = 1.0
             self.redView.linkName.constrainWidth(withWidth: self.redView.frame.width)
-            self.redView.layoutSubviews()
-            
+            self.redView.containerView.logoImageView.center.x = self.redView.containerView.frame.midX
+            print("CENTER ->> \(self.redView.containerView.logoImageView.center)")
+//            self.redView.containerView.layoutIfNeeded()
+//            self.redView.containerView.setNeedsLayout()
         }) { (_) in
-            print("Selected \(cell.linkName.text)")
-            print("")
-            
+//            print("Selected \(cell.linkName.text)")
         }
         
         print("")
@@ -91,7 +93,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         guard let startingFrame = self.startingFrame else {return}
         
         self.blurView.layer.cornerRadius = 20
-  
+        
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             sender.view?.frame = startingFrame
             self.blurView.alpha = 0.0
@@ -102,6 +104,8 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             sender.view?.removeFromSuperview()
             self.blurView.removeFromSuperview()
             
+            // Blur view not being removed before red view is being added again therefore altering the position of the view
+            print("Blur view removed")
         }
         
     }

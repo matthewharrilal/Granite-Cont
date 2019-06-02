@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1C1AA4D8227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA4D7227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift */; };
 		1C1AA4DA227A2EAA009802C5 /* lorem.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C1AA4D9227A2EAA009802C5 /* lorem.jpg */; };
+		1C21B58B22A36C1000FF9C97 /* LinksModalContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C21B58A22A36C1000FF9C97 /* LinksModalContainerView.xib */; };
+		1C21B58D22A36C2A00FF9C97 /* LinksModalContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C21B58C22A36C2A00FF9C97 /* LinksModalContainerView.swift */; };
 		1C226183227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226182227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift */; };
 		1C226186227AB0090072A638 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226185227AB0090072A638 /* User.swift */; };
 		1C326A482269AAC300E09F99 /* lock.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C326A472269AAC300E09F99 /* lock.json */; };
@@ -85,6 +87,8 @@
 /* Begin PBXFileReference section */
 		1C1AA4D7227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeprecatedOnboardingFlowController.swift; sourceTree = "<group>"; };
 		1C1AA4D9227A2EAA009802C5 /* lorem.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lorem.jpg; sourceTree = "<group>"; };
+		1C21B58A22A36C1000FF9C97 /* LinksModalContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinksModalContainerView.xib; sourceTree = "<group>"; };
+		1C21B58C22A36C2A00FF9C97 /* LinksModalContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksModalContainerView.swift; sourceTree = "<group>"; };
 		1C226182227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeprecatedOnboardingFlowController+Extension.swift"; sourceTree = "<group>"; };
 		1C226185227AB0090072A638 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1C326A472269AAC300E09F99 /* lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lock.json; sourceTree = "<group>"; };
@@ -360,6 +364,8 @@
 				1CA0F7EB22A07D8900089583 /* LinksCollectionViewCell.swift */,
 				1CA0F7F122A0BEFC00089583 /* LinksModalView.xib */,
 				1CA0F7F322A0BF0A00089583 /* LinksModalView.swift */,
+				1C21B58A22A36C1000FF9C97 /* LinksModalContainerView.xib */,
+				1C21B58C22A36C2A00FF9C97 /* LinksModalContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -502,6 +508,7 @@
 				1CA0F7E822A07A6400089583 /* ThirdOnboardingScreen.xib in Resources */,
 				1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */,
 				1C1AA4DA227A2EAA009802C5 /* lorem.jpg in Resources */,
+				1C21B58B22A36C1000FF9C97 /* LinksModalContainerView.xib in Resources */,
 				1CCCC1D72267CD3F0012DA75 /* LoginView.xib in Resources */,
 				1C41139B228C9F9900CBBCFB /* downArrow.jpg in Resources */,
 				1CCCC1DD2267D7F00012DA75 /* paperPlane.json in Resources */,
@@ -614,6 +621,7 @@
 				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
 				1CA0F7CE229DF2D600089583 /* SecondOnboardingScreen.swift in Sources */,
+				1C21B58D22A36C2A00FF9C97 /* LinksModalContainerView.swift in Sources */,
 				1CA0F7D8229E110900089583 /* SecondOnboardingScreenTableView+Extension.swift in Sources */,
 				1CA0F7EC22A07D8900089583 /* LinksCollectionViewCell.swift in Sources */,
 				1C6FCB3F228B36D1000BC75A /* OnboardingController.swift in Sources */,
