@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Granite(Revisited)/Views/LinksModalContainerView.swift"
-            timestampString = "581208207.138906"
+            timestampString = "581210648.441747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "logoImage"
             landmarkType = "24">
          </BreakpointContent>

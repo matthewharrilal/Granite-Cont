@@ -34,11 +34,17 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         cell.isExclusiveTouch = true
         cell.containerView.isExclusiveTouch = true
-        
         for child in cell.subviews {
             child.isExclusiveTouch = true
         }
         
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(translationX: 0, y: cell.bounds.height / 2)
+        UIView.animate(withDuration: 1.0, delay: 0.25 * Double(indexPath.row),usingSpringWithDamping: 0.4, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+            
+            cell.transform = CGAffineTransform(translationX: 0, y: 0)
+            cell.alpha = 1
+        }, completion: nil)
         return cell
     }
     
@@ -63,7 +69,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         }
         
         
-//        var redView = LinksModalView(frame: startingFrame!)
+        //        var redView = LinksModalView(frame: startingFrame!)
         let blurEffect = UIBlurEffect(style: .prominent)
         self.blurView = UIVisualEffectView(effect: blurEffect)
         self.blurView.frame = self.bounds
@@ -76,6 +82,9 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
         
+        if let linkNameText = cell.linkName.text {
+            self.redView.containerView.linkName = linkNameText
+        }
         
         // BLUR OUT Background
         redView.alpha = 0.0
@@ -85,7 +94,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             
             // Frame is the same before and after
             // Because the container view no longer has a frame when you resize the red views frame therefore off balancing undefined frame subviews
-            self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.bounds.width / 1.3, height: self.bounds.height / 2)
+            self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.bounds.width / 1.3, height: self.bounds.height / 3)
             self.redView.center = self.center
             self.blurView.alpha = 1.0
             self.redView.alpha = 1.0
@@ -94,6 +103,9 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             // CONTAINER VIEW FRAME CHANGING AND NOT SUPERVIEW CHANGING BOUNDS MID X CHANGING AFTER WHAT
             self.redView.layoutSubviews() // Update layout of subviews once the red views frame changes updates the new bounds
             self.redView.containerView.logoImageView.center.x = self.redView.containerView.bounds.midX
+            self.redView.containerView.pleaseEnterLabel.center.x = self.redView.containerView.bounds.midX
+            self.redView.containerView.pleaseEnterLabel.center.y = self.redView.containerView.bounds.midY
+            
         }, completion: nil)
         
         print("")
@@ -101,7 +113,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
     
     @objc func dismissModal(sender: UITapGestureRecognizer) {
         self.isUserInteractionEnabled = false
-
+        
         guard let startingFrame = self.startingFrame else {return}
         
         self.blurView.layer.cornerRadius = 20
@@ -110,7 +122,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             sender.view?.frame = startingFrame
             self.blurView.alpha = 0.0
             sender.view?.alpha = 0.0
-           
+            
         }) { (_) in
             
             // Making sure that views have been removed MARK: FIX make sure that references of these views are deallocated as well

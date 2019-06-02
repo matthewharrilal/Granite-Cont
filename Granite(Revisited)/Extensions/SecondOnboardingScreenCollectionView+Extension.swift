@@ -21,16 +21,15 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
         cell.languageName.text = languagesArray[indexPath.row].1
         cell.imageView.image = languagesArray[indexPath.row].0
         cell.imageView.backgroundColor = .clear
-        
-        
+   
         return cell
     }
-    //
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 30)) / 2
         return CGSize(width: itemSize, height: itemSize)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //
         guard let cell = collectionView.cellForItem(at: indexPath) as? LanguagesCollectionViewCell,
@@ -53,5 +52,7 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
             cell.containerView.backgroundColor = color
             cell.languageName.textColor = textColor
         }
+        
+        
     }
 }
