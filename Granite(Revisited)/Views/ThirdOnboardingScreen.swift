@@ -46,6 +46,8 @@ class ThirdOnboardingScreen: UIView {
         collectionView.register(LinksCollectionViewCell.self, forCellWithReuseIdentifier: "linkCell")
         collectionView?.contentInset = UIEdgeInsets(top: 40, left: 16, bottom: 10, right: 16)
         
+        
+//        self.redView.containerView.logoImageView.center.x = self.redView.containerView.frame.midX
        
         
     }
