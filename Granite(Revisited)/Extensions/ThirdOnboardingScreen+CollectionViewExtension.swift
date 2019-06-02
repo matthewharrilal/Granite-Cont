@@ -52,7 +52,13 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         // SET HERE but being used before set
         self.startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil)
         
-        if let image = cell.linkLogo.image {
+        if var image = cell.linkLogo.image {
+            
+            // Changing contrast of the medium logo against black
+            if cell.linkName.text == "Medium" {
+                let templateImage = #imageLiteral(resourceName: "mediumLogoBlack")
+                image = templateImage
+            }
             self.redView.containerView.logoImage = image
         }
         
