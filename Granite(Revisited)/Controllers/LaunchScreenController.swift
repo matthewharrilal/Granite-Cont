@@ -83,7 +83,7 @@ class LaunchScreenViewController: UIViewController {
         let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.86, width: self.view.frame.width / 1.25, height: 50)
         
         self.loginButton = UIButton(frame: frame)
-        configureButton(withButton: &loginButton, withTarget: #selector(handleLogin), withBackgroundColorHexString: "61988e", withTextColorHexString: "9cfc97" , withTitle: "I HAVE AN ACCOUNT ")
+        configureButton(withButton: &loginButton, withTarget: #selector(handleLogin), withBackgroundColorHexString: "59c3c3", withTextColorHexString: "4fb286" , withTitle: "I HAVE AN ACCOUNT ")
     }
     
     private func configureSignup() {
@@ -91,7 +91,7 @@ class LaunchScreenViewController: UIViewController {
         let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.78, width: self.view.frame.width / 1.25, height: 50)
         
         self.signupButton = UIButton(frame: frame)
-        configureButton(withButton: &signupButton, withTarget: #selector(handleSignUp), withBackgroundColorHexString: "9cfc97", withTextColorHexString: "61988e", withTitle: "SIGN UP")
+        configureButton(withButton: &signupButton, withTarget: #selector(handleSignUp), withBackgroundColorHexString: "bbbe64", withTextColorHexString: "4fb286", withTitle: "SIGN UP")
         
         // MARK: TODO Would it be better if these elements were arranged into a stack view?
     }
@@ -99,12 +99,36 @@ class LaunchScreenViewController: UIViewController {
     
     @objc func handleLogin() {
         print("Tapping Login")
+//        buttonTranslation()
         transitionToLogin()
     }
     
     @objc func handleSignUp() {
         print("Tapping sign up")
     }
+    
+//    func buttonTranslation() {
+//
+//        self.loginButton.alpha = 0.0
+//
+//        let startingFrame = self.view.convert(loginButton.frame, to: nil)
+//
+//
+//        let testView = UIView(frame: startingFrame)
+//
+//        testView.layer.cornerRadius = 20
+//        testView.backgroundColor = .black
+//        self.view.addSubview(testView)
+//
+//        UIView.animate(withDuration: 1.0, animations: {
+//            testView.frame = CGRect(x: self.view.center.x, y: self.loginButton.frame.origin.y, width: 50, height: 50)
+//
+//            testView.center.x = self.view.center.x
+//            testView.layer.cornerRadius = testView.frame.height / 2
+//        }, completion: { _ in
+//            testView.transform = .identity
+//        })
+//    }
 }
 
 

@@ -9,14 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Granite(Revisited)/Views/LinksModalContainerView.swift"
-            timestampString = "581210648.441747"
+            filePath = "Granite(Revisited)/Extensions/ThirdOnboardingScreen+CollectionViewExtension.swift"
+            timestampString = "581271582.5089411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "logoImage"
-            landmarkType = "24">
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

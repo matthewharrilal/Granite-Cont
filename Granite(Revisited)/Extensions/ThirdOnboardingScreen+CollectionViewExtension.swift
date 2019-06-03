@@ -80,7 +80,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         redView.layer.cornerRadius = 20
         
         
-        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
+//        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
         
         if let linkNameText = cell.linkName.text {
             self.redView.containerView.linkName = linkNameText
@@ -102,9 +102,9 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             
             // CONTAINER VIEW FRAME CHANGING AND NOT SUPERVIEW CHANGING BOUNDS MID X CHANGING AFTER WHAT
             self.redView.layoutSubviews() // Update layout of subviews once the red views frame changes updates the new bounds
-            self.redView.containerView.logoImageView.center.x = self.redView.containerView.bounds.midX
-            self.redView.containerView.pleaseEnterLabel.center.x = self.redView.containerView.bounds.midX
-            self.redView.containerView.pleaseEnterLabel.center.y = self.redView.containerView.bounds.midY
+            self.redView.containerView.logoImageView.frame.origin.x = self.redView.containerView.frame.minX
+            self.redView.containerView.textFieldView.frame.origin.x = self.redView.containerView.logoImageView.center.x
+            self.redView.containerView.textFieldView.frame.origin.y = self.redView.containerView.bounds.midY
             
         }, completion: nil)
         
