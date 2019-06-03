@@ -14,6 +14,7 @@ class LinksModalContainerView: UIView {
     @IBOutlet weak var usernameTextField: UITextField!
     var textFieldView: UIView!
     var stackView: UIStackView!
+    var bottomBorder: CALayer!
     @IBOutlet weak var placeholderLabel: UILabel!
     
     var linkName = "" {
@@ -51,9 +52,10 @@ class LinksModalContainerView: UIView {
         UIView.animate(withDuration: 1.0) {
             self.usernameTextField.placeholder = ""
             self.placeholderLabel.alpha = 1.0
+            
         }
         
-        createHighlightViewBorder()
+        self.animateViewBorder(withHexColor: "8CDFD6")
     }
     
     func createCustomTextField() {
@@ -63,23 +65,21 @@ class LinksModalContainerView: UIView {
         
         placeholderLabel.text = ""
         
-        //        textFieldView.addSubview(placeholderLabel)
         //
-        //        usernameTextField.frame = .init(x: textFieldView.bounds.minX, y: textFieldView.bounds.midY, width: textFieldView.bounds.width, height: 60)
-        //        usernameTextField.borderStyle = .none
-        //        usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
-        //        usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
-        //        usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
-        //
-        //        usernameTextField.backgroundColor = .clear
+        usernameTextField.borderStyle = .none
+        usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
+        usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
+        
+        usernameTextField.backgroundColor = .clear
         
         
-        //        textFieldView.addSubview(usernameTextField)
         
         self.stackView = UIStackView(arrangedSubviews: [self.placeholderLabel, self.usernameTextField])
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
         stackView.alignment = .center
+        stackView.spacing = 5
         
         textFieldView.addSubview(stackView)
         stackView.backgroundColor = .blue
@@ -92,14 +92,31 @@ class LinksModalContainerView: UIView {
         stackView.frame = textFieldView.bounds
         stackView.anchorSize(toView: textFieldView)
         self.placeholderLabel.anchor(top: stackView.topAnchor, leading: stackView.leadingAnchor, bottom: usernameTextField.topAnchor, trailing: stackView.trailingAnchor)
+        self.usernameTextField.constrainWidth(withWidth: stackView.bounds.width)
+        
+        createViewBorder()
     }
     
-    func createHighlightViewBorder() {
-        let bottomBorder = CALayer()
-        bottomBorder.backgroundColor = UIColor.init(hexString: "8CDFD6").cgColor
+    func animateViewBorder(withHexColor hexColor: String?=nil, color: UIColor?=nil) {
         
-        bottomBorder.frame = .init(x: 0, y: textFieldView.bounds.maxY - 2, width: textFieldView.bounds.width, height: 2)
+        let animationColor = CABasicAnimation(keyPath: "backgroundColor")
+        
+        
+        if let hexColor = hexColor {
+            animationColor.fromValue = UIColor.lightGray.cgColor
+            animationColor.toValue = UIColor.init(hexString: hexColor).cgColor
+            animationColor.duration = 1.0
+            self.bottomBorder.backgroundColor = UIColor.init(hexString: hexColor).cgColor
+        }
+        bottomBorder.add(animationColor, forKey: "backgroundColor")
+       
+    }
+    
+    func createViewBorder() {
+        self.bottomBorder = CALayer()
+        self.bottomBorder.frame = .init(x: 0, y: textFieldView.bounds.maxY - 2, width: textFieldView.bounds.width, height: 2)
         textFieldView.layer.addSublayer(bottomBorder)
+        bottomBorder.backgroundColor = UIColor.lightGray.cgColor
     }
     
     // PRO TIP: The reason we dont constrain size is because we need to know the exact x and y when since the frame changes we don't know for sure
