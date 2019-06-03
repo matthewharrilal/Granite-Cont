@@ -20,6 +20,9 @@ class LinksModalContainerView: UIView {
     var linkName = "" {
         didSet {
             usernameTextField.placeholder = "\(linkName) Username"
+            placeholderLabel.text = "\(linkName) Username"
+            self.placeholderLabel.alpha = 0.0
+            resetViewBorder()
         }
     }
     
@@ -47,8 +50,7 @@ class LinksModalContainerView: UIView {
     }
     
     @objc func handleTextFieldTap() {
-        self.placeholderLabel.alpha = 0.0
-        self.placeholderLabel.text = "\(linkName) Username"
+        
         self.placeholderLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         UIView.animate(withDuration: 1.0) {
             self.usernameTextField.placeholder = ""
@@ -110,7 +112,7 @@ class LinksModalContainerView: UIView {
             self.bottomBorder.backgroundColor = UIColor.init(hexString: hexColor).cgColor
         }
         bottomBorder.add(animationColor, forKey: "backgroundColor")
-       
+        
     }
     
     func createViewBorder() {
@@ -118,6 +120,10 @@ class LinksModalContainerView: UIView {
         self.bottomBorder.frame = .init(x: 0, y: textFieldView.bounds.maxY - 2, width: textFieldView.bounds.width, height: 2)
         textFieldView.layer.addSublayer(bottomBorder)
         bottomBorder.backgroundColor = UIColor.lightGray.cgColor
+    }
+    
+    func resetViewBorder() {
+        self.bottomBorder.backgroundColor = UIColor.lightGray.cgColor
     }
     
     // PRO TIP: The reason we dont constrain size is because we need to know the exact x and y when since the frame changes we don't know for sure
@@ -131,5 +137,5 @@ class LinksModalContainerView: UIView {
         
     }
     
-
+    
 }

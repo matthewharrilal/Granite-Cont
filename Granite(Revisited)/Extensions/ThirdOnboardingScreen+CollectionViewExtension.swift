@@ -80,6 +80,8 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         redView.layer.cornerRadius = 20
         self.redView.createExitButton()
         
+        // For when modal view comes up
+        self.redView.containerView.usernameTextField.text = nil
 //        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
         
         if let linkNameText = cell.linkName.text {
