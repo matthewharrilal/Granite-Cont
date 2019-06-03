@@ -39,7 +39,7 @@ class LinksModalView: UIView {
         
         // MARK: TODO Translation in whole view's Y and alpha 0 initially
         
-        self.backgroundColor = .blue
+        self.backgroundColor = UIColor(hexString: "4790e6")
         containerView.backgroundColor = .white
         
         linkName.constrainHeight(withHeight: self.frame.height - (self.frame.height - 75))

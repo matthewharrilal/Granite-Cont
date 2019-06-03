@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LinksModalContainerView: UIView {
+class LinksModalContainerView: UIView, UITextFieldDelegate {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     var textFieldView: UIView!
@@ -47,6 +47,8 @@ class LinksModalContainerView: UIView {
         
         self.logoImageView.frame = .init(x: 0, y: 20, width: self.frame.width / 3, height: 75)
         createCustomTextField()
+        
+        self.usernameTextField.delegate = self
     }
     
     @objc func handleTextFieldTap() {
@@ -135,6 +137,14 @@ class LinksModalContainerView: UIView {
         //            self.logoImageView.constrainWidth(withWidth: 100)
         
         
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
+        }
+        
+        return true
     }
     
     

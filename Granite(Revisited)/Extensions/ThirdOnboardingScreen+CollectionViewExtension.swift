@@ -76,7 +76,6 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         self.addSubview(self.blurView)
         self.blurView.alpha = 0.0
         self.blurView.contentView.addSubview(redView)
-        redView.backgroundColor = .blue
         redView.layer.cornerRadius = 20
         self.redView.createExitButton()
         
