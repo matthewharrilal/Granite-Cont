@@ -139,13 +139,4 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField.isFirstResponder {
-            textField.resignFirstResponder()
-        }
-        
-        return true
-    }
-    
-    
 }

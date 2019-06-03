@@ -81,6 +81,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         // For when modal view comes up
         self.redView.containerView.usernameTextField.text = nil
+        self.redView.containerView.usernameTextField.resignFirstResponder()
 //        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
         
         if let linkNameText = cell.linkName.text {
