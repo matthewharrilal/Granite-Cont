@@ -48,14 +48,15 @@ class LinksModalContainerView: UIView {
     
     @objc func handleTextFieldTap() {
         self.placeholderLabel.alpha = 0.0
-        self.placeholderLabel.text = linkName
+        self.placeholderLabel.text = "\(linkName) Username"
+        self.placeholderLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         UIView.animate(withDuration: 1.0) {
             self.usernameTextField.placeholder = ""
-            self.placeholderLabel.alpha = 1.0
-            
+            self.placeholderLabel.alpha = 0.8
+            self.animateViewBorder(withHexColor: "8CDFD6")
         }
         
-        self.animateViewBorder(withHexColor: "8CDFD6")
+        
     }
     
     func createCustomTextField() {
@@ -105,7 +106,7 @@ class LinksModalContainerView: UIView {
         if let hexColor = hexColor {
             animationColor.fromValue = UIColor.lightGray.cgColor
             animationColor.toValue = UIColor.init(hexString: hexColor).cgColor
-            animationColor.duration = 1.0
+            animationColor.duration = 0.25
             self.bottomBorder.backgroundColor = UIColor.init(hexString: hexColor).cgColor
         }
         bottomBorder.add(animationColor, forKey: "backgroundColor")
