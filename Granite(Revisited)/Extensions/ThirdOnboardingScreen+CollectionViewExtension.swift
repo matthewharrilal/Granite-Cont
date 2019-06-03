@@ -78,7 +78,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         self.blurView.contentView.addSubview(redView)
         redView.backgroundColor = .blue
         redView.layer.cornerRadius = 20
-        
+        self.redView.createExitButton()
         
 //        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
         
@@ -89,6 +89,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         // BLUR OUT Background
         redView.alpha = 0.0
         self.blurView.backgroundColor = cell.containerView.backgroundColor
+        self.redView.exitButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
             
@@ -98,7 +99,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             self.redView.center = self.center
             self.blurView.alpha = 1.0
             self.redView.alpha = 1.0
-            self.redView.linkName.constrainWidth(withWidth: self.redView.frame.width)
+            self.redView.linkName.constrainWidth(withWidth: self.redView.frame.width - 40)
             
             // CONTAINER VIEW FRAME CHANGING AND NOT SUPERVIEW CHANGING BOUNDS MID X CHANGING AFTER WHAT
             self.redView.layoutSubviews() // Update layout of subviews once the red views frame changes updates the new bounds
@@ -119,14 +120,14 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         self.blurView.layer.cornerRadius = 20
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            sender.view?.frame = startingFrame
+            sender.view?.superview?.frame = startingFrame
             self.blurView.alpha = 0.0
             sender.view?.alpha = 0.0
             
         }) { (_) in
             
             // Making sure that views have been removed MARK: FIX make sure that references of these views are deallocated as well
-            sender.view?.removeFromSuperview()
+            sender.view?.superview?.removeFromSuperview()
             self.blurView.removeFromSuperview()
             print("Blur view removed")
             self.isUserInteractionEnabled = true

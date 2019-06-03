@@ -14,6 +14,7 @@ class LinksModalView: UIView {
     var containerView: LinksModalContainerView!
     @IBOutlet weak var pleaseEnterLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
+    var exitButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,10 +29,13 @@ class LinksModalView: UIView {
         // MARK: TODO Add shadow to container view
         Bundle.main.loadNibNamed("LinksModalView", owner: self, options: nil)
         
+       
+        
         self.containerView = LinksModalContainerView(frame: .init(x: self.bounds.midX, y: self.bounds.midY, width: self.bounds.width, height: self.bounds.height))
         addSubviews(views: linkName, containerView)
         
         linkName.textAlignment = .center
+        
         
         // MARK: TODO Translation in whole view's Y and alpha 0 initially
         
@@ -46,4 +50,17 @@ class LinksModalView: UIView {
         
         containerView.layer.cornerRadius = 20
     }
+    
+    func createExitButton() {
+        self.exitButton = UIButton()
+        self.exitButton.setTitle("✕", for: .normal)
+        self.addSubview(exitButton)
+        exitButton.backgroundColor = .clear
+        exitButton.contentVerticalAlignment = .top
+        exitButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
+        
+        self.exitButton.frame = .init(x: self.bounds.maxX, y: self.bounds.minY, width: 20, height: 20)
+        self.exitButton.anchor(top: self.topAnchor, leading: self.linkName.trailingAnchor, bottom: self.containerView.topAnchor, trailing: self.trailingAnchor)
+    }
+    
 }
