@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LinksModalContainerView: UIView, UITextFieldDelegate {
+class LinksModalContainerView: UIView {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     var textFieldView: UIView!
@@ -48,7 +48,6 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         self.logoImageView.frame = .init(x: 0, y: 20, width: self.frame.width / 3, height: 75)
         createCustomTextField()
         
-        self.usernameTextField.delegate = self
     }
     
     @objc func handleTextFieldTap() {
@@ -131,7 +130,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     // PRO TIP: The reason we dont constrain size is because we need to know the exact x and y when since the frame changes we don't know for sure
     override func layoutIfNeeded() {
         
-        //            self.logoImageView.frame = self.bounds
+        //            self-----------.logoImageView.frame = self.bounds
         //            self.logoImageView.center.x = self.bounds.midX
         //            self.logoImageView.constrainHeight(withHeight: 50)
         //            self.logoImageView.constrainWidth(withWidth: 100)
