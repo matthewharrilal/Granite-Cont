@@ -17,6 +17,8 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     var bottomBorder: CALayer!
     var confirmationButton: UIButton!
     
+    weak var keyboardDelegate: KeyboardDelegate?
+    
     @IBOutlet weak var placeholderLabel: UILabel!
     
     var linkName = "" {
@@ -53,9 +55,14 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         
         self.usernameTextField.delegate = self
         self.usernameTextField.returnKeyType = .go
+        
     }
     
+    
     @objc func handleTextFieldTap() {
+        if let keyboardDelegate = self.keyboardDelegate {
+            keyboardDelegate.keyboardIsActive()
+        }
         
         self.placeholderLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         UIView.animate(withDuration: 1.0) {
@@ -63,8 +70,6 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
             self.placeholderLabel.alpha = 0.8
             self.animateViewBorder(withHexColor: "8CDFD6")
         }
-        
-        
     }
     
     func createCustomTextField() {

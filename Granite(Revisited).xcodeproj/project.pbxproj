@@ -19,6 +19,7 @@
 		1C41139F228D03E600CBBCFB /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C41139E228D03E600CBBCFB /* loading.json */; };
 		1C4113A1228D04D500CBBCFB /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C4113A0228D04D500CBBCFB /* success.json */; };
 		1C4113A3228D0D9F00CBBCFB /* office.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C4113A2228D0D9F00CBBCFB /* office.json */; };
+		1C45F7B222A83FFD00494FB4 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C45F7B122A83FFC00494FB4 /* Protocols.swift */; };
 		1C6FCB33228A1DB5000BC75A /* PlayfairDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB2D228A1CBD000BC75A /* PlayfairDisplay-Black.ttf */; };
 		1C6FCB34228A1DB5000BC75A /* PlayfairDisplay-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB2E228A1CBD000BC75A /* PlayfairDisplay-BlackItalic.ttf */; };
 		1C6FCB35228A1DB5000BC75A /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB32228A1CBF000BC75A /* PlayfairDisplay-Bold.ttf */; };
@@ -97,6 +98,7 @@
 		1C41139E228D03E600CBBCFB /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		1C4113A0228D04D500CBBCFB /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		1C4113A2228D0D9F00CBBCFB /* office.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = office.json; sourceTree = "<group>"; };
+		1C45F7B122A83FFC00494FB4 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		1C6FCB2D228A1CBD000BC75A /* PlayfairDisplay-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Black.ttf"; sourceTree = "<group>"; };
 		1C6FCB2E228A1CBD000BC75A /* PlayfairDisplay-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-BlackItalic.ttf"; sourceTree = "<group>"; };
 		1C6FCB2F228A1CBD000BC75A /* PlayfairDisplay-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				1C83F43D227CD0AD00BEA884 /* PulsatingButton.swift */,
 				1C83F4772280C64800BEA884 /* UIView+Layout.swift */,
 				1CA0F7E3229F0D1E00089583 /* HelperFunctions.swift */,
+				1C45F7B122A83FFC00494FB4 /* Protocols.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				1C83F4782280C64800BEA884 /* UIView+Layout.swift in Sources */,
 				1C83F432227BCE8100BEA884 /* Router.swift in Sources */,
 				1C226183227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift in Sources */,
+				1C45F7B222A83FFD00494FB4 /* Protocols.swift in Sources */,
 				1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */,
 				1C1AA4D8227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift in Sources */,
 				1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */,

@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
-class LinksModalView: UIView {
+class LinksModalView: UIView, KeyboardDelegate {
     @IBOutlet weak var linkName: UILabel!
     var containerView: LinksModalContainerView!
     @IBOutlet weak var pleaseEnterLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     var exitButton: UIButton!
+    var bottomConstraint: NSLayoutConstraint!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,11 +26,27 @@ class LinksModalView: UIView {
         super.init(coder: aDecoder)
     }
     
+    func keyboardIsActive() {
+        print("Keyboard has been activated")
+//        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIWindow.keyboardWillShowNotification, object: nil)
+        
+    }
+    
+//    MARK: TODO Delegate to notify modal view that keyboard has come up
+    
+//    @objc func handleKeyboardNotification(notification: NSNotification) {
+//        if let userInfo = notification.userInfo {
+//            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {return}
+//            self.bottomConstraint.constant -= keyboardFrame.height
+//        }
+//    }
+    
+    
     func commonInit() {
         // MARK: TODO Add shadow to container view
         Bundle.main.loadNibNamed("LinksModalView", owner: self, options: nil)
         
-       
+        
         
         self.containerView = LinksModalContainerView(frame: .init(x: self.bounds.midX, y: self.bounds.midY, width: self.bounds.width, height: self.bounds.height))
         addSubviews(views: linkName, containerView)
@@ -45,10 +62,13 @@ class LinksModalView: UIView {
         linkName.constrainHeight(withHeight: self.frame.height - (self.frame.height - 75))
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 75, left: 0, bottom: 0, right: 0))
+        containerView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 75, left: 0, bottom: 0, right: 0))
         
-        
+        self.bottomConstraint = NSLayoutConstraint(item: containerView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+        self.addConstraint(bottomConstraint)
         containerView.layer.cornerRadius = 20
+        
+        containerView.keyboardDelegate = self
     }
     
     func createExitButton() {
