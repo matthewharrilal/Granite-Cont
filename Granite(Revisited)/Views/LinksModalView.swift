@@ -28,19 +28,33 @@ class LinksModalView: UIView, KeyboardDelegate {
     
     func keyboardIsActive() {
         print("Keyboard has been activated")
-//        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIWindow.keyboardWillShowNotification, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     
-//    MARK: TODO Delegate to notify modal view that keyboard has come up
+    //    MARK: TODO Delegate to notify modal view that keyboard has come up
     
-//    @objc func handleKeyboardNotification(notification: NSNotification) {
-//        if let userInfo = notification.userInfo {
-//            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {return}
-//            self.bottomConstraint.constant -= keyboardFrame.height
-//        }
-//    }
+    @objc func handleKeyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect else {return}
+            
+            self.frame.origin.y -= keyboardFrame.height / 2
+            
+        }
+        
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
+    }
     
+    @objc func willHideKeyboard(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {return}
+            
+            self.frame.origin.y += keyboardFrame.height / 2
+            
+        }
+        
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
     
     func commonInit() {
         // MARK: TODO Add shadow to container view
