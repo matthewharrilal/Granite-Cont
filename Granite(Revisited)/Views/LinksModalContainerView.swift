@@ -52,7 +52,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
 //        createConfirmationButton()
         
         self.usernameTextField.delegate = self
-        
+        self.usernameTextField.returnKeyType = .go
     }
     
     @objc func handleTextFieldTap() {
