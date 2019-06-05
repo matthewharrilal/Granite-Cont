@@ -129,7 +129,7 @@ class LoginView: UIView {
     }
     
     @objc func handleTap() {
-        if let keyboardDelegate = self.keyboardDelegate {
+         if let keyboardDelegate = self.keyboardDelegate {
             keyboardDelegate.keyboardIsActive()
         }
     }
