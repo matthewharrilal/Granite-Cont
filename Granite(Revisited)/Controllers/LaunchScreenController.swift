@@ -38,12 +38,15 @@ class LaunchScreenViewController: UIViewController {
         self.pulsatingLayer = CAShapeLayer()
         
         //        configureEnterButton(withPulsatingLayer: &self.pulsatingLayer, withShapeLayer: &self.shapeLayer, onView: self.view)
-        configureAnimation()
-        configureGraniteLabel()
-        configureDescriptionLabel()
+        
         
         configureLogin()
         configureSignup()
+        configureGraniteLabel()
+        configureDescriptionLabel()
+        configureAnimation()
+        
+      
     }
     
     private func configureAnimation() {
@@ -57,11 +60,12 @@ class LaunchScreenViewController: UIViewController {
         self.view.addSubview(animationView)
         
         let padding = UIEdgeInsets(top: 0, left: 10, bottom: -100, right: -10)
-        animationView.fillSuperview(withSuperview: self.view, padding: padding)
+//        animationView.fillSuperview(withSuperview: self.view, padding: padding)
         
         animationView.frame = self.view.bounds
         
         
+        animationView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.view.leadingAnchor, bottom: self.signupButton.bottomAnchor, trailing: self.view.trailingAnchor, padding: padding)
         animationView.animationSpeed = 2
         
         animationView.play { (completed) in
