@@ -28,6 +28,8 @@ class LoginView: UIView {
     
     var configuredView: UIView!
     
+    var keyboardDelegate: KeyboardDelegate?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -48,6 +50,9 @@ class LoginView: UIView {
         usernameTextField.textAlignment = .left
         passwordTextField.textAlignment = .left
         
+        addTargets()
+        
+        
         loginButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         createAccountButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         
@@ -65,23 +70,23 @@ class LoginView: UIView {
         let textFieldComponentsStackview = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField])
         textFieldComponentsStackview.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
         textFieldComponentsStackview.isLayoutMarginsRelativeArrangement =  true
-
+        
         textFieldComponentsStackview.distribution = .fillProportionally
         textFieldComponentsStackview.axis = .vertical
-//
-//        loginComponentsStackview.distribution = .fillEqually
-//        loginCompospnentsStackview.axis = .vertical
+        //
+        //        loginComponentsStackview.distribution = .fillEqually
+        //        loginCompospnentsStackview.axis = .vertical
         
         
         loginStackView = UIStackView(arrangedSubviews: [textFieldComponentsStackview, loginButton, createAccountButton])
         
-//        createAccountButton.anchor(top: loginButton.bottomAnchor, leading: loginStackView.leadingAnchor, bottom: loginStackView.bottomAnchor, trailing: loginStackView.trailingAnchor)
+        //        createAccountButton.anchor(top: loginButton.bottomAnchor, leading: loginStackView.leadingAnchor, bottom: loginStackView.bottomAnchor, trailing: loginStackView.trailingAnchor)
         
         loginStackView.axis = .vertical
         loginStackView.spacing = 10
         loginStackView.distribution = .fillEqually
         
-//        usernameTextField.
+        //        usernameTextField.
         
         
         whiteLoginView.addSubview(loginStackView)
@@ -92,7 +97,12 @@ class LoginView: UIView {
         
         loginStackView.layoutMargins = .init(top: 0, left: 0, bottom: 0, right: -10)
         loginStackView.isLayoutMarginsRelativeArrangement = true
-
+        
+    }
+    
+    func addTargets() {
+        usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        passwordTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
     }
     
     func configureLockAnimation() {
@@ -116,6 +126,12 @@ class LoginView: UIView {
         
         animationView.loopAnimation = true
         animationView.animationSpeed = 2
+    }
+    
+    @objc func handleTap() {
+        if let keyboardDelegate = self.keyboardDelegate {
+            keyboardDelegate.keyboardIsActive()
+        }
     }
 }
 
