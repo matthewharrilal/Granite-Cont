@@ -61,15 +61,16 @@ class LoginView: UIView {
         createAccountButton.constrainHeight(withHeight: createAccountButton.frame.height)
         
         
+        
         let textFieldComponentsStackview = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField])
-
-        let loginComponentsStackview = UIStackView(arrangedSubviews: [loginButton, createAccountButton])
+        textFieldComponentsStackview.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
+        textFieldComponentsStackview.isLayoutMarginsRelativeArrangement =  true
 
         textFieldComponentsStackview.distribution = .fillProportionally
         textFieldComponentsStackview.axis = .vertical
 //
 //        loginComponentsStackview.distribution = .fillEqually
-//        loginComponentsStackview.axis = .vertical
+//        loginCompospnentsStackview.axis = .vertical
         
         
         loginStackView = UIStackView(arrangedSubviews: [textFieldComponentsStackview, loginButton, createAccountButton])
