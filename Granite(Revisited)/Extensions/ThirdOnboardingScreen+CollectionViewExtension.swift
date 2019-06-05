@@ -19,6 +19,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "linkCell", for: indexPath) as! LinksCollectionViewCell
         
+        
         cell.containerView.layer.cornerRadius = 25
         cell.containerView.layer.masksToBounds = true
         //
@@ -27,6 +28,8 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         cell.linkLogo.image = self.imageToColor[indexPath.row].0
         cell.containerView.backgroundColor = self.imageToColor[indexPath.row].1
+        
+        
         
         cell.containerView.layer.masksToBounds = true
         
@@ -86,7 +89,12 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         if let linkNameText = cell.linkName.text {
             self.redView.containerView.linkName = linkNameText
+            if linkNameText == "Personal Website" {
+                self.redView.containerView.placeholderLabel.text = "Personal Website Link"
+                self.redView.containerView.usernameTextField.placeholder = "Personal Website Link"
+            }
         }
+        
         
         // BLUR OUT Background
         redView.alpha = 0.0
@@ -97,7 +105,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             
             // Frame is the same before and after
             // Because the container view no longer has a frame when you resize the red views frame therefore off balancing undefined frame subviews
-            self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.bounds.width / 1.3, height: self.bounds.height / 3)
+            self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.bounds.width / 1.3, height: self.bounds.height / 2.8)
             self.redView.center = self.center
             self.blurView.alpha = 1.0
             self.redView.alpha = 1.0
@@ -108,7 +116,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             self.redView.containerView.logoImageView.frame.origin.x = self.redView.containerView.frame.minX
             self.redView.containerView.textFieldView.frame.origin.x = self.redView.containerView.logoImageView.center.x
             self.redView.containerView.textFieldView.frame.origin.y = self.redView.containerView.bounds.midY
-            
+
         }, completion: nil)
         
         print("")

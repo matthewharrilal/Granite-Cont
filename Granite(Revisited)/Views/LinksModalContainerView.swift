@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 
-class LinksModalContainerView: UIView {
+class LinksModalContainerView: UIView, UITextFieldDelegate {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     var textFieldView: UIView!
     var stackView: UIStackView!
     var bottomBorder: CALayer!
+    var confirmationButton: UIButton!
+    
     @IBOutlet weak var placeholderLabel: UILabel!
     
     var linkName = "" {
@@ -47,6 +49,9 @@ class LinksModalContainerView: UIView {
         
         self.logoImageView.frame = .init(x: 0, y: 20, width: self.frame.width / 3, height: 75)
         createCustomTextField()
+//        createConfirmationButton()
+        
+        self.usernameTextField.delegate = self
         
     }
     
@@ -101,6 +106,20 @@ class LinksModalContainerView: UIView {
         createViewBorder()
     }
     
+    func createConfirmationButton() {
+        self.confirmationButton = UIButton(frame: .init(x: self.bounds.maxX, y: self.bounds.maxY, width: 20, height: 20))
+       
+        self.confirmationButton.backgroundColor = .white
+        
+        addSubview(self.confirmationButton)
+        
+        self.confirmationButton.anchor(top: self.textFieldView.bottomAnchor, leading: self.textFieldView.trailingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
+        
+        self.confirmationButton.setTitle("✔", for: .normal)
+        self.confirmationButton.titleLabel?.textColor = .green
+      
+    }
+    
     func animateViewBorder(withHexColor hexColor: String?=nil, color: UIColor?=nil) {
         
         let animationColor = CABasicAnimation(keyPath: "backgroundColor")
@@ -138,4 +157,8 @@ class LinksModalContainerView: UIView {
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return false
+    }
 }

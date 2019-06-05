@@ -14,8 +14,8 @@ class ThirdOnboardingScreen: UIView {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     var transitionButton: UIButton!
-    var imageToColor:[(UIImage, UIColor)] = [(#imageLiteral(resourceName: "mediumLogo"), .black), (#imageLiteral(resourceName: "githubLogo"), .init(hexString: "ffe66d")), (#imageLiteral(resourceName: "twitterLogo"), .init(hexString: "dff2d8"))]
-    var imageName: [(String, UIColor)] = [("Medium", .white), ("Github", .black), ("Twitter", .black)]
+    var imageToColor:[(UIImage, UIColor)] = [(#imageLiteral(resourceName: "mediumLogo"), .black), (#imageLiteral(resourceName: "twitterLogo"), .init(hexString: "dff2d8")), (#imageLiteral(resourceName: "githubLogo"), .init(hexString: "ffe66d")), (#imageLiteral(resourceName: "linkedinLogo"), UIColor.init(hexString: "91c7b1")), (#imageLiteral(resourceName: "computerClipArt"), .init(hexString: "d7b9d5"))]
+    var imageName: [(String, UIColor)] = [("Medium", .white), ("Twitter", .black), ("Github", .black), ("LinkedIn", .black), ("Personal Website", .black) ]
     var startingFrame: CGRect?
     var blurView: UIVisualEffectView!
     var didTap = false

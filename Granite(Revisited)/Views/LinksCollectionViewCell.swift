@@ -35,10 +35,10 @@ class LinksCollectionViewCell: UICollectionViewCell {
         stackView.alignment = .center
         
         containerView.addSubview(stackView)
-
+        
         stackView.anchorSize(toView: containerView)
         stackView.frame = containerView.frame
-
+        
         
         containerView.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: self.safeAreaLayoutGuide.bottomAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 20, bottom: -10, right: -20))
         
@@ -47,12 +47,16 @@ class LinksCollectionViewCell: UICollectionViewCell {
         containerView.addSubviews(views: linkName, linkLogo)
         
         
-//        linkName.constrainWidth(withWidth: containerView.frame.width / 2)
-//        linkLogo.constrainWidth(withWidth: containerView.frame.width / 3)
+        //        linkName.constrainWidth(withWidth: containerView.frame.width / 2)
+        //        linkLogo.constrainWidth(withWidth: containerView.frame.width / 3)
         
         linkName.anchor(top: containerView.safeAreaLayoutGuide.topAnchor, leading: containerView.safeAreaLayoutGuide.leadingAnchor, bottom: containerView.safeAreaLayoutGuide.bottomAnchor, trailing: linkLogo.safeAreaLayoutGuide.leadingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 0))
         
-        linkLogo.anchor(top: containerView.safeAreaLayoutGuide.topAnchor, leading: linkName.safeAreaLayoutGuide.trailingAnchor, bottom: containerView.safeAreaLayoutGuide.bottomAnchor, trailing: containerView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 0))
+        
+        linkLogo.anchor(top: containerView.safeAreaLayoutGuide.topAnchor, leading: linkName.safeAreaLayoutGuide.trailingAnchor, bottom: containerView.safeAreaLayoutGuide.bottomAnchor, trailing: containerView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 20, bottom: -10, right: 0))
+        
+        
+        
         
         // Have constraints on positioning now constrain widths
         linkName.constrainWidth(withWidth: self.frame.width / 2)
