@@ -90,7 +90,7 @@ class LoginView: UIView {
         
         
         whiteLoginView.addSubview(loginStackView)
-        let padding = UIEdgeInsets(top: 10, left: 10, bottom: -10 , right: -10)
+        let padding = UIEdgeInsets(top: 10, left: 20, bottom: -10 , right: -20)
         loginStackView.fillSuperview(withSuperview: whiteLoginView, padding: padding)
         
         whiteLoginView.layer.cornerRadius = 20

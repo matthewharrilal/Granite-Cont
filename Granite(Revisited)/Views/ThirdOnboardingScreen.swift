@@ -42,16 +42,17 @@ class ThirdOnboardingScreen: UIView {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-//        collectionView.backgroundColor = .red
+        //        collectionView.backgroundColor = .red
         collectionView.register(LinksCollectionViewCell.self, forCellWithReuseIdentifier: "linkCell")
         collectionView?.contentInset = UIEdgeInsets(top: 40, left: 16, bottom: 10, right: 16)
         
         
-//        self.redView.containerView.logoImageView.center.x = self.redView.containerView.frame.midX
-       
+        //        self.redView.containerView.logoImageView.center.x = self.redView.containerView.frame.midX
         self.transitionButton = createTransitionButton(withView: self)
-        collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self .leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -20, right: -10))
+        self.transitionButton.alpha = 0.0
+         
         
+//        applyTransformation(withButton: self.transitionButton)
     }
 }
 

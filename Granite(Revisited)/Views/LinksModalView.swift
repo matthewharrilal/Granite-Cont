@@ -83,6 +83,19 @@ class LinksModalView: UIView, KeyboardDelegate {
         containerView.layer.cornerRadius = 20
         
         containerView.keyboardDelegate = self
+        
+        self.linkName.textColor = .white
+        
+        
+        let attributedText = createLabelSpacing(withLabelText: "Improve Your Experience On The Application")
+        self.linkName.attributedText = attributedText
+        
+        self.linkName.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        self.linkName.lineBreakMode = .byWordWrapping
+        self.linkName.numberOfLines = 0
+        self.linkName.textAlignment = .center
+        
+        
     }
     
     func createExitButton() {

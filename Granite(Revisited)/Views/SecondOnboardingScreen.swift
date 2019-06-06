@@ -56,10 +56,9 @@ class SecondOnboardingScreen: UIView {
         thirdOnboardingScreen.collectionView.alpha = 0.0
         
         self.addSubview(thirdOnboardingScreen)
-//        thirdOnboardingScreen.transitionButton = createTransitionButton(withView: thirdOnboardingScreen)
-        thirdOnboardingScreen.transitionButton.alpha = 0.0
         applyTransformation(withButton: thirdOnboardingScreen.transitionButton)
         
+      
         UIView.animate(withDuration: 1.0) {
             thirdOnboardingScreen.collectionView.alpha = 1.0
             thirdOnboardingScreen.transitionButton.alpha = 1.0

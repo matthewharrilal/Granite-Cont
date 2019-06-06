@@ -47,13 +47,41 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         cell.alpha = 0
         cell.transform = CGAffineTransform(translationX: 0, y: cell.bounds.height / 2)
-        UIView.animate(withDuration: 1.0, delay: 0.25 * Double(indexPath.row),usingSpringWithDamping: 0.4, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1.0, delay: 0.15 * Double(indexPath.row),usingSpringWithDamping: 0.4, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
             
             cell.transform = CGAffineTransform(translationX: 0, y: 0)
             cell.alpha = 1
         }, completion: nil)
         return cell
     }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        //        if indexPath.row == (self.imageToColor.count - 1) {
+        //
+        //            UIView.animate(withDuration: 1.0, animations: {
+        //                self.transitionButton.alpha = 1
+        //                 collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self .leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -20, right: -10))
+        //            }) { _ in
+        //
+        //            }
+//        //        }
+//        
+//        if collectionView.contentOffset.y >= (collectionView.contentSize.height - collectionView.frame.size.height) {
+//            collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self .leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -20, right: -10))
+//            
+//            UIView.animate(withDuration: 0.25, animations: {
+//                self.transitionButton.alpha = 1
+//                self.collectionView.layoutIfNeeded()
+//            }) { _ in
+//                
+//            }
+//            print("End of table")
+//        }
+
+    }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -89,7 +117,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         // For when modal view comes up
         self.redView.containerView.usernameTextField.text = nil
         self.redView.containerView.usernameTextField.resignFirstResponder()
-//        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
+        //        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
         
         if let linkNameText = cell.linkName.text {
             self.redView.containerView.linkName = linkNameText
@@ -106,7 +134,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         self.redView.exitButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
-            
+             
             // Frame is the same before and after
             // Because the container view no longer has a frame when you resize the red views frame therefore off balancing undefined frame subviews
             self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.bounds.width / 1.3, height: self.bounds.height / 2.8)
@@ -120,7 +148,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             self.redView.containerView.logoImageView.frame.origin.x = self.redView.containerView.frame.minX
             self.redView.containerView.textFieldView.frame.origin.x = self.redView.containerView.logoImageView.center.x
             self.redView.containerView.textFieldView.frame.origin.y = self.redView.containerView.bounds.midY
-
+            
         }, completion: nil)
         
         print("")

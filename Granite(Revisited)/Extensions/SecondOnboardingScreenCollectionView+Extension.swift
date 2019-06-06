@@ -29,6 +29,7 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
         let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 30)) / 2
         return CGSize(width: itemSize, height: itemSize - 10)
     }
+    
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //

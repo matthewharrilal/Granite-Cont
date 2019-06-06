@@ -63,10 +63,12 @@ class LaunchScreenViewController: UIViewController {
         
         animationView.frame = self.view.bounds
         
-        
+//
         animationView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.view.leadingAnchor, bottom: self.signupButton.bottomAnchor, trailing: self.view.trailingAnchor, padding: padding)
         animationView.animationSpeed = 2
         
+        
+//        animationView.frame = self.view.bounds
         animationView.play { (completed) in
             print("Has completed animation? -> \(completed)")
         }
