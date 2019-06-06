@@ -133,6 +133,8 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
     
     func successHasPlayed() {
         print("Success animation has been played")
+        dismissModal()
+        self.redView.removeAnimationContainer()
     }
     
     @objc func dismissModal() {

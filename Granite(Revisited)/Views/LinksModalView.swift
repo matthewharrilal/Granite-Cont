@@ -19,6 +19,8 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     var exitButton: UIButton!
     var bottomConstraint: NSLayoutConstraint!
     
+    var animationContainer: UIView!
+    
     weak var successDelegate: DismissModalViewDelegate?
     
     override init(frame: CGRect) {
@@ -106,7 +108,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     func returnWasPressed() {
         print("Return Key was pressed!")
         
-        let animationContainer = UIView(frame: self.bounds)
+        self.animationContainer = UIView(frame: self.bounds)
         
         let animationView = LOTAnimationView(name: "success")
         animationContainer.layer.cornerRadius = 20
@@ -125,8 +127,8 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         animationContainer.alpha = 0.0
         
         UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
-            animationContainer.alpha = 1.0
-            animationContainer.backgroundColor = .white
+            self.animationContainer.alpha = 1.0
+            self.animationContainer.backgroundColor = .white
         }) { _ in
             UIView.animate(withDuration: Double(animationView.animationDuration) + 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
                 animationView.alpha = 1.0
@@ -137,6 +139,10 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
                 self.successDelegate?.successHasPlayed()
             })
         }
+    }
+    
+    func removeAnimationContainer() {
+        self.animationContainer.removeFromSuperview()
     }
     
     func createExitButton() {
