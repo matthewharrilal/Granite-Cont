@@ -17,3 +17,7 @@ protocol KeyboardDelegate: class {
 protocol EndEditingDelegate: class {
     func returnWasPressed()
 }
+
+protocol DismissModalViewDelegate: class {
+    func successHasPlayed()
+}

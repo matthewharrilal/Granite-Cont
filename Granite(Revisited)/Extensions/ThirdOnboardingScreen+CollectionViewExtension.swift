@@ -9,10 +9,11 @@
 import Foundation
 import UIKit
 
-extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DismissModalViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return self.imageToColor.count
     }
     
@@ -57,33 +58,6 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
     
     
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        //        if indexPath.row == (self.imageToColor.count - 1) {
-        //
-        //            UIView.animate(withDuration: 1.0, animations: {
-        //                self.transitionButton.alpha = 1
-        //                 collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self .leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -20, right: -10))
-        //            }) { _ in
-        //
-        //            }
-//        //        }
-//        
-//        if collectionView.contentOffset.y >= (collectionView.contentSize.height - collectionView.frame.size.height) {
-//            collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self .leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -20, right: -10))
-//            
-//            UIView.animate(withDuration: 0.25, animations: {
-//                self.transitionButton.alpha = 1
-//                self.collectionView.layoutIfNeeded()
-//            }) { _ in
-//                
-//            }
-//            print("End of table")
-//        }
-
-    }
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: Fix Everytime view is instatiated new cell is being registered on top
         
@@ -92,6 +66,8 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         // SET HERE but being used before set
         self.startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil)
+        
+        self.redView.successDelegate = self
         
         if var image = cell.linkLogo.image {
             
@@ -131,7 +107,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         // BLUR OUT Background
         redView.alpha = 0.0
         self.blurView.backgroundColor = cell.containerView.backgroundColor
-        self.redView.exitButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
+        self.redView.exitButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal)))
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
              
@@ -155,7 +131,11 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
     }
     
-    @objc func dismissModal(sender: UITapGestureRecognizer) {
+    func successHasPlayed() {
+        print("Success animation has been played")
+    }
+    
+    @objc func dismissModal() {
         self.isUserInteractionEnabled = false
         
         guard let startingFrame = self.startingFrame else {return}

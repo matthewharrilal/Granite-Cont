@@ -19,6 +19,8 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     var exitButton: UIButton!
     var bottomConstraint: NSLayoutConstraint!
     
+    weak var successDelegate: DismissModalViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -122,30 +124,6 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         
         animationContainer.alpha = 0.0
         
-//
-//        UIView.animate(withDuration: 0.25, animations: {
-//
-//
-//            animationContainer.alpha = 1.0
-//            animationContainer.backgroundColor = .white
-//        }) { _ in
-//            UIView.animate(withDuration: 0.75, animations: {
-//                animationView.alpha = 1.0
-//                animationView.play(completion: { _ in
-//                    animationContainer.removeFromSuperview()
-//                })
-//            }, completion: { _ in
-////                animationContainer.removeFromSuperview()
-//            })
-//        }
-//
-//        UIView.transition(from: self, to: animationContainer, duration: 1.0, options: .transitionCrossDissolve) { _ in
-//            animationView.alpha = 1.0
-//            animationView.play(completion: { _ in
-//                animationContainer.removeFromSuperview()
-//            })
-//        }
-        
         UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
             animationContainer.alpha = 1.0
             animationContainer.backgroundColor = .white
@@ -155,7 +133,8 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
                 
                 animationView.play()
             }, completion: {_ in
-                animationContainer.removeFromSuperview()
+//                animationContainer.removeFromSuperview()
+                self.successDelegate?.successHasPlayed()
             })
         }
     }
