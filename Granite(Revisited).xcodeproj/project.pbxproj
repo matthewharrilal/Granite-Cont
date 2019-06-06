@@ -20,6 +20,7 @@
 		1C4113A1228D04D500CBBCFB /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C4113A0228D04D500CBBCFB /* success.json */; };
 		1C4113A3228D0D9F00CBBCFB /* office.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C4113A2228D0D9F00CBBCFB /* office.json */; };
 		1C45F7B222A83FFD00494FB4 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C45F7B122A83FFC00494FB4 /* Protocols.swift */; };
+		1C45F7B422A9977200494FB4 /* progress.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C45F7B322A9977200494FB4 /* progress.json */; };
 		1C6FCB33228A1DB5000BC75A /* PlayfairDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB2D228A1CBD000BC75A /* PlayfairDisplay-Black.ttf */; };
 		1C6FCB34228A1DB5000BC75A /* PlayfairDisplay-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB2E228A1CBD000BC75A /* PlayfairDisplay-BlackItalic.ttf */; };
 		1C6FCB35228A1DB5000BC75A /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB32228A1CBF000BC75A /* PlayfairDisplay-Bold.ttf */; };
@@ -99,6 +100,7 @@
 		1C4113A0228D04D500CBBCFB /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		1C4113A2228D0D9F00CBBCFB /* office.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = office.json; sourceTree = "<group>"; };
 		1C45F7B122A83FFC00494FB4 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		1C45F7B322A9977200494FB4 /* progress.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progress.json; sourceTree = "<group>"; };
 		1C6FCB2D228A1CBD000BC75A /* PlayfairDisplay-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Black.ttf"; sourceTree = "<group>"; };
 		1C6FCB2E228A1CBD000BC75A /* PlayfairDisplay-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-BlackItalic.ttf"; sourceTree = "<group>"; };
 		1C6FCB2F228A1CBD000BC75A /* PlayfairDisplay-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				1C41139A228C9F9900CBBCFB /* downArrow.jpg */,
 				1C4113A0228D04D500CBBCFB /* success.json */,
 				1C1AA4D9227A2EAA009802C5 /* lorem.jpg */,
+				1C45F7B322A9977200494FB4 /* progress.json */,
 				1CCCC1DC2267D7F00012DA75 /* paperPlane.json */,
 				1C4113A2228D0D9F00CBBCFB /* office.json */,
 				1CCCC1DE2267D8AC0012DA75 /* lazyNight.json */,
@@ -492,6 +495,7 @@
 			files = (
 				1C6FCB33228A1DB5000BC75A /* PlayfairDisplay-Black.ttf in Resources */,
 				1C6FCB34228A1DB5000BC75A /* PlayfairDisplay-BlackItalic.ttf in Resources */,
+				1C45F7B422A9977200494FB4 /* progress.json in Resources */,
 				1C41139D228D012100CBBCFB /* down-1.png in Resources */,
 				1C6FCB35228A1DB5000BC75A /* PlayfairDisplay-Bold.ttf in Resources */,
 				1C6FCB36228A1DB5000BC75A /* PlayfairDisplay-BoldItalic.ttf in Resources */,

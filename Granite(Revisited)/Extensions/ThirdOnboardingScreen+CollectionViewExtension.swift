@@ -152,6 +152,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         }, completion: nil)
         
         print("")
+        
     }
     
     @objc func dismissModal(sender: UITapGestureRecognizer) {
@@ -161,15 +162,16 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         self.blurView.layer.cornerRadius = 20
         
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            sender.view?.superview?.frame = startingFrame
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+//            sender.view?.superview?.frame = startingFrame
+            self.blurView.frame = startingFrame
             self.blurView.alpha = 0.0
-            sender.view?.alpha = 0.0
+//            sender.view?.alpha = 0.0
             
         }) { (_) in
             
             // Making sure that views have been removed MARK: FIX make sure that references of these views are deallocated as well
-            sender.view?.superview?.removeFromSuperview()
+//            sender.view?.superview?.removeFromSuperview()
             self.blurView.removeFromSuperview()
             print("Blur view removed")
             self.isUserInteractionEnabled = true

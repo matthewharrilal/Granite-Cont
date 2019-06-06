@@ -18,6 +18,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     var confirmationButton: UIButton!
     
     weak var keyboardDelegate: KeyboardDelegate?
+    weak var endEditingDelegate: EndEditingDelegate?
     
     @IBOutlet weak var placeholderLabel: UILabel!
     
@@ -137,6 +138,10 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Use delegate to notify modal view that user is done editing
+        
+        // What if the user wants to come back
+        self.endEditingDelegate?.returnWasPressed()
         textField.endEditing(true)
         return false
     }

@@ -12,3 +12,8 @@ import Foundation
 protocol KeyboardDelegate: class {
     func keyboardIsActive()
 }
+
+
+protocol EndEditingDelegate: class {
+    func returnWasPressed()
+}

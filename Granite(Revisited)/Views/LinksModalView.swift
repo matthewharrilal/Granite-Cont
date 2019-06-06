@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
+import Lottie
 
-class LinksModalView: UIView, KeyboardDelegate {
+
+class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     @IBOutlet weak var linkName: UILabel!
     var containerView: LinksModalContainerView!
     @IBOutlet weak var pleaseEnterLabel: UILabel!
@@ -83,6 +85,7 @@ class LinksModalView: UIView, KeyboardDelegate {
         containerView.layer.cornerRadius = 20
         
         containerView.keyboardDelegate = self
+        containerView.endEditingDelegate = self
         
         self.linkName.textColor = .white
         
@@ -96,6 +99,65 @@ class LinksModalView: UIView, KeyboardDelegate {
         self.linkName.textAlignment = .center
         
         
+    }
+    
+    func returnWasPressed() {
+        print("Return Key was pressed!")
+        
+        let animationContainer = UIView(frame: self.bounds)
+        
+        let animationView = LOTAnimationView(name: "success")
+        animationContainer.layer.cornerRadius = 20
+        
+        animationView.backgroundColor = .init(hexString: "d7b9d5")
+        
+        animationView.frame = animationContainer.bounds
+        animationContainer.addSubview(animationView)
+        
+        animationView.layer.cornerRadius = 20
+        
+        self.addSubview(animationContainer)
+        
+        animationView.alpha = 0.0
+        
+        animationContainer.alpha = 0.0
+        
+//
+//        UIView.animate(withDuration: 0.25, animations: {
+//
+//
+//            animationContainer.alpha = 1.0
+//            animationContainer.backgroundColor = .white
+//        }) { _ in
+//            UIView.animate(withDuration: 0.75, animations: {
+//                animationView.alpha = 1.0
+//                animationView.play(completion: { _ in
+//                    animationContainer.removeFromSuperview()
+//                })
+//            }, completion: { _ in
+////                animationContainer.removeFromSuperview()
+//            })
+//        }
+//
+//        UIView.transition(from: self, to: animationContainer, duration: 1.0, options: .transitionCrossDissolve) { _ in
+//            animationView.alpha = 1.0
+//            animationView.play(completion: { _ in
+//                animationContainer.removeFromSuperview()
+//            })
+//        }
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
+            animationContainer.alpha = 1.0
+            animationContainer.backgroundColor = .white
+        }) { _ in
+            UIView.animate(withDuration: Double(animationView.animationDuration) + 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
+                animationView.alpha = 1.0
+                
+                animationView.play()
+            }, completion: {_ in
+                animationContainer.removeFromSuperview()
+            })
+        }
     }
     
     func createExitButton() {
