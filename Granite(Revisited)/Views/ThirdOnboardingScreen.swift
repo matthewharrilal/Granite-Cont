@@ -20,6 +20,7 @@ class ThirdOnboardingScreen: UIView {
     var blurView: UIVisualEffectView!
     var didTap = false
     lazy var redView = LinksModalView(frame: startingFrame!)
+    var indexPathRow: Int?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

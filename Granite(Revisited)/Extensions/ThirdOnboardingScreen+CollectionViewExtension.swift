@@ -64,6 +64,8 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         guard let cell = collectionView.cellForItem(at: indexPath) as? LinksCollectionViewCell else {return}
         
+        self.indexPathRow = indexPath.row
+        
         // SET HERE but being used before set
         self.startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil)
         
@@ -135,6 +137,20 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         print("Success animation has been played")
         dismissModal()
         self.redView.removeAnimationContainer()
+        print("This the index path of the cell \(indexPathRow)")
+        
+        guard let indexPathRow = self.indexPathRow else {return}
+        let indexPath = IndexPath(item: indexPathRow, section: 0)
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        
+        self.imageToColor.remove(at: indexPathRow)
+        self.imageName.remove(at: indexPathRow)
+        UIView.animate(withDuration: 0.7, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.collectionView.deleteItems(at: [indexPath])
+        }, completion: nil)
+        
+        
     }
     
     @objc func dismissModal() {
