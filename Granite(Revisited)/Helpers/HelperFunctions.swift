@@ -24,7 +24,7 @@ func createLabelSpacing(withLabelText labelText: String) -> NSMutableAttributedS
 func createTransitionButton(withView view: UIView) -> UIButton {
     let transitionButton = UIButton()
     
-    let frame = CGRect(x: view.center.x, y: view.frame.height * 0.88, width: 80, height: 80)
+    let frame = CGRect(x: view.center.x, y: view.frame.height * 0.88, width: 65, height: 65)
     
     transitionButton.frame = frame
     
@@ -62,7 +62,7 @@ func removeChildViews(views: UIView...) {
 
 func applyTransformation(withButton button: UIButton) {
     print("ANIMATING TRANSITION BUTTON")
-    button.transform = CGAffineTransform(translationX: 0, y: -30).scaledBy(x: 0.7, y: 0.7)
+    button.transform = CGAffineTransform(translationX: 0, y: -20).scaledBy(x: 0.7, y: 0.7)
 //    button.frame.size =
     button.layer.shadowColor = UIColor.black.cgColor
 //    button.layer.shaw
@@ -71,4 +71,30 @@ func applyTransformation(withButton button: UIButton) {
     }) { (_) in
 
     }
+}
+
+
+func animateViewBorder(withHexColor hexColor: String?=nil, color: UIColor?=nil, withBorder border: inout CALayer) {
+    
+    let animationColor = CABasicAnimation(keyPath: "backgroundColor")
+    
+    
+    if let hexColor = hexColor {
+        animationColor.fromValue = UIColor.lightGray.cgColor
+        animationColor.toValue = UIColor.init(hexString: hexColor).cgColor
+        animationColor.duration = 0.25
+        border.backgroundColor = UIColor.init(hexString: hexColor).cgColor
+    }
+    border.add(animationColor, forKey: "backgroundColor")
+    
+}
+
+func createViewBorder(withSuperLayer view: UIView, withBorder border: inout CALayer) {
+    border.frame = .init(x: 0, y: view.bounds.maxY - 2, width: view.bounds.width, height: 2)
+    view.layer.addSublayer(border)
+    border.backgroundColor = UIColor.lightGray.cgColor
+}
+
+func resetViewBorder(withBorder border: inout CALayer) {
+    border.backgroundColor = UIColor.lightGray.cgColor
 }

@@ -45,6 +45,8 @@ class SecondOnboardingScreen: UIView {
         addSubviews(views: preferredLanguageLabel, descriptionLabel, collectionView)
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
         self.transitionButton.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        
+        collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -10, right: -10))
     }
     
     @objc func handleTap() {
@@ -54,7 +56,7 @@ class SecondOnboardingScreen: UIView {
         thirdOnboardingScreen.collectionView.alpha = 0.0
         
         self.addSubview(thirdOnboardingScreen)
-        thirdOnboardingScreen.transitionButton = createTransitionButton(withView: thirdOnboardingScreen)
+//        thirdOnboardingScreen.transitionButton = createTransitionButton(withView: thirdOnboardingScreen)
         thirdOnboardingScreen.transitionButton.alpha = 0.0
         applyTransformation(withButton: thirdOnboardingScreen.transitionButton)
         

@@ -122,6 +122,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
+        self.count = 0
         return false
     }
 }

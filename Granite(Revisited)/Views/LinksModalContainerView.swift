@@ -14,7 +14,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     var textFieldView: UIView!
     var stackView: UIStackView!
-    var bottomBorder: CALayer!
+    lazy var bottomBorder = CALayer()
     var confirmationButton: UIButton!
     
     weak var keyboardDelegate: KeyboardDelegate?
@@ -26,7 +26,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
             usernameTextField.placeholder = "\(linkName) Username"
             placeholderLabel.text = "\(linkName) Username"
             self.placeholderLabel.alpha = 0.0
-            resetViewBorder()
+            resetViewBorder(withBorder: &self.bottomBorder)
         }
     }
     
@@ -68,7 +68,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         UIView.animate(withDuration: 1.0) {
             self.usernameTextField.placeholder = ""
             self.placeholderLabel.alpha = 0.8
-            self.animateViewBorder(withHexColor: "8CDFD6")
+            animateViewBorder(withHexColor: "8CDFD6", withBorder: &self.bottomBorder)
         }
     }
     
@@ -108,7 +108,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         self.placeholderLabel.anchor(top: stackView.topAnchor, leading: stackView.leadingAnchor, bottom: usernameTextField.topAnchor, trailing: stackView.trailingAnchor)
         self.usernameTextField.constrainWidth(withWidth: stackView.bounds.width)
         
-        createViewBorder()
+        createViewBorder(withSuperLayer: self.textFieldView, withBorder: &self.bottomBorder)
     }
     
     func createConfirmationButton() {
@@ -123,32 +123,6 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         self.confirmationButton.setTitle("✔", for: .normal)
         self.confirmationButton.titleLabel?.textColor = .green
       
-    }
-    
-    func animateViewBorder(withHexColor hexColor: String?=nil, color: UIColor?=nil) {
-        
-        let animationColor = CABasicAnimation(keyPath: "backgroundColor")
-        
-        
-        if let hexColor = hexColor {
-            animationColor.fromValue = UIColor.lightGray.cgColor
-            animationColor.toValue = UIColor.init(hexString: hexColor).cgColor
-            animationColor.duration = 0.25
-            self.bottomBorder.backgroundColor = UIColor.init(hexString: hexColor).cgColor
-        }
-        bottomBorder.add(animationColor, forKey: "backgroundColor")
-        
-    }
-    
-    func createViewBorder() {
-        self.bottomBorder = CALayer()
-        self.bottomBorder.frame = .init(x: 0, y: textFieldView.bounds.maxY - 2, width: textFieldView.bounds.width, height: 2)
-        textFieldView.layer.addSublayer(bottomBorder)
-        bottomBorder.backgroundColor = UIColor.lightGray.cgColor
-    }
-    
-    func resetViewBorder() {
-        self.bottomBorder.backgroundColor = UIColor.lightGray.cgColor
     }
     
     // PRO TIP: The reason we dont constrain size is because we need to know the exact x and y when since the frame changes we don't know for sure

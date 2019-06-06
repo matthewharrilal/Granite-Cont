@@ -49,6 +49,8 @@ class ThirdOnboardingScreen: UIView {
         
 //        self.redView.containerView.logoImageView.center.x = self.redView.containerView.frame.midX
        
+        self.transitionButton = createTransitionButton(withView: self)
+        collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self .leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -20, right: -10))
         
     }
 }
