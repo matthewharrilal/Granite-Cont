@@ -56,6 +56,15 @@ class ThirdOnboardingScreen: UIView {
         
         
         //        applyTransformation(withButton: self.transitionButton)
+        
+        self.transitionButton.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+    }
+    
+    @objc func handleTap() {
+        removeChildViews(views: self.moreAboutYourself, self.descriptionLabel, self.collectionView, self.transitionButton)
+        let signUpView = SignUpView(frame: self.bounds)
+        
+        self.addSubview(signUpView)
     }
 }
 

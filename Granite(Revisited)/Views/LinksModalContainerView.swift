@@ -77,7 +77,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         self.textFieldView = UIView(frame: .init(x: self.center.x, y: 60, width: self.frame.width / 2, height: 60))
         
         //
-        
+        var placeholderLabel = UILabel()
         placeholderLabel.text = ""
         
         //
