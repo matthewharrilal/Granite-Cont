@@ -127,6 +127,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         
         animationContainer.alpha = 0.0
         
+        
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
             self.animationContainer.alpha = 1.0
             self.animationContainer.backgroundColor = .white
