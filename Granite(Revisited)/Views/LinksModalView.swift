@@ -113,7 +113,8 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         let animationView = LOTAnimationView(name: "success")
         animationContainer.layer.cornerRadius = 20
         
-        animationView.backgroundColor = .init(hexString: "d7b9d5")
+//        animationView.backgroundColor = .init(hexString: "d7b9d5")
+        animationView.backgroundColor = .white
         
         animationView.frame = animationContainer.bounds
         animationContainer.addSubview(animationView)
@@ -126,7 +127,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         
         animationContainer.alpha = 0.0
         
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
             self.animationContainer.alpha = 1.0
             self.animationContainer.backgroundColor = .white
         }) { _ in

@@ -91,7 +91,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         self.blurView.contentView.addSubview(redView)
         redView.layer.cornerRadius = 20
         self.redView.createExitButton()
-        
+
         // For when modal view comes up
         self.redView.containerView.usernameTextField.text = nil
         self.redView.containerView.usernameTextField.resignFirstResponder()
@@ -173,6 +173,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             self.blurView.removeFromSuperview()
             print("Blur view removed")
             self.isUserInteractionEnabled = true
+            self.redView.exitButton.removeFromSuperview()
         }
         
     }
