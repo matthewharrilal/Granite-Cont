@@ -17,6 +17,7 @@ class SignUpView: UIView {
     var innerContainerView: UIView!
     var animationView: LOTAnimationView!
     var signUpLabel: UILabel!
+    var textFieldView: UIView!
     lazy var bottomBorder = CALayer()
     
     override init(frame: CGRect) {
@@ -119,49 +120,7 @@ class SignUpView: UIView {
     
     func createCustomTextField() {
         
-        //
-        
-        //            let placeholderLabel = UILabel()
-        //
-        //            placeholderLabel.text = ""
-        //
-        //            //
-        //            let usernameTextField = UITextField()
-        //            usernameTextField.borderStyle = .none
-        //            usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
-        //            usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
-        //            usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
-        //
-        //            usernameTextField.backgroundColor = .clear
-        //
-        //
-        //
-        //            let stackView = UIStackView(arrangedSubviews: [placeholderLabel, usernameTextField])
-        //            stackView.distribution = .fillEqually
-        //            stackView.axis = .vertical
-        //            stackView.alignment = .center
-        //            stackView.spacing = 5
-        //
-        //            stackView.backgroundColor = .blue
-        //
-        //
-        //            usernameTextField.constrainHeight(withHeight: stackView.frame.height / 2)
-        //
-        //            self.innerContainerView.addSubview(stackView)
-        //            stackView.frame = .init(x: self.innerContainerView.bounds.midX, y: self.innerContainerView.bounds.midY, width: self.innerContainerView.bounds.width / 2, height: self.innerContainerView.bounds.height / 2)
-        //
-        //            stackView.center = innerContainerView.center
-        ////            stackView.anchorSize(toView: innerContainerView)
-        //
-        //
-        //
-        //            placeholderLabel.anchor(top: stackView.topAnchor, leading: stackView.leadingAnchor, bottom: usernameTextField.topAnchor, trailing: stackView.trailingAnchor)
-        //            usernameTextField.constrainWidth(withWidth: stackView.bounds.width)
-        //
-        //            createViewBorder(withSuperLayer: stackView, withBorder: &self.bottomBorder)
-        
-        
-        let textFieldView = UIView(frame: .init(x: self.innerContainerView.bounds.minX, y: self.innerContainerView.bounds.minY + 20 , width: self.innerContainerView.bounds.width - 10, height: 60))
+        self.textFieldView = UIView(frame: .init(x: self.innerContainerView.bounds.minX, y: self.innerContainerView.bounds.minY + 20 , width: self.innerContainerView.frame.width / 2, height: 60))
         
         textFieldView.backgroundColor = .clear
         
@@ -190,14 +149,15 @@ class SignUpView: UIView {
         
         textFieldView.addSubview(stackView)
         stackView.frame = textFieldView.bounds
-        stackView.anchorSize(toView: textFieldView)
+        stackView.anchor(top: textFieldView.topAnchor, leading: textFieldView.leadingAnchor, bottom: textFieldView.bottomAnchor, trailing: textFieldView.trailingAnchor, padding: .init(top: 10, left: 0, bottom: -10, right: -10))
+        
         
         self.innerContainerView.addSubview(textFieldView)
         
         placeholderLabel.anchor(top: stackView.topAnchor, leading: stackView.leadingAnchor, bottom: usernameTextField.topAnchor, trailing: stackView.trailingAnchor)
         usernameTextField.constrainWidth(withWidth: stackView.bounds.width)
         
-        //            textFieldView.anchor(top: self.innerContainerView.topAnchor, leading: self.innerContainerView.leadingAnchor, bottom: self.innerContainerView.bottomAnchor, trailing: self.innerContainerView.trailingAnchor, padding: .init(top: 20, left: 10, bottom: 0, right: -10))
+        createViewBorder(withSuperLayer: stackView, withBorder: &self.bottomBorder)
     }
     
     @objc func handleTextFieldTap() {}

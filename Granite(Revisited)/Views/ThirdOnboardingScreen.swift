@@ -66,6 +66,7 @@ class ThirdOnboardingScreen: UIView {
         
         self.addSubview(signUpView)
         
+//        signUpView.textFieldView.anchor(top: signUpView.innerContainerView.topAnchor, leading: signUpView.innerContainerView.leadingAnchor, bottom: signUpView.innerContainerView.bottomAnchor, trailing: signUpView.innerContainerView.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: -20))
 //        signUpView.signUpLabel.center.x = signUpView.createAccountView.bounds.midX
     }
 }
