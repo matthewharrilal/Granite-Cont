@@ -14,10 +14,10 @@ class SignUpView: UIView {
     @IBOutlet weak var animationContainerView: UIView!
     @IBOutlet weak var createAccountView: UIView!
     @IBOutlet weak var transitionView: UIView!
-    var textFieldView: UIView!
     var innerContainerView: UIView!
     var animationView: LOTAnimationView!
     var signUpLabel: UILabel!
+    lazy var bottomBorder = CALayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +26,8 @@ class SignUpView: UIView {
         animateInnerContainerView()
         
         animateCreateAccountView()
+        
+        createCustomTextField()
         
     }
     
@@ -82,7 +84,8 @@ class SignUpView: UIView {
         
         UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
             self.innerContainerView.frame = .init(x: self.createAccountView.bounds.origin.x, y: self.createAccountView.bounds.origin.y, width: self.bounds.width, height: self.createAccountView.bounds.height)
-        }, completion: nil)
+        }, completion: {_ in
+        })
         
         self.innerContainerView.anchor(top: self.createAccountView.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 50, left: -50, bottom: 50, right: -70))
     }
@@ -93,7 +96,6 @@ class SignUpView: UIView {
         }, completion: { _ in
             self.animationView.play()
             self.createOuterContainerLabel()
-
         })
         
         self.createAccountView.anchor(top: self.animationContainerView.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 10, left: -50, bottom: 50, right: -50))
@@ -102,7 +104,7 @@ class SignUpView: UIView {
     
     
     func createOuterContainerLabel() {
-        self.signUpLabel = UILabel(frame: .init(x: self.createAccountView.bounds.midX, y: self.createAccountView.bounds.minY, width: self.createAccountView.bounds.width / 2, height: self.createAccountView.bounds.height  - self.innerContainerView.bounds.height))
+        self.signUpLabel = UILabel(frame: .init(x: self.createAccountView.bounds.minX, y: self.createAccountView.bounds.minY, width: self.createAccountView.bounds.width / 2, height: self.createAccountView.bounds.height  - self.innerContainerView.bounds.height))
         
         signUpLabel.center.x = self.createAccountView.bounds.midX
         
@@ -115,48 +117,90 @@ class SignUpView: UIView {
         signUpLabel.centerXInSuperview()
     }
     
-    //    func createCustomTextField() {
-    //        self.textFieldView = UIView(frame: .init(x: self.center.x, y: 60, width: self.frame.width / 2, height: 60))
-    //
-    //        //
-    //
-    //        let placeholderLabel = UILabel()
-    //
-    //        placeholderLabel.text = ""
-    //
-    //        //
-    //        let usernameTextField = UITextField()
-    //        usernameTextField.borderStyle = .none
-    //        usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
-    //        usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
-    //        usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
-    //
-    //        usernameTextField.backgroundColor = .clear
-    //
-    //
-    //
-    //        self.stackView = UIStackView(arrangedSubviews: [self.placeholderLabel, self.usernameTextField])
-    //        stackView.distribution = .fillEqually
-    //        stackView.axis = .vertical
-    //        stackView.alignment = .center
-    //        stackView.spacing = 5
-    //
-    //        textFieldView.addSubview(stackView)
-    //        stackView.backgroundColor = .blue
-    //
-    //        textFieldView.backgroundColor = .clear
-    //
-    //        self.usernameTextField.constrainHeight(withHeight: stackView.frame.height / 2)
-    //
-    //        addSubview(textFieldView)
-    //        stackView.frame = textFieldView.bounds
-    //        stackView.anchorSize(toView: textFieldView)
-    //        self.placeholderLabel.anchor(top: stackView.topAnchor, leading: stackView.leadingAnchor, bottom: usernameTextField.topAnchor, trailing: stackView.trailingAnchor)
-    //        self.usernameTextField.constrainWidth(withWidth: stackView.bounds.width)
-    //
-    //        createViewBorder(withSuperLayer: self.textFieldView, withBorder: &self.bottomBorder)
-    //    }
-    //
+    func createCustomTextField() {
+        
+        //
+        
+        //            let placeholderLabel = UILabel()
+        //
+        //            placeholderLabel.text = ""
+        //
+        //            //
+        //            let usernameTextField = UITextField()
+        //            usernameTextField.borderStyle = .none
+        //            usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
+        //            usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        //            usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
+        //
+        //            usernameTextField.backgroundColor = .clear
+        //
+        //
+        //
+        //            let stackView = UIStackView(arrangedSubviews: [placeholderLabel, usernameTextField])
+        //            stackView.distribution = .fillEqually
+        //            stackView.axis = .vertical
+        //            stackView.alignment = .center
+        //            stackView.spacing = 5
+        //
+        //            stackView.backgroundColor = .blue
+        //
+        //
+        //            usernameTextField.constrainHeight(withHeight: stackView.frame.height / 2)
+        //
+        //            self.innerContainerView.addSubview(stackView)
+        //            stackView.frame = .init(x: self.innerContainerView.bounds.midX, y: self.innerContainerView.bounds.midY, width: self.innerContainerView.bounds.width / 2, height: self.innerContainerView.bounds.height / 2)
+        //
+        //            stackView.center = innerContainerView.center
+        ////            stackView.anchorSize(toView: innerContainerView)
+        //
+        //
+        //
+        //            placeholderLabel.anchor(top: stackView.topAnchor, leading: stackView.leadingAnchor, bottom: usernameTextField.topAnchor, trailing: stackView.trailingAnchor)
+        //            usernameTextField.constrainWidth(withWidth: stackView.bounds.width)
+        //
+        //            createViewBorder(withSuperLayer: stackView, withBorder: &self.bottomBorder)
+        
+        
+        let textFieldView = UIView(frame: .init(x: self.innerContainerView.bounds.minX, y: self.innerContainerView.bounds.minY + 20 , width: self.innerContainerView.bounds.width - 10, height: 60))
+        
+        textFieldView.backgroundColor = .clear
+        
+        let placeholderLabel = UILabel()
+        placeholderLabel.text = ""
+        
+        let usernameTextField = UITextField()
+        usernameTextField.borderStyle = .none
+        usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
+        usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
+        
+        usernameTextField.backgroundColor = .clear
+        
+        let stackView = UIStackView(arrangedSubviews: [placeholderLabel, usernameTextField])
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 5
+        
+        stackView.backgroundColor = .blue
+        
+        
+        usernameTextField.constrainHeight(withHeight: stackView.frame.height / 2)
+        
+        
+        textFieldView.addSubview(stackView)
+        stackView.frame = textFieldView.bounds
+        stackView.anchorSize(toView: textFieldView)
+        
+        self.innerContainerView.addSubview(textFieldView)
+        
+        placeholderLabel.anchor(top: stackView.topAnchor, leading: stackView.leadingAnchor, bottom: usernameTextField.topAnchor, trailing: stackView.trailingAnchor)
+        usernameTextField.constrainWidth(withWidth: stackView.bounds.width)
+        
+        //            textFieldView.anchor(top: self.innerContainerView.topAnchor, leading: self.innerContainerView.leadingAnchor, bottom: self.innerContainerView.bottomAnchor, trailing: self.innerContainerView.trailingAnchor, padding: .init(top: 20, left: 10, bottom: 0, right: -10))
+    }
+    
+    @objc func handleTextFieldTap() {}
     
     
 }
