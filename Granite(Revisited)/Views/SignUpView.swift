@@ -149,10 +149,12 @@ class SignUpView: UIView {
         
         textFieldView.addSubview(stackView)
         stackView.frame = textFieldView.bounds
-        stackView.anchor(top: textFieldView.topAnchor, leading: textFieldView.leadingAnchor, bottom: textFieldView.bottomAnchor, trailing: textFieldView.trailingAnchor, padding: .init(top: 10, left: 0, bottom: -10, right: -10))
+        stackView.anchor(top: textFieldView.topAnchor, leading: textFieldView.leadingAnchor, bottom: textFieldView.bottomAnchor, trailing: textFieldView.trailingAnchor, padding: .init(top: 10, left: 0, bottom: -10, right: 0))
         
         
         self.innerContainerView.addSubview(textFieldView)
+        textFieldView.center.x = self.innerContainerView.bounds.midX
+        stackView.center.x = textFieldView.bounds.midX
         
         placeholderLabel.anchor(top: stackView.topAnchor, leading: stackView.leadingAnchor, bottom: usernameTextField.topAnchor, trailing: stackView.trailingAnchor)
         usernameTextField.constrainWidth(withWidth: stackView.bounds.width)

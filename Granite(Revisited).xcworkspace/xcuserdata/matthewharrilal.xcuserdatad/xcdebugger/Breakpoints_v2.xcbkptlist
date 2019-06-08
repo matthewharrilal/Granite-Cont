@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Granite(Revisited)/Helpers/HelperFunctions.swift"
-            timestampString = "581714137.190385"
+            timestampString = "581714554.970021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Granite(Revisited)/Views/SignUpView.swift"
-            timestampString = "581714137.190443"
+            timestampString = "581714554.970082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "createCustomTextField()"
             landmarkType = "7">
          </BreakpointContent>
