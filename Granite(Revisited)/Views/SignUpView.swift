@@ -15,8 +15,9 @@ class SignUpView: UIView {
     @IBOutlet weak var createAccountView: UIView!
     @IBOutlet weak var transitionView: UIView!
     var textFieldView: UIView!
-    var outerContainerView: UIView!
     var innerContainerView: UIView!
+    var animationView: LOTAnimationView!
+    var signUpLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,6 +26,7 @@ class SignUpView: UIView {
         animateInnerContainerView()
         
         animateCreateAccountView()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,18 +53,17 @@ class SignUpView: UIView {
     }
     
     func loadAnimationView() {
-        let animationView = LOTAnimationView(name: "lego")
+        self.animationView = LOTAnimationView(name: "lego")
         animationView.frame = self.animationContainerView.bounds
         
         self.animationContainerView.addSubview(animationView)
         self.animationContainerView.backgroundColor = .init(hexString: "d5b9b2")
         animationView.autoReverseAnimation = true
         animationView.loopAnimation = true
-        animationView.play()
     }
     
     func createInnerContainerView() {
-        self.createAccountView.layer.cornerRadius = 20
+        self.createAccountView.layer.cornerRadius = 50
         self.createAccountView.backgroundColor = .init(hexString: "7f7eff")
         
         self.innerContainerView = UIView(frame: .init(x: self.createAccountView.bounds.origin.x, y: self.createAccountView.bounds.origin.y, width: -self.bounds.width, height: self.createAccountView.bounds.height))
@@ -71,7 +72,7 @@ class SignUpView: UIView {
         self.addSubview(innerContainerView)
         
         
-        innerContainerView.layer.cornerRadius = 20
+        innerContainerView.layer.cornerRadius = 50
         
         
         
@@ -79,19 +80,39 @@ class SignUpView: UIView {
     
     func animateInnerContainerView() {
         
-        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
             self.innerContainerView.frame = .init(x: self.createAccountView.bounds.origin.x, y: self.createAccountView.bounds.origin.y, width: self.bounds.width, height: self.createAccountView.bounds.height)
         }, completion: nil)
         
-        self.innerContainerView.anchor(top: self.createAccountView.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 30, left: -50, bottom: 0, right: -70))
+        self.innerContainerView.anchor(top: self.createAccountView.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 50, left: -50, bottom: 50, right: -70))
     }
     
     func animateCreateAccountView() {
-        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1.0, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
             self.createAccountView.frame = .init(x: self.createAccountView.bounds.midX, y: self.createAccountView.bounds.origin.y, width: self.bounds.width, height: self.createAccountView.bounds.height)
-        }, completion: nil)
+        }, completion: { _ in
+            self.animationView.play()
+            self.createOuterContainerLabel()
+
+        })
         
-        self.createAccountView.anchor(top: self.animationContainerView.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 10, left: -50, bottom: 50, right: -20))
+        self.createAccountView.anchor(top: self.animationContainerView.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 10, left: -50, bottom: 50, right: -50))
+        self.layoutIfNeeded()
+    }
+    
+    
+    func createOuterContainerLabel() {
+        self.signUpLabel = UILabel(frame: .init(x: self.createAccountView.bounds.midX, y: self.createAccountView.bounds.minY, width: self.createAccountView.bounds.width / 2, height: self.createAccountView.bounds.height  - self.innerContainerView.bounds.height))
+        
+        signUpLabel.center.x = self.createAccountView.bounds.midX
+        
+        signUpLabel.text = "Sign Up"
+        signUpLabel.textColor = .white
+        self.createAccountView.addSubview(signUpLabel)
+        
+        signUpLabel.textAlignment = .center
+        
+        signUpLabel.centerXInSuperview()
     }
     
     //    func createCustomTextField() {

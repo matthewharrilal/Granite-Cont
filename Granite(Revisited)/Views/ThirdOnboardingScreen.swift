@@ -65,6 +65,8 @@ class ThirdOnboardingScreen: UIView {
         let signUpView = SignUpView(frame: self.bounds)
         
         self.addSubview(signUpView)
+        
+//        signUpView.signUpLabel.center.x = signUpView.createAccountView.bounds.midX
     }
 }
 
