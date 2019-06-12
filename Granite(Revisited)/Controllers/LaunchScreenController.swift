@@ -88,7 +88,7 @@ class LaunchScreenViewController: UIViewController {
         let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.86, width: self.view.frame.width / 1.25, height: 50)
         
         self.loginButton = UIButton(frame: frame)
-        configureButton(withButton: &loginButton, withTarget: #selector(handleLogin), withBackgroundColorHexString: "59c3c3", withTextColorHexString: "4fb286" , withTitle: "I HAVE AN ACCOUNT ")
+        configureButton(withButton: &loginButton, withTarget: #selector(handleLogin), withBackgroundColorHexString: "2357A5", withTextColorHexString: "FFFFFF" , withTitle: "I HAVE AN ACCOUNT ")
     }
     
     private func configureSignup() {
@@ -96,7 +96,7 @@ class LaunchScreenViewController: UIViewController {
         let frame = CGRect(x: self.view.center.x, y: self.view.frame.height * 0.78, width: self.view.frame.width / 1.25, height: 50)
         
         self.signupButton = UIButton(frame: frame)
-        configureButton(withButton: &signupButton, withTarget: #selector(handleSignUp), withBackgroundColorHexString: "bbbe64", withTextColorHexString: "4fb286", withTitle: "SIGN UP")
+        configureButton(withButton: &signupButton, withTarget: #selector(handleSignUp), withBackgroundColorHexString: "317AC1", withTextColorHexString: "FFFFFF", withTitle: "SIGN UP")
         
         // MARK: TODO Would it be better if these elements were arranged into a stack view?
     }

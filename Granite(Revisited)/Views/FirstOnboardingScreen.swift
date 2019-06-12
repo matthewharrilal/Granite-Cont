@@ -33,7 +33,7 @@ class FirstOnboardingScreen: UIView {
     fileprivate func commonInit() {
         Bundle.main.loadNibNamed("FirstOnboardingScreen", owner: self, options: nil)
         self.addSubviews(views: welcomeLabel, descriptionLabel)
-        self.backgroundColor = .white
+        self.backgroundColor = .init(hexString: "fefeff")
         
         self.transitionButton = createTransitionButton(withView: self)
         
@@ -86,6 +86,7 @@ class FirstOnboardingScreen: UIView {
         animationView.contentMode = .scaleAspectFit
         
         animationView.play()
+        
         
         animationView.animationSpeed = 0.5
         

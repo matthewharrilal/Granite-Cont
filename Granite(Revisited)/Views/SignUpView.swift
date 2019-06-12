@@ -80,7 +80,7 @@ class SignUpView: UIView, UITextFieldDelegate {
         self.createAccountView.layer.cornerRadius = 50
         self.createAccountView.backgroundColor = .init(hexString: "7f7eff")
         
-        self.innerContainerView = UIView(frame: .init(x: self.createAccountView.bounds.origin.x, y: self.createAccountView.bounds.origin.y, width: -self.bounds.width, height: self.createAccountView.bounds.height))
+        self.innerContainerView = UIView(frame: .init(x: self.createAccountView.bounds.origin.x, y: self.createAccountView.bounds.origin.y, width: self.bounds.width, height: -self.createAccountView.bounds.height))
         innerContainerView.backgroundColor = .white
         
         self.addSubview(innerContainerView)
@@ -94,16 +94,16 @@ class SignUpView: UIView, UITextFieldDelegate {
     
     func animateInnerContainerView() {
         
-        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
             self.innerContainerView.frame = .init(x: self.createAccountView.bounds.origin.x, y: self.createAccountView.bounds.origin.y, width: self.bounds.width, height: self.createAccountView.bounds.height)
         }, completion: {_ in
         })
         
-        self.innerContainerView.anchor(top: self.createAccountView.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 50, left: -50, bottom: 50, right: -70))
+        self.innerContainerView.anchor(top: self.createAccountView.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 50, left: 50, bottom: 50, right: -70))
     }
     
     func animateCreateAccountView() {
-        UIView.animate(withDuration: 1.0, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 2.0, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
             self.createAccountView.frame = .init(x: self.createAccountView.bounds.midX, y: self.createAccountView.bounds.origin.y, width: self.bounds.width, height: self.createAccountView.bounds.height)
         }, completion: { _ in
             self.animationView.play()
