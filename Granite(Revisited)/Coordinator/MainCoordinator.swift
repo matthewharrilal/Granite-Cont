@@ -7,5 +7,23 @@
 //
 
 import Foundation
+import UIKit
 
-
+class MainCoordinator: Coordinator {
+    var childCoordinators: [Coordinator] = [Coordinator]()
+    
+    var navigationController: UINavigationController
+    
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController // Every coordinator manages their hierarchal stack via their own navigation controllers
+    }
+    
+    
+    func start() {
+        // Initial View Controller
+        
+        let loginViewController = LogInViewController()
+        self.navigationController.pushViewController(loginViewController, animated: true)
+    }
+}
