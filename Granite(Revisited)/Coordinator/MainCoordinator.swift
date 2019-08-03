@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 class MainCoordinator: Coordinator {
-    var childCoordinators: [Coordinator] = [Coordinator]()
+    var childCoordinators: [Coordinator] = [Coordinator]() // If you need to handle the main coordinators children
+    
+    lazy var loginViewController: LogInViewController = self.createLoginViewController()
     
     var navigationController: UINavigationController
     
@@ -22,8 +24,31 @@ class MainCoordinator: Coordinator {
     
     func start() {
         // Initial View Controller
+        self.loginViewController.coordinator = self
+        self.navigationController.pushViewController(self.loginViewController, animated: true)
+    }
+    
+    
+    // MARK: TODO Handle the transition of DO NOT HAVE AN ACCOUNT -> First onboarding screen
+    
+    func createAccount() {
+        let onboardingController = OnboardingController()
         
+        
+        
+        self.navigationController.pushViewController(onboardingController, animated: true)
+    }
+    
+    
+}
+
+
+// Factory Extension
+
+extension MainCoordinator {
+    func createLoginViewController() -> LogInViewController {
         let loginViewController = LogInViewController()
-        self.navigationController.pushViewController(loginViewController, animated: true)
+        
+        return loginViewController
     }
 }
