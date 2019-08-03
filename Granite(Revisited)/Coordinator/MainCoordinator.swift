@@ -39,7 +39,12 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(onboardingController, animated: true)
     }
     
-    
+    func createAccountView() {
+        let createAccountViewController = CreateAccountViewController()
+        
+        
+        self.navigationController.pushViewController(createAccountViewController, animated: true)
+    }
 }
 
 
