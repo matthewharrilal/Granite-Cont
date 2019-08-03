@@ -14,6 +14,8 @@ class OnboardingController: UIViewController {
     var firstOnboardingScreen: FirstOnboardingScreen!
     var secondOnboardingScreen: SecondOnboardingScreen!
     
+    weak var coordinator: MainCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

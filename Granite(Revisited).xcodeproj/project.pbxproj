@@ -60,6 +60,10 @@
 		1CA0F7F022A082CC00089583 /* SecondOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7EF22A082CC00089583 /* SecondOnboardingController.swift */; };
 		1CA0F7F222A0BEFC00089583 /* LinksModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA0F7F122A0BEFC00089583 /* LinksModalView.xib */; };
 		1CA0F7F422A0BF0A00089583 /* LinksModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7F322A0BF0A00089583 /* LinksModalView.swift */; };
+		1CB0349C22F6090F00EFCC65 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB0349B22F6090F00EFCC65 /* MainCoordinator.swift */; };
+		1CB0349E22F6091F00EFCC65 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB0349D22F6091F00EFCC65 /* CoordinatorProtocol.swift */; };
+		1CB034A022F6121300EFCC65 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB0349F22F6121300EFCC65 /* CreateAccountViewController.swift */; };
+		1CB034A222F6122900EFCC65 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB034A122F6122900EFCC65 /* CreateAccountView.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
 		1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */; };
 		1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A62267874E0012DA75 /* Main.storyboard */; };
@@ -143,6 +147,10 @@
 		1CA0F7EF22A082CC00089583 /* SecondOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingController.swift; sourceTree = "<group>"; };
 		1CA0F7F122A0BEFC00089583 /* LinksModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinksModalView.xib; sourceTree = "<group>"; };
 		1CA0F7F322A0BF0A00089583 /* LinksModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksModalView.swift; sourceTree = "<group>"; };
+		1CB0349B22F6090F00EFCC65 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		1CB0349D22F6091F00EFCC65 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		1CB0349F22F6121300EFCC65 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		1CB034A122F6122900EFCC65 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCCC1A22267874E0012DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
@@ -252,6 +260,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		1CB0349A22F6090000EFCC65 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1CB0349B22F6090F00EFCC65 /* MainCoordinator.swift */,
+				1CB0349D22F6091F00EFCC65 /* CoordinatorProtocol.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		1CCCC1962267874E0012DA75 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +292,7 @@
 		1CCCC1A12267874E0012DA75 /* Granite(Revisited) */ = {
 			isa = PBXGroup;
 			children = (
+				1CB0349A22F6090000EFCC65 /* Coordinator */,
 				1C6FCB2C228A1CB1000BC75A /* Fonts */,
 				1CCCC1C6226788260012DA75 /* Models */,
 				1CCCC1C5226788210012DA75 /* Controllers */,
@@ -308,6 +326,7 @@
 				1C1AA4D7227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift */,
 				1C6FCB3E228B36D1000BC75A /* OnboardingController.swift */,
 				1CA0F7EF22A082CC00089583 /* SecondOnboardingController.swift */,
+				1CB0349F22F6121300EFCC65 /* CreateAccountViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -381,6 +400,7 @@
 				1C21B58C22A36C2A00FF9C97 /* LinksModalContainerView.swift */,
 				1C45F7B522AA20ED00494FB4 /* SignUpView.swift */,
 				1C45F7B722AA211E00494FB4 /* SignUpView.xib */,
+				1CB034A122F6122900EFCC65 /* CreateAccountView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -579,6 +599,7 @@
 				"${BUILT_PRODUCTS_DIR}/CircleMenu/CircleMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/DWAnimatedLabel/DWAnimatedLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
@@ -590,6 +611,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CircleMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DWAnimatedLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
@@ -631,6 +653,7 @@
 				1C83F438227BDB0500BEA884 /* NetworkManager.swift in Sources */,
 				1C6FCB3D228B34F5000BC75A /* FirstOnboardingScreen.swift in Sources */,
 				1C75417C2268E6680038D0E1 /* LaunchScreenController+Extension.swift in Sources */,
+				1CB034A022F6121300EFCC65 /* CreateAccountViewController.swift in Sources */,
 				1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */,
 				1C83F430227BCDE200BEA884 /* NetworkRouter.swift in Sources */,
 				1CCCC1AB2267874E0012DA75 /* Granite_Revisited_.xcdatamodeld in Sources */,
@@ -648,6 +671,7 @@
 				1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */,
 				1C83F43A227BDB2800BEA884 /* UserAccess.swift in Sources */,
 				1C83F43E227CD0AD00BEA884 /* PulsatingButton.swift in Sources */,
+				1CB0349E22F6091F00EFCC65 /* CoordinatorProtocol.swift in Sources */,
 				1CA0F7F022A082CC00089583 /* SecondOnboardingController.swift in Sources */,
 				1C83F42E227BCDC100BEA884 /* Errors.swift in Sources */,
 				1C83F436227BCEF400BEA884 /* URLParameterEncoder.swift in Sources */,
@@ -661,8 +685,10 @@
 				1CA0F7E2229EDB3A00089583 /* LanguagesCollectionViewCell.swift in Sources */,
 				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,
 				1CA0F7EE22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift in Sources */,
+				1CB0349C22F6090F00EFCC65 /* MainCoordinator.swift in Sources */,
 				1C83F434227BCEEB00BEA884 /* JSONParameterEncoder.swift in Sources */,
 				1CCCC1D3226797ED0012DA75 /* UIColor+Extension.swift in Sources */,
+				1CB034A222F6122900EFCC65 /* CreateAccountView.swift in Sources */,
 				1C226186227AB0090072A638 /* User.swift in Sources */,
 				1C83F43C227BE03100BEA884 /* HTTPMethods.swift in Sources */,
 			);

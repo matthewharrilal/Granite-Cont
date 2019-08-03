@@ -15,6 +15,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
     
     let loginView = LoginView()
     
+    var coordinator: MainCoordinator?
+    
     var isKeyboardActive = false
     
     var count = 0
@@ -94,12 +96,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
     }
     
     @objc func handleCreateAccount() {
-        // TODO: MARK Handle tap
-        let onboardingFlowController = OnboardingController()
-        onboardingFlowController.hero.isEnabled = true
+//        // TODO: MARK Handle tap
+//        let onboardingFlowController = OnboardingController()
+//        onboardingFlowController.hero.isEnabled = true
+//
+//        onboardingFlowController.hero.modalAnimationType = .fade
+//        self.present(onboardingFlowController, animated: true, completion: nil)
         
-        onboardingFlowController.hero.modalAnimationType = .fade
-        self.present(onboardingFlowController, animated: true, completion: nil)
+        self.coordinator?.createAccount()
+        
+        
     }
     
     @objc func handleLogin() {

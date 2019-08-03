@@ -12,7 +12,7 @@ target 'Granite(Revisited)' do
   pod 'DWAnimatedLabel', '~> 1.1'
   pod 'paper-onboarding'
   pod 'TextFieldEffects'
-
+  pod 'SnapKit', '~> 4.0.0'  
   target 'Granite(Revisited)Tests' do
     inherit! :search_paths
     # Pods for testing
