@@ -88,7 +88,8 @@ class LoginView: UIView {
         
         //        usernameTextField.
         
-        
+//        whiteLoginView.frame = .init(x: self.whiteLoginView.frame.origin.x, y: self.whiteLoginView.frame.origin.y, width: self.whiteLoginView.frame.width, height: -whiteLoginView.frame.height)
+//        
         whiteLoginView.addSubview(loginStackView)
         let padding = UIEdgeInsets(top: 10, left: 20, bottom: -10 , right: -20)
         loginStackView.fillSuperview(withSuperview: whiteLoginView, padding: padding)

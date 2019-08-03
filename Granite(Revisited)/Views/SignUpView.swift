@@ -99,7 +99,7 @@ class SignUpView: UIView, UITextFieldDelegate {
         }, completion: {_ in
         })
         
-        self.innerContainerView.anchor(top: self.createAccountView.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 50, left: 50, bottom: 50, right: -70))
+        self.innerContainerView.anchor(top: self.createAccountView.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 50, left: 10, bottom: -50, right: -10))
     }
     
     func animateCreateAccountView() {
@@ -110,7 +110,7 @@ class SignUpView: UIView, UITextFieldDelegate {
             self.createOuterContainerLabel()
         })
         
-        self.createAccountView.anchor(top: self.animationContainerView.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 10, left: -50, bottom: 50, right: -50))
+        self.createAccountView.anchor(top: self.animationContainerView.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 10, left: 10, bottom: -50, right: -10))
         self.layoutIfNeeded()
     }
     
