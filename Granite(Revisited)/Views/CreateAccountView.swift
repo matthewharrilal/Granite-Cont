@@ -20,11 +20,14 @@ class CreateAccountView: UIView {
     
     init() {
         super.init(frame: .zero)
-        layout()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
+    }
+    
+    override func layoutSubviews() {
+        layout()
     }
     
 }
@@ -76,7 +79,9 @@ extension CreateAccountView {
         self.addSubview(self.animationView)
         
         self.animationView.snp.makeConstraints { (make) in
-            make.height.width.equalTo(60)
+            make.height.equalTo(200)
+            
+            make.width.equalTo(self.frame.width / 2)
             
             make.topMargin.equalTo(self.safeAreaLayoutGuide.snp.topMargin).offset(10)
             make.right.equalToSuperview().inset(15)
