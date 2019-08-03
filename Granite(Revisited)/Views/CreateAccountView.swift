@@ -26,6 +26,7 @@ class CreateAccountView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
+    
 }
 
 
@@ -39,6 +40,8 @@ extension CreateAccountView {
     }
     
     func createSignUpLabel() -> UILabel {
+        
+        // MARK: NEW TODO Change font type and font size of label
         let signUpLabel = UILabel()
         
         signUpLabel.text = "Sign Up"
@@ -70,6 +73,44 @@ extension CreateAccountView {
     }
     
     func layoutAnimationView() {
+        self.addSubview(self.animationView)
         
+        self.animationView.snp.makeConstraints { (make) in
+            make.height.width.equalTo(60)
+            
+            make.topMargin.equalTo(self.safeAreaLayoutGuide.snp.topMargin).offset(10)
+            make.right.equalToSuperview().inset(15)
+        }
+    }
+    
+    func layoutSignUpLabel() {
+        
+        // Using labels natural length
+        self.addSubview(self.signUpLabel)
+        
+        self.signUpLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.animationView.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(10)
+        }
+    }
+    
+    func layoutEmailTextField() {
+        self.addSubview(self.emailTextField)
+        
+        self.emailTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(self.signUpLabel.snp.bottom).offset(5)
+            make.width.equalToSuperview().offset(10)
+        }
+    }
+    
+    func layoutSignUpButton() {
+        self.addSubview(self.signUpButton)
+        
+        self.signUpButton.snp.makeConstraints { (make) in
+            make.width.equalTo(310)
+            make.height.equalTo(55)
+            
+            make.bottom.equalToSuperview().offset(-20)
+        }
     }
 }
