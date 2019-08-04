@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Granite(Revisited)/Controllers/LogInViewController.swift"
-            timestampString = "586565723.304408"
+            filePath = "Granite(Revisited)/Views/CreateAccountView.swift"
+            timestampString = "586569631.43266"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "handleCreateAccount()"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "createSignUpLabel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

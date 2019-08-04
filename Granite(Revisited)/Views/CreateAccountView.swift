@@ -49,6 +49,15 @@ extension CreateAccountView {
         
         signUpLabel.text = "Sign Up"
         
+        
+        UIFont.familyNames.forEach { (name) in
+            let fontName = UIFont.fontNames(forFamilyName: name)
+            
+            print(name, fontName)
+        }
+        
+        signUpLabel.font = UIFont.bold(size: 20)
+        
         return signUpLabel
     }
     

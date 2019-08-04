@@ -103,7 +103,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
 //        onboardingFlowController.hero.modalAnimationType = .fade
 //        self.present(onboardingFlowController, animated: true, completion: nil)
         
-        self.coordinator?.createAccount()
+        self.coordinator?.createAccountView()
         
         
     }
