@@ -19,6 +19,7 @@ class CreateAccountView: UIView {
     lazy var emailTextField: UITextField = self.createEmailTextField()
     lazy var emailTextView: UIView = self.createEmailTextView()
     lazy var emailPlaceholderLabel: UILabel = self.createEmailPlaceholderLabel()
+    lazy var emailStackView: UIStackView = self.createEmailStackView()
     
     lazy var signUpButton: UIButton = self.createSignUpButton()
     
@@ -94,6 +95,16 @@ extension CreateAccountView {
         return emailTextField
     }
     
+    func createEmailStackView() -> UIStackView {
+        let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 5
+        
+        return stackView
+    }
+    
     func createSignUpButton() -> UIButton {
         let signUpButton = UIButton()
         signUpButton.setTitle("Sign Up", for: .normal)
@@ -109,6 +120,7 @@ extension CreateAccountView {
         layoutSignUpLabel()
         layoutEmailTextField()
         layoutSignUpButton()
+        layoutEmailTextView()
     }
     
     func layoutAnimationView() {
@@ -135,13 +147,40 @@ extension CreateAccountView {
         }
     }
     
+    func layoutTextView() {
+        
+        self.addSubview(self.emailTextView)
+//
+//        // Call layoutStackView
+        
+//        elf.emailTextField.snp.makeConstraints { (make) in
+//            make.top.equalTo(self.signUpLabel.snp.bottom).offset(5)
+//            make.width.equalToSuperview().offset(10)
+//        }
+
+    }
+    
+    func layoutEmailStackView() {
+        self.emailTextView.addSubview(self.emailStackView)
+        
+        self.layoutEmailPlaceholderLabel()
+        self.layoutEmailTextField() // Handles the placing and layout inside the email stack view
+        
+        
+        // Call layoutEmailTextField, layoutEmailPlaceholderLabel
+        
+        self.emailStackView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
     func layoutEmailTextField() {
-        self.addSubview(self.emailTextField)
+        self.emailStackView.addArrangedSubview(self.emailTextField)
         
         self.emailTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(self.signUpLabel.snp.bottom).offset(5)
-            make.width.equalToSuperview().offset(10)
+            make.width.equalToSuperview()
         }
+        
     }
     
     func layoutSignUpButton() {
