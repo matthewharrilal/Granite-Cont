@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 class CreateAccountViewController: UIViewController {
     
     lazy var accountView: CreateAccountView = self.createAccountView()
@@ -18,9 +19,23 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
-
+        print(self.accountView.emailTextField.allTargets)
+        
+        self.accountView.tapClosure = {[weak self] in
+            self?.animateEmailView()
+        }
     }
-  
+    
+    
+    func animateEmailView() {
+        UIView.animate(withDuration: 1.0) {
+            self.accountView.emailTextField.placeholder = ""
+            self.accountView.emailPlaceholderLabel.alpha = 0.8
+            
+            animateViewBorder(withBorder: &self.accountView.bottomBorder)
+        }
+    }
+    
     
 }
 
@@ -30,8 +45,12 @@ extension CreateAccountViewController {
         let createAccountView = CreateAccountView()
         createAccountView.backgroundColor = UIColor(hexString: "ccddfc")
         
+        //        createAccountView.emailTextField.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        
         return createAccountView
     }
+    
+    
 }
 
 // Layout Extension
@@ -49,3 +68,5 @@ extension CreateAccountViewController {
         }
     }
 }
+
+

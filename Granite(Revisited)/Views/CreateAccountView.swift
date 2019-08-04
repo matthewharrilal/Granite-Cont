@@ -12,9 +12,11 @@ import Lottie
 import SnapKit
 
 class CreateAccountView: UIView {
+    var tapClosure: (() -> Void)?
     lazy var animationView: LOTAnimationView = self.createAnimationView()
     lazy var signUpLabel: UILabel = self.createSignUpLabel()
     var bottomBorder: CALayer = CALayer()
+    
     
     lazy var emailTextField: UITextField = self.createEmailTextField()
     lazy var emailTextView: UIView = self.createEmailTextView()
@@ -34,8 +36,12 @@ class CreateAccountView: UIView {
     
     override func layoutSubviews() {
         layout()
+        
     }
     
+    @objc func handleTextFieldTap() {
+        self.tapClosure?()
+    }
 }
 
 
@@ -79,6 +85,7 @@ extension CreateAccountView {
     func createEmailPlaceholderLabel() -> UILabel {
         let emailPlaceholderLabel = UILabel()
         emailPlaceholderLabel.text = "Enter email"
+        emailPlaceholderLabel.alpha = 0.0
         
         emailPlaceholderLabel.font = .regular(size: 13)
         
@@ -87,11 +94,16 @@ extension CreateAccountView {
     
     func createEmailTextField() -> UITextField {
         let emailTextField = UITextField()
-        emailTextField.placeholder = "Email"
+        emailTextField.placeholder = "Enter Email"
+        
+        emailTextField.font = UIFont.regular()
         
         emailTextField.borderStyle = .none
         
         emailTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
+        
+        emailTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
+        
         return emailTextField
     }
     
@@ -162,6 +174,8 @@ extension CreateAccountView {
             
             make.width.equalToSuperview().inset(20)
         }
+        
+        createViewBorder(withSuperLayer: self.emailTextView, withBorder: &self.bottomBorder)
     }
     
     func layoutEmailStackView() {
