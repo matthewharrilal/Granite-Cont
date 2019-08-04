@@ -23,6 +23,7 @@ class CreateAccountView: UIView, UITextFieldDelegate{
     lazy var animationView: LOTAnimationView = self.createAnimationView()
     lazy var signUpLabel: UILabel = self.createSignUpLabel()
     
+    
     lazy var bottomBorder: CALayer = CALayer()
     lazy var passwordBottomBorder: CALayer = CALayer()
     lazy var confirmPasswordBottomBorder: CALayer = CALayer()
@@ -45,7 +46,7 @@ class CreateAccountView: UIView, UITextFieldDelegate{
     
     
     
-    lazy var signUpButton: UIButton = self.createSignUpButton()
+    lazy var signUpContainer: TouchableBounceView = self.createSignUpContainer()
     
     
     init() {
@@ -116,12 +117,36 @@ extension CreateAccountView {
         return textView
     }
     
-    func createSignUpButton() -> UIButton {
-        let signUpButton = UIButton()
-        signUpButton.setTitle("Sign Up", for: .normal)
+//    func createSignUpButton() -> UIButton {
+//        let signUpButton = UIButton()
+//        signUpButton.setTitle("Sign Up", for: .normal)
+//
+//        signUpButton.titleLabel?.font = .bold(size: 17)
+//        return signUpButton
+//    }
+    
+    func createSignUpContainer() -> TouchableBounceView {
+        let container = TouchableBounceView()
         
-        signUpButton.titleLabel?.font = .bold(size: 17)
-        return signUpButton
+        let containerView = UIView()
+        let label = UILabel()
+        
+        label.text = "Sign Up"
+        label.font = UIFont.bold(size: 13)
+        
+        container.addSubview(label)
+        
+        label.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+        
+        container.addSubview(containerView)
+        
+        containerView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        return container
     }
 }
 
@@ -131,7 +156,7 @@ extension CreateAccountView {
     func layout() {
         layoutAnimationView()
         layoutSignUpLabel()
-        layoutSignUpButton()
+        layoutSignUpContainerView()
         layoutEmailTextView()
         
         layoutPasswordTextView()
@@ -314,10 +339,10 @@ extension CreateAccountView {
         }
     }
     
-    func layoutSignUpButton() {
-        self.addSubview(self.signUpButton)
+    func layoutSignUpContainerView() {
+        self.addSubview(self.signUpContainer)
         
-        self.signUpButton.snp.makeConstraints { (make) in
+        self.signUpContainer.snp.makeConstraints { (make) in
             make.width.equalTo(310)
             make.height.equalTo(55)
             
