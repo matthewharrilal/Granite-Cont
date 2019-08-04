@@ -120,7 +120,7 @@ extension CreateAccountView {
         layoutSignUpLabel()
         layoutEmailTextField()
         layoutSignUpButton()
-        layoutEmailTextView()
+        layoutTextView()
     }
     
     func layoutAnimationView() {
@@ -143,21 +143,25 @@ extension CreateAccountView {
         
         self.signUpLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.animationView.snp.bottom).offset(10)
-            make.left.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(20)
         }
     }
     
     func layoutTextView() {
         
         self.addSubview(self.emailTextView)
-//
-//        // Call layoutStackView
+        //
+        //        // Call layoutStackView
         
-//        elf.emailTextField.snp.makeConstraints { (make) in
-//            make.top.equalTo(self.signUpLabel.snp.bottom).offset(5)
-//            make.width.equalToSuperview().offset(10)
-//        }
-
+        self.layoutEmailStackView()
+        
+        self.emailTextView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.signUpLabel.snp.bottom).offset(20)
+            
+            make.centerX.equalToSuperview()
+            
+            make.width.equalToSuperview().inset(20)
+        }
     }
     
     func layoutEmailStackView() {
@@ -166,8 +170,6 @@ extension CreateAccountView {
         self.layoutEmailPlaceholderLabel()
         self.layoutEmailTextField() // Handles the placing and layout inside the email stack view
         
-        
-        // Call layoutEmailTextField, layoutEmailPlaceholderLabel
         
         self.emailStackView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -180,7 +182,15 @@ extension CreateAccountView {
         self.emailTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
         }
+    }
+    
+    func layoutEmailPlaceholderLabel() {
+        self.emailStackView.addArrangedSubview(self.emailPlaceholderLabel)
         
+        self.emailPlaceholderLabel.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalTo(self.emailTextField.snp.top)
+        }
     }
     
     func layoutSignUpButton() {
