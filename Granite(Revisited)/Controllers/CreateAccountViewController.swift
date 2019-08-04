@@ -57,7 +57,7 @@ class CreateAccountViewController: UIViewController {
     
     
     func animateEmailView() {
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: 0.5) {
             self.accountView.emailTextField.placeholder = ""
             self.accountView.emailPlaceholderLabel.alpha = 0.8
             
@@ -66,7 +66,7 @@ class CreateAccountViewController: UIViewController {
     }
     
     func animatePasswordView() {
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: 0.5) {
             self.accountView.passwordTextField.placeholder = ""
             self.accountView.passwordPlaceholderLabel.alpha = 0.8
             
@@ -75,7 +75,7 @@ class CreateAccountViewController: UIViewController {
     }
     
     func animateConfirmPasswordView() {
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: 0.5) {
             self.accountView.confirmPasswordTextField.placeholder = ""
             self.accountView.confirmPasswordPlaceholderLabel.alpha = 0.8
             

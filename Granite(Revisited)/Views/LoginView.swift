@@ -17,8 +17,9 @@ class LoginView: UIView {
     @IBOutlet weak var whiteLoginView: UIView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var createAccountButton: UIButton!
+    
+    var createAccountTapClosure: (() -> Void)?
+
     
     @IBOutlet weak var lockView: UIView!
     
@@ -53,19 +54,6 @@ class LoginView: UIView {
         addTargets()
         
         
-        loginButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
-        createAccountButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
-        
-        createAccountButton.backgroundColor = .clear
-        
-        
-        // MARK: FIX Have to fix the elements in the stack view sizing
-        loginButton.backgroundColor = .clear
-        
-        loginButton.constrainHeight(withHeight: loginButton.frame.height)
-        createAccountButton.constrainHeight(withHeight: createAccountButton.frame.height)
-        
-        
         
         let textFieldComponentsStackview = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField])
         textFieldComponentsStackview.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
@@ -73,26 +61,21 @@ class LoginView: UIView {
         
         textFieldComponentsStackview.distribution = .fillProportionally
         textFieldComponentsStackview.axis = .vertical
-        //
-        //        loginComponentsStackview.distribution = .fillEqually
-        //        loginCompospnentsStackview.axis = .vertical
+    
+    
         
         let loginButtonContainer = self.createLoginButtonContainer()
         let createAccountContainer = self.createAccountButtonContainer()
+        createAccountContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleCreateAccount)))
         
         
         loginStackView = UIStackView(arrangedSubviews: [textFieldComponentsStackview, loginButtonContainer, createAccountContainer])
-        
-        //        createAccountButton.anchor(top: loginButton.bottomAnchor, leading: loginStackView.leadingAnchor, bottom: loginStackView.bottomAnchor, trailing: loginStackView.trailingAnchor)
-        
+       
         loginStackView.axis = .vertical
         loginStackView.spacing = 10
         loginStackView.distribution = .fillEqually
-        
-        //        usernameTextField.
-        
-//        whiteLoginView.frame = .init(x: self.whiteLoginView.frame.origin.x, y: self.whiteLoginView.frame.origin.y, width: self.whiteLoginView.frame.width, height: -whiteLoginView.frame.height)
-//        
+
+   
         whiteLoginView.addSubview(loginStackView)
         let padding = UIEdgeInsets(top: 10, left: 20, bottom: -10 , right: -20)
         loginStackView.fillSuperview(withSuperview: whiteLoginView, padding: padding)
@@ -102,6 +85,11 @@ class LoginView: UIView {
         loginStackView.layoutMargins = .init(top: 0, left: 0, bottom: 0, right: -10)
         loginStackView.isLayoutMarginsRelativeArrangement = true
         
+    }
+    
+    
+    @objc func handleCreateAccount() {
+        self.createAccountTapClosure?()
     }
     
     func addTargets() {
@@ -167,10 +155,13 @@ extension UIView {
         return container
     }
     
+    
     func createLoginButtonContainer() -> TouchableBounceView {
         let container = TouchableBounceView()
         
         let containerView = UIView()
+        
+//        container.backgroundColor = UIColor(hexString: "2357A5")
         
         container.addSubview(containerView)
         containerView.snp.makeConstraints { (make) in
@@ -184,6 +175,7 @@ extension UIView {
         }
         
         label.text = "Log In"
+//        label.textColor = .white
         label.font = .boldSystemFont(ofSize: 20)
         
         return container

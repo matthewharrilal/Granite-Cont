@@ -10,9 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Poppins-Bold.ttf">
-            <string>Poppins-Bold</string>
-        </array>
         <array key="Poppins-Regular.ttf">
             <string>Poppins-Regular</string>
         </array>
@@ -20,9 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginView" customModule="Granite_Revisited_" customModuleProvider="target">
             <connections>
-                <outlet property="createAccountButton" destination="KmT-l9-9rH" id="SG7-T6-DeZ"/>
                 <outlet property="lockView" destination="PJG-iL-QBH" id="PQH-Wt-Y64"/>
-                <outlet property="loginButton" destination="sgH-WF-dRf" id="aTi-th-GiB"/>
                 <outlet property="passwordTextField" destination="Te2-cN-Inp" id="inj-bi-LTh"/>
                 <outlet property="usernameTextField" destination="Kre-if-V5f" id="egy-eM-X36"/>
                 <outlet property="whiteLoginView" destination="eld-Zm-5qD" id="O3T-59-4Ew"/>
@@ -57,13 +52,6 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgH-WF-dRf">
-                            <rect key="frame" x="105" y="226" width="111" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.78823529411764703" green="0.8666666666666667" blue="1" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
-                            <state key="normal" title="Log In"/>
-                        </button>
                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="Kre-if-V5f" customClass="HoshiTextField" customModule="TextFieldEffects">
                             <rect key="frame" x="71" y="70" width="178" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -79,14 +67,6 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmT-l9-9rH">
-                            <rect key="frame" x="58" y="269" width="208" height="36"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="17"/>
-                            <state key="normal" title="Don't Have An Account?">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.69250321061643838" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="safeArea" id="FPX-Qi-uMB"/>

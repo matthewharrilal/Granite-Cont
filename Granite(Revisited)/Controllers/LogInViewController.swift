@@ -35,8 +35,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
         
         loginView.whiteLoginView.anchor(top: loginView.configuredView.bottomAnchor, leading: self.view.leadingAnchor , bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: padding)
         
-        loginView.loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
-        loginView.createAccountButton.addTarget(self, action: #selector(handleCreateAccount), for: .touchUpInside)
         
         self.navigationController?.title = "Welcome"
         //
@@ -48,6 +46,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
         
         
         loginView.keyboardDelegate = self
+        
+        loginView.createAccountTapClosure = {[unowned self] in
+            self.coordinator?.createAccountView()
+        }
         //
     }
     
@@ -93,19 +95,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
         }
         
         NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func handleCreateAccount() {
-//        // TODO: MARK Handle tap
-//        let onboardingFlowController = OnboardingController()
-//        onboardingFlowController.hero.isEnabled = true
-//
-//        onboardingFlowController.hero.modalAnimationType = .fade
-//        self.present(onboardingFlowController, animated: true, completion: nil)
-        
-        self.coordinator?.createAccountView()
-        
-        
     }
     
     @objc func handleLogin() {
