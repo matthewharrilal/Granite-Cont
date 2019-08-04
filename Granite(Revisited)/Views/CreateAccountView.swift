@@ -43,7 +43,6 @@ class CreateAccountView: UIView {
     
     override func layoutSubviews() {
         layout()
-        
     }
     
     @objc func handleTextFieldTap() {
@@ -70,12 +69,6 @@ extension CreateAccountView {
         
         signUpLabel.text = "Sign Up"
         
-        
-        UIFont.familyNames.forEach { (name) in
-            let fontName = UIFont.fontNames(forFamilyName: name)
-            
-            print(name, fontName)
-        }
         
         signUpLabel.font = UIFont.bold(size: 30)
         
@@ -108,7 +101,6 @@ extension CreateAccountView {
     func layout() {
         layoutAnimationView()
         layoutSignUpLabel()
-        layoutEmailTextField()
         layoutSignUpButton()
         layoutEmailTextView()
         
@@ -175,6 +167,7 @@ extension CreateAccountView {
         
         self.emailTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
+            make.top.equalTo(self.emailPlaceholderLabel.snp.bottom)
         }
     }
     
@@ -183,7 +176,6 @@ extension CreateAccountView {
         
         self.emailPlaceholderLabel.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-            make.bottom.equalTo(self.emailTextField.snp.top)
         }
     }
     
@@ -224,6 +216,7 @@ extension CreateAccountView {
         
         self.passwordTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
+            make.top.equalTo(self.passwordPlaceholderLabel.snp.bottom)
         }
     }
     
@@ -232,7 +225,6 @@ extension CreateAccountView {
         
         self.passwordPlaceholderLabel.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-            make.bottom.equalTo(self.passwordStackView.snp.top)
         }
     }
     
