@@ -13,6 +13,8 @@ class OnboardingController: UIViewController {
     
     var firstOnboardingScreen: FirstOnboardingScreen!
     var secondOnboardingScreen: SecondOnboardingScreen!
+//    var firstName: String = ""
+//    var
     
     weak var coordinator: MainCoordinator?
     

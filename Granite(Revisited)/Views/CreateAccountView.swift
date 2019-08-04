@@ -12,6 +12,9 @@ import Lottie
 import SnapKit
 
 class CreateAccountView: UIView, UITextFieldDelegate{
+    
+    var fullNameTapClosure: (() -> Void)?
+    
     var tapClosure: (() -> Void)?
     
     var passwordTapClosure: (() -> Void)?
@@ -23,10 +26,15 @@ class CreateAccountView: UIView, UITextFieldDelegate{
     lazy var animationView: LOTAnimationView = self.createAnimationView()
     lazy var signUpLabel: UILabel = self.createSignUpLabel()
     
-    
+    lazy var fullNameBottomBorder: CALayer = CALayer()
     lazy var bottomBorder: CALayer = CALayer()
     lazy var passwordBottomBorder: CALayer = CALayer()
     lazy var confirmPasswordBottomBorder: CALayer = CALayer()
+    
+    lazy var fullNameTextView: UIView = self.createFullNameTextView()
+    lazy var fullNameStackView: UIStackView = createTextFieldStackView()
+    lazy var fullNamePlaceHolderLabel: UILabel = createPlaceholderLabel(withText: "Enter First + Last Name")
+    lazy var fullNameTextField: UITextField = createCustomTextField(withView: self, placeholder: "Enter Full Name", selector: #selector(handleFullNameTextFieldTap))
     
     lazy var emailTextView: UIView = self.createEmailTextView()
     lazy var emailStackView: UIStackView = createTextFieldStackView()
@@ -59,6 +67,10 @@ class CreateAccountView: UIView, UITextFieldDelegate{
     
     override func layoutSubviews() {
         layout()
+    }
+    
+    @objc func handleFullNameTextFieldTap() {
+        self.fullNameTapClosure?()
     }
     
     @objc func handleTextFieldTap() {
@@ -117,6 +129,11 @@ extension CreateAccountView {
         return textView
     }
     
+    func createFullNameTextView() -> UIView {
+        let textView = UIView()
+        return textView
+    }
+    
 //    func createSignUpButton() -> UIButton {
 //        let signUpButton = UIButton()
 //        signUpButton.setTitle("Sign Up", for: .normal)
@@ -157,11 +174,14 @@ extension CreateAccountView {
         layoutAnimationView()
         layoutSignUpLabel()
         
+        layoutFullNameTextView()
+        
         layoutEmailTextView()
         
         layoutPasswordTextView()
         
         layoutConfirmPasswordTextView()
+        
         
         layoutSignUpContainerView()
     }
@@ -190,6 +210,55 @@ extension CreateAccountView {
         }
     }
     
+    func layoutFullNameTextView() {
+        
+        self.addSubview(self.fullNameTextView)
+        //
+        
+        self.layoutFullNameStackView()
+        
+        self.fullNameTextView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.signUpLabel.snp.bottom).offset(20)
+            
+            make.centerX.equalToSuperview()
+            
+            make.width.equalToSuperview().inset(20)
+        }
+        
+        createViewBorder(withSuperLayer: self.fullNameTextView, withBorder: &self.fullNameBottomBorder)
+    }
+    
+    func layoutFullNameStackView() {
+        self.fullNameTextView.addSubview(self.fullNameStackView)
+        
+        self.layoutFullNamePlaceholderLabel()
+        self.layoutFullNameTextField() // Handles the placing and layout inside the email stack view
+        
+        
+        self.fullNameStackView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func layoutFullNameTextField() {
+        self.fullNameStackView.addArrangedSubview(self.fullNameTextField)
+        fullNameTextField.delegate = self
+        fullNameTextField.tag = 0
+        
+        self.fullNameTextField.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.top.equalTo(self.fullNamePlaceHolderLabel.snp.bottom)
+        }
+    }
+    
+    func layoutFullNamePlaceholderLabel() {
+        self.fullNameStackView.addArrangedSubview(self.fullNamePlaceHolderLabel)
+        
+        self.fullNamePlaceHolderLabel.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+        }
+    }
+    
     func layoutEmailTextView() {
         
         self.addSubview(self.emailTextView)
@@ -199,7 +268,7 @@ extension CreateAccountView {
         self.layoutEmailStackView()
         
         self.emailTextView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.signUpLabel.snp.bottom).offset(20)
+            make.top.equalTo(self.fullNameTextView.snp.bottom).offset(50)
             
             make.centerX.equalToSuperview()
             
@@ -362,6 +431,10 @@ extension CreateAccountView {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
+            
+        case 0:
+            self.resignedResponder?(self.fullNameTextField)
+            
         case 1:
             self.resignedResponder?(self.emailTextField)
             

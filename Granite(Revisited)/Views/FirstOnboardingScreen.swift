@@ -43,8 +43,8 @@ class FirstOnboardingScreen: UIView {
         
         descriptionLabel.attributedText = descriptionText
         
-        welcomeLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
-        descriptionLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        welcomeLabel.font = .bold(size: 20)
+        descriptionLabel.font = .regular(size: 18)
         
         // Start off invisible then animate the difference
         welcomeLabel.alpha = 0.0

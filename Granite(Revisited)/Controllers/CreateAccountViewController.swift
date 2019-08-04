@@ -20,6 +20,10 @@ class CreateAccountViewController: UIViewController {
         super.viewDidLoad()
         layout()
         
+        self.accountView.fullNameTapClosure = {[weak self] in
+            self?.animateFullNameTextView()
+        }
+        
         self.accountView.tapClosure = {[weak self] in
             self?.animateEmailView()
         }
@@ -35,6 +39,9 @@ class CreateAccountViewController: UIViewController {
         self.accountView.resignedResponder = {[unowned self] textField in
 
             switch textField.tag {
+                
+            case 0:
+                resetViewBorder(withBorder: &self.accountView.fullNameBottomBorder)
             case 1:
                 
                 resetViewBorder(withBorder: &self.accountView.bottomBorder)
@@ -55,6 +62,14 @@ class CreateAccountViewController: UIViewController {
         }
     }
     
+    func animateFullNameTextView() {
+        UIView.animate(withDuration: 0.5) {
+            self.accountView.fullNameTextField.placeholder = ""
+            self.accountView.fullNamePlaceHolderLabel.alpha = 0.8
+            
+            animateViewBorder(withHexColor: "8CDFD6", withBorder: &self.accountView.fullNameBottomBorder)
+        }
+    }
     
     func animateEmailView() {
         UIView.animate(withDuration: 0.5) {
