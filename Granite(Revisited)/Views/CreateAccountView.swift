@@ -18,14 +18,14 @@ class CreateAccountView: UIView {
     var bottomBorder: CALayer = CALayer()
     
     lazy var emailTextView: UIView = self.createEmailTextView()
-    lazy var emailStackView: UIStackView = self.createEmailStackView()
-    lazy var emailPlaceholderLabel: UILabel = self.createEmailPlaceholderLabel()
-    lazy var emailTextField: UITextField = self.createEmailTextField()
+    lazy var emailStackView: UIStackView = createTextFieldStackView()
+    lazy var emailPlaceholderLabel: UILabel = createPlaceholderLabel(withText: "Enter Email")
+    lazy var emailTextField: UITextField = createCustomTextField(withView: self, placeholder: "Enter Email")
     
     lazy var passwordTextView: UIView = self.createPasswordTextView()
-    lazy var passwordStackView: UIStackView = self.createPasswordStackView()
-    lazy var passwordPlaceholderLabel: UILabel = self.createPasswordPlaceholderLabel()
-    lazy var passwordTextField: UITextField = self.createPasswordTextField()
+    lazy var passwordStackView: UIStackView = createTextFieldStackView()
+    lazy var passwordPlaceholderLabel: UILabel = createPlaceholderLabel(withText: "Enter Password")
+    lazy var passwordTextField: UITextField = createCustomTextField(withView: self, placeholder: "Enter Password")
     
     
     
@@ -86,36 +86,6 @@ extension CreateAccountView {
         
         
         return textFieldView
-    }
-    
-    func createEmailPlaceholderLabel() -> UILabel {
-        let emailPlaceholderLabel = UILabel()
-        emailPlaceholderLabel.text = "Enter email"
-        emailPlaceholderLabel.alpha = 0.0
-        
-        emailPlaceholderLabel.font = .regular(size: 13)
-        
-        return emailPlaceholderLabel
-    }
-    
-    func createEmailTextField() -> UITextField {
-        let emailTextField = UITextField()
-        emailTextField.placeholder = "Enter Email"
-        
-        emailTextField.font = UIFont.regular()
-        
-        emailTextField.borderStyle = .none
-        
-        emailTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
-        
-        emailTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
-        
-        return emailTextField
-    }
-    
-    func createEmailStackView() -> UIStackView {
-        let stackView = createTextFieldStackView()
-        return stackView
     }
     
     func createPasswordTextView() -> UIView {

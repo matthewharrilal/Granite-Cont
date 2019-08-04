@@ -110,4 +110,24 @@ func createTextFieldStackView() -> UIStackView {
     return stackView
 }
 
+func createPlaceholderLabel(withText text: String) -> UILabel {
+    let label = UILabel()
+    label.text = text
+    label.alpha = 0.0
+    label.font = .regular(size: 13)
+    return label
+}
 
+func createCustomTextField(withView view: UIView, placeholder: String, selector: Selector? = nil) -> UITextField{
+    let textField = UITextField()
+    textField.placeholder = placeholder
+    textField.font = .regular()
+    textField.borderStyle = .none
+    textField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
+    
+    if let selector = selector {
+        textField.addGestureRecognizer(UITapGestureRecognizer(target: view, action: selector))
+    }
+    
+    return textField
+}
