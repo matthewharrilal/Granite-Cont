@@ -13,17 +13,24 @@ class CreateAccountViewController: UIViewController {
     
     lazy var accountView: CreateAccountView = self.createAccountView()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        
+//        var swipeRightGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+//
+//        swipeRightGesture.direction = .right
     }
+    
 }
 
 // Factory Extension
 extension CreateAccountViewController {
     func createAccountView() -> CreateAccountView {
         let createAccountView = CreateAccountView()
-        createAccountView.backgroundColor = UIColor(hexString: "ccccff")
+        createAccountView.backgroundColor = UIColor(hexString: "ccddfc")
         
         return createAccountView
     }

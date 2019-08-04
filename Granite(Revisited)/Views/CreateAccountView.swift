@@ -56,7 +56,7 @@ extension CreateAccountView {
             print(name, fontName)
         }
         
-        signUpLabel.font = UIFont.bold(size: 20)
+        signUpLabel.font = UIFont.bold(size: 30)
         
         return signUpLabel
     }
