@@ -15,7 +15,6 @@ class CreateAccountViewController: UIViewController {
     lazy var accountView: CreateAccountView = self.createAccountView()
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
@@ -23,6 +22,14 @@ class CreateAccountViewController: UIViewController {
         
         self.accountView.tapClosure = {[weak self] in
             self?.animateEmailView()
+        }
+        
+        self.accountView.passwordTapClosure = {[weak self] in
+            self?.animatePasswordView()
+        }
+        
+        self.accountView.confirmPasswordTapClosure = {[weak self] in
+            self?.animateConfirmPasswordView()
         }
     }
     
@@ -36,6 +43,23 @@ class CreateAccountViewController: UIViewController {
         }
     }
     
+    func animatePasswordView() {
+        UIView.animate(withDuration: 1.0) {
+            self.accountView.passwordTextField.placeholder = ""
+            self.accountView.passwordPlaceholderLabel.alpha = 0.8
+            
+            animateViewBorder(withHexColor: "8CDFD6", withBorder: &self.accountView.passwordBottomBorder)
+        }
+    }
+    
+    func animateConfirmPasswordView() {
+        UIView.animate(withDuration: 1.0) {
+            self.accountView.confirmPasswordTextField.placeholder = ""
+            self.accountView.confirmPasswordPlaceholderLabel.alpha = 0.8
+            
+            animateViewBorder(withHexColor: "8CDFD6", withBorder: &self.accountView.confirmPasswordBottomBorder)
+        }
+    }
     
 }
 

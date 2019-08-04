@@ -13,10 +13,16 @@ import SnapKit
 
 class CreateAccountView: UIView {
     var tapClosure: (() -> Void)?
+    
+    var passwordTapClosure: (() -> Void)?
+    
+    var confirmPasswordTapClosure: (() -> Void)?
+    
     lazy var animationView: LOTAnimationView = self.createAnimationView()
     lazy var signUpLabel: UILabel = self.createSignUpLabel()
     var bottomBorder: CALayer = CALayer()
     var passwordBottomBorder: CALayer = CALayer()
+    var confirmPasswordBottomBorder: CALayer = CALayer()
     
     lazy var emailTextView: UIView = self.createEmailTextView()
     lazy var emailStackView: UIStackView = createTextFieldStackView()
@@ -26,7 +32,14 @@ class CreateAccountView: UIView {
     lazy var passwordTextView: UIView = self.createPasswordTextView()
     lazy var passwordStackView: UIStackView = createTextFieldStackView()
     lazy var passwordPlaceholderLabel: UILabel = createPlaceholderLabel(withText: "Enter Password")
-    lazy var passwordTextField: UITextField = createCustomTextField(withView: self, placeholder: "Enter Password")
+    lazy var passwordTextField: UITextField = createCustomTextField(withView: self, placeholder: "Enter Password", selector: #selector(handlePasswordTextFieldTap))
+    
+    lazy var confirmPasswordTextView: UIView = self.createConfirmPasswordTextView()
+    lazy var confirmPasswordStackView: UIStackView = createTextFieldStackView()
+    lazy var confirmPasswordPlaceholderLabel: UILabel = createPlaceholderLabel(withText: "Confirm Password")
+    lazy var confirmPasswordTextField: UITextField = createCustomTextField(withView: self, placeholder: "Confirm Password", selector: #selector(handleConfirmPasswordTextFieldTap))
+    
+    
     
     
     
@@ -47,6 +60,14 @@ class CreateAccountView: UIView {
     
     @objc func handleTextFieldTap() {
         self.tapClosure?()
+    }
+    
+    @objc func handlePasswordTextFieldTap() {
+        self.passwordTapClosure?()
+    }
+    
+    @objc func handleConfirmPasswordTextFieldTap() {
+        self.confirmPasswordTapClosure?()
     }
 }
 
@@ -88,6 +109,11 @@ extension CreateAccountView {
         return textView
     }
     
+    func createConfirmPasswordTextView() -> UIView {
+        let textView = UIView()
+        return textView
+    }
+    
     func createSignUpButton() -> UIButton {
         let signUpButton = UIButton()
         signUpButton.setTitle("Sign Up", for: .normal)
@@ -105,6 +131,8 @@ extension CreateAccountView {
         layoutEmailTextView()
         
         layoutPasswordTextView()
+        
+        layoutConfirmPasswordTextView()
     }
     
     func layoutAnimationView() {
@@ -224,6 +252,54 @@ extension CreateAccountView {
         self.passwordStackView.addArrangedSubview(self.passwordPlaceholderLabel)
         
         self.passwordPlaceholderLabel.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+        }
+    }
+    
+    func layoutConfirmPasswordTextView() {
+        
+        self.addSubview(self.confirmPasswordTextView)
+        //
+        //        // Call layoutStackView
+        
+        self.layoutConfirmPasswordStackView()
+        
+        self.confirmPasswordTextView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.passwordTextView.snp.bottom).offset(50)
+            
+            make.centerX.equalToSuperview()
+            
+            make.width.equalToSuperview().inset(20)
+        }
+        
+        createViewBorder(withSuperLayer: self.confirmPasswordTextView, withBorder: &self.confirmPasswordBottomBorder)
+    }
+    
+    func layoutConfirmPasswordStackView() {
+        self.confirmPasswordTextView.addSubview(self.confirmPasswordStackView)
+        
+        self.layoutConfirmPasswordPlaceholderLabel()
+        self.layoutConfirmPasswordTextField() // Handles the placing and layout inside the email stack view
+        
+        
+        self.confirmPasswordStackView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func layoutConfirmPasswordTextField() {
+        self.confirmPasswordStackView.addArrangedSubview(self.confirmPasswordTextField)
+        
+        self.confirmPasswordTextField.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.top.equalTo(self.confirmPasswordPlaceholderLabel.snp.bottom)
+        }
+    }
+    
+    func layoutConfirmPasswordPlaceholderLabel() {
+        self.confirmPasswordStackView.addArrangedSubview(self.confirmPasswordPlaceholderLabel)
+        
+        self.confirmPasswordPlaceholderLabel.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
         }
     }
