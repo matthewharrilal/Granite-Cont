@@ -16,11 +16,12 @@ class CreateAccountView: UIView {
     lazy var animationView: LOTAnimationView = self.createAnimationView()
     lazy var signUpLabel: UILabel = self.createSignUpLabel()
     var bottomBorder: CALayer = CALayer()
+    var passwordBottomBorder: CALayer = CALayer()
     
     lazy var emailTextView: UIView = self.createEmailTextView()
     lazy var emailStackView: UIStackView = createTextFieldStackView()
     lazy var emailPlaceholderLabel: UILabel = createPlaceholderLabel(withText: "Enter Email")
-    lazy var emailTextField: UITextField = createCustomTextField(withView: self, placeholder: "Enter Email")
+    lazy var emailTextField: UITextField = createCustomTextField(withView: self, placeholder: "Enter Email", selector: #selector(handleTextFieldTap))
     
     lazy var passwordTextView: UIView = self.createPasswordTextView()
     lazy var passwordStackView: UIStackView = createTextFieldStackView()
@@ -109,7 +110,9 @@ extension CreateAccountView {
         layoutSignUpLabel()
         layoutEmailTextField()
         layoutSignUpButton()
-        layoutTextView()
+        layoutEmailTextView()
+        
+        layoutPasswordTextView()
     }
     
     func layoutAnimationView() {
@@ -136,7 +139,7 @@ extension CreateAccountView {
         }
     }
     
-    func layoutTextView() {
+    func layoutEmailTextView() {
         
         self.addSubview(self.emailTextView)
         //
@@ -181,6 +184,55 @@ extension CreateAccountView {
         self.emailPlaceholderLabel.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
             make.bottom.equalTo(self.emailTextField.snp.top)
+        }
+    }
+    
+    
+    func layoutPasswordTextView() {
+        
+        self.addSubview(self.passwordTextView)
+        //
+        //        // Call layoutStackView
+        
+        self.layoutPasswordStackView()
+        
+        self.passwordTextView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.emailTextView.snp.bottom).offset(50)
+            
+            make.centerX.equalToSuperview()
+            
+            make.width.equalToSuperview().inset(20)
+        }
+        
+        createViewBorder(withSuperLayer: self.passwordTextView, withBorder: &self.passwordBottomBorder)
+    }
+    
+    func layoutPasswordStackView() {
+        self.passwordTextView.addSubview(self.passwordStackView)
+        
+        self.layoutPasswordPlaceholderLabel()
+        self.layoutPasswordTextField() // Handles the placing and layout inside the email stack view
+        
+        
+        self.passwordStackView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func layoutPasswordTextField() {
+        self.passwordStackView.addArrangedSubview(self.passwordTextField)
+        
+        self.passwordTextField.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+        }
+    }
+    
+    func layoutPasswordPlaceholderLabel() {
+        self.passwordStackView.addArrangedSubview(self.passwordPlaceholderLabel)
+        
+        self.passwordPlaceholderLabel.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalTo(self.passwordStackView.snp.top)
         }
     }
     
