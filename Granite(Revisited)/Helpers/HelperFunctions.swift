@@ -98,3 +98,16 @@ func createViewBorder(withSuperLayer view: UIView, withBorder border: inout CALa
 func resetViewBorder(withBorder border: inout CALayer) {
     border.backgroundColor = UIColor.lightGray.cgColor
 }
+
+
+func createTextFieldStackView() -> UIStackView {
+    let stackView = UIStackView()
+    stackView.distribution = .fillEqually
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.spacing = 5
+    
+    return stackView
+}
+
+

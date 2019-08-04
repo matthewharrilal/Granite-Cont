@@ -17,11 +17,17 @@ class CreateAccountView: UIView {
     lazy var signUpLabel: UILabel = self.createSignUpLabel()
     var bottomBorder: CALayer = CALayer()
     
-    
-    lazy var emailTextField: UITextField = self.createEmailTextField()
     lazy var emailTextView: UIView = self.createEmailTextView()
-    lazy var emailPlaceholderLabel: UILabel = self.createEmailPlaceholderLabel()
     lazy var emailStackView: UIStackView = self.createEmailStackView()
+    lazy var emailPlaceholderLabel: UILabel = self.createEmailPlaceholderLabel()
+    lazy var emailTextField: UITextField = self.createEmailTextField()
+    
+    lazy var passwordTextView: UIView = self.createPasswordTextView()
+    lazy var passwordStackView: UIStackView = self.createPasswordStackView()
+    lazy var passwordPlaceholderLabel: UILabel = self.createPasswordPlaceholderLabel()
+    lazy var passwordTextField: UITextField = self.createPasswordTextField()
+    
+    
     
     lazy var signUpButton: UIButton = self.createSignUpButton()
     
@@ -108,13 +114,14 @@ extension CreateAccountView {
     }
     
     func createEmailStackView() -> UIStackView {
-        let stackView = UIStackView()
-        stackView.distribution = .fillEqually
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 5
-        
+        let stackView = createTextFieldStackView()
         return stackView
+    }
+    
+    func createPasswordTextView() -> UIView {
+        let textView = UIView()
+        
+        return textView
     }
     
     func createSignUpButton() -> UIButton {
