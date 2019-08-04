@@ -14,7 +14,12 @@ import SnapKit
 class CreateAccountView: UIView {
     lazy var animationView: LOTAnimationView = self.createAnimationView()
     lazy var signUpLabel: UILabel = self.createSignUpLabel()
+    var bottomBorder: CALayer = CALayer()
+    
     lazy var emailTextField: UITextField = self.createEmailTextField()
+    lazy var emailTextView: UIView = self.createEmailTextView()
+    lazy var emailPlaceholderLabel: UILabel = self.createEmailPlaceholderLabel()
+    
     lazy var signUpButton: UIButton = self.createSignUpButton()
     
     
@@ -37,8 +42,10 @@ class CreateAccountView: UIView {
 
 extension CreateAccountView {
     
+    
     func createAnimationView() -> LOTAnimationView {
         let animationView = LOTAnimationView(name: "office")
+        animationView.play()
         return animationView
     }
     
@@ -61,9 +68,29 @@ extension CreateAccountView {
         return signUpLabel
     }
     
+    func createEmailTextView() -> UIView {
+        let textFieldView = UIView()
+        
+        
+        return textFieldView
+    }
+    
+    func createEmailPlaceholderLabel() -> UILabel {
+        let emailPlaceholderLabel = UILabel()
+        emailPlaceholderLabel.text = "Enter email"
+        
+        emailPlaceholderLabel.font = .regular(size: 13)
+        
+        return emailPlaceholderLabel
+    }
+    
     func createEmailTextField() -> UITextField {
         let emailTextField = UITextField()
         emailTextField.placeholder = "Email"
+        
+        emailTextField.borderStyle = .none
+        
+        emailTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
         return emailTextField
     }
     

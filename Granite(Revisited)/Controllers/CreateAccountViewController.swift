@@ -18,11 +18,9 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
-        
-//        var swipeRightGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
-//
-//        swipeRightGesture.direction = .right
+
     }
+  
     
 }
 
