@@ -77,8 +77,11 @@ class LoginView: UIView {
         //        loginComponentsStackview.distribution = .fillEqually
         //        loginCompospnentsStackview.axis = .vertical
         
+        let loginButtonContainer = self.createLoginButtonContainer()
+        let createAccountContainer = self.createAccountButtonContainer()
         
-        loginStackView = UIStackView(arrangedSubviews: [textFieldComponentsStackview, loginButton, createAccountButton])
+        
+        loginStackView = UIStackView(arrangedSubviews: [textFieldComponentsStackview, loginButtonContainer, createAccountContainer])
         
         //        createAccountButton.anchor(top: loginButton.bottomAnchor, leading: loginStackView.leadingAnchor, bottom: loginStackView.bottomAnchor, trailing: loginStackView.trailingAnchor)
         
@@ -139,6 +142,51 @@ class LoginView: UIView {
 extension UIView {
     func addSubviews(views: UIView...) {
         views.forEach({addSubview($0)})
+    }
+    
+    
+    func createAccountButtonContainer() -> TouchableBounceView {
+        let container = TouchableBounceView()
+        
+        let containerView = UIView()
+        
+        container.addSubview(containerView)
+        containerView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        let label = UILabel()
+        containerView.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+        
+        label.text = "Don't Have an Account?"
+        label.font = .boldSystemFont(ofSize: 17)
+        
+        return container
+    }
+    
+    func createLoginButtonContainer() -> TouchableBounceView {
+        let container = TouchableBounceView()
+        
+        let containerView = UIView()
+        
+        container.addSubview(containerView)
+        containerView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        let label = UILabel()
+        containerView.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+        
+        label.text = "Log In"
+        label.font = .boldSystemFont(ofSize: 20)
+        
+        return container
     }
 }
 
