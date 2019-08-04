@@ -30,20 +30,20 @@ class MainCoordinator: Coordinator {
     
     
     // MARK: TODO Handle the transition of DO NOT HAVE AN ACCOUNT -> First onboarding screen
-    
-    func createAccount() {
-        let onboardingController = OnboardingController()
+
+    func createAccountView() {
+        let createAccountViewController = CreateAccountViewController()
+        createAccountViewController.coordinator = self
         
+        self.navigationController.pushViewController(createAccountViewController, animated: true)
+    }
+    
+    func startOnboardingFlow() {
+        let onboardingController = OnboardingController()
+
         
         
         self.navigationController.pushViewController(onboardingController, animated: true)
-    }
-    
-    func createAccountView() {
-        let createAccountViewController = CreateAccountViewController()
-        
-        
-        self.navigationController.pushViewController(createAccountViewController, animated: true)
     }
 }
 

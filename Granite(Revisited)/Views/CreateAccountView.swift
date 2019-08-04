@@ -131,8 +131,8 @@ extension CreateAccountView {
         let containerView = UIView()
         let label = UILabel()
         
-        label.text = "Sign Up"
-        label.font = UIFont.bold(size: 13)
+        label.text = "Continue"
+        label.font = UIFont.bold(size: 30)
         
         container.addSubview(label)
         
@@ -156,12 +156,14 @@ extension CreateAccountView {
     func layout() {
         layoutAnimationView()
         layoutSignUpLabel()
-        layoutSignUpContainerView()
+        
         layoutEmailTextView()
         
         layoutPasswordTextView()
         
         layoutConfirmPasswordTextView()
+        
+        layoutSignUpContainerView()
     }
     
     func layoutAnimationView() {
@@ -346,7 +348,8 @@ extension CreateAccountView {
             make.width.equalTo(310)
             make.height.equalTo(55)
             
-            make.bottom.equalToSuperview().offset(-20)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(self.confirmPasswordTextView.snp.bottom).offset(100)
         }
     }
 }

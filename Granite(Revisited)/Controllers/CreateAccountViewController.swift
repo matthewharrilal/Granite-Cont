@@ -13,6 +13,7 @@ import UIKit
 class CreateAccountViewController: UIViewController {
     
     lazy var accountView: CreateAccountView = self.createAccountView()
+    weak var coordinator: MainCoordinator?
     
     
     override func viewDidLoad() {
@@ -47,6 +48,10 @@ class CreateAccountViewController: UIViewController {
             default:
                 return
             }
+        }
+        
+        self.accountView.signUpContainer.selectBlock = {[weak self] in
+            self?.coordinator?.startOnboardingFlow()
         }
     }
     
