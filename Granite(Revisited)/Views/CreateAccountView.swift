@@ -11,18 +11,21 @@ import UIKit
 import Lottie
 import SnapKit
 
-class CreateAccountView: UIView {
+class CreateAccountView: UIView, UITextFieldDelegate{
     var tapClosure: (() -> Void)?
     
     var passwordTapClosure: (() -> Void)?
     
     var confirmPasswordTapClosure: (() -> Void)?
     
+    var resignedResponder: ((UITextField) -> Void)?
+    
     lazy var animationView: LOTAnimationView = self.createAnimationView()
     lazy var signUpLabel: UILabel = self.createSignUpLabel()
-    var bottomBorder: CALayer = CALayer()
-    var passwordBottomBorder: CALayer = CALayer()
-    var confirmPasswordBottomBorder: CALayer = CALayer()
+    
+    lazy var bottomBorder: CALayer = CALayer()
+    lazy var passwordBottomBorder: CALayer = CALayer()
+    lazy var confirmPasswordBottomBorder: CALayer = CALayer()
     
     lazy var emailTextView: UIView = self.createEmailTextView()
     lazy var emailStackView: UIStackView = createTextFieldStackView()
@@ -38,9 +41,6 @@ class CreateAccountView: UIView {
     lazy var confirmPasswordStackView: UIStackView = createTextFieldStackView()
     lazy var confirmPasswordPlaceholderLabel: UILabel = createPlaceholderLabel(withText: "Confirm Password")
     lazy var confirmPasswordTextField: UITextField = createCustomTextField(withView: self, placeholder: "Confirm Password", selector: #selector(handleConfirmPasswordTextFieldTap))
-    
-    
-    
     
     
     lazy var signUpButton: UIButton = self.createSignUpButton()
@@ -192,6 +192,8 @@ extension CreateAccountView {
     
     func layoutEmailTextField() {
         self.emailStackView.addArrangedSubview(self.emailTextField)
+        emailTextField.delegate = self
+        emailTextField.tag = 1
         
         self.emailTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
@@ -241,6 +243,8 @@ extension CreateAccountView {
     
     func layoutPasswordTextField() {
         self.passwordStackView.addArrangedSubview(self.passwordTextField)
+        passwordTextField.delegate = self
+        passwordTextField.tag = 2
         
         self.passwordTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
@@ -289,6 +293,8 @@ extension CreateAccountView {
     
     func layoutConfirmPasswordTextField() {
         self.confirmPasswordStackView.addArrangedSubview(self.confirmPasswordTextField)
+        confirmPasswordTextField.delegate = self
+        confirmPasswordTextField.tag = 3
         
         self.confirmPasswordTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
@@ -312,6 +318,30 @@ extension CreateAccountView {
             make.height.equalTo(55)
             
             make.bottom.equalToSuperview().offset(-20)
+        }
+    }
+}
+
+extension CreateAccountView {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case 1:
+            self.resignedResponder?(self.emailTextField)
+            
+            
+        case 2:
+            self.resignedResponder?(self.passwordTextField)
+            
+        case 3:
+            self.resignedResponder?(self.confirmPasswordTextField)
+            
+        default:
+            self.resignedResponder?(UITextField())
         }
     }
 }

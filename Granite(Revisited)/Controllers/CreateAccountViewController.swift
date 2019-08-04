@@ -31,6 +31,24 @@ class CreateAccountViewController: UIViewController {
         self.accountView.confirmPasswordTapClosure = {[weak self] in
             self?.animateConfirmPasswordView()
         }
+        
+        self.accountView.resignedResponder = {[unowned self] textField in
+
+            switch textField.tag {
+            case 1:
+                
+                resetViewBorder(withBorder: &self.accountView.bottomBorder)
+                
+            case 2:
+                resetViewBorder(withBorder: &self.accountView.passwordBottomBorder)
+                
+            case 3:
+                resetViewBorder(withBorder: &self.accountView.confirmPasswordBottomBorder)
+                
+            default:
+                return
+            }
+        }
     }
     
     
