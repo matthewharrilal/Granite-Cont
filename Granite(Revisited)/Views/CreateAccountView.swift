@@ -43,6 +43,8 @@ class CreateAccountView: UIView, UITextFieldDelegate{
     lazy var confirmPasswordTextField: UITextField = createCustomTextField(withView: self, placeholder: "Confirm Password", selector: #selector(handleConfirmPasswordTextFieldTap))
     
     
+    
+    
     lazy var signUpButton: UIButton = self.createSignUpButton()
     
     
@@ -117,6 +119,8 @@ extension CreateAccountView {
     func createSignUpButton() -> UIButton {
         let signUpButton = UIButton()
         signUpButton.setTitle("Sign Up", for: .normal)
+        
+        signUpButton.titleLabel?.font = .bold(size: 17)
         return signUpButton
     }
 }

@@ -18,7 +18,6 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
-        print(self.accountView.emailTextField.allTargets)
         
         self.accountView.tapClosure = {[weak self] in
             self?.animateEmailView()
@@ -100,6 +99,7 @@ extension CreateAccountViewController {
     func layout() {
         self.view.backgroundColor = .white
         layoutAccountView()
+        
     }
     
     func layoutAccountView() {

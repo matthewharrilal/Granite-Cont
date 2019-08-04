@@ -73,6 +73,17 @@ func applyTransformation(withButton button: UIButton) {
     }
 }
 
+func applyHorizontalTransformation(withButton button: UIButton) {
+    button.transform = CGAffineTransform(translationX: 20, y: 0).scaledBy(x: 0.7, y: 0.7)
+    button.layer.shadowColor = UIColor.black.cgColor
+    
+    UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
+        button.transform = .identity
+    }) { (_) in
+        
+    }
+}
+
 
 func animateViewBorder(withHexColor hexColor: String?=nil, color: UIColor?=nil, withBorder border: inout CALayer) {
     
