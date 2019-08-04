@@ -11,7 +11,7 @@ import UIKit
 
 class TouchableBounceView: UIView {
     var tapGesture: UITapGestureRecognizer?
-    
+    var item: Any?
     
     // Does this didSet functionality get called after this selectBlock closure is allocated and before its called?
     var selectBlock: (() -> Void)? {

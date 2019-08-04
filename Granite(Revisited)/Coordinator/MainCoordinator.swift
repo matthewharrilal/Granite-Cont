@@ -38,8 +38,10 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(createAccountViewController, animated: true)
     }
     
-    func startOnboardingFlow() {
+    func startOnboardingFlow(name: String) {
         let onboardingController = OnboardingController()
+        
+        onboardingController.firstName = name
 
         
         

@@ -39,6 +39,8 @@ class FirstOnboardingScreen: UIView {
         
         welcomeLabel.text = "Welcome to Granite"
         
+        
+        
         let descriptionText = createLabelSpacing(withLabelText: "Before we connect you with other developers, we have a few questions that will help improve your experience")
         
         descriptionLabel.attributedText = descriptionText

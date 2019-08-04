@@ -58,7 +58,13 @@ class CreateAccountViewController: UIViewController {
         }
         
         self.accountView.signUpContainer.selectBlock = {[weak self] in
-            self?.coordinator?.startOnboardingFlow()
+            
+            // Need to pass the first name so that we can start the onboarding flow
+            if let fullName = self?.accountView.fullNameTextField.text {
+                let firstName = fullName.components(separatedBy: " ")
+                self?.coordinator?.startOnboardingFlow(name: firstName[0])
+            }
+            
         }
     }
     
