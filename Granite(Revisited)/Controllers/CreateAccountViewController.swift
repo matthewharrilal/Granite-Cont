@@ -32,7 +32,7 @@ class CreateAccountViewController: UIViewController {
             self.accountView.emailTextField.placeholder = ""
             self.accountView.emailPlaceholderLabel.alpha = 0.8
             
-            animateViewBorder(withBorder: &self.accountView.bottomBorder)
+            animateViewBorder(withHexColor: "8CDFD6", withBorder: &self.accountView.bottomBorder)
         }
     }
     
