@@ -32,7 +32,7 @@ class OnboardingPageViewController: UIPageViewController {
 }
 
 
-extension OnboardingPageViewController: UIPageViewControllerDataSource {
+extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = self.orderedViewControllers.firstIndex(of: viewController) else {return nil}
         
@@ -64,5 +64,17 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
         return self.orderedViewControllers[nextIndex]
         
     }
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return orderedViewControllers.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        guard let firstViewController = viewControllers?.first,
+            let firstViewControllerIndex = orderedViewControllers.firstIndex(of: firstViewController) else {return 0}
+        
+        return firstViewControllerIndex
+    }
+    
     
 }
