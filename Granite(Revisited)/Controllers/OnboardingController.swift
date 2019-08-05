@@ -65,7 +65,7 @@ class OnboardingController: UIViewController {
                 self.firstOnboardingScreen.transformViews(views: self.firstOnboardingScreen.welcomeLabel, self.firstOnboardingScreen.descriptionLabel, self.firstOnboardingScreen.animationView)
             })
         }) { (_) in
-            print("")
+            self.coordinator?.showSecondOnboardingScreen()
         }
         
         

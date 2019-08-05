@@ -13,6 +13,7 @@
 		1C21B58D22A36C2A00FF9C97 /* LinksModalContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C21B58C22A36C2A00FF9C97 /* LinksModalContainerView.swift */; };
 		1C226183227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226182227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift */; };
 		1C226186227AB0090072A638 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226185227AB0090072A638 /* User.swift */; };
+		1C31230622F8701700E4B112 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C31230522F8701700E4B112 /* OnboardingPageViewController.swift */; };
 		1C326A482269AAC300E09F99 /* lock.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C326A472269AAC300E09F99 /* lock.json */; };
 		1C41139B228C9F9900CBBCFB /* downArrow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C41139A228C9F9900CBBCFB /* downArrow.jpg */; };
 		1C41139D228D012100CBBCFB /* down-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C41139C228D012100CBBCFB /* down-1.png */; };
@@ -120,6 +121,7 @@
 		1C21B58C22A36C2A00FF9C97 /* LinksModalContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksModalContainerView.swift; sourceTree = "<group>"; };
 		1C226182227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeprecatedOnboardingFlowController+Extension.swift"; sourceTree = "<group>"; };
 		1C226185227AB0090072A638 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1C31230522F8701700E4B112 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		1C326A472269AAC300E09F99 /* lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lock.json; sourceTree = "<group>"; };
 		1C41139A228C9F9900CBBCFB /* downArrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downArrow.jpg; sourceTree = "<group>"; };
 		1C41139C228D012100CBBCFB /* down-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-1.png"; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				1C6FCB3E228B36D1000BC75A /* OnboardingController.swift */,
 				1CA0F7EF22A082CC00089583 /* SecondOnboardingController.swift */,
 				1CB0349F22F6121300EFCC65 /* CreateAccountViewController.swift */,
+				1C31230522F8701700E4B112 /* OnboardingPageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				1C45F7B222A83FFD00494FB4 /* Protocols.swift in Sources */,
 				1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */,
 				1C1AA4D8227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift in Sources */,
+				1C31230622F8701700E4B112 /* OnboardingPageViewController.swift in Sources */,
 				1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */,
 				1CA0F7E2229EDB3A00089583 /* LanguagesCollectionViewCell.swift in Sources */,
 				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,

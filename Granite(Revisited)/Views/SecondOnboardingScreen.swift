@@ -34,9 +34,9 @@ class SecondOnboardingScreen: UIView {
         collectionView.delegate = self
         
         collectionView.register(LanguagesCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.alpha = 0.0
-        preferredLanguageLabel.alpha = 0.0
-        descriptionLabel.alpha =  0.0
+        collectionView.alpha = 1.0
+        preferredLanguageLabel.alpha = 1.0
+        descriptionLabel.alpha =  1.0
         preferredLanguageLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         descriptionLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 17)
 //

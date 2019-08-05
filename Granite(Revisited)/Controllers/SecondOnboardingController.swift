@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class SecondOnboardingController: UIViewController {
     // In charge of handling transition buttons tap
@@ -16,6 +17,11 @@ class SecondOnboardingController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.addSubview(secondOnboardingScreen)
+        secondOnboardingScreen.backgroundColor = .white
+        secondOnboardingScreen.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
     @objc func handleTap() {
