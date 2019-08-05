@@ -49,7 +49,20 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return nil
+        guard let viewControllerIndex = self.orderedViewControllers.firstIndex(of: viewController) else {return nil}
+        
+        
+        let nextIndex = viewControllerIndex + 1
+        
+        guard orderedViewControllers.count != nextIndex else {
+            return orderedViewControllers.first // Loop the ordered view controllers
+        }
+        
+        guard self.orderedViewControllers.count > nextIndex else {return nil}
+        
+        
+        return self.orderedViewControllers[nextIndex]
+        
     }
     
 }
