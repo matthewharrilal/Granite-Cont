@@ -20,6 +20,8 @@ class OnboardingController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.restorationIdentifier = NSStringFromClass(self.classForCoder)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

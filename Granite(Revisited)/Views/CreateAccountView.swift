@@ -418,7 +418,7 @@ extension CreateAccountView {
             make.height.equalTo(55)
             
             make.centerX.equalToSuperview()
-            make.top.equalTo(self.confirmPasswordTextView.snp.bottom).offset(100)
+            make.top.equalTo(self.confirmPasswordTextView.snp.bottom).offset(50)
         }
     }
 }

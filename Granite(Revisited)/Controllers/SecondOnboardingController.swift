@@ -18,6 +18,8 @@ class SecondOnboardingController: UIViewController {
         super.viewDidLoad()
         
         self.view.addSubview(secondOnboardingScreen)
+        
+        self.restorationIdentifier = NSStringFromClass(self.classForCoder)
         secondOnboardingScreen.backgroundColor = .white
         secondOnboardingScreen.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()

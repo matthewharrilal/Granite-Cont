@@ -12,10 +12,15 @@ import UIKit
 class OnboardingPageViewController: UIPageViewController {
     
     private lazy var orderedViewControllers: [UIViewController] = [OnboardingController(), SecondOnboardingController()]
+    var pageControl: UIPageControl = UIPageControl()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
+        self.delegate = self
+        
+//        configurePageControl()
         
         if let firstViewController = self.orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
@@ -28,6 +33,11 @@ class OnboardingPageViewController: UIPageViewController {
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
     }
 }
 
@@ -65,16 +75,29 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
         
     }
     
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return orderedViewControllers.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        guard let firstViewController = viewControllers?.first,
-            let firstViewControllerIndex = orderedViewControllers.firstIndex(of: firstViewController) else {return 0}
+    func configurePageControl() {
+        self.pageControl.frame = .init(x: 0, y: self.view.bounds.maxY - 50, width: self.view.bounds.width, height: 50)
+        self.pageControl.numberOfPages = self.orderedViewControllers.count
         
-        return firstViewControllerIndex
+        self.pageControl.currentPage = 0
+        self.pageControl.tintColor = UIColor(hexString: "ccddfc")
+        self.pageControl.pageIndicatorTintColor = UIColor.lightGray
+        self.pageControl.currentPageIndicatorTintColor = UIColor(hexString: "ccddfc")
+        
+        self.pageControl.transform = .init(scaleX: 2, y: 1)
+        
+        self.view.addSubview(self.pageControl)
     }
+
     
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let pageViewController = pageViewController.viewControllers?[0] {
+            self.pageControl.currentPage = self.orderedViewControllers.firstIndex(of: pageViewController)!
+            print("Current View Controller Index \(pageViewController.restorationIdentifier)")
+        }
+        
+        
+    }
+
     
 }
