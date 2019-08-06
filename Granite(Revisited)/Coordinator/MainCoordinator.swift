@@ -39,7 +39,7 @@ class MainCoordinator: Coordinator {
     }
     
     func startOnboardingFlow(name: String) {
-        let onboardingController = OnboardingPageViewController()
+        let onboardingController = TestViewController()
 //        onboardingController.coordinator = self
 //
 //        onboardingController.firstName = name

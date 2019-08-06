@@ -14,6 +14,7 @@
 		1C226183227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226182227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift */; };
 		1C226186227AB0090072A638 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C226185227AB0090072A638 /* User.swift */; };
 		1C31230622F8701700E4B112 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C31230522F8701700E4B112 /* OnboardingPageViewController.swift */; };
+		1C31230822F944ED00E4B112 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C31230722F944ED00E4B112 /* TestViewController.swift */; };
 		1C326A482269AAC300E09F99 /* lock.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C326A472269AAC300E09F99 /* lock.json */; };
 		1C41139B228C9F9900CBBCFB /* downArrow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C41139A228C9F9900CBBCFB /* downArrow.jpg */; };
 		1C41139D228D012100CBBCFB /* down-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C41139C228D012100CBBCFB /* down-1.png */; };
@@ -122,6 +123,7 @@
 		1C226182227AA8E50072A638 /* DeprecatedOnboardingFlowController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeprecatedOnboardingFlowController+Extension.swift"; sourceTree = "<group>"; };
 		1C226185227AB0090072A638 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1C31230522F8701700E4B112 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		1C31230722F944ED00E4B112 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		1C326A472269AAC300E09F99 /* lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lock.json; sourceTree = "<group>"; };
 		1C41139A228C9F9900CBBCFB /* downArrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downArrow.jpg; sourceTree = "<group>"; };
 		1C41139C228D012100CBBCFB /* down-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-1.png"; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				1CA0F7EF22A082CC00089583 /* SecondOnboardingController.swift */,
 				1CB0349F22F6121300EFCC65 /* CreateAccountViewController.swift */,
 				1C31230522F8701700E4B112 /* OnboardingPageViewController.swift */,
+				1C31230722F944ED00E4B112 /* TestViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 				1CB0349E22F6091F00EFCC65 /* CoordinatorProtocol.swift in Sources */,
 				1CA0F7F022A082CC00089583 /* SecondOnboardingController.swift in Sources */,
 				1C83F42E227BCDC100BEA884 /* Errors.swift in Sources */,
+				1C31230822F944ED00E4B112 /* TestViewController.swift in Sources */,
 				1C83F436227BCEF400BEA884 /* URLParameterEncoder.swift in Sources */,
 				1C83F4782280C64800BEA884 /* UIView+Layout.swift in Sources */,
 				1C83F432227BCE8100BEA884 /* Router.swift in Sources */,
