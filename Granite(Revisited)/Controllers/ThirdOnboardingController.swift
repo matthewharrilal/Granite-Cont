@@ -24,9 +24,12 @@ class ThirdOnboardingController: UIViewController {
 }
 
 extension ThirdOnboardingController {
-    func layout() {}
+    func layout() {
+        layoutThirdOnboardingScreen()
+    }
     
     func layoutThirdOnboardingScreen() {
         self.view.addSubview(self.thirdOnboardingScreen)
+        
     }
 }
