@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Granite(Revisited)/Coordinator/MainCoordinator.swift"
-            timestampString = "586756918.8932281"
+            filePath = "Granite(Revisited)/Views/SecondOnboardingScreen.swift"
+            timestampString = "586759062.8724281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "startOnboardingFlow(name:)"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "handleTap()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

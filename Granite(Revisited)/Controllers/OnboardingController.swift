@@ -35,8 +35,11 @@ class OnboardingController: UIViewController {
         self.view.addSubview(firstOnboardingScreen)
         
         firstOnboardingScreen.animateLabels()
-        firstOnboardingScreen.transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
-        applyTransformation(withButton: firstOnboardingScreen.transitionButton)
+//        firstOnboardingScreen.transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
+        
+        firstOnboardingScreen.transitionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
+        transformTouchableBounceView(withBounceView: firstOnboardingScreen.transitionButton)
+//        applyTransformation(withButton: firstOnboardingScreen.transitionButton)
     }
     
     override func didReceiveMemoryWarning() {

@@ -20,9 +20,8 @@ func createLabelSpacing(withLabelText labelText: String) -> NSMutableAttributedS
     return attributedString
 }
 
-func createTouchableBounceButton(withFrame frame: CGRect, withText text: String) -> TouchableBounceView {
+func createTouchableBounceButton(withText text: String) -> TouchableBounceView {
     let button = TouchableBounceView()
-    button.frame = frame
     
     let container = UIView()
     button.addSubview(container)

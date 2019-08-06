@@ -14,18 +14,22 @@ class SecondOnboardingScreen: UIView {
     @IBOutlet weak var preferredLanguageLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    var transitionButton: UIButton!
+    lazy var transitionButton = createTouchableBounceButton(withText: "Next")
     
     lazy var languageSet = Set<String>()
     var languagesArray: [(UIImage, String)] = [(#imageLiteral(resourceName: "javascript"), "Javascript"), (#imageLiteral(resourceName: "go"), "Golang"), (#imageLiteral(resourceName: "python"), "Python"), (#imageLiteral(resourceName: "ruby"),"Ruby"), (#imageLiteral(resourceName: "c"), "C++"), (#imageLiteral(resourceName: "java"), "Java"), (#imageLiteral(resourceName: "rust"), "Rust"), (#imageLiteral(resourceName: "php"), "PHP"), (#imageLiteral(resourceName: "swift"), "Swift") ]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+//        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override func layoutSubviews() {
+        commonInit()
     }
     
     fileprivate func commonInit() {
@@ -39,12 +43,13 @@ class SecondOnboardingScreen: UIView {
         descriptionLabel.alpha =  1.0
         preferredLanguageLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         descriptionLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 17)
-//
-        self.transitionButton = createTransitionButton(withView: self)
+
         self.transitionButton.alpha = 1.0
         addSubviews(views: preferredLanguageLabel, descriptionLabel, collectionView)
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        self.transitionButton.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+//        self.transitionButton.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        self.transitionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        
         
         collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -10, right: -10))
     }

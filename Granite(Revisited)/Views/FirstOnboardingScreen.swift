@@ -18,7 +18,7 @@ class FirstOnboardingScreen: UIView {
     lazy var shapeLayer = CAShapeLayer()
     var animationView: LOTAnimationView!
     
-    var transitionButton: UIButton!
+    lazy var transitionButton: TouchableBounceView = createTouchableBounceButton(withText: "Next")
     
     
     override init(frame: CGRect) {
@@ -30,16 +30,22 @@ class FirstOnboardingScreen: UIView {
         super.init(coder: aDecoder)
     }
     
+    override func layoutSubviews() {
+//        commonInit()
+    }
+    
     fileprivate func commonInit() {
         Bundle.main.loadNibNamed("FirstOnboardingScreen", owner: self, options: nil)
-        self.addSubviews(views: welcomeLabel, descriptionLabel)
+        self.addSubviews(views: welcomeLabel, descriptionLabel, transitionButton)
+        
+        transitionButton.frame = .init(x: self.center.x, y: self.frame.height * 0.88, width: 65, height: 65)
         self.backgroundColor = .init(hexString: "fefeff")
         
-        self.transitionButton = createTransitionButton(withView: self)
+       
         
         welcomeLabel.text = "Welcome to Granite"
         
-        
+        self.transitionButton.backgroundColor = .blue
         
         let descriptionText = createLabelSpacing(withLabelText: "Before we connect you with other developers, we have a few questions that will help improve your experience")
         
