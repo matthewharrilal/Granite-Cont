@@ -35,6 +35,8 @@ func createTouchableBounceButton(withText text: String) -> TouchableBounceView {
     container.addSubview(textLabel)
     
     textLabel.text = text
+    textLabel.textColor = .white
+    textLabel.font = UIFont.regular(size: 17)
     
     textLabel.snp.makeConstraints { (make) in
         make.center.equalToSuperview()
