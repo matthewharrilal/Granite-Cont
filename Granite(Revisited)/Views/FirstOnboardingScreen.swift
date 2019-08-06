@@ -107,7 +107,13 @@ class FirstOnboardingScreen: UIView {
         
         addSubview(animationView)
         
-        animationView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 0, left: 20, bottom: -20, right: -20))
+//        animationView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 0, left: 20, bottom: -20, right: -20))
+        
+        animationView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview().inset(20)
+            make.top.equalTo(self.descriptionLabel.snp.bottom).inset(50)
+//            make.bottom.equalToSuperview().offset(-10)
+        }
     }
     
     func transformViews(views: UIView...) {
