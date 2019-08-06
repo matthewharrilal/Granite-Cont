@@ -33,17 +33,17 @@ class FirstOnboardingScreen: UIView {
     fileprivate func commonInit() {
         Bundle.main.loadNibNamed("FirstOnboardingScreen", owner: self, options: nil)
         
-        self.transitionButton = createTouchableBounceButton(withText: "Next")
-        self.addSubviews(views: welcomeLabel, descriptionLabel, self.transitionButton)
+//        self.transitionButton = createTouchableBounceButton(withText: "Next")
+        self.addSubviews(views: welcomeLabel, descriptionLabel)
         self.backgroundColor = .init(hexString: "fefeff")
         
         
-        self.transitionButton.frame = CGRect(x: self.center.x, y: self.frame.height * 0.88, width: 300, height: 65)
-        self.transitionButton.center.x = self.center.x
+//        self.transitionButton.frame = CGRect(x: self.center.x, y: self.frame.height * 0.88, width: 300, height: 65)
+//        self.transitionButton.center.x = self.center.x
         
-        self.transitionButton.backgroundColor = UIColor.init(hexString: "2357A5")
-        self.transitionButton.layer.cornerRadius = 8
-        
+//        self.transitionButton.backgroundColor = UIColor.init(hexString: "2357A5")
+//        self.transitionButton.layer.cornerRadius = 8
+//
 //        self.transitionButton.snp.makeConstraints { (make) in
 //            make.centerX.equalToSuperview()
 //            make.width.equalTo(300)
@@ -64,7 +64,7 @@ class FirstOnboardingScreen: UIView {
         // Start off invisible then animate the difference
         welcomeLabel.alpha = 0.0
         descriptionLabel.alpha = 0.0
-        transitionButton.alpha = 0.0
+//        transitionButton.alpha = 0.0
         
         
         
@@ -87,7 +87,7 @@ class FirstOnboardingScreen: UIView {
             
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 1.0, animations: {
                 self.descriptionLabel.alpha = 1.0
-                self.transitionButton.alpha = 1.0
+//                self.transitionButton.alpha = 1.0
             })
         }) { (_) in
             self.configureAnimation()
@@ -107,7 +107,7 @@ class FirstOnboardingScreen: UIView {
         
         addSubview(animationView)
         
-        animationView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 20, bottom: -20, right: -20))
+        animationView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 0, left: 20, bottom: -20, right: -20))
     }
     
     func transformViews(views: UIView...) {

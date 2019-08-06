@@ -35,9 +35,9 @@ class FirstOnboardingController: UIViewController {
         
         firstOnboardingScreen.animateLabels()
         
-        firstOnboardingScreen.transitionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
+//        firstOnboardingScreen.transitionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
         
-        transformTouchableBounceView(withBounceView: firstOnboardingScreen.transitionButton)
+//        transformTouchableBounceView(withBounceView: firstOnboardingScreen.transitionButton)
 
     }
     
