@@ -20,6 +20,44 @@ func createLabelSpacing(withLabelText labelText: String) -> NSMutableAttributedS
     return attributedString
 }
 
+func createTouchableBounceButton(withFrame frame: CGRect, withText text: String) -> TouchableBounceView {
+    let button = TouchableBounceView()
+    button.frame = frame
+    
+    let container = UIView()
+    button.addSubview(container)
+    
+    container.snp.makeConstraints { (make) in
+        make.edges.equalToSuperview()
+    }
+    
+    let textLabel = UILabel()
+    
+    container.addSubview(textLabel)
+    
+    textLabel.text = text
+    
+    textLabel.snp.makeConstraints { (make) in
+        make.center.equalToSuperview()
+    }
+    
+    return button
+}
+
+func transformTouchableBounceView(withBounceView bounceView: TouchableBounceView) {
+    // Apply scaling transformation to button
+    
+    print("Animating touchable bounce view button")
+    
+    bounceView.transform = .init(scaleX: 2, y: 0)
+    
+    UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
+        bounceView.transform = .identity
+    }) { (_) in
+        
+    }
+}
+
 
 func createTransitionButton(withView view: UIView) -> UIButton {
     let transitionButton = UIButton()

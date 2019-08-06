@@ -41,12 +41,12 @@ class SecondOnboardingScreen: UIView {
         descriptionLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 17)
 //
         self.transitionButton = createTransitionButton(withView: self)
-        self.transitionButton.alpha = 0.0
+        self.transitionButton.alpha = 1.0
         addSubviews(views: preferredLanguageLabel, descriptionLabel, collectionView)
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
         self.transitionButton.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         
-        collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.transitionButton.topAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -10, right: -10))
+        collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -10, right: -10))
     }
     
     @objc func handleTap() {

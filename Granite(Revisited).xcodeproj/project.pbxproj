@@ -84,7 +84,7 @@
 		1CB034F622F6574300EFCC65 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CB034ED22F6574300EFCC65 /* Poppins-Italic.ttf */; };
 		1CB034F722F6574300EFCC65 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CB034EE22F6574300EFCC65 /* Poppins-Thin.ttf */; };
 		1CB034F822F6574300EFCC65 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CB034EF22F6574300EFCC65 /* Poppins-MediumItalic.ttf */; };
-		1CB034FA22F69A3B00EFCC65 /* TouchableBouncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB034F922F69A3B00EFCC65 /* TouchableBouncView.swift */; };
+		1CB034FA22F69A3B00EFCC65 /* TouchableBounceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB034F922F69A3B00EFCC65 /* TouchableBounceView.swift */; };
 		1CCCC1A32267874E0012DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A22267874E0012DA75 /* AppDelegate.swift */; };
 		1CCCC1A52267874E0012DA75 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */; };
 		1CCCC1A82267874E0012DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1A62267874E0012DA75 /* Main.storyboard */; };
@@ -192,7 +192,7 @@
 		1CB034ED22F6574300EFCC65 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		1CB034EE22F6574300EFCC65 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		1CB034EF22F6574300EFCC65 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
-		1CB034F922F69A3B00EFCC65 /* TouchableBouncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchableBouncView.swift; sourceTree = "<group>"; };
+		1CB034F922F69A3B00EFCC65 /* TouchableBounceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchableBounceView.swift; sourceTree = "<group>"; };
 		1CCCC19F2267874E0012DA75 /* Granite(Revisited).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Granite(Revisited).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CCCC1A22267874E0012DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 				1C83F4772280C64800BEA884 /* UIView+Layout.swift */,
 				1CA0F7E3229F0D1E00089583 /* HelperFunctions.swift */,
 				1C45F7B122A83FFC00494FB4 /* Protocols.swift */,
-				1CB034F922F69A3B00EFCC65 /* TouchableBouncView.swift */,
+				1CB034F922F69A3B00EFCC65 /* TouchableBounceView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -767,7 +767,7 @@
 				1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */,
 				1CA0F7E2229EDB3A00089583 /* LanguagesCollectionViewCell.swift in Sources */,
 				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,
-				1CB034FA22F69A3B00EFCC65 /* TouchableBouncView.swift in Sources */,
+				1CB034FA22F69A3B00EFCC65 /* TouchableBounceView.swift in Sources */,
 				1CA0F7EE22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift in Sources */,
 				1CB0349C22F6090F00EFCC65 /* MainCoordinator.swift in Sources */,
 				1C83F434227BCEEB00BEA884 /* JSONParameterEncoder.swift in Sources */,
