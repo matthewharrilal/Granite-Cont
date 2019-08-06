@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 protocol TouchableView {
-    var tapGesture: UITapGestureRecognizer?
-    var selectBlock: (() -> Void)?
+    var tapGesture: UITapGestureRecognizer? {get set}
+    var selectBlock: (() -> Void)? {get set}
 }
 
 class TouchableBounceView: UIView {
@@ -79,5 +79,29 @@ class TouchableCollectionViewCell: UICollectionViewCell, TouchableView {
     
     @objc func handleTap() {
         self.selectBlock?()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        UIView.animate(withDuration: 0.15, delay: 0, options: [.allowUserInteraction], animations: {
+            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            self.alpha = 0.5
+        }, completion: nil)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        UIView.animate(withDuration: 0.15, delay: 0, options: [.allowUserInteraction], animations: {
+            self.alpha = 1
+            self.transform = .identity
+        }, completion: nil)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        UIView.animate(withDuration: 0.15, delay: 0, options: [.allowUserInteraction], animations: {
+            self.alpha = 1
+            self.transform = .identity
+        }, completion: nil)
     }
 }

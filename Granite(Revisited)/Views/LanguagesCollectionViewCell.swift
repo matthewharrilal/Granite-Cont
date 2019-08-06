@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LanguagesCollectionViewCell: UICollectionViewCell {
+class LanguagesCollectionViewCell: TouchableCollectionViewCell {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var languageName: UILabel!
