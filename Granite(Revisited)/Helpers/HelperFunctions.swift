@@ -50,7 +50,7 @@ func transformTouchableBounceView(withBounceView bounceView: TouchableBounceView
     
     print("Animating touchable bounce view button")
     
-    bounceView.transform = .init(scaleX: 2, y: 0)
+    bounceView.transform = .init(scaleX: 1.05, y: 1.05)
     
     UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
         bounceView.transform = .identity

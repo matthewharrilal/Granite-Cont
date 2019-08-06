@@ -40,7 +40,7 @@ class OnboardingController: UIViewController {
         
         firstOnboardingScreen.transitionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
         
-//        transformTouchableBounceView(withBounceView: firstOnboardingScreen.transitionButton)
+        transformTouchableBounceView(withBounceView: firstOnboardingScreen.transitionButton)
 
     }
     
