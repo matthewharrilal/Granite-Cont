@@ -34,7 +34,7 @@
 		1C6FCB38228A1DB5000BC75A /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB30228A1CBD000BC75A /* PlayfairDisplay-Regular.ttf */; };
 		1C6FCB3B228B34DE000BC75A /* FirstOnboardingScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C6FCB3A228B34DE000BC75A /* FirstOnboardingScreen.xib */; };
 		1C6FCB3D228B34F5000BC75A /* FirstOnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FCB3C228B34F5000BC75A /* FirstOnboardingScreen.swift */; };
-		1C6FCB3F228B36D1000BC75A /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FCB3E228B36D1000BC75A /* OnboardingController.swift */; };
+		1C6FCB3F228B36D1000BC75A /* FirstOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FCB3E228B36D1000BC75A /* FirstOnboardingController.swift */; };
 		1C75417C2268E6680038D0E1 /* LaunchScreenController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */; };
 		1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F428227BCC2900BEA884 /* EndpointType.swift */; };
 		1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F42A227BCC8500BEA884 /* HTTPTask.swift */; };
@@ -143,7 +143,7 @@
 		1C6FCB32228A1CBF000BC75A /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		1C6FCB3A228B34DE000BC75A /* FirstOnboardingScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstOnboardingScreen.xib; sourceTree = "<group>"; };
 		1C6FCB3C228B34F5000BC75A /* FirstOnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingScreen.swift; sourceTree = "<group>"; };
-		1C6FCB3E228B36D1000BC75A /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
+		1C6FCB3E228B36D1000BC75A /* FirstOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingController.swift; sourceTree = "<group>"; };
 		1C75417B2268E6680038D0E1 /* LaunchScreenController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LaunchScreenController+Extension.swift"; sourceTree = "<group>"; };
 		1C83F428227BCC2900BEA884 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		1C83F42A227BCC8500BEA884 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
@@ -387,7 +387,7 @@
 				1CCCC1A42267874E0012DA75 /* LaunchScreenController.swift */,
 				1CCCC1D82267CFFE0012DA75 /* LogInViewController.swift */,
 				1C1AA4D7227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift */,
-				1C6FCB3E228B36D1000BC75A /* OnboardingController.swift */,
+				1C6FCB3E228B36D1000BC75A /* FirstOnboardingController.swift */,
 				1CA0F7EF22A082CC00089583 /* SecondOnboardingController.swift */,
 				1CB0349F22F6121300EFCC65 /* CreateAccountViewController.swift */,
 				1C31230522F8701700E4B112 /* OnboardingPageViewController.swift */,
@@ -751,7 +751,7 @@
 				1CA0F7D8229E110900089583 /* SecondOnboardingScreenCollectionView+Extension.swift in Sources */,
 				1CA0F7EC22A07D8900089583 /* LinksCollectionViewCell.swift in Sources */,
 				1C45F7B622AA20ED00494FB4 /* SignUpView.swift in Sources */,
-				1C6FCB3F228B36D1000BC75A /* OnboardingController.swift in Sources */,
+				1C6FCB3F228B36D1000BC75A /* FirstOnboardingController.swift in Sources */,
 				1CA0F7E622A07A0E00089583 /* ThirdOnboardingScreen.swift in Sources */,
 				1C83F42B227BCC8500BEA884 /* HTTPTask.swift in Sources */,
 				1C83F43A227BDB2800BEA884 /* UserAccess.swift in Sources */,

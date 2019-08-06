@@ -10,10 +10,9 @@ import Foundation
 import UIKit
 import SnapKit
 
-class OnboardingController: UIViewController {
+class FirstOnboardingController: UIViewController {
     
     var firstOnboardingScreen: FirstOnboardingScreen!
-    var secondOnboardingScreen: SecondOnboardingScreen!
     var firstName: String?
     
     weak var coordinator: MainCoordinator?
@@ -28,7 +27,6 @@ class OnboardingController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         firstOnboardingScreen = FirstOnboardingScreen(frame: self.view.frame)
-        secondOnboardingScreen = SecondOnboardingScreen(frame: self.view.frame)
         
         firstOnboardingScreen.welcomeLabel.text = "Welcome, \(self.firstName ?? "Hacker")"
         
@@ -36,7 +34,6 @@ class OnboardingController: UIViewController {
         self.view.addSubview(firstOnboardingScreen)
         
         firstOnboardingScreen.animateLabels()
-//        firstOnboardingScreen.transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
         
         firstOnboardingScreen.transitionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
         
