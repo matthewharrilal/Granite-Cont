@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class OnboardingController: UIViewController {
     
@@ -38,8 +39,9 @@ class OnboardingController: UIViewController {
 //        firstOnboardingScreen.transitionButton.addTarget(self, action: #selector(handleTap(sender:)), for: .touchUpInside)
         
         firstOnboardingScreen.transitionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
-        transformTouchableBounceView(withBounceView: firstOnboardingScreen.transitionButton)
-//        applyTransformation(withButton: firstOnboardingScreen.transitionButton)
+        
+//        transformTouchableBounceView(withBounceView: firstOnboardingScreen.transitionButton)
+
     }
     
     override func didReceiveMemoryWarning() {
