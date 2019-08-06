@@ -11,7 +11,7 @@ import UIKit
 
 class OnboardingPageViewController: UIPageViewController {
     
-    private lazy var orderedViewControllers: [UIViewController] = [FirstOnboardingController(), SecondOnboardingController()]
+    private lazy var orderedViewControllers: [UIViewController] = [FirstOnboardingController(), SecondOnboardingController(), ThirdOnboardingController()]
     var pageControl: UIPageControl = UIPageControl()
     
     

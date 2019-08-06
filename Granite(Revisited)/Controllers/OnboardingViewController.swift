@@ -31,7 +31,7 @@ class OnboardingViewController: UIViewController {
         let height = self.view.bounds.height
         self.pageViewController.view.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-            make.height.equalTo(height * 0.8)
+            make.height.equalTo(height * 0.85)
             
         }
         
@@ -43,14 +43,14 @@ class OnboardingViewController: UIViewController {
     func layoutTransitionButton() {
         self.view.addSubview(transitionButton)
         
-        let differenceInHeight = self.view.bounds.height - (self.view.bounds.height * 0.8)
+        let differenceInHeight = self.view.bounds.height - (self.view.bounds.height * 0.85)
         
         self.transitionButton.backgroundColor = .init(hexString: "317AC1")
         self.transitionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(transitionNextPage)))
         
         self.transitionButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(self.pageViewController.view.snp.bottom).offset(differenceInHeight / 3)
+            make.top.equalTo(self.pageViewController.view.snp.bottom)
             
             make.height.equalTo(65)
             make.width.equalTo(300)

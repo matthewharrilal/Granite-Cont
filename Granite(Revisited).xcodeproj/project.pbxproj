@@ -101,6 +101,7 @@
 		1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCCC1DA2267D26D0012DA75 /* LoginViewExtension.swift */; };
 		1CCCC1DD2267D7F00012DA75 /* paperPlane.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1DC2267D7F00012DA75 /* paperPlane.json */; };
 		1CCCC1DF2267D8AC0012DA75 /* lazyNight.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1DE2267D8AC0012DA75 /* lazyNight.json */; };
+		1CFDB43A22F9F3A400F9228E /* ThirdOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFDB43922F9F3A400F9228E /* ThirdOnboardingController.swift */; };
 		3976AD8F7A28E77D632467A6 /* Pods_Granite_Revisited_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B3489A0C4D9EEF06640D /* Pods_Granite_Revisited_.framework */; };
 		B8CE4BD28BC36E1E373B29F7 /* Pods_Granite_Revisited_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCEA62147E5CE8310AFF610 /* Pods_Granite_Revisited_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -214,6 +215,7 @@
 		1CCCC1DA2267D26D0012DA75 /* LoginViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewExtension.swift; sourceTree = "<group>"; };
 		1CCCC1DC2267D7F00012DA75 /* paperPlane.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = paperPlane.json; sourceTree = "<group>"; };
 		1CCCC1DE2267D8AC0012DA75 /* lazyNight.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lazyNight.json; sourceTree = "<group>"; };
+		1CFDB43922F9F3A400F9228E /* ThirdOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingController.swift; sourceTree = "<group>"; };
 		26370F436F68BA75E87CB213 /* Pods-Granite(Revisited)Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Granite(Revisited)Tests.debug.xcconfig"; path = "Target Support Files/Pods-Granite(Revisited)Tests/Pods-Granite(Revisited)Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7901E567461C465DB3952FBB /* Pods-Granite(Revisited).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Granite(Revisited).debug.xcconfig"; path = "Target Support Files/Pods-Granite(Revisited)/Pods-Granite(Revisited).debug.xcconfig"; sourceTree = "<group>"; };
 		93437AD8EB850571D28585C3 /* Pods-Granite(Revisited).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Granite(Revisited).release.xcconfig"; path = "Target Support Files/Pods-Granite(Revisited)/Pods-Granite(Revisited).release.xcconfig"; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				1C1AA4D7227A2D03009802C5 /* DeprecatedOnboardingFlowController.swift */,
 				1C6FCB3E228B36D1000BC75A /* FirstOnboardingController.swift */,
 				1CA0F7EF22A082CC00089583 /* SecondOnboardingController.swift */,
+				1CFDB43922F9F3A400F9228E /* ThirdOnboardingController.swift */,
 				1CB0349F22F6121300EFCC65 /* CreateAccountViewController.swift */,
 				1C31230522F8701700E4B112 /* OnboardingPageViewController.swift */,
 				1C31230722F944ED00E4B112 /* OnboardingViewController.swift */,
@@ -744,6 +747,7 @@
 				1CCCC1AB2267874E0012DA75 /* Granite_Revisited_.xcdatamodeld in Sources */,
 				1CA0F7F422A0BF0A00089583 /* LinksModalView.swift in Sources */,
 				1CA0F7E4229F0D1E00089583 /* HelperFunctions.swift in Sources */,
+				1CFDB43A22F9F3A400F9228E /* ThirdOnboardingController.swift in Sources */,
 				1CCCC1D92267CFFE0012DA75 /* LogInViewController.swift in Sources */,
 				1CCCC1DB2267D26D0012DA75 /* LoginViewExtension.swift in Sources */,
 				1CA0F7CE229DF2D600089583 /* SecondOnboardingScreen.swift in Sources */,
