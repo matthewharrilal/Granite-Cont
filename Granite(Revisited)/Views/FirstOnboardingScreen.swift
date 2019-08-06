@@ -41,7 +41,8 @@ class FirstOnboardingScreen: UIView {
         self.transitionButton.frame = CGRect(x: self.center.x, y: self.frame.height * 0.88, width: 300, height: 65)
         self.transitionButton.center.x = self.center.x
         
-        self.transitionButton.backgroundColor = .blue
+        self.transitionButton.backgroundColor = UIColor.init(hexString: "2357A5")
+        self.transitionButton.layer.cornerRadius = 8
         
 //        self.transitionButton.snp.makeConstraints { (make) in
 //            make.centerX.equalToSuperview()
