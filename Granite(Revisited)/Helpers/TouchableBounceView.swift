@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+protocol TouchableView {
+    var tapGesture: UITapGestureRecognizer?
+    var selectBlock: (() -> Void)?
+}
+
 class TouchableBounceView: UIView {
     var tapGesture: UITapGestureRecognizer?
     var item: Any?
@@ -53,5 +58,26 @@ class TouchableBounceView: UIView {
             self.alpha = 1
             self.transform = CGAffineTransform.identity
         }, completion: nil)
+    }
+}
+
+
+class TouchableCollectionViewCell: UICollectionViewCell, TouchableView {
+    var tapGesture: UITapGestureRecognizer?
+    
+    var selectBlock: (() -> Void)? {
+        didSet {
+            
+            // The first time since the tap gesture hasn't been set does this provide the early exit and does it get executed
+            guard tapGesture == nil else {return}
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+            self.addGestureRecognizer(tapGestureRecognizer)
+            self.tapGesture = tapGestureRecognizer
+        }
+    }
+    
+    @objc func handleTap() {
+        self.selectBlock?()
     }
 }

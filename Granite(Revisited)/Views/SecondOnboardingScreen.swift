@@ -41,8 +41,8 @@ class SecondOnboardingScreen: UIView {
         collectionView.alpha = 1.0
         preferredLanguageLabel.alpha = 1.0
         descriptionLabel.alpha =  1.0
-        preferredLanguageLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
-        descriptionLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 17)
+        preferredLanguageLabel.font = UIFont.bold(size: 20)
+        descriptionLabel.font = UIFont.regular(size: 15)
 
         self.transitionButton.alpha = 1.0
         addSubviews(views: preferredLanguageLabel, descriptionLabel, collectionView)

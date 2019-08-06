@@ -45,7 +45,7 @@ class OnboardingViewController: UIViewController {
         
         let differenceInHeight = self.view.bounds.height - (self.view.bounds.height * 0.8)
         
-        self.transitionButton.backgroundColor = .blue
+        self.transitionButton.backgroundColor = .init(hexString: "317AC1")
         
         self.transitionButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
