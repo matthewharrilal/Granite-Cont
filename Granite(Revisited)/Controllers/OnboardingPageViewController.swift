@@ -20,7 +20,7 @@ class OnboardingPageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         
-//        configurePageControl()
+        //        configurePageControl()
         
         if let firstViewController = self.orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
@@ -88,7 +88,7 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
         
         self.view.addSubview(self.pageControl)
     }
-
+    
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let pageViewController = pageViewController.viewControllers?[0] {
@@ -98,6 +98,14 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
         
         
     }
-
+    
+    func nextPage() {
+        guard let currentViewController = self.viewControllers?.first,
+            let nextViewController = self.dataSource?.pageViewController(self, viewControllerAfter: currentViewController)
+            else {return}
+        
+        setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+    }
+    
     
 }

@@ -83,7 +83,7 @@ class TouchableCollectionViewCell: UICollectionViewCell, TouchableView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        UIView.animate(withDuration: 0.15, delay: 0, options: [.allowUserInteraction], animations: {
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.allowUserInteraction], animations: {
             self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             self.alpha = 0.5
         }, completion: nil)
@@ -91,7 +91,7 @@ class TouchableCollectionViewCell: UICollectionViewCell, TouchableView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        UIView.animate(withDuration: 0.15, delay: 0, options: [.allowUserInteraction], animations: {
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.allowUserInteraction], animations: {
             self.alpha = 1
             self.transform = .identity
         }, completion: nil)
@@ -99,7 +99,7 @@ class TouchableCollectionViewCell: UICollectionViewCell, TouchableView {
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
-        UIView.animate(withDuration: 0.15, delay: 0, options: [.allowUserInteraction], animations: {
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.allowUserInteraction], animations: {
             self.alpha = 1
             self.transform = .identity
         }, completion: nil)
