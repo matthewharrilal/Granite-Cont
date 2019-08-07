@@ -30,6 +30,8 @@ extension ThirdOnboardingController {
     
     func layoutThirdOnboardingScreen() {
         self.view.addSubview(self.thirdOnboardingScreen)
-        
+        thirdOnboardingScreen.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
 }

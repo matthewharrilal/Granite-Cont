@@ -55,7 +55,10 @@ class ThirdOnboardingScreen: UIView {
         addSubviews(views: moreAboutYourself, descriptionLabel, collectionView)
 
         collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -10, right: -10))
-        
+//        collectionView.snp.makeConstraints { (make) in
+//            colle
+//        }
+//        
     }
     
     @objc func handleTap() {
