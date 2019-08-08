@@ -11,24 +11,30 @@ import UIKit
 
 class OnboardingPageViewController: UIPageViewController {
     
-    private lazy var orderedViewControllers: [UIViewController] = [FirstOnboardingController(), SecondOnboardingController(), ThirdOnboardingController()]
+    var modalViewTapClosure: ((CGRect, String?) -> Void)?
+    
+    var thirdOnboardingController = ThirdOnboardingController()
+    
+     lazy var orderedViewControllers: [UIViewController] = [FirstOnboardingController(), SecondOnboardingController(), self.thirdOnboardingController]
     var pageControl: UIPageControl = UIPageControl()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = self
-        self.delegate = self
         
-        //        configurePageControl()
+//        self.delegate = self
+        self.dataSource = self
         
         if let firstViewController = self.orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
+        
+        
     }
     
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +46,7 @@ class OnboardingPageViewController: UIPageViewController {
         
     }
 }
-
+//
 
 extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -93,17 +99,21 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let pageViewController = pageViewController.viewControllers?[0] {
             self.pageControl.currentPage = self.orderedViewControllers.firstIndex(of: pageViewController)!
-            print("Current View Controller Index \(pageViewController.restorationIdentifier)")
         }
-        
-        
+
+
     }
-    
+//
     func nextPage() {
         guard let currentViewController = self.viewControllers?.first,
             let nextViewController = self.dataSource?.pageViewController(self, viewControllerAfter: currentViewController)
             else {return}
         
+        print("Identifier for view controller \(nextViewController.restorationIdentifier)")
+        
+        self.thirdOnboardingController.modalViewTapClosure = {[weak self] (startingFrame, text) in
+            self?.modalViewTapClosure?(startingFrame, text)
+        }
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
     }
     

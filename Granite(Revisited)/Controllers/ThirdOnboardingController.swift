@@ -10,16 +10,28 @@ import Foundation
 import UIKit
 
 class ThirdOnboardingController: UIViewController {
-    lazy var thirdOnboardingScreen = ThirdOnboardingScreen()
+    var thirdOnboardingScreen = ThirdOnboardingScreen()
+    var modalViewTapClosure: ((CGRect, String?) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restorationIdentifier = NSStringFromClass(self.classForCoder)
         self.view.backgroundColor = .white
+        
+        
     }
     
     override func viewDidLayoutSubviews() {
         layout()
+//        self.modalViewTapClosure = thirdOnboardingScreen.modalViewTapClosure
+//        print(self.modalViewTapClosure)
+        
+        thirdOnboardingScreen.modalViewTapClosure = {[weak self] (startingFrame, text) in
+//            print(startingFrame, text)
+            self?.modalViewTapClosure?(startingFrame, text)
+        }
+        
+//        self.modalViewTapClosure = thirdOnboardingScreen.modalViewTapClosure
     }
 }
 

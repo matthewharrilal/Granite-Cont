@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class OnboardingViewController: UIViewController {
+class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     // Used to test the embedding of a page view controller
     
     lazy var pageViewController = OnboardingPageViewController()
@@ -22,7 +22,20 @@ class OnboardingViewController: UIViewController {
         
         self.view.addSubview(self.pageViewController.view)
         
+        pageViewController.didMove(toParent: self)
+        
+        self.pageViewController.delegate = self
+        
+//        self.pageViewController.delegate = self
+//        self.pageViewController.dataSource = self
+        
         self.view.backgroundColor = .white
+        
+        
+        self.pageViewController.modalViewTapClosure = {[weak self] (startingFrame, text) in
+            print("Page view controller tap closure")
+            print(startingFrame, text)
+        }
         
     }
     
