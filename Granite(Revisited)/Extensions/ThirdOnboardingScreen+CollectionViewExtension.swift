@@ -106,30 +106,30 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         }
         
         
-        // BLUR OUT Background
-        redView.alpha = 0.0
-        self.blurView.backgroundColor = cell.containerView.backgroundColor
-        self.redView.exitButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal)))
-        
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
-             
-            // Frame is the same before and after
-            // Because the container view no longer has a frame when you resize the red views frame therefore off balancing undefined frame subviews
-            self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.bounds.width / 1.3, height: self.bounds.height / 2.8)
-            self.redView.center = self.center
-            self.blurView.alpha = 1.0
-            self.redView.alpha = 1.0
-            self.redView.linkName.constrainWidth(withWidth: self.redView.frame.width - 40)
-            
-            // CONTAINER VIEW FRAME CHANGING AND NOT SUPERVIEW CHANGING BOUNDS MID X CHANGING AFTER WHAT
-            self.redView.layoutSubviews() // Update layout of subviews once the red views frame changes updates the new bounds
-            self.redView.containerView.logoImageView.frame.origin.x = self.redView.containerView.frame.minX
-            self.redView.containerView.textFieldView.frame.origin.x = self.redView.containerView.logoImageView.center.x
-            self.redView.containerView.textFieldView.frame.origin.y = self.redView.containerView.bounds.midY
-            
-        }, completion: nil)
-        
-        print("")
+//        // BLUR OUT Background
+//        redView.alpha = 0.0
+//        self.blurView.backgroundColor = cell.containerView.backgroundColor
+//        self.redView.exitButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal)))
+//
+//        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
+//
+//            // Frame is the same before and after
+//            // Because the container view no longer has a frame when you resize the red views frame therefore off balancing undefined frame subviews
+//            self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.bounds.width / 1.3, height: self.bounds.height / 2.8)
+//            self.redView.center = self.center
+//            self.blurView.alpha = 1.0
+//            self.redView.alpha = 1.0
+//            self.redView.linkName.constrainWidth(withWidth: self.redView.frame.width - 40)
+//
+//            // CONTAINER VIEW FRAME CHANGING AND NOT SUPERVIEW CHANGING BOUNDS MID X CHANGING AFTER WHAT
+//            self.redView.layoutSubviews() // Update layout of subviews once the red views frame changes updates the new bounds
+//            self.redView.containerView.logoImageView.frame.origin.x = self.redView.containerView.frame.minX
+//            self.redView.containerView.textFieldView.frame.origin.x = self.redView.containerView.logoImageView.center.x
+//            self.redView.containerView.textFieldView.frame.origin.y = self.redView.containerView.bounds.midY
+//
+//        }, completion: nil)
+//
+//        print("")
         
     }
     
