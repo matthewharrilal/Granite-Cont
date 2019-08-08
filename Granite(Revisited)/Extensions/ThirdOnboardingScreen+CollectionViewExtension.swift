@@ -61,6 +61,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: Fix Everytime view is instatiated new cell is being registered on top
         
+        // MARK: TODO Use the modalLinkTapClosure to notify onboarding controller to create the blur view and the modal view
         
         guard let cell = collectionView.cellForItem(at: indexPath) as? LinksCollectionViewCell else {return}
         
@@ -69,41 +70,44 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         // SET HERE but being used before set
         self.startingFrame = cell.containerView.superview?.convert(cell.containerView.frame, to: nil)
         
-        self.redView.successDelegate = self
+        guard let startingFrame = self.startingFrame else {return}
+        self.modalViewTapClosure?(startingFrame, cell.linkName.text)
         
-        if var image = cell.linkLogo.image {
-            
-            // Changing contrast of the medium logo against black
-            if cell.linkName.text == "Medium" {
-                let templateImage = #imageLiteral(resourceName: "mediumLogoBlack")
-                image = templateImage
-            }
-            self.redView.containerView.logoImage = image
-        }
-        
-        
-        //        var redView = LinksModalView(frame: startingFrame!)
-        let blurEffect = UIBlurEffect(style: .prominent)
-        self.blurView = UIVisualEffectView(effect: blurEffect)
-        self.blurView.frame = self.bounds
-        self.addSubview(self.blurView)
-        self.blurView.alpha = 0.0
-        self.blurView.contentView.addSubview(redView)
-        redView.layer.cornerRadius = 20
-        self.redView.createExitButton()
-
-        // For when modal view comes up
-        self.redView.containerView.usernameTextField.text = nil
-        self.redView.containerView.usernameTextField.resignFirstResponder()
-        //        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
-        
-        if let linkNameText = cell.linkName.text {
-            self.redView.containerView.linkName = linkNameText
-            if linkNameText == "Personal Website" {
-                self.redView.containerView.placeholderLabel.text = "Personal Website Link"
-                self.redView.containerView.usernameTextField.placeholder = "Personal Website Link"
-            }
-        }
+//        self.redView.successDelegate = self
+//
+//        if var image = cell.linkLogo.image {
+//
+//            // Changing contrast of the medium logo against black
+//            if cell.linkName.text == "Medium" {
+//                let templateImage = #imageLiteral(resourceName: "mediumLogoBlack")
+//                image = templateImage
+//            }
+//            self.redView.containerView.logoImage = image
+//        }
+//
+//
+//        //        var redView = LinksModalView(frame: startingFrame!)
+//        let blurEffect = UIBlurEffect(style: .prominent)
+//        self.blurView = UIVisualEffectView(effect: blurEffect)
+//        self.blurView.frame = self.bounds
+//        self.addSubview(self.blurView)
+//        self.blurView.alpha = 0.0
+//        self.blurView.contentView.addSubview(redView)
+//        redView.layer.cornerRadius = 20
+//        self.redView.createExitButton()
+//
+//        // For when modal view comes up
+//        self.redView.containerView.usernameTextField.text = nil
+//        self.redView.containerView.usernameTextField.resignFirstResponder()
+//        //        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
+//
+//        if let linkNameText = cell.linkName.text {
+//            self.redView.containerView.linkName = linkNameText
+//            if linkNameText == "Personal Website" {
+//                self.redView.containerView.placeholderLabel.text = "Personal Website Link"
+//                self.redView.containerView.usernameTextField.placeholder = "Personal Website Link"
+//            }
+//        }
         
         
 //        // BLUR OUT Background
