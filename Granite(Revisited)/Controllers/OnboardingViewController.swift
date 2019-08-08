@@ -15,6 +15,9 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     lazy var pageViewController = OnboardingPageViewController()
     lazy var transitionButton: TouchableBounceView = createTouchableBounceButton(withText: "Next")
     lazy var blurView: UIVisualEffectView = self.createBlurView()
+    lazy var modalView: LinksModalView = self.createModalView()
+    
+    var startingFrame: CGRect?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +38,10 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         
         self.pageViewController.modalViewTapClosure = {[weak self] (startingFrame, text) in
             print("Page view controller tap closure")
-            // MARK: TODO Have to add a blur view
+            // MARK: TODO Have to add a blur view and ANIMATE THE BLUR VIEW
+            self?.startingFrame = startingFrame
             self?.layoutBlurView()
-            
+            self?.layoutModalView()
             // MARK: Have to add modal view as well
         }
         
@@ -92,17 +96,37 @@ extension OnboardingViewController {
         let blurView = UIVisualEffectView(effect: blurEffect)
         return blurView
     }
+    
+    func createModalView() -> LinksModalView {
+        guard let startingFrame = self.startingFrame else {fatalError()}
+        let modalView = LinksModalView(frame: startingFrame)
+        modalView.layer.cornerRadius = 20
+        return modalView
+    }
 }
 
 // Layout Extension
 
 extension OnboardingViewController {
-    func layout() {}
+    func layout() {
+        layoutBlurView()
+        layoutModalView()
+    }
     
     func layoutBlurView() {
         self.view.addSubview(blurView)
         blurView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    
+    func layoutModalView() {
+        self.blurView.contentView.addSubview(self.modalView)
+        self.modalView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.5)
+            make.height.equalToSuperview().dividedBy(3)
+        }
+        
     }
 }
