@@ -25,11 +25,13 @@ class ThirdOnboardingController: UIViewController {
         layout()
 //        self.modalViewTapClosure = thirdOnboardingScreen.modalViewTapClosure
 //        print(self.modalViewTapClosure)
+//
+//        thirdOnboardingScreen.modalViewTapClosure = {[weak self] (startingFrame, text) in
+////            print(startingFrame, text)
+//            self?.modalViewTapClosure?(startingFrame, text)
+//        }
         
-        thirdOnboardingScreen.modalViewTapClosure = {[weak self] (startingFrame, text) in
-//            print(startingFrame, text)
-            self?.modalViewTapClosure?(startingFrame, text)
-        }
+        thirdOnboardingScreen.modalViewTapClosure = self.modalViewTapClosure
         
 //        self.modalViewTapClosure = thirdOnboardingScreen.modalViewTapClosure
     }

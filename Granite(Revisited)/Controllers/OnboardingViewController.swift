@@ -14,6 +14,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     
     lazy var pageViewController = OnboardingPageViewController()
     lazy var transitionButton: TouchableBounceView = createTouchableBounceButton(withText: "Next")
+    lazy var blurView: UIVisualEffectView = self.createBlurView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,10 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         
         self.pageViewController.modalViewTapClosure = {[weak self] (startingFrame, text) in
             print("Page view controller tap closure")
-            print(startingFrame, text)
+            // MARK: TODO Have to add a blur view
+            self?.layoutBlurView()
+            
+            // MARK: Have to add modal view as well
         }
         
     }
@@ -80,3 +84,25 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
 // HOW THE NEW FLOW WILL GO IS THAT THIS SCREEN CONTAINS THE TRANSITION BUTTON AND EACH ONBOARDING PAGE IS HANDLED BY THE PAGE VIEW CONTROLLER WHICH IS CREATED HERE THEREFORE THIS NAME SHOULD BE ONBOARDING CONTROLLER
 
 // ONBOARDING CONTROLLER SHOULD BE RENAMED TO FIRSTONBOARDINGCONTROLLER due it only having knowledge of the first onboarding screen
+
+// FACTORY EXTENSION
+extension OnboardingViewController {
+    func createBlurView() -> UIVisualEffectView {
+        let blurEffect = UIBlurEffect(style: .prominent)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        return blurView
+    }
+}
+
+// Layout Extension
+
+extension OnboardingViewController {
+    func layout() {}
+    
+    func layoutBlurView() {
+        self.view.addSubview(blurView)
+        blurView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+}

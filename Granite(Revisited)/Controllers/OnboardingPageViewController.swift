@@ -110,10 +110,7 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
             else {return}
         
         print("Identifier for view controller \(nextViewController.restorationIdentifier)")
-        
-        self.thirdOnboardingController.modalViewTapClosure = {[weak self] (startingFrame, text) in
-            self?.modalViewTapClosure?(startingFrame, text)
-        }
+        self.thirdOnboardingController.modalViewTapClosure = self.modalViewTapClosure
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
     }
     
