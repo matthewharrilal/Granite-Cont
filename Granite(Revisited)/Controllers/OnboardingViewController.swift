@@ -93,6 +93,8 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     
     @objc func dismissModalView() {
         print("USER WANTS TO DISMISS MODAL VIEW")
+        
+        self.blurView.removeFromSuperview()
     }
 }
 
