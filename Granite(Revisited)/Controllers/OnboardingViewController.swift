@@ -94,8 +94,24 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     
     @objc func dismissModalView() {
         print("USER WANTS TO DISMISS MODAL VIEW")
+        self.blurView.layer.cornerRadius = 20
+        self.view.isUserInteractionEnabled = false
+        guard let startingFrame = self.startingFrame else {return}
+        self.blurView.autoresizesSubviews = true
         
-        self.blurView.removeFromSuperview()
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+//            self.blurView.snp.makeConstraints({ (make) in
+//                self.start
+//            })
+            
+            self.blurView.frame = startingFrame
+            self.modalView.alpha = 0.0
+            self.blurView.alpha = 0.0
+            
+        }) { _ in
+            self.blurView.removeFromSuperview()
+            self.view.isUserInteractionEnabled = true
+        }
     }
 }
 
