@@ -13,7 +13,7 @@ class ThirdOnboardingController: UIViewController {
     var thirdOnboardingScreen = ThirdOnboardingScreen()
     var modalViewTapClosure: ((CGRect, String?) -> Void)?
     var animateViewScrollClosure: (() -> Void)?
-    var logoImageClosure: ((UIImage) -> Void)?
+    var logoImageClosure: ((UIImage, UIColor) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -105,7 +105,7 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             }
             
             guard let logoImageClosure = self.logoImageClosure else {return}
-            logoImageClosure(image)
+            logoImageClosure(image, cell.containerView.backgroundColor ?? .white)
             
             
         }

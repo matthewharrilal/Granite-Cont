@@ -14,7 +14,7 @@ class ThirdOnboardingScreen: UIView {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     var modalViewTapClosure: ((CGRect, String?) -> Void)?
-    var logoImageClosure: ((UIImage) -> Void)?
+    var logoImageClosure: ((UIImage, UIColor) -> Void)?
     
     var transitionButton: UIButton!
     

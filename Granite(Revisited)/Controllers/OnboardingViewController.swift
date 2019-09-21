@@ -49,8 +49,9 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             // MARK: Have to add modal view as well
         }
         
-        pageViewController.logoImageClosure = {[unowned self] image in
+        pageViewController.logoImageClosure = {[unowned self] (image, color) in
             self.modalView.containerView.logoImageView.image = image
+            self.blurView.backgroundColor = color
         }
     }
     

@@ -15,7 +15,7 @@ class OnboardingPageViewController: UIPageViewController {
     
     var thirdOnboardingController = ThirdOnboardingController()
     
-    var logoImageClosure: ((UIImage) -> Void)?
+    var logoImageClosure: ((UIImage, UIColor) -> Void)?
     
      lazy var orderedViewControllers: [UIViewController] = [FirstOnboardingController(), SecondOnboardingController(), self.thirdOnboardingController]
     var pageControl: UIPageControl = UIPageControl()
