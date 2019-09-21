@@ -99,7 +99,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         guard let startingFrame = self.startingFrame else {return}
         self.blurView.autoresizesSubviews = true
         
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
 //            self.blurView.snp.makeConstraints({ (make) in
 //                self.start
 //            })
@@ -111,6 +111,8 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         }) { _ in
             self.blurView.removeFromSuperview()
             self.view.isUserInteractionEnabled = true
+            self.modalView.alpha = 1.0
+            self.blurView.alpha = 1.0
         }
     }
 }
