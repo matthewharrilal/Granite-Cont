@@ -16,7 +16,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     lazy var transitionButton: TouchableBounceView = createTouchableBounceButton(withText: "Next")
     lazy var blurView: UIVisualEffectView = self.createBlurView()
     lazy var modalView: LinksModalView = self.createModalView()
-    
+    lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissModalView))
     var startingFrame: CGRect?
     
     override func viewDidLoad() {
@@ -25,6 +25,8 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         
         
         self.addChild(pageViewController)
+        
+        self.tapGesture.delegate = self
         
         self.view.addSubview(self.pageViewController.view)
         
@@ -124,7 +126,7 @@ extension OnboardingViewController {
     
     func layoutBlurView() {
         self.view.addSubview(blurView)
-        blurView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModalView)))
+        blurView.addGestureRecognizer(self.tapGesture)
         blurView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -139,5 +141,17 @@ extension OnboardingViewController {
         }
         
         
+    }
+}
+
+extension OnboardingViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        guard let view = touch.view else {return false}
+//
+        if view.isDescendant(of: self.modalView) {
+            return false
+        }
+
+        return true
     }
 }
