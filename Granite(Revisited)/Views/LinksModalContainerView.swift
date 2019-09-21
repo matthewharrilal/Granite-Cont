@@ -16,6 +16,8 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     var stackView: UIStackView!
     lazy var bottomBorder = CALayer()
     var confirmationButton: UIButton!
+    var imageName: String?
+    var logoImageClosure: ((UIImage) -> Void)?
     
     weak var keyboardDelegate: KeyboardDelegate?
     weak var endEditingDelegate: EndEditingDelegate?
@@ -31,9 +33,10 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         }
     }
     
-    var logoImage = UIImage() {
+    var logoImage : UIImage? = nil {
         didSet {
-            logoImageView.image = logoImage
+            self.logoImageView.backgroundColor = .red
+            
         }
     }
     
@@ -41,6 +44,8 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         super.init(frame: frame)
         commonInit()
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -50,13 +55,37 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         Bundle.main.loadNibNamed("LinksModalContainerView", owner: self, options: nil)
         addSubviews(views: logoImageView)
         
-        self.logoImageView.frame = .init(x: 0, y: 20, width: self.frame.width / 3, height: 75)
+//        self.logoImageView.frame = .init(x: 0, y: 20, width: self.frame.width / 2, height: 75)
+//        logoImageView.backgroundColor = .red
+//        logoImageView.contentMode = .scaleAspectFit
+        
+//        self.logoImageView.image = #imageLiteral(resourceName: "githubLogo")
         createCustomTextField()
 //        createConfirmationButton()
         
         self.usernameTextField.delegate = self
         self.usernameTextField.returnKeyType = .go
         
+        // CONTAINER VIEW FRAME CHANGING AND NOT SUPERVIEW CHANGING BOUNDS MID X CHANGING AFTER WHAT
+        //            self.redView.layoutSubviews() // Update layout of subviews once the red views frame changes updates the new bounds
+        //            self.redView.containerView.logoImageView.frame.origin.x = self.redView.containerView.frame.minX
+        //            self.redView.containerView.textFieldView.frame.origin.x = self.redView.containerView.logoImageView.center.x
+        //            self.redView.containerView.textFieldView.frame.origin.y = self.redView.containerView.bounds.midY
+        
+        self.logoImageView.snp.makeConstraints { (make) in
+            make.height.width.equalTo(100)
+            make.top.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(10)
+        }
+        
+//        self.logoImageClosure = {[unowned self] image in
+////            self.logoImageView.backgroundColor = .red
+//            print("HELLO")
+////            DispatchQueue.main.async {
+////                self.logoImageView.backgroundColor = .red
+////            }
+//        }
+//        self.logoImageView.backgroundColor = .red
     }
     
     

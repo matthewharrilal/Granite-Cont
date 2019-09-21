@@ -49,18 +49,20 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(onboardingController, animated: true)
     }
     
+    func animateTransitionView() {
+        let onboardingController = OnboardingViewController()
+        UIView.animate(withDuration: 0.75) {
+            onboardingController.transitionButton.alpha  = 0.0
+        }
+        
+    }
+    
     func showSecondOnboardingScreen() {
         // Instantiate Second Onboard Screen Controller
         let secondOnboardingController = SecondOnboardingController()
         secondOnboardingController.hero.isEnabled = true
         secondOnboardingController.hero.modalAnimationType = .cover(direction: .up)
-        
-//        let transition = CATransition()
-//        transition.duration = 0.5
-//        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-//        transition.type = .moveIn
-//        transition.subtype = .fromTop
-//        self.navigationController.view.layer.add(transition, forKey: kCATransition)
+   
         self.navigationController.present(secondOnboardingController, animated: true)
 //        self.navigationController.pushViewController(secondOnboardingController, animated: true)
     }

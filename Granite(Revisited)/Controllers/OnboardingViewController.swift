@@ -22,6 +22,8 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         self.addChild(pageViewController)
         
         self.view.addSubview(self.pageViewController.view)
@@ -45,6 +47,9 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             // MARK: Have to add modal view as well
         }
         
+        pageViewController.logoImageClosure = {[unowned self] image in
+            self.modalView.containerView.logoImageView.image = image
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -127,6 +132,7 @@ extension OnboardingViewController {
             make.width.equalToSuperview().dividedBy(1.5)
             make.height.equalToSuperview().dividedBy(3)
         }
+        
         
     }
 }

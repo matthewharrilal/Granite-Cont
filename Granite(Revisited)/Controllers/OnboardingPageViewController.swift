@@ -15,6 +15,8 @@ class OnboardingPageViewController: UIPageViewController {
     
     var thirdOnboardingController = ThirdOnboardingController()
     
+    var logoImageClosure: ((UIImage) -> Void)?
+    
      lazy var orderedViewControllers: [UIViewController] = [FirstOnboardingController(), SecondOnboardingController(), self.thirdOnboardingController]
     var pageControl: UIPageControl = UIPageControl()
     
@@ -24,6 +26,7 @@ class OnboardingPageViewController: UIPageViewController {
         
 //        self.delegate = self
         self.dataSource = self
+        
         
         if let firstViewController = self.orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
@@ -111,6 +114,8 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
         
         print("Identifier for view controller \(nextViewController.restorationIdentifier)")
         self.thirdOnboardingController.modalViewTapClosure = self.modalViewTapClosure
+        self.thirdOnboardingController.logoImageClosure = self.logoImageClosure
+        
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
     }
     

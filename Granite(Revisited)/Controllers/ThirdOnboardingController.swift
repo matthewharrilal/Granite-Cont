@@ -12,28 +12,27 @@ import UIKit
 class ThirdOnboardingController: UIViewController {
     var thirdOnboardingScreen = ThirdOnboardingScreen()
     var modalViewTapClosure: ((CGRect, String?) -> Void)?
+    var animateViewScrollClosure: (() -> Void)?
+    var logoImageClosure: ((UIImage) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restorationIdentifier = NSStringFromClass(self.classForCoder)
         self.view.backgroundColor = .white
         
-        
     }
     
     override func viewDidLayoutSubviews() {
         layout()
-//        self.modalViewTapClosure = thirdOnboardingScreen.modalViewTapClosure
-//        print(self.modalViewTapClosure)
-//
-//        thirdOnboardingScreen.modalViewTapClosure = {[weak self] (startingFrame, text) in
-////            print(startingFrame, text)
-//            self?.modalViewTapClosure?(startingFrame, text)
-//        }
         
+        thirdOnboardingScreen.logoImageClosure = self.logoImageClosure
         thirdOnboardingScreen.modalViewTapClosure = self.modalViewTapClosure
-        
-//        self.modalViewTapClosure = thirdOnboardingScreen.modalViewTapClosure
+        thirdOnboardingScreen.animateViewScrollClosure = {[weak self] in
+            UIView.animate(withDuration: 2.0, animations: {
+                self?.thirdOnboardingScreen.transitionButton.alpha = 0.0
+            })
+        }
+
     }
 }
 

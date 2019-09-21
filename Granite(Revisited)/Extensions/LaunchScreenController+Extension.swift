@@ -17,14 +17,14 @@ extension LaunchScreenViewController {
         
         self.graniteLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 40)
         
-        for family: String in UIFont.familyNames
-        {
-            print("\(family)")
-            for names: String in UIFont.fontNames(forFamilyName: family)
-            {
-                print("== \(names)")
-            }
-        }
+//        for family: String in UIFont.familyNames
+//        {
+//            print("\(family)")
+//            for names: String in UIFont.fontNames(forFamilyName: family)
+//            {
+//                print("== \(names)")
+//            }
+//        }
         
         self.graniteLabel.textAlignment = .center
         self.graniteLabel.center.x = self.view.center.x

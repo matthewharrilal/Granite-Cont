@@ -14,6 +14,7 @@ class ThirdOnboardingScreen: UIView {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     var modalViewTapClosure: ((CGRect, String?) -> Void)?
+    var logoImageClosure: ((UIImage) -> Void)?
     
     var transitionButton: UIButton!
     
@@ -27,6 +28,8 @@ class ThirdOnboardingScreen: UIView {
     var didTap = false
     lazy var redView = LinksModalView(frame: startingFrame!)
     var indexPathRow: Int?
+    var coordinator: MainCoordinator?
+    var animateViewScrollClosure: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,7 +65,9 @@ class ThirdOnboardingScreen: UIView {
 //        collectionView.snp.makeConstraints { (make) in
 //            colle
 //        }
-//        
+        
+//        self.animateViewScrollClosure = 
+//
     }
     
     @objc func handleTap() {

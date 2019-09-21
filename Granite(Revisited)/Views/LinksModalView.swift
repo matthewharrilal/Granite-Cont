@@ -18,6 +18,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     var exitButton: UIButton!
     var bottomConstraint: NSLayoutConstraint!
+    var logoImageClosure: ((UIImage) -> Void)?
     
     var animationContainer: UIView!
     
@@ -69,6 +70,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         
         
         self.containerView = LinksModalContainerView(frame: .init(x: self.bounds.midX, y: self.bounds.midY, width: self.bounds.width, height: self.bounds.height))
+        
         addSubviews(views: linkName, containerView)
         
         linkName.textAlignment = .center
@@ -97,10 +99,14 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         let attributedText = createLabelSpacing(withLabelText: "Improve Your Experience On The Application")
         self.linkName.attributedText = attributedText
         
-        self.linkName.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        self.linkName.font = UIFont.regular(size: 18)
         self.linkName.lineBreakMode = .byWordWrapping
         self.linkName.numberOfLines = 0
         self.linkName.textAlignment = .center
+        self.linkName.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+        }
+        
         
         
     }
