@@ -88,6 +88,10 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     @objc func transitionNextPage() {
         self.pageViewController.nextPage()
     }
+    
+    @objc func dismissModalView() {
+        print("USER WANTS TO DISMISS MODAL VIEW")
+    }
 }
 
 // HOW THE NEW FLOW WILL GO IS THAT THIS SCREEN CONTAINS THE TRANSITION BUTTON AND EACH ONBOARDING PAGE IS HANDLED BY THE PAGE VIEW CONTROLLER WHICH IS CREATED HERE THEREFORE THIS NAME SHOULD BE ONBOARDING CONTROLLER
@@ -120,6 +124,7 @@ extension OnboardingViewController {
     
     func layoutBlurView() {
         self.view.addSubview(blurView)
+        blurView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModalView)))
         blurView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
