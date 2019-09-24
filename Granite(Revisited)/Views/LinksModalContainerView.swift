@@ -38,7 +38,9 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         commonInit()
     }
     
-    
+    override func layoutSubviews() {
+        
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -60,6 +62,16 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
             make.top.equalToSuperview().offset(10)
             make.left.equalToSuperview().offset(10)
         }
+        
+        self.textFieldView.snp.makeConstraints { (make) in
+            make.centerX.centerY.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(2)
+            make.height.equalTo(60)
+            make.top.equalTo(self.logoImageView.snp.bottom).offset(5)
+        }
+        
+        
+         createViewBorder(withSuperLayer: self.textFieldView, withBorder: &self.bottomBorder)
     }
     
     
@@ -77,9 +89,8 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     }
     
     func createCustomTextField() {
-        self.textFieldView = UIView(frame: .init(x: self.center.x, y: 60, width: self.frame.width / 2, height: 60))
-        
-        //
+//        self.textFieldView = UIView(frame: .init(x: self.center.x, y: self.center.y, width: self.frame.width / 2, height: 60))
+        self.textFieldView = UIView()
         var placeholderLabel = UILabel()
         placeholderLabel.text = ""
         
@@ -90,7 +101,6 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
         
         usernameTextField.backgroundColor = .clear
-        
         
         
         self.stackView = UIStackView(arrangedSubviews: [self.placeholderLabel, self.usernameTextField])
@@ -104,15 +114,28 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         
         textFieldView.backgroundColor = .clear
         
-        self.usernameTextField.constrainHeight(withHeight: stackView.frame.height / 2)
+//        self.usernameTextField.constrainHeight(withHeight: stackView.frame.height / 2)
         
         addSubview(textFieldView)
-        stackView.frame = textFieldView.bounds
-        stackView.anchorSize(toView: textFieldView)
-        self.placeholderLabel.anchor(top: stackView.topAnchor, leading: stackView.leadingAnchor, bottom: usernameTextField.topAnchor, trailing: stackView.trailingAnchor)
-        self.usernameTextField.constrainWidth(withWidth: stackView.bounds.width)
+//        stackView.frame = textFieldView.bounds
+//        stackView.anchorSize(toView: textFieldView)
         
-        createViewBorder(withSuperLayer: self.textFieldView, withBorder: &self.bottomBorder)
+        stackView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        
+        self.placeholderLabel.snp.makeConstraints { (make) in
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalTo(usernameTextField.snp.top)
+        }
+        
+        self.usernameTextField.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+        }
+        
+        self.usernameTextField.backgroundColor = .white
+       
     }
     
     func createConfirmationButton() {

@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Granite(Revisited)/Controllers/OnboardingViewController.swift"
-            timestampString = "590801589.756866"
+            filePath = "Granite(Revisited)/Helpers/HelperFunctions.swift"
+            timestampString = "590863610.708735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "createBlurView()"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "createViewBorder(withSuperLayer:withBorder:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Granite(Revisited)/Views/LinksModalContainerView.swift"
+            timestampString = "590863610.709404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "commonInit()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Granite(Revisited)/Controllers/OnboardingViewController.swift"
-            timestampString = "590801589.757585"
+            filePath = "Granite(Revisited)/Views/CreateAccountView.swift"
+            timestampString = "590863610.709628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "layoutConfirmPasswordTextView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

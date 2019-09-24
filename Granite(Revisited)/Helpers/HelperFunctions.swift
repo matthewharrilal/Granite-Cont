@@ -143,7 +143,7 @@ func animateViewBorder(withHexColor hexColor: String?=nil, color: UIColor?=nil, 
 func createViewBorder(withSuperLayer view: UIView, withBorder border: inout CALayer) {
     border.frame = .init(x: 0, y: view.bounds.maxY - 2, width: view.bounds.width, height: 2)
     view.layer.addSublayer(border)
-    border.backgroundColor = UIColor.lightGray.cgColor
+    border.backgroundColor = UIColor.red.cgColor
 }
 
 func resetViewBorder(withBorder border: inout CALayer) {

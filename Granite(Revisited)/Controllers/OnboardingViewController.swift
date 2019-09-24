@@ -34,9 +34,6 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         
         self.pageViewController.delegate = self
         
-//        self.pageViewController.delegate = self
-//        self.pageViewController.dataSource = self
-        
         self.view.backgroundColor = .white
         
         
@@ -72,7 +69,6 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     func layoutTransitionButton() {
         self.view.addSubview(transitionButton)
         
-        let differenceInHeight = self.view.bounds.height - (self.view.bounds.height * 0.85)
         
         self.transitionButton.backgroundColor = .init(hexString: "317AC1")
         self.transitionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(transitionNextPage)))
@@ -160,7 +156,6 @@ extension OnboardingViewController {
             make.width.equalToSuperview().dividedBy(1.5)
             make.height.equalToSuperview().dividedBy(3)
         }
-        
         
     }
 }
