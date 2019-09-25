@@ -167,7 +167,10 @@ extension LinksModalContainerView {
             make.top.equalTo(self.logoImageView.snp.bottom).offset(5)
         }
         
-        createViewBorder(withSuperLayer: self.textFieldView, withBorder: &self.bottomBorder)
+        DispatchQueue.main.async {
+            createViewBorder(withSuperLayer: self.textFieldView, withBorder: &self.bottomBorder)
+        }
+        
     }
     func layoutStackView() {
         self.textFieldView.addSubview(stackView)
