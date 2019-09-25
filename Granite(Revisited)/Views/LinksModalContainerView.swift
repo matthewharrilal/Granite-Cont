@@ -162,35 +162,36 @@ extension LinksModalContainerView {
     func layoutStackView() {
         self.textFieldView.addSubview(stackView)
         
-        self.layoutTextField()
-        
-        self.layoutPlaceholderLabel()
         
         
         self.stackView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        self.layoutPlaceholderLabel()
+        self.layoutTextField()
+        
+        
     }
     
     func layoutPlaceholderLabel() {
         self.stackView.addSubview(self.placeholderLabel)
         self.placeholderLabel.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-            make.bottom.equalTo(usernameTextField.snp.top)
-//            make.width.equalToSuperview()
+            
         }
     }
     func layoutTextField() {
-        self.stackView.addSubview(self.usernameTextField)
+        self.stackView.addArrangedSubview(usernameTextField)
         usernameTextField.borderStyle = .none
         usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
         usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
 
-        
+//
         self.usernameTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(placeholderLabel.snp.bottom)
         }
     }
 }

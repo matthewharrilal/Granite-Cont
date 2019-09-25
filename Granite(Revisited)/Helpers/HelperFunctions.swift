@@ -157,7 +157,6 @@ func createTextFieldStackView() -> UIStackView {
     stackView.axis = .vertical
     stackView.alignment = .center
     stackView.spacing = 5
-    
     return stackView
 }
 
