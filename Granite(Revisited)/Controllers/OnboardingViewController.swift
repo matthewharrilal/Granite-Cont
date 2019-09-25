@@ -12,7 +12,9 @@ import UIKit
 class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     // Used to test the embedding of a page view controller
     
-    lazy var pageViewController = OnboardingPageViewController()
+//    var pageViewController = OnboardingPageViewController()
+        lazy var pageViewController: OnboardingPageViewController = self.createOnboardingPageViewController()
+    
     lazy var transitionButton: TouchableBounceView = createTouchableBounceButton(withText: "Next")
     lazy var blurView: UIVisualEffectView = self.createBlurView()
     lazy var modalView: LinksModalView = self.createModalView()
@@ -54,6 +56,8 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     
     override func viewDidLayoutSubviews() {
         
+        //        layout()
+        //
         let height = self.view.bounds.height
         self.pageViewController.view.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
@@ -64,6 +68,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         layoutTransitionButton()
         transformTouchableBounceView(withBounceView: self.transitionButton)
     }
+    
     
     
     func layoutTransitionButton() {
@@ -79,7 +84,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             
             make.height.equalTo(65)
             make.width.equalTo(300)
-//            make.bottom.equalToSuperview().offset(-(differenceInHeight))
+            //            make.bottom.equalToSuperview().offset(-(differenceInHeight))
             
         }
     }
@@ -96,9 +101,9 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         self.blurView.autoresizesSubviews = true
         
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-//            self.blurView.snp.makeConstraints({ (make) in
-//                self.start
-//            })
+            //            self.blurView.snp.makeConstraints({ (make) in
+            //                self.start
+            //            })
             
             self.blurView.frame = startingFrame
             self.modalView.alpha = 0.0
@@ -131,14 +136,36 @@ extension OnboardingViewController {
         modalView.layer.cornerRadius = 20
         return modalView
     }
+    
+    func createOnboardingPageViewController() -> OnboardingPageViewController {
+        let pageViewController = OnboardingPageViewController()
+        return pageViewController
+    }
 }
 
 // Layout Extension
 
 extension OnboardingViewController {
     func layout() {
+        
+        layoutOnboardingPageViewController()
         layoutBlurView()
         layoutModalView()
+        
+        layoutTransitionButton()
+        transformTouchableBounceView(withBounceView: self.transitionButton)
+    }
+    
+    func layoutOnboardingPageViewController() {
+        self.addChild(self.pageViewController)
+        self.view.addSubview(self.pageViewController.view)
+        
+        let height = self.view.bounds.height
+        self.pageViewController.view.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(height * 0.85)
+            
+        }
     }
     
     func layoutBlurView() {
@@ -163,11 +190,11 @@ extension OnboardingViewController {
 extension OnboardingViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         guard let view = touch.view else {return false}
-//
+        //
         if view.isDescendant(of: self.modalView) {
             return false
         }
-
+        
         return true
     }
 }

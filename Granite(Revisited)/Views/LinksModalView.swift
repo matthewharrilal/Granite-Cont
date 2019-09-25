@@ -13,9 +13,9 @@ import Lottie
 
 class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     @IBOutlet weak var linkName: UILabel!
-    var containerView: LinksModalContainerView!
+//    var containerView: LinksModalContainerView!
     
-
+    lazy var containerView = self.createContainerView()
     @IBOutlet weak var pleaseEnterLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     var exitButton: UIButton!
@@ -37,7 +37,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     
     override func layoutSubviews() {
     
-        self.containerView.frame = .init(x: self.bounds.midX, y: self.bounds.midY, width: self.bounds.width, height: self.bounds.height)
+        layout()
     }
     
     func keyboardIsActive() {
@@ -74,28 +74,10 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         // MARK: TODO Add shadow to container view
         Bundle.main.loadNibNamed("LinksModalView", owner: self, options: nil)
         
-        
-        
-        self.containerView = LinksModalContainerView()
-        
-        addSubviews(views: linkName, containerView)
-        
         linkName.textAlignment = .center
-        
-        
-        // MARK: TODO Translation in whole view's Y and alpha 0 initially
-        
-        self.backgroundColor = UIColor(hexString: "4790e6")
-        containerView.backgroundColor = .white
         
         linkName.constrainHeight(withHeight: self.frame.height - (self.frame.height - 75))
         
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 75, left: 0, bottom: 0, right: 0))
-        
-        self.bottomConstraint = NSLayoutConstraint(item: containerView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
-        self.addConstraint(bottomConstraint)
-        containerView.layer.cornerRadius = 20
         
         containerView.keyboardDelegate = self
         containerView.endEditingDelegate = self
@@ -172,4 +154,32 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         self.exitButton.anchor(top: self.topAnchor, leading: self.linkName.trailingAnchor, bottom: self.containerView.topAnchor, trailing: self.trailingAnchor)
     }
     
+}
+
+// FACTORY EXTENSION
+extension LinksModalView {
+    
+    func createContainerView() -> LinksModalContainerView {
+        let containerView = LinksModalContainerView()
+        containerView.backgroundColor = .white
+        containerView.layer.cornerRadius = 20
+        return containerView
+    }
+}
+
+// LAYOUT EXTENSION
+extension LinksModalView {
+    func layout() {
+        self.backgroundColor = UIColor(hexString: "4790e6")
+        layoutContainerView()
+    }
+    
+    func layoutContainerView() {
+        self.addSubview(containerView)
+        
+        containerView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalToSuperview().offset(75)
+        }
+    }
 }
