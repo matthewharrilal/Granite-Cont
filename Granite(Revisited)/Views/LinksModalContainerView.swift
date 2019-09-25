@@ -11,18 +11,21 @@ import UIKit
 
 class LinksModalContainerView: UIView, UITextFieldDelegate {
     @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var usernameTextField: UITextField!
+//    @IBOutlet weak var usernameTextField: UITextField!
     var textFieldView: UIView!
-    var stackView: UIStackView!
+//    var stackView: UIStackView!
     lazy var bottomBorder = CALayer()
     var confirmationButton: UIButton!
     var imageName: String?
     var logoImageClosure: ((UIImage) -> Void)?
+    lazy var stackView: UIStackView = createTextFieldStackView()
     
     weak var keyboardDelegate: KeyboardDelegate?
     weak var endEditingDelegate: EndEditingDelegate?
     
-    @IBOutlet weak var placeholderLabel: UILabel!
+//    @IBOutlet weak var placeholderLabel: UILabel!
+    lazy var placeholderLabel: UILabel = self.createPlaceholderLabel()
+    lazy var usernameTextField: UITextField = self.createUsernameTextField()
     
     var linkName = "" {
         didSet {
@@ -39,7 +42,8 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     }
     
     override func layoutSubviews() {
-        
+//        commonInit()
+        createCustomTextField()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,7 +54,6 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         Bundle.main.loadNibNamed("LinksModalContainerView", owner: self, options: nil)
         addSubviews(views: logoImageView)
         
-        createCustomTextField()
 //        createConfirmationButton()
         
         self.usernameTextField.delegate = self
@@ -63,15 +66,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
             make.left.equalToSuperview().offset(10)
         }
         
-        self.textFieldView.snp.makeConstraints { (make) in
-            make.centerX.centerY.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(2)
-            make.height.equalTo(60)
-            make.top.equalTo(self.logoImageView.snp.bottom).offset(5)
-        }
         
-        
-         createViewBorder(withSuperLayer: self.textFieldView, withBorder: &self.bottomBorder)
     }
     
     
@@ -91,51 +86,20 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     func createCustomTextField() {
 //        self.textFieldView = UIView(frame: .init(x: self.center.x, y: self.center.y, width: self.frame.width / 2, height: 60))
         self.textFieldView = UIView()
-        var placeholderLabel = UILabel()
-        placeholderLabel.text = ""
-        
-        //
-        usernameTextField.borderStyle = .none
-        usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
-        usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
-        usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
-        
-        usernameTextField.backgroundColor = .clear
-        
-        
-        self.stackView = UIStackView(arrangedSubviews: [self.placeholderLabel, self.usernameTextField])
-        stackView.distribution = .fillEqually
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 5
-        
-        textFieldView.addSubview(stackView)
-        stackView.backgroundColor = .blue
-        
-        textFieldView.backgroundColor = .clear
-        
-//        self.usernameTextField.constrainHeight(withHeight: stackView.frame.height / 2)
-        
+    
         addSubview(textFieldView)
-//        stackView.frame = textFieldView.bounds
-//        stackView.anchorSize(toView: textFieldView)
         
-        stackView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        
-        self.placeholderLabel.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
-            make.bottom.equalTo(usernameTextField.snp.top)
-        }
-        
-        self.usernameTextField.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-        }
-        
-        self.usernameTextField.backgroundColor = .white
        
+//
+        self.textFieldView.snp.makeConstraints { (make) in
+            make.centerX.centerY.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(2)
+            make.height.equalTo(60)
+            make.top.equalTo(self.logoImageView.snp.bottom).offset(5)
+        }
+         layout()
+        
+       createViewBorder(withSuperLayer: self.textFieldView, withBorder: &self.bottomBorder)
     }
     
     func createConfirmationButton() {
@@ -172,4 +136,61 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         return false
     }
     
+}
+
+// Factory Extension
+extension LinksModalContainerView {
+    
+    func createPlaceholderLabel() -> UILabel {
+        let placeholderLabel = UILabel()
+        placeholderLabel.text = "Hello"
+        return placeholderLabel
+    }
+    
+    func createUsernameTextField() -> UITextField {
+        let textField = UITextField()
+        return textField
+    }
+}
+
+// Layout Extension
+extension LinksModalContainerView {
+    func layout() {
+        layoutStackView()
+    }
+    
+    func layoutStackView() {
+        self.textFieldView.addSubview(stackView)
+        
+        self.layoutTextField()
+        
+        self.layoutPlaceholderLabel()
+        
+        
+        self.stackView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func layoutPlaceholderLabel() {
+        self.stackView.addSubview(self.placeholderLabel)
+        self.placeholderLabel.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalTo(usernameTextField.snp.top)
+//            make.width.equalToSuperview()
+        }
+    }
+    func layoutTextField() {
+        self.stackView.addSubview(self.usernameTextField)
+        usernameTextField.borderStyle = .none
+        usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
+        usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
+
+        
+        self.usernameTextField.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.left.right.bottom.equalToSuperview()
+        }
+    }
 }
