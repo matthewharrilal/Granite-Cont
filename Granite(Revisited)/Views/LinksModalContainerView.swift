@@ -175,10 +175,10 @@ extension LinksModalContainerView {
     }
     
     func layoutPlaceholderLabel() {
-        self.stackView.addSubview(self.placeholderLabel)
+        self.stackView.addArrangedSubview(self.placeholderLabel)
         self.placeholderLabel.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-            
+
         }
     }
     func layoutTextField() {
@@ -191,7 +191,7 @@ extension LinksModalContainerView {
 //
         self.usernameTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-            make.top.equalTo(placeholderLabel.snp.bottom)
+//            make.top.equalTo(placeholderLabel.snp.bottom)
         }
     }
 }
