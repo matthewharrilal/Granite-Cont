@@ -12,6 +12,8 @@ class User: Decodable {
     var email: String
     var username: String
     var password: String
+    // draft dict that stores github, twitter, medium, linkedIn usernames
+    
     var githubProfileUsername: String
     var twitterProfileUsername: String
     var mediumProfileUsername: String

@@ -29,8 +29,11 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     
     var linkName = "" {
         didSet {
+            
+            if linkName == "Personal Website" {usernameTextField.text = "Personal Website Link"}
+            
+            else{placeholderLabel.text = "\(linkName) Username"}
             usernameTextField.placeholder = "\(linkName) Username"
-            placeholderLabel.text = "\(linkName) Username"
             self.placeholderLabel.alpha = 0.0
             resetViewBorder(withBorder: &self.bottomBorder)
         }
@@ -143,7 +146,6 @@ extension LinksModalContainerView {
     
     func createPlaceholderLabel() -> UILabel {
         let placeholderLabel = UILabel()
-        placeholderLabel.text = "Hello"
         return placeholderLabel
     }
     

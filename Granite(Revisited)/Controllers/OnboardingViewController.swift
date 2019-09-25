@@ -20,6 +20,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     lazy var modalView: LinksModalView = self.createModalView()
     lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissModalView))
     var startingFrame: CGRect?
+    var resignedResponder: ((UITextField) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +49,10 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             // MARK: Have to add modal view as well
         }
         
-        pageViewController.logoImageClosure = {[unowned self] (image, color) in
+        pageViewController.logoImageClosure = {[unowned self] (image, color, linkName) in
             self.modalView.containerView.logoImageView.image = image
             self.blurView.backgroundColor = color
+            self.modalView.containerView.linkName = linkName
         }
     }
     
@@ -113,7 +115,11 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             self.blurView.removeFromSuperview()
             self.view.isUserInteractionEnabled = true
             self.modalView.alpha = 1.0
+            
+            // MARK: TODO FIX Separation of concerns this file should not know about username text field two subviews down the hierarchy
             self.modalView.containerView.usernameTextField.resignFirstResponder()
+            self.modalView.containerView.usernameTextField.text = ""
+            
             self.blurView.alpha = 1.0
         }
     }
