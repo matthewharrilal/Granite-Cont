@@ -173,7 +173,7 @@ extension LinksModalContainerView {
             make.centerX.centerY.equalToSuperview()
             make.width.equalToSuperview().dividedBy(2)
             make.height.equalTo(60)
-            make.top.equalTo(self.logoImageView.snp.bottom).offset(5)
+            make.top.equalTo(self.logoImageView.snp.bottom).offset(10)
         }
         
         DispatchQueue.main.async {
