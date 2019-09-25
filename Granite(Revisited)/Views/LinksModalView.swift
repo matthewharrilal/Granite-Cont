@@ -12,8 +12,9 @@ import Lottie
 
 
 class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
-    @IBOutlet weak var linkName: UILabel!
-//    var containerView: LinksModalContainerView!
+    
+    lazy var linkName: UILabel = self.createLinkNameLabel()
+    //    var containerView: LinksModalContainerView!
     
     lazy var containerView = self.createContainerView()
     @IBOutlet weak var pleaseEnterLabel: UILabel!
@@ -36,7 +37,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     }
     
     override func layoutSubviews() {
-    
+        
         layout()
     }
     
@@ -74,30 +75,11 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         // MARK: TODO Add shadow to container view
         Bundle.main.loadNibNamed("LinksModalView", owner: self, options: nil)
         
-        linkName.textAlignment = .center
-        
-        linkName.constrainHeight(withHeight: self.frame.height - (self.frame.height - 75))
-        
-        
+
         containerView.keyboardDelegate = self
         containerView.endEditingDelegate = self
         
         self.linkName.textColor = .white
-        
-        
-        let attributedText = createLabelSpacing(withLabelText: "Improve Your Experience On The Application")
-        self.linkName.attributedText = attributedText
-        
-        self.linkName.font = UIFont.regular(size: 18)
-        self.linkName.lineBreakMode = .byWordWrapping
-        self.linkName.numberOfLines = 0
-        self.linkName.textAlignment = .center
-        self.linkName.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-        }
-        
-        
-        
     }
     
     func returnWasPressed() {
@@ -108,7 +90,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         let animationView = LOTAnimationView(name: "success")
         animationContainer.layer.cornerRadius = 20
         
-//        animationView.backgroundColor = .init(hexString: "d7b9d5")
+        //        animationView.backgroundColor = .init(hexString: "d7b9d5")
         animationView.backgroundColor = .white
         
         animationView.frame = animationContainer.bounds
@@ -132,7 +114,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
                 
                 animationView.play()
             }, completion: {_ in
-//                animationContainer.removeFromSuperview()
+                //                animationContainer.removeFromSuperview()
                 self.successDelegate?.successHasPlayed()
             })
         }
@@ -165,13 +147,39 @@ extension LinksModalView {
         containerView.layer.cornerRadius = 20
         return containerView
     }
+    
+    func createLinkNameLabel() -> UILabel {
+        let label = UILabel()
+        label.textColor = .white
+        
+        
+        let attributedText = createLabelSpacing(withLabelText: "Improve Your Experience On The Application")
+        label.attributedText = attributedText
+        
+        label.font = UIFont.regular(size: 18)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }
 }
 
 // LAYOUT EXTENSION
 extension LinksModalView {
     func layout() {
         self.backgroundColor = UIColor(hexString: "4790e6")
+        layoutLinkNameLabel()
         layoutContainerView()
+    }
+    
+    func layoutLinkNameLabel() {
+        self.addSubview(self.linkName)
+        
+        self.linkName.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(5)
+            make.left.equalToSuperview()
+            make.width.equalToSuperview()
+        }
     }
     
     func layoutContainerView() {

@@ -11,7 +11,7 @@ import UIKit
 
 func createLabelSpacing(withLabelText labelText: String) -> NSMutableAttributedString {
     let paragraph = NSMutableParagraphStyle()
-    paragraph.lineSpacing = 15
+    paragraph.lineSpacing = 5
     
     let attributedString = NSMutableAttributedString(string: labelText)
     
