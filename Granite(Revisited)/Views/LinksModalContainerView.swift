@@ -11,9 +11,9 @@ import UIKit
 
 class LinksModalContainerView: UIView, UITextFieldDelegate {
     @IBOutlet weak var logoImageView: UIImageView!
-//    @IBOutlet weak var usernameTextField: UITextField!
-    var textFieldView: UIView!
-//    var stackView: UIStackView!
+    //    @IBOutlet weak var usernameTextField: UITextField!
+    lazy var textFieldView: UIView = self.createTextView()
+    //    var stackView: UIStackView!
     lazy var bottomBorder = CALayer()
     var confirmationButton: UIButton!
     var imageName: String?
@@ -23,7 +23,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     weak var keyboardDelegate: KeyboardDelegate?
     weak var endEditingDelegate: EndEditingDelegate?
     
-//    @IBOutlet weak var placeholderLabel: UILabel!
+    //    @IBOutlet weak var placeholderLabel: UILabel!
     lazy var placeholderLabel: UILabel = self.createPlaceholderLabel()
     lazy var usernameTextField: UITextField = self.createUsernameTextField()
     
@@ -37,14 +37,15 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     }
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: .zero)
         commonInit()
     }
     
     override func layoutSubviews() {
-//        commonInit()
-        createCustomTextField()
+        //        commonInit()
+        layout()
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -54,11 +55,11 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         Bundle.main.loadNibNamed("LinksModalContainerView", owner: self, options: nil)
         addSubviews(views: logoImageView)
         
-//        createConfirmationButton()
+        //        createConfirmationButton()
         
         self.usernameTextField.delegate = self
         self.usernameTextField.returnKeyType = .go
-      
+        
         
         self.logoImageView.snp.makeConstraints { (make) in
             make.height.width.equalTo(80)
@@ -83,28 +84,23 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         }
     }
     
-    func createCustomTextField() {
-//        self.textFieldView = UIView(frame: .init(x: self.center.x, y: self.center.y, width: self.frame.width / 2, height: 60))
+    func createTextView() -> UIView {
+        //        self.textFieldView = UIView(frame: .init(x: self.center.x, y: self.center.y, width: self.frame.width / 2, height: 60))
         self.textFieldView = UIView()
-    
-        addSubview(textFieldView)
+        //        self.textFieldView.frame.origin = self.center
+        //        textFieldView.frame.size = .init(width: self.frame.width / 2, height: 60)
         
-       
-//
-        self.textFieldView.snp.makeConstraints { (make) in
-            make.centerX.centerY.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(2)
-            make.height.equalTo(60)
-            make.top.equalTo(self.logoImageView.snp.bottom).offset(5)
-        }
-         layout()
         
-       createViewBorder(withSuperLayer: self.textFieldView, withBorder: &self.bottomBorder)
+        
+        return textFieldView
+        
+        //
+        
     }
     
     func createConfirmationButton() {
         self.confirmationButton = UIButton(frame: .init(x: self.bounds.maxX, y: self.bounds.maxY, width: 20, height: 20))
-       
+        
         self.confirmationButton.backgroundColor = .white
         
         addSubview(self.confirmationButton)
@@ -113,7 +109,7 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         
         self.confirmationButton.setTitle("✔", for: .normal)
         self.confirmationButton.titleLabel?.textColor = .green
-      
+        
     }
     
     // PRO TIP: The reason we dont constrain size is because we need to know the exact x and y when since the frame changes we don't know for sure
@@ -156,9 +152,23 @@ extension LinksModalContainerView {
 // Layout Extension
 extension LinksModalContainerView {
     func layout() {
-        layoutStackView()
+        layoutTextView()
     }
     
+    func layoutTextView() {
+        self.addSubview(self.textFieldView)
+        
+        layoutStackView()
+        
+        self.textFieldView.snp.makeConstraints { (make) in
+            make.centerX.centerY.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(2)
+            make.height.equalTo(60)
+            make.top.equalTo(self.logoImageView.snp.bottom).offset(5)
+        }
+        
+        createViewBorder(withSuperLayer: self.textFieldView, withBorder: &self.bottomBorder)
+    }
     func layoutStackView() {
         self.textFieldView.addSubview(stackView)
         
@@ -178,7 +188,7 @@ extension LinksModalContainerView {
         self.stackView.addArrangedSubview(self.placeholderLabel)
         self.placeholderLabel.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-
+            
         }
     }
     func layoutTextField() {
@@ -187,11 +197,11 @@ extension LinksModalContainerView {
         usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
         usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
-
-//
+        
+        //
         self.usernameTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-//            make.top.equalTo(placeholderLabel.snp.bottom)
+            //            make.top.equalTo(placeholderLabel.snp.bottom)
         }
     }
 }

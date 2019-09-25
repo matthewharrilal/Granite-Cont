@@ -14,6 +14,8 @@ import Lottie
 class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     @IBOutlet weak var linkName: UILabel!
     var containerView: LinksModalContainerView!
+    
+
     @IBOutlet weak var pleaseEnterLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     var exitButton: UIButton!
@@ -31,6 +33,11 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override func layoutSubviews() {
+    
+        self.containerView.frame = .init(x: self.bounds.midX, y: self.bounds.midY, width: self.bounds.width, height: self.bounds.height)
     }
     
     func keyboardIsActive() {
@@ -69,7 +76,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         
         
         
-        self.containerView = LinksModalContainerView(frame: .init(x: self.bounds.midX, y: self.bounds.midY, width: self.bounds.width, height: self.bounds.height))
+        self.containerView = LinksModalContainerView()
         
         addSubviews(views: linkName, containerView)
         
