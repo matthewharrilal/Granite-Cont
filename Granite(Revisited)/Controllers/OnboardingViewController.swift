@@ -113,6 +113,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             self.blurView.removeFromSuperview()
             self.view.isUserInteractionEnabled = true
             self.modalView.alpha = 1.0
+            self.modalView.containerView.usernameTextField.resignFirstResponder()
             self.blurView.alpha = 1.0
         }
     }

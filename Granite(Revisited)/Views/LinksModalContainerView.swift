@@ -132,6 +132,10 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         return false
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
 }
 
 // Factory Extension
