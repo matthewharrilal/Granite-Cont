@@ -225,7 +225,10 @@ extension CreateAccountView {
             make.width.equalToSuperview().inset(20)
         }
         
-        createViewBorder(withSuperLayer: self.fullNameTextView, withBorder: &self.fullNameBottomBorder)
+        DispatchQueue.main.async {
+            createViewBorder(withSuperLayer: self.fullNameTextView, withBorder: &self.fullNameBottomBorder)
+        }
+        
     }
     
     func layoutFullNameStackView() {
@@ -275,7 +278,10 @@ extension CreateAccountView {
             make.width.equalToSuperview().inset(20)
         }
         
-        createViewBorder(withSuperLayer: self.emailTextView, withBorder: &self.bottomBorder)
+        DispatchQueue.main.async {
+            createViewBorder(withSuperLayer: self.emailTextView, withBorder: &self.bottomBorder)
+        }
+        
     }
     
     func layoutEmailStackView() {
@@ -326,7 +332,10 @@ extension CreateAccountView {
             make.width.equalToSuperview().inset(20)
         }
         
-        createViewBorder(withSuperLayer: self.passwordTextView, withBorder: &self.passwordBottomBorder)
+        DispatchQueue.main.async {
+            createViewBorder(withSuperLayer: self.passwordTextView, withBorder: &self.passwordBottomBorder)
+        }
+        
     }
     
     func layoutPasswordStackView() {
@@ -376,7 +385,10 @@ extension CreateAccountView {
             make.width.equalToSuperview().inset(20)
         }
         
-        createViewBorder(withSuperLayer: self.confirmPasswordTextView, withBorder: &self.confirmPasswordBottomBorder)
+        DispatchQueue.main.async {
+            createViewBorder(withSuperLayer: self.confirmPasswordTextView, withBorder: &self.confirmPasswordBottomBorder)
+        }
+        
     }
     
     func layoutConfirmPasswordStackView() {
