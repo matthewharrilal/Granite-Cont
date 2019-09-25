@@ -11,7 +11,7 @@ import UIKit
 
 class ThirdOnboardingScreen: UIView {
     @IBOutlet weak var moreAboutYourself: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+//    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     var modalViewTapClosure: ((CGRect, String?) -> Void)?
     var logoImageClosure: ((UIImage, UIColor, String) -> Void)?
@@ -53,25 +53,44 @@ class ThirdOnboardingScreen: UIView {
         
         // MARK: TODO Change the text here be more concise
         moreAboutYourself.text =  "Tell us more about yourself"
-        descriptionLabel.text = "Provide some useful links to help developers get to know you better"
+//        descriptionLabel.text = "Provide some useful links to help developers get to know you better"
         
+        moreAboutYourself.font = UIFont.bold(size: 20)
+//        descriptionLabel.font = UIFont.regular(size: 15)
+        
+    
+//        let attributedText = createLabelSpacing(withLabelText: descriptionLabel.text ?? "")
+//        descriptionLabel.attributedText = attributedText
+//
+//        descriptionLabel.lineBreakMode = .byWordWrapping
+//        descriptionLabel.numberOfLines = 0
+//
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(LinksCollectionViewCell.self, forCellWithReuseIdentifier: "linkCell")
         collectionView?.contentInset = UIEdgeInsets(top: 40, left: 16, bottom: 10, right: 16)
-        addSubviews(views: moreAboutYourself, descriptionLabel, collectionView)
+        addSubviews(views: moreAboutYourself, collectionView)
 
-        collectionView.anchor(top: self.descriptionLabel.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 10, bottom: -10, right: -10))
+        collectionView.anchor(top: self.moreAboutYourself.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 5, left: 10, bottom: -10, right: -10))
 //        collectionView.snp.makeConstraints { (make) in
 //            colle
 //        }
         
-//        self.animateViewScrollClosure = 
-//
+//        self.animateViewScrollClosure =
+        
+//        descriptionLabel.snp.makeConstraints { (make) in
+//            make.width.equalToSuperview()
+//            make.top.equalTo(self.moreAboutYourself.snp.bottom)
+//        }
+        
+        self.moreAboutYourself.snp.makeConstraints { (make) in
+            make.top.equalTo(self.safeAreaLayoutGuide.snp.topMargin).offset(10)
+            make.left.equalToSuperview().offset(26)
+        }
     }
     
     @objc func handleTap() {
-        removeChildViews(views: self.moreAboutYourself, self.descriptionLabel, self.collectionView, self.transitionButton)
+        removeChildViews(views: self.moreAboutYourself, self.collectionView, self.transitionButton)
         let signUpView = SignUpView(frame: self.bounds)
         
         self.addSubview(signUpView)

@@ -13,7 +13,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThirdOnboardingScreen" customModule="Granite_Revisited_" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="981-vr-VF3" id="JMS-mn-Kbv"/>
-                <outlet property="descriptionLabel" destination="voT-eC-rbW" id="twV-YT-KAo"/>
                 <outlet property="moreAboutYourself" destination="oLC-3W-7o7" id="ZcY-vQ-39E"/>
             </connections>
         </placeholder>
