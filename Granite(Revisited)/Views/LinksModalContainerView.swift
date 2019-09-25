@@ -30,10 +30,13 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     var linkName = "" {
         didSet {
             
-            if linkName == "Personal Website" {usernameTextField.text = "Personal Website Link"}
-            
-            else{placeholderLabel.text = "\(linkName) Username"}
-            usernameTextField.placeholder = "\(linkName) Username"
+            if linkName == "Personal Website" {usernameTextField.placeholder = "Website Link"
+                placeholderLabel.text = "Website Link"
+            }
+                
+            else{usernameTextField.placeholder = "\(linkName) Username"
+                placeholderLabel.text = "\(linkName) Username"
+            }
             self.placeholderLabel.alpha = 0.0
             resetViewBorder(withBorder: &self.bottomBorder)
         }
