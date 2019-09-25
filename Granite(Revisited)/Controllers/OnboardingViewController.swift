@@ -56,17 +56,17 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     
     override func viewDidLayoutSubviews() {
         
-        //        layout()
+                layout()
         //
-        let height = self.view.bounds.height
-        self.pageViewController.view.snp.makeConstraints { (make) in
-            make.left.right.top.equalToSuperview()
-            make.height.equalTo(height * 0.85)
-            
-        }
-        
-        layoutTransitionButton()
-        transformTouchableBounceView(withBounceView: self.transitionButton)
+//        let height = self.view.bounds.height
+//        self.pageViewController.view.snp.makeConstraints { (make) in
+//            make.left.right.top.equalToSuperview()
+//            make.height.equalTo(height * 0.85)
+//
+//        }
+//
+//        layoutTransitionButton()
+//        transformTouchableBounceView(withBounceView: self.transitionButton)
     }
     
     
@@ -149,16 +149,13 @@ extension OnboardingViewController {
     func layout() {
         
         layoutOnboardingPageViewController()
-        layoutBlurView()
-        layoutModalView()
+
         
         layoutTransitionButton()
         transformTouchableBounceView(withBounceView: self.transitionButton)
     }
     
     func layoutOnboardingPageViewController() {
-        self.addChild(self.pageViewController)
-        self.view.addSubview(self.pageViewController.view)
         
         let height = self.view.bounds.height
         self.pageViewController.view.snp.makeConstraints { (make) in
