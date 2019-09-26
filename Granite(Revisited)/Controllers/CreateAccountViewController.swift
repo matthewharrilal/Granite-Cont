@@ -14,8 +14,7 @@ class CreateAccountViewController: UIViewController {
     
     lazy var accountView: CreateAccountView = self.createAccountView()
     weak var coordinator: MainCoordinator?
-    var user: User?
-    
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +77,10 @@ class CreateAccountViewController: UIViewController {
         guard let password = self.accountView.passwordTextField.text else {return}
         
         self.user = User(email: fullName , username: fullName, password: password)
+        
+        self.coordinator?.communicatedUser(withUser: user)
+        // Now the question is how does the first onboarding screen in the onboarding flow get access to this user object
+        
     }
     
     func animateFullNameTextView() {

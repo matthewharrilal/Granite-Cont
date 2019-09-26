@@ -22,6 +22,20 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     var startingFrame: CGRect?
     var resignedResponder: ((UITextField) -> Void)?
     
+    var communicatedUserClosure: ((User?) -> Void)?
+    
+    var user: User?
+    
+    init(user: User?=nil) {
+        super.init(nibName: nil, bundle: nil)
+        self.user = user
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,6 +68,10 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             self.modalView.containerView.logoImageView.image = image
             self.blurView.backgroundColor = color
             self.modalView.containerView.linkName = linkName
+        }
+        
+        self.communicatedUserClosure = {[unowned self] user in
+            print(user)
         }
     }
     
