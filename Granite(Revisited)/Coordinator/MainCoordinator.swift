@@ -44,7 +44,7 @@ class MainCoordinator: Coordinator {
     }
     
     func startOnboardingFlow(name: String) {
-        let onboardingController = OnboardingViewController()
+        let onboardingController = OnboardingViewController(user: self.communicatedUser)
         
         self.navigationController.pushViewController(onboardingController, animated: true)
     }

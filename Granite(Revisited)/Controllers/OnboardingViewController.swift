@@ -39,7 +39,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        print("User when we start onboarding flow \(user?.email)")
         
         self.addChild(pageViewController)
         
