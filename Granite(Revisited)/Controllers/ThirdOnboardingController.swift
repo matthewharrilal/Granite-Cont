@@ -22,6 +22,11 @@ class ThirdOnboardingController: UIViewController {
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        print("")
+    }
+    
     override func viewDidLayoutSubviews() {
         layout()
         

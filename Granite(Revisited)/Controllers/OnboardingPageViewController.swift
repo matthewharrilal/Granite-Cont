@@ -112,6 +112,9 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
             let nextViewController = self.dataSource?.pageViewController(self, viewControllerAfter: currentViewController)
             else {return}
         
+        // At point in time where user is transitioning to the next page if the current view controller is language select use closure to transmit those values to the onboarding view controller and it would happen right ther
+        
+        
         print("Identifier for view controller \(nextViewController.restorationIdentifier)")
         self.thirdOnboardingController.modalViewTapClosure = self.modalViewTapClosure
         self.thirdOnboardingController.logoImageClosure = self.logoImageClosure
