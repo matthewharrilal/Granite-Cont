@@ -12,8 +12,8 @@ import UIKit
 class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     // Used to test the embedding of a page view controller
     
-//    var pageViewController = OnboardingPageViewController()
-        lazy var pageViewController: OnboardingPageViewController = self.createOnboardingPageViewController()
+    //    var pageViewController = OnboardingPageViewController()
+    lazy var pageViewController: OnboardingPageViewController = self.createOnboardingPageViewController()
     
     lazy var transitionButton: TouchableBounceView = createTouchableBounceButton(withText: "Next")
     lazy var blurView: UIVisualEffectView = self.createBlurView()
@@ -46,6 +46,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             self?.startingFrame = startingFrame
             self?.layoutBlurView()
             self?.layoutModalView()
+            
             // MARK: Have to add modal view as well
         }
         
@@ -58,17 +59,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     
     override func viewDidLayoutSubviews() {
         
-                layout()
-        //
-//        let height = self.view.bounds.height
-//        self.pageViewController.view.snp.makeConstraints { (make) in
-//            make.left.right.top.equalToSuperview()
-//            make.height.equalTo(height * 0.85)
-//
-//        }
-//
-//        layoutTransitionButton()
-//        transformTouchableBounceView(withBounceView: self.transitionButton)
+        layout()
     }
     
     
@@ -157,7 +148,7 @@ extension OnboardingViewController {
     func layout() {
         
         layoutOnboardingPageViewController()
-
+        
         
         layoutTransitionButton()
         transformTouchableBounceView(withBounceView: self.transitionButton)
@@ -188,6 +179,7 @@ extension OnboardingViewController {
     
     func layoutModalView() {
         self.blurView.contentView.addSubview(self.modalView)
+        modalView.successDelegate = self
         self.modalView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalToSuperview().dividedBy(1.5)
@@ -209,5 +201,12 @@ extension OnboardingViewController: UIGestureRecognizerDelegate {
         }
         
         return true
+    }
+}
+
+
+extension OnboardingViewController: DismissModalViewDelegate {
+    func successHasPlayed() {
+        dismissModalView()
     }
 }

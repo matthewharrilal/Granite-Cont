@@ -22,7 +22,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     var exitButton: UIButton!
     var bottomConstraint: NSLayoutConstraint!
     var logoImageClosure: ((UIImage) -> Void)?
-    
+        
     var animationContainer: UIView!
     
     weak var successDelegate: DismissModalViewDelegate?
@@ -85,48 +85,48 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     func returnWasPressed() {
         print("Return Key was pressed!")
         
+        let oldText = self.linkName.text
+
         
-        
-//        self.animationContainer = UIView(frame: self.bounds)
-//
-//        let animationView = LOTAnimationView(name: "success")
-//        animationContainer.layer.cornerRadius = 20
-//
-//        //        animationView.backgroundColor = .init(hexString: "d7b9d5")
-//        animationView.backgroundColor = .white
-//
-//        animationView.frame = animationContainer.bounds
-//        animationContainer.addSubview(animationView)
-//
-//        animationView.layer.cornerRadius = 20
-//
-//        self.addSubview(animationContainer)
-//
-//        animationView.alpha = 0.0
-//
-//        animationContainer.alpha = 0.0
+//        UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: <#T##UIView.KeyframeAnimationOptions#>, animations: <#T##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
 //
 //
-//        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
-//            self.linkName = "Thanks"
+//        UIView.transition(with: self.linkName, duration: 1.0, options: .transitionFlipFromBottom, animations: {
+//            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
+//                self.linkName.text = "Hello"
+//            })
+//
 //        }) { _ in
 //            self.successDelegate?.successHasPlayed()
+//            self.linkName.text = oldText
 //        }
-        let oldText = self.linkName.text
+        
 //
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: .calculationModeCubic, animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25, animations: {
-                self.linkName.alpha = 0.0
+//        self.linkName.fadeText()
+//        self.linkName.text = "Thanks"
+//        self.successDelegate?.successHasPlayed()
+//        self.linkName.text = oldText
+        
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                self.successDelegate?.successHasPlayed()
+                self.linkName.text = oldText
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
-                self.linkName.text = "Thanks"
-                self.linkName.alpha = 1.0
-            })
-        }) { _ in
-            self.linkName.text = oldText
-            self.successDelegate?.successHasPlayed()
         }
+        
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.type = CATransitionType.fade
+        animation.duration = 1.0
+        self.linkName.layer.add(animation, forKey: "fade")
+        
+        
+        CATransaction.commit()
+        
+        self.linkName.text = "Thanks"
     }
     
     func removeAnimationContainer() {
@@ -199,5 +199,16 @@ extension LinksModalView {
             make.left.right.bottom.equalToSuperview()
             make.top.equalToSuperview().offset(75)
         }
+    }
+}
+
+
+extension UIView {
+    func fadeText() {
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.type = CATransitionType.fade
+        animation.duration = 1.0
+        layer.add(animation, forKey: "fade")
     }
 }
