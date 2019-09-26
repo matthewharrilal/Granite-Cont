@@ -14,6 +14,7 @@ class CreateAccountViewController: UIViewController {
     
     lazy var accountView: CreateAccountView = self.createAccountView()
     weak var coordinator: MainCoordinator?
+    var user: User?
     
     
     override func viewDidLoad() {
@@ -57,15 +58,26 @@ class CreateAccountViewController: UIViewController {
             }
         }
         
-        self.accountView.signUpContainer.selectBlock = {[weak self] in
+        self.accountView.signUpContainer.selectBlock = {[unowned self] in
             
             // Need to pass the first name so that we can start the onboarding flow
-            if let fullName = self?.accountView.fullNameTextField.text {
+            if let fullName = self.accountView.fullNameTextField.text {
                 let firstName = fullName.components(separatedBy: " ")
-                self?.coordinator?.startOnboardingFlow(name: firstName[0])
+                self.setUserInformation(fullName: fullName)
+                self.coordinator?.startOnboardingFlow(name: firstName[0])
             }
             
         }
+    }
+    
+    func setUserInformation(fullName: String) {
+        // This is at a point in time where the user has filled in all the required text fields therefore we can start populating the user object that is going to be passed through the onboarding flow
+        
+        // MARK: TODO FIX Add confirm password and password matching logic
+        
+        guard let password = self.accountView.passwordTextField.text else {return}
+        
+        self.user = User(email: fullName , username: fullName, password: password)
     }
     
     func animateFullNameTextView() {

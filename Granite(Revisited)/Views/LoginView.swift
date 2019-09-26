@@ -19,6 +19,7 @@ class LoginView: UIView {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var createAccountTapClosure: (() -> Void)?
+    var loginTapClosure: (() -> Void)?
 
     
     @IBOutlet weak var lockView: UIView!
@@ -65,6 +66,10 @@ class LoginView: UIView {
     
         
         let loginButtonContainer = self.createLoginButtonContainer()
+        
+        loginButtonContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleLogin)))
+        
+        
         let createAccountContainer = self.createAccountButtonContainer()
         createAccountContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleCreateAccount)))
         
@@ -92,9 +97,14 @@ class LoginView: UIView {
         self.createAccountTapClosure?()
     }
     
+    @objc func handleLogin() {
+        self.loginTapClosure?()
+    }
+    
     func addTargets() {
-        usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
-        passwordTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        usernameTextField.addTarget(self, action: #selector(handleTap), for: .touchDown)
+        passwordTextField.addTarget(self, action: #selector(handleTap), for: .touchDown)
+ 
     }
     
     func configureLockAnimation() {

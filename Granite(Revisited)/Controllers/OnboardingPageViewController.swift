@@ -25,7 +25,7 @@ class OnboardingPageViewController: UIPageViewController {
         super.viewDidLoad()
         
 //        self.delegate = self
-        self.dataSource = self
+        self.dataSource = self 
         
         
         if let firstViewController = self.orderedViewControllers.first {

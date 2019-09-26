@@ -50,6 +50,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
         loginView.createAccountTapClosure = {[unowned self] in
             self.coordinator?.createAccountView()
         }
+        
+        loginView.loginTapClosure = {[unowned self] in
+            self.handleLogin()
+        }
         //
     }
     

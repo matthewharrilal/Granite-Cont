@@ -21,7 +21,7 @@ class User: Decodable {
     var personalWebsite: String
     var languages: [String]
     
-    init(email: String, username: String, password: String, githubProfileUsername: String? = nil, twitterProfileUsername: String? = nil, mediumProfileUsername: String? = nil, linkedInProfileUsername: String? = nil, personalWebsite: String? = nil, languages: [String]) {
+    init(email: String, username: String, password: String, githubProfileUsername: String? = nil, twitterProfileUsername: String? = nil, mediumProfileUsername: String? = nil, linkedInProfileUsername: String? = nil, personalWebsite: String? = nil, languages: [String]?=nil) {
         self.email = email
         self.username = username
         self.password = password
@@ -30,7 +30,7 @@ class User: Decodable {
         self.mediumProfileUsername = mediumProfileUsername ?? ""
         self.linkedInProfileUsername = linkedInProfileUsername ?? ""
         self.personalWebsite = personalWebsite ?? ""
-        self.languages = languages
+        self.languages = languages ?? [String]()
     }
     
     convenience init?(username: String, password: String) {
@@ -49,6 +49,7 @@ class User: Decodable {
         case linkedInProfile
         case personalWebsite
         case updatedAt
+        
     }
     
     required convenience init(from decoder: Decoder) throws {
