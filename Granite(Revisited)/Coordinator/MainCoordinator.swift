@@ -16,7 +16,11 @@ class MainCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     
-    var communicatedUser: User?
+    var communicatedUser: User? {
+        didSet {
+            print("New Communicated User \(communicatedUser?.languages)")
+        }
+    }
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController // Every coordinator manages their hierarchal stack via their own navigation controllers
@@ -30,7 +34,7 @@ class MainCoordinator: Coordinator {
     }
     
     // Pieces the first bits of information of the user
-    func communicatedUser(withUser user: User) {
+    func setCommunicatedUser(withUser user: User) {
         self.communicatedUser = user
         // Once we have the user then what ... the next screen that gets created we then pass that to the property made there
     }

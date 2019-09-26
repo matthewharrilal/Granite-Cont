@@ -55,7 +55,8 @@ extension SecondOnboardingScreen: UICollectionViewDataSource, UICollectionViewDe
         }
         
         
-        print("User's specified languages \(languageSet)")
+        
+        self.selectedLanguagesClosure?(languageSet)
         
     }
 }

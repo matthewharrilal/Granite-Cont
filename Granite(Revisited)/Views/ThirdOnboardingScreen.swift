@@ -30,7 +30,7 @@ class ThirdOnboardingScreen: UIView {
     var indexPathRow: Int?
     var coordinator: MainCoordinator?
     var animateViewScrollClosure: (() -> Void)?
-    var selectedLanguagesClosure: ((Set<String>) -> Void)?
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

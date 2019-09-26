@@ -13,6 +13,7 @@ import SnapKit
 class SecondOnboardingController: UIViewController {
     // In charge of handling transition buttons tap
     lazy var secondOnboardingScreen = SecondOnboardingScreen()
+    var selectedLanguagesClosure: ((Set<String>) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,8 @@ class SecondOnboardingController: UIViewController {
         secondOnboardingScreen.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        secondOnboardingScreen.selectedLanguagesClosure = self.selectedLanguagesClosure
     }
     
     @objc func handleTap() {

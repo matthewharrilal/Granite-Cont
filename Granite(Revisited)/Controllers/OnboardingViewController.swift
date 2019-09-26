@@ -21,17 +21,18 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissModalView))
     var startingFrame: CGRect?
     var resignedResponder: ((UITextField) -> Void)?
-    
+    var selectedLanguagesClosure: ((Set<String>) -> Void)?
     var communicatedUserClosure: ((User?) -> Void)?
     
     var user: User?
+    var coordinator: MainCoordinator?
+ 
     
-    init(user: User?=nil) {
-        super.init(nibName: nil, bundle: nil)
+    convenience init(user: User) {
         self.user = user
     }
     
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -70,8 +71,13 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             self.modalView.containerView.linkName = linkName
         }
         
-        self.communicatedUserClosure = {[unowned self] user in
-            print(user)
+        pageViewController.selectedLanguagesClosure = {[unowned self] languages in
+            guard let user = self.user else {return}
+            
+            print("Languages \(languages)")
+            user.languages = Array(languages)
+            
+            self.coordinator?.setCommunicatedUser(withUser: user)
         }
     }
     

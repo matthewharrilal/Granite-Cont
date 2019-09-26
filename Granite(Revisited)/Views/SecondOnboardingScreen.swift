@@ -18,6 +18,7 @@ class SecondOnboardingScreen: UIView {
     
     lazy var languageSet = Set<String>()
     var languagesArray: [(UIImage, String)] = [(#imageLiteral(resourceName: "javascript"), "Javascript"), (#imageLiteral(resourceName: "go"), "Golang"), (#imageLiteral(resourceName: "python"), "Python"), (#imageLiteral(resourceName: "ruby"),"Ruby"), (#imageLiteral(resourceName: "c"), "C++"), (#imageLiteral(resourceName: "java"), "Java"), (#imageLiteral(resourceName: "rust"), "Rust"), (#imageLiteral(resourceName: "php"), "PHP"), (#imageLiteral(resourceName: "swift"), "Swift") ]
+    var selectedLanguagesClosure: ((Set<String>) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

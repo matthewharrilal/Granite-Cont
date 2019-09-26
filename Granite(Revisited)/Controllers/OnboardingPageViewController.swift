@@ -13,18 +13,22 @@ class OnboardingPageViewController: UIPageViewController {
     
     var modalViewTapClosure: ((CGRect, String?) -> Void)?
     
+    var secondOnboardingController = SecondOnboardingController()
+    
     var thirdOnboardingController = ThirdOnboardingController()
+    
     
     var logoImageClosure: ((UIImage, UIColor, String) -> Void)?
     
-     lazy var orderedViewControllers: [UIViewController] = [FirstOnboardingController(), SecondOnboardingController(), self.thirdOnboardingController]
+    lazy var orderedViewControllers: [UIViewController] = [FirstOnboardingController(), self.secondOnboardingController, self.thirdOnboardingController]
     var pageControl: UIPageControl = UIPageControl()
     
+    var selectedLanguagesClosure: ((Set<String>) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.delegate = self
+        //        self.delegate = self
         self.dataSource = self 
         
         
@@ -103,10 +107,10 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
         if let pageViewController = pageViewController.viewControllers?[0] {
             self.pageControl.currentPage = self.orderedViewControllers.firstIndex(of: pageViewController)!
         }
-
-
+        
+        
     }
-//
+    //
     func nextPage() {
         guard let currentViewController = self.viewControllers?.first,
             let nextViewController = self.dataSource?.pageViewController(self, viewControllerAfter: currentViewController)
@@ -119,6 +123,7 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
         self.thirdOnboardingController.modalViewTapClosure = self.modalViewTapClosure
         self.thirdOnboardingController.logoImageClosure = self.logoImageClosure
         
+        self.secondOnboardingController.selectedLanguagesClosure = self.selectedLanguagesClosure
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
     }
     

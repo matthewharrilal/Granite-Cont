@@ -78,7 +78,7 @@ class CreateAccountViewController: UIViewController {
         
         self.user = User(email: fullName , username: fullName, password: password)
         
-        self.coordinator?.communicatedUser(withUser: user)
+        self.coordinator?.setCommunicatedUser(withUser: user)
         // Now the question is how does the first onboarding screen in the onboarding flow get access to this user object
         
     }

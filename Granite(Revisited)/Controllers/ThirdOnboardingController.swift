@@ -15,6 +15,7 @@ class ThirdOnboardingController: UIViewController {
     var animateViewScrollClosure: (() -> Void)?
     var logoImageClosure: ((UIImage, UIColor, String) -> Void)?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restorationIdentifier = NSStringFromClass(self.classForCoder)
