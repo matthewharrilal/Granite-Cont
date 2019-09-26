@@ -208,8 +208,9 @@ extension LinksModalContainerView {
         usernameTextField.borderStyle = .none
         usernameTextField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
         usernameTextField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
-        usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
+//        usernameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTextFieldTap)))
         
+        usernameTextField.addTarget(self, action: #selector(handleTextFieldTap), for: .touchDown)
         //
         self.usernameTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()

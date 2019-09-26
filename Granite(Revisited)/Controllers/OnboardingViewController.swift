@@ -114,13 +114,11 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         }) { _ in
             self.blurView.removeFromSuperview()
             self.view.isUserInteractionEnabled = true
-            self.modalView.alpha = 1.0
             
             // MARK: TODO FIX Separation of concerns this file should not know about username text field two subviews down the hierarchy
             self.modalView.containerView.usernameTextField.resignFirstResponder()
             self.modalView.containerView.usernameTextField.text = ""
             
-            self.blurView.alpha = 1.0
         }
     }
 }
@@ -134,6 +132,7 @@ extension OnboardingViewController {
     func createBlurView() -> UIVisualEffectView {
         let blurEffect = UIBlurEffect(style: .prominent)
         let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.alpha = 0.0
         return blurView
     }
     
@@ -141,6 +140,7 @@ extension OnboardingViewController {
         guard let startingFrame = self.startingFrame else {fatalError()}
         let modalView = LinksModalView(frame: startingFrame)
         modalView.layer.cornerRadius = 20
+        modalView.alpha = 0.0
         return modalView
     }
     
@@ -148,6 +148,7 @@ extension OnboardingViewController {
         let pageViewController = OnboardingPageViewController()
         return pageViewController
     }
+    
 }
 
 // Layout Extension
@@ -170,6 +171,7 @@ extension OnboardingViewController {
             make.height.equalTo(height * 0.85)
             
         }
+        
     }
     
     func layoutBlurView() {
@@ -177,6 +179,10 @@ extension OnboardingViewController {
         blurView.addGestureRecognizer(self.tapGesture)
         blurView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            self.blurView.alpha = 1.0
         }
     }
     
@@ -188,6 +194,9 @@ extension OnboardingViewController {
             make.height.equalToSuperview().dividedBy(3)
         }
         
+        UIView.animate(withDuration: 0.5) {
+            self.modalView.alpha = 1.0
+        }
     }
 }
 

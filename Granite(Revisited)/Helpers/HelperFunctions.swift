@@ -176,7 +176,8 @@ func createCustomTextField(withView view: UIView, placeholder: String, selector:
     textField.layer.borderColor = UIColor.init(hexString: "8CDFD6").cgColor
     
     if let selector = selector {
-        textField.addGestureRecognizer(UITapGestureRecognizer(target: view, action: selector))
+//        textField.addGestureRecognizer(UITapGestureRecognizer(target: view, action: selector))
+        textField.addTarget(view, action: selector, for: .touchDown)
     }
     
     return textField

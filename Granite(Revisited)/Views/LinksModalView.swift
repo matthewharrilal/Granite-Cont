@@ -85,38 +85,47 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     func returnWasPressed() {
         print("Return Key was pressed!")
         
-        self.animationContainer = UIView(frame: self.bounds)
-        
-        let animationView = LOTAnimationView(name: "success")
-        animationContainer.layer.cornerRadius = 20
-        
-        //        animationView.backgroundColor = .init(hexString: "d7b9d5")
-        animationView.backgroundColor = .white
-        
-        animationView.frame = animationContainer.bounds
-        animationContainer.addSubview(animationView)
-        
-        animationView.layer.cornerRadius = 20
-        
-        self.addSubview(animationContainer)
-        
-        animationView.alpha = 0.0
-        
-        animationContainer.alpha = 0.0
         
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
-            self.animationContainer.alpha = 1.0
-            self.animationContainer.backgroundColor = .white
-        }) { _ in
-            UIView.animate(withDuration: Double(animationView.animationDuration) + 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
-                animationView.alpha = 1.0
-                
-                animationView.play()
-            }, completion: {_ in
-                //                animationContainer.removeFromSuperview()
-                self.successDelegate?.successHasPlayed()
+//        self.animationContainer = UIView(frame: self.bounds)
+//
+//        let animationView = LOTAnimationView(name: "success")
+//        animationContainer.layer.cornerRadius = 20
+//
+//        //        animationView.backgroundColor = .init(hexString: "d7b9d5")
+//        animationView.backgroundColor = .white
+//
+//        animationView.frame = animationContainer.bounds
+//        animationContainer.addSubview(animationView)
+//
+//        animationView.layer.cornerRadius = 20
+//
+//        self.addSubview(animationContainer)
+//
+//        animationView.alpha = 0.0
+//
+//        animationContainer.alpha = 0.0
+//
+//
+//        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+//            self.linkName = "Thanks"
+//        }) { _ in
+//            self.successDelegate?.successHasPlayed()
+//        }
+        let oldText = self.linkName.text
+//
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: .calculationModeCubic, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25, animations: {
+                self.linkName.alpha = 0.0
             })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
+                self.linkName.text = "Thanks"
+                self.linkName.alpha = 1.0
+            })
+        }) { _ in
+            self.linkName.text = oldText
+            self.successDelegate?.successHasPlayed()
         }
     }
     
