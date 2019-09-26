@@ -86,26 +86,6 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         print("Return Key was pressed!")
         
         let oldText = self.linkName.text
-
-        
-//        UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: <#T##UIView.KeyframeAnimationOptions#>, animations: <#T##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
-//
-//
-//        UIView.transition(with: self.linkName, duration: 1.0, options: .transitionFlipFromBottom, animations: {
-//            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
-//                self.linkName.text = "Hello"
-//            })
-//
-//        }) { _ in
-//            self.successDelegate?.successHasPlayed()
-//            self.linkName.text = oldText
-//        }
-        
-//
-//        self.linkName.fadeText()
-//        self.linkName.text = "Thanks"
-//        self.successDelegate?.successHasPlayed()
-//        self.linkName.text = oldText
         
         CATransaction.begin()
         CATransaction.setCompletionBlock {
@@ -120,7 +100,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         let animation = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         animation.type = CATransitionType.fade
-        animation.duration = 1.0
+        animation.duration = 0.5
         self.linkName.layer.add(animation, forKey: "fade")
         
         
@@ -199,16 +179,5 @@ extension LinksModalView {
             make.left.right.bottom.equalToSuperview()
             make.top.equalToSuperview().offset(75)
         }
-    }
-}
-
-
-extension UIView {
-    func fadeText() {
-        let animation = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        animation.type = CATransitionType.fade
-        animation.duration = 1.0
-        layer.add(animation, forKey: "fade")
     }
 }
