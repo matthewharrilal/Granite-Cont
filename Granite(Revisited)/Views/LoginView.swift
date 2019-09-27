@@ -39,6 +39,8 @@ class LoginView: UIView {
         commonInit()
     }
     
+    
+    
     private func commonInit() {
         print("Loading login view")
         Bundle.main.loadNibNamed("LoginView", owner: self, options: nil)
