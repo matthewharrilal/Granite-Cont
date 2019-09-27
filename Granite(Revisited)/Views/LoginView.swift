@@ -29,7 +29,7 @@ class LoginView: UIView {
     var shapeLayer: CAShapeLayer!
     
     var configuredView: UIView!
-    gi
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -49,8 +49,6 @@ class LoginView: UIView {
         
         usernameTextField.textAlignment = .left
         passwordTextField.textAlignment = .left
-        
-        addTargets()
         
         
         
@@ -99,12 +97,6 @@ class LoginView: UIView {
         self.loginTapClosure?()
     }
     
-    func addTargets() {
-        usernameTextField.addTarget(self, action: #selector(handleTap), for: .touchDown)
-        passwordTextField.addTarget(self, action: #selector(handleTap), for: .touchDown)
- 
-    }
-    
     func configureLockAnimation() {
         
         let animationView = LOTAnimationView(name: "lock")
@@ -128,11 +120,6 @@ class LoginView: UIView {
         animationView.animationSpeed = 2
     }
     
-    @objc func handleTap() {
-         if let keyboardDelegate = self.keyboardDelegate {
-            keyboardDelegate.keyboardIsActive()
-        }
-    }
 }
 
 extension UIView {
