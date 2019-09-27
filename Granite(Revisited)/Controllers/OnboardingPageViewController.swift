@@ -61,9 +61,9 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
         
         
         let previousIndex = viewControllerIndex - 1
-        guard previousIndex >= 0 else {
-            return orderedViewControllers.last // Loop the ordered view controllers
-        }
+//        guard previousIndex >= 0 else {
+//            return orderedViewControllers.last // Loop the ordered view controllers
+//        }
         
         guard self.orderedViewControllers.count > previousIndex else {return nil}
         
@@ -76,10 +76,10 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
         
         
         let nextIndex = viewControllerIndex + 1
-        
-        guard orderedViewControllers.count != nextIndex else {
-            return orderedViewControllers.first // Loop the ordered view controllers
-        }
+//        
+//        guard orderedViewControllers.count != nextIndex else {
+//            return orderedViewControllers.first // Loop the ordered view controllers
+//        }
         
         guard self.orderedViewControllers.count > nextIndex else {return nil}
         

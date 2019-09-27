@@ -18,7 +18,15 @@ class MainCoordinator: Coordinator {
     
     var communicatedUser: User? {
         didSet {
-            print("New Communicated User \(communicatedUser?.languages)")
+            print("START OF COMMUNICATED USER")
+            print("")
+            print(communicatedUser?.email)
+            print(communicatedUser?.password)
+            print(communicatedUser?.languages)
+            print(communicatedUser?.mediumProfileUsername)
+            print(communicatedUser?.linkedInProfileUsername)
+            print(communicatedUser?.githubProfileUsername)
+            print("End of the user")
         }
     }
     
