@@ -10,14 +10,13 @@ import Foundation
 import UIKit
 import Lottie
 
-class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelegate {
+class LogInViewController: UIViewController, UITextFieldDelegate {
     
     
     let loginView = LoginView()
     
     var coordinator: MainCoordinator?
     
-    var isKeyboardActive = false
     
     var count = 0
     
@@ -45,7 +44,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
         loginView.passwordTextField.delegate = self
         
         
-        loginView.keyboardDelegate = self
         
         loginView.createAccountTapClosure = {[unowned self] in
             self.coordinator?.createAccountView()
@@ -57,49 +55,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
         //
     }
     
-    @objc func handleKeyboardNotification(notification: NSNotification) {
-        
-
-        if let userInfo = notification.userInfo {
-            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {return}
-            
-            
-            if self.loginView.usernameTextField.isFirstResponder && self.isKeyboardActive == false {
-                self.view.frame.origin.y -= keyboardFrame.height
-            }
-                
-                
-            else if self.isKeyboardActive == false && self.loginView.passwordTextField.isFirstResponder {
-//                self.view.frame.origin.y -= (self.loginView.usernameTextField.frame.origin.y - self.loginView.passwordTextField.frame.origin.y)
-                self.view.frame.origin.y -= keyboardFrame.height
-            }
-     
-            
-            else if self.loginView.passwordTextField.isFirstResponder && self.isKeyboardActive && count < 1 {
-                self.view.frame.origin.y -= (self.loginView.usernameTextField.frame.origin.y - self.loginView.passwordTextField.frame.origin.y)
-                count += 1
-            }
-            
-            self.isKeyboardActive = true
-        }
-        
-        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
-    }
-    
-    @objc func willHideKeyboard(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {return}
-            
-            if isKeyboardActive {
-                if self.view.frame.origin.y != 0 {
-                    self.view.frame.origin.y = 0
-                }
-            }
-            isKeyboardActive = false
-        }
-        
-        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
-    }
+  
     
     @objc func handleLogin() {
         guard let username = loginView.usernameTextField.text,
@@ -111,14 +67,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate, KeyboardDelega
             print(user?.languages, err)
         }
     }
-    
-    func keyboardIsActive() {
-        // This gets called whenever the keyboard is active
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIWindow.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIWindow.keyboardWillHideNotification, object: nil)
-    }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         self.count = 0

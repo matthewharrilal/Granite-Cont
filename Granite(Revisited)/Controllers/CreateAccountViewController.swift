@@ -15,6 +15,7 @@ class CreateAccountViewController: UIViewController {
     lazy var accountView: CreateAccountView = self.createAccountView()
     weak var coordinator: MainCoordinator?
     var user: User!
+    var isKeyboardActive: Bool = false
     
     var keyboardTapClosure: (() -> Void)?
     
@@ -24,28 +25,22 @@ class CreateAccountViewController: UIViewController {
         
         self.accountView.fullNameTapClosure = {[weak self] in
             self?.animateFullNameTextView()
-            // Handle keyboard tap
-            
-            self?.keyboardTapClosure?()
         }
         
         self.accountView.tapClosure = {[weak self] in
             self?.animateEmailView()
-            self?.keyboardTapClosure?()
         }
         
         self.accountView.passwordTapClosure = {[weak self] in
             self?.animatePasswordView()
-            self?.keyboardTapClosure?()
         }
         
         self.accountView.confirmPasswordTapClosure = {[weak self] in
             self?.animateConfirmPasswordView()
-            self?.keyboardTapClosure?()
         }
         
         self.accountView.resignedResponder = {[unowned self] textField in
-
+            
             switch textField.tag {
                 
             case 0:
@@ -64,29 +59,8 @@ class CreateAccountViewController: UIViewController {
                 return
             }
         }
-        
-        
-        self.keyboardTapClosure = {[unowned self] in
-            print("Keyboard is active")
-            NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyboardNotification), name: UIWindow.keyboardWillShowNotification, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.willHideKeyboard), name: UIWindow.keyboardWillHideNotification, object: nil)
-        }
-        
-        self.accountView.signUpContainer.selectBlock = {[unowned self] in
-            
-            // Need to pass the first name so that we can start the onboarding flow
-            if let fullName = self.accountView.fullNameTextField.text {
-                let firstName = fullName.components(separatedBy: " ")
-                self.setUserInformation(fullName: fullName)
-                self.coordinator?.startOnboardingFlow(name: firstName[0])
-            }
-            
-        }
     }
     
-    @objc func handleKeyboardNotification() {}
-    
-    @objc func willHideKeyboard() {}
     
     func setUserInformation(fullName: String) {
         // This is at a point in time where the user has filled in all the required text fields therefore we can start populating the user object that is going to be passed through the onboarding flow

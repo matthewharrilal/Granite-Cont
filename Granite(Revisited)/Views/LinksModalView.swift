@@ -11,7 +11,7 @@ import UIKit
 import Lottie
 import KeychainSwift
 
-class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
+class LinksModalView: UIView, EndEditingDelegate {
     
     lazy var linkName: UILabel = self.createLinkNameLabel()
     //    var containerView: LinksModalContainerView!
@@ -81,7 +81,6 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         Bundle.main.loadNibNamed("LinksModalView", owner: self, options: nil)
         
 
-        containerView.keyboardDelegate = self
         containerView.endEditingDelegate = self
         
         self.linkName.textColor = .white

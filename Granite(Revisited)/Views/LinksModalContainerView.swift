@@ -19,7 +19,6 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     var imageName: String?
     lazy var stackView: UIStackView = createTextFieldStackView()
     
-    weak var keyboardDelegate: KeyboardDelegate?
     weak var endEditingDelegate: EndEditingDelegate?
     
     //    @IBOutlet weak var placeholderLabel: UILabel!
@@ -77,9 +76,6 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     
     
     @objc func handleTextFieldTap() {
-        if let keyboardDelegate = self.keyboardDelegate {
-            keyboardDelegate.keyboardIsActive()
-        }
         
         self.placeholderLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         UIView.animate(withDuration: 1.0) {

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import KeychainSwift
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
+        IQKeyboardManager.shared.enable = true
         
         return true
     }

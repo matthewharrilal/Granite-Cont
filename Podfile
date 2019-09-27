@@ -6,6 +6,7 @@ target 'Granite(Revisited)' do
   use_frameworks!
   
   # Pods for Granite(Revisited)
+  pod 'IQKeyboardManagerSwift'
   pod 'lottie-ios'
   pod 'CircleMenu'
   pod 'Hero'

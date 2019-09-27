@@ -29,9 +29,7 @@ class LoginView: UIView {
     var shapeLayer: CAShapeLayer!
     
     var configuredView: UIView!
-    
-    var keyboardDelegate: KeyboardDelegate?
-    
+    gi
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
