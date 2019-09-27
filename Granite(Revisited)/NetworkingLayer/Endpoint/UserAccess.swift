@@ -42,7 +42,18 @@ extension UserAccess: EndpointType {
             
         case .createUser(let user):
             // MARK: TODO Fix login to take email and not username or VICE VERSA have to remain consistent
-            parameters = ["email": user.email, "username": user.username, "password": user.password, "githubProfile": String(describing: user.githubProfileUsername),"twitterProfile": String(describing: user.twitterProfileUsername), "mediumProfile": user.mediumProfileUsername, "linkedInProfile": user.linkedInProfileUsername, "personalWebsite": user.personalWebsite, "languages": user.languages]
+//            parameters = ["email": user.email, "username": user.username, "password": user.password, "githubProfile": String(describing: user.githubProfileUsername),"twitterProfile": String(describing: user.twitterProfileUsername), "mediumProfile": user.mediumProfileUsername, "linkedInProfile": user.linkedInProfileUsername, "personalWebsite": user.personalWebsite, "languages": user.languages]
+            
+            parameters = ["email": user.email, "username": user.username, "password": user.password, "languages": user.languages]
+
+            
+            if user.githubProfileUsername != "" {parameters?["githubProfile"] = String(describing: user.githubProfileUsername)}
+            if user.twitterProfileUsername != "" {parameters?["twitterProfile"] = String(describing: user.twitterProfileUsername)}
+            if user.mediumProfileUsername != "" {parameters?["mediumProfile"] = String(describing: user.mediumProfileUsername)}
+            if user.linkedInProfileUsername != "" {parameters?["linkedInProfile"] = String(describing: user.linkedInProfileUsername)}
+            if user.personalWebsite != "" {parameters?["personalWebsite"] = String(describing: user.personalWebsite)}
+            
+            
             
             return .requestParameters(bodyParameters: parameters, urlParameters: nil)
         }

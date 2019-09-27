@@ -54,15 +54,15 @@ class User: Decodable {
     
     required convenience init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: UserKeys.self)
-        let languages = try container.decode([String].self, forKey: .languages)
+        let languages = try container.decodeIfPresent([String].self, forKey: .languages) ?? [String]()
         let password = try container.decode(String.self, forKey: .password)
         let email = try container.decode(String.self, forKey: .email)
         let username = try container.decode(String.self, forKey: .email)
-        let githubProfileUsername = try container.decode(String.self, forKey: .githubProfile)
-        let twitterProfileUsername = try container.decode(String.self, forKey: .twitterProfile)
-        let mediumProfileUsername = try container.decode(String.self, forKey: .mediumProfile)
-        let linkedInProfileUsername = try container.decode(String.self, forKey: .linkedInProfile)
-        let personalWebsite = try container.decode(String.self, forKey: .personalWebsite)
+        let githubProfileUsername = try container.decodeIfPresent(String.self, forKey: .githubProfile) ?? ""
+        let twitterProfileUsername = try container.decodeIfPresent(String.self, forKey: .twitterProfile) ?? ""
+        let mediumProfileUsername = try container.decodeIfPresent(String.self, forKey: .mediumProfile) ?? ""
+        let linkedInProfileUsername = try container.decodeIfPresent(String.self, forKey: .linkedInProfile) ?? ""
+        let personalWebsite = try container.decodeIfPresent(String.self, forKey: .personalWebsite) ?? ""
         let updatedAt = try container.decode(String.self, forKey: .updatedAt)
         self.init(email: email, username: username, password: password, githubProfileUsername: githubProfileUsername, twitterProfileUsername: twitterProfileUsername, mediumProfileUsername: mediumProfileUsername, linkedInProfileUsername: linkedInProfileUsername, personalWebsite: personalWebsite,  languages: languages)
     }
