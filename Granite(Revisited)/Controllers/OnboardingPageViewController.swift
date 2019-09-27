@@ -36,7 +36,8 @@ class OnboardingPageViewController: UIPageViewController {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
         
-        
+        self.view.removePageViewGesture()
+       
     }
     
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {

@@ -10,6 +10,16 @@ import Foundation
 import UIKit
 
 extension UIView {
+    
+    func removePageViewGesture() {
+        for view in self.subviews {
+            
+            if let subview = view as? UIScrollView {
+                subview.isScrollEnabled = false
+            }
+        }
+    }
+    
     func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
         // Enables auto layout
         self.translatesAutoresizingMaskIntoConstraints = false
