@@ -68,8 +68,8 @@ class CreateAccountViewController: UIViewController {
         
         self.keyboardTapClosure = {[unowned self] in
             print("Keyboard is active")
-            NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIWindow.keyboardWillShowNotification, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIWindow.keyboardWillHideNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyboardNotification), name: UIWindow.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.willHideKeyboard), name: UIWindow.keyboardWillHideNotification, object: nil)
         }
         
         self.accountView.signUpContainer.selectBlock = {[unowned self] in
