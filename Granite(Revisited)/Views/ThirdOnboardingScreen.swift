@@ -26,10 +26,10 @@ class ThirdOnboardingScreen: UIView {
     var startingFrame: CGRect?
     var blurView: UIVisualEffectView!
     var didTap = false
-    lazy var redView = LinksModalView(frame: startingFrame!)
     var indexPathRow: Int?
     var coordinator: MainCoordinator?
     var animateViewScrollClosure: (() -> Void)?
+    var linkTextClosure: ((String) -> Void)?
     
     
     override init(frame: CGRect) {
@@ -69,6 +69,8 @@ class ThirdOnboardingScreen: UIView {
             make.top.equalTo(self.safeAreaLayoutGuide.snp.topMargin).offset(10)
             make.left.equalToSuperview().offset(26)
         }
+        
+    
     }
     
     @objc func handleTap() {

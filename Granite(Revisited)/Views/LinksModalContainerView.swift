@@ -17,7 +17,6 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     lazy var bottomBorder = CALayer()
     var confirmationButton: UIButton!
     var imageName: String?
-    var logoImageClosure: ((UIImage) -> Void)?
     lazy var stackView: UIStackView = createTextFieldStackView()
     
     weak var keyboardDelegate: KeyboardDelegate?
@@ -133,7 +132,8 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
         // Use delegate to notify modal view that user is done editing
         
         // What if the user wants to come back
-        self.endEditingDelegate?.returnWasPressed()
+        
+        self.endEditingDelegate?.returnWasPressed(linkText: textField.text ?? "")
         textField.endEditing(true)
         return false
     }

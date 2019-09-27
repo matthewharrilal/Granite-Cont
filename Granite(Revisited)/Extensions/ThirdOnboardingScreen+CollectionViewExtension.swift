@@ -91,9 +91,6 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         guard let startingFrame = self.startingFrame else {return}
         self.modalViewTapClosure?(startingFrame, cell.linkName.text)
-        //
-        self.redView.successDelegate = self
-        
         
         
         if var image = cell.linkLogo.image {
@@ -113,102 +110,10 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
             
         }
         
-        //
-        //        //        var redView = LinksModalView(frame: startingFrame!)
-        //        let blurEffect = UIBlurEffect(style: .prominent)
-        //        self.blurView = UIVisualEffectView(effect: blurEffect)
-        //        self.blurView.frame = self.bounds
-        //        self.addSubview(self.blurView)
-        //        self.blurView.alpha = 0.0
-        //        self.blurView.contentView.addSubview(redView)
-        //        redView.layer.cornerRadius = 20
-        //        self.redView.createExitButton()
-        //
-        //        // For when modal view comes up
-        //        self.redView.containerView.usernameTextField.text = nil
-        //        self.redView.containerView.usernameTextField.resignFirstResponder()
-        //        //        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal(sender:))))
-        //
-        //        if let linkNameText = cell.linkName.text {
-        //            self.redView.containerView.linkName = linkNameText
-        //            if linkNameText == "Personal Website" {
-        //                self.redView.containerView.placeholderLabel.text = "Personal Website Link"
-        //                self.redView.containerView.usernameTextField.placeholder = "Personal Website Link"
-        //            }
-        //        }
-        //
-        //
-        //        // BLUR OUT Background
-        //        redView.alpha = 0.0
-        //        self.blurView.backgroundColor = cell.containerView.backgroundColor
-        //        self.redView.exitButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissModal)))
-        //
-        //        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
-        //
-        //            // Frame is the same before and after
-        //            // Because the container view no longer has a frame when you resize the red views frame therefore off balancing undefined frame subviews
-        //            self.redView.frame = .init(x: self.center.x, y: self.center.y, width: self.bounds.width / 1.3, height: self.bounds.height / 2.8)
-        //            self.redView.center = self.center
-        //            self.blurView.alpha = 1.0
-        //            self.redView.alpha = 1.0
-        //            self.redView.linkName.constrainWidth(withWidth: self.redView.frame.width - 40)
-        //
-        //            // CONTAINER VIEW FRAME CHANGING AND NOT SUPERVIEW CHANGING BOUNDS MID X CHANGING AFTER WHAT
-        //            self.redView.layoutSubviews() // Update layout of subviews once the red views frame changes updates the new bounds
-        //            self.redView.containerView.logoImageView.frame.origin.x = self.redView.containerView.frame.minX
-        //            self.redView.containerView.textFieldView.frame.origin.x = self.redView.containerView.logoImageView.center.x
-        //            self.redView.containerView.textFieldView.frame.origin.y = self.redView.containerView.bounds.midY
-        //
-        //        }, completion: nil)
-        //
-        //        print("")
         
     }
+   
     
-    func successHasPlayed() {
-        print("Success animation has been played")
-        dismissModal()
-        self.redView.removeAnimationContainer()
-        print("This the index path of the cell \(indexPathRow)")
-        
-        guard let indexPathRow = self.indexPathRow else {return}
-        let indexPath = IndexPath(item: indexPathRow, section: 0)
-        let cell = collectionView.cellForItem(at: indexPath)
-        
-        
-        self.imageToColor.remove(at: indexPathRow)
-        self.imageName.remove(at: indexPathRow)
-        UIView.animate(withDuration: 0.7, delay: 0.0, options: .curveEaseInOut, animations: {
-            self.collectionView.deleteItems(at: [indexPath])
-        }, completion: nil)
-        
-        
-    }
-    
-    @objc func dismissModal() {
-        self.isUserInteractionEnabled = false
-        
-        guard let startingFrame = self.startingFrame else {return}
-        
-        self.blurView.layer.cornerRadius = 20
-        
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            //            sender.view?.superview?.frame = startingFrame
-            self.blurView.frame = startingFrame
-            self.blurView.alpha = 0.0
-            //            sender.view?.alpha = 0.0
-            
-        }) { (_) in
-            
-            // Making sure that views have been removed MARK: FIX make sure that references of these views are deallocated as well
-            //            sender.view?.superview?.removeFromSuperview()
-            self.blurView.removeFromSuperview()
-            print("Blur view removed")
-            self.isUserInteractionEnabled = true
-            self.redView.exitButton.removeFromSuperview()
-        }
-        
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -219,12 +124,5 @@ extension ThirdOnboardingScreen: UICollectionViewDelegate, UICollectionViewDataS
         
         return .init(width: self.frame.width, height: 120)
     }
-    
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    //        return 10
-    //    }
-    //
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    //        return 10
-    //    }
+
 }

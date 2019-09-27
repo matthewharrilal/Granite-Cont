@@ -21,15 +21,15 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     var exitButton: UIButton!
     var bottomConstraint: NSLayoutConstraint!
-    var logoImageClosure: ((UIImage) -> Void)?
-        
+    
     var animationContainer: UIView!
     
     weak var successDelegate: DismissModalViewDelegate?
+    var linkTextClosure: ((String) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        commonInit() 
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -82,7 +82,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         self.linkName.textColor = .white
     }
     
-    func returnWasPressed() {
+    func returnWasPressed(linkText: String) {
         print("Return Key was pressed!")
         
         let oldText = self.linkName.text
@@ -107,6 +107,8 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
         CATransaction.commit()
         
         self.linkName.text = "Thanks"
+        
+        self.linkTextClosure?(linkText)
     }
     
     func removeAnimationContainer() {

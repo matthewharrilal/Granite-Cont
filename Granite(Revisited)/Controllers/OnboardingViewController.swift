@@ -49,7 +49,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         self.addChild(pageViewController)
         
         self.tapGesture.delegate = self
-        
+         
         self.view.addSubview(self.pageViewController.view)
         
         pageViewController.didMove(toParent: self)

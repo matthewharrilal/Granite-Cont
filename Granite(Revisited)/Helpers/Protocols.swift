@@ -15,7 +15,7 @@ protocol KeyboardDelegate: class {
 
 
 protocol EndEditingDelegate: class {
-    func returnWasPressed()
+    func returnWasPressed(linkText: String)
 }
 
 protocol DismissModalViewDelegate: class {
