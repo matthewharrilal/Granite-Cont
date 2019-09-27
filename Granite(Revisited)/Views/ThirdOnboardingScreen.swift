@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class ThirdOnboardingScreen: UIView {
+
+    
     @IBOutlet weak var moreAboutYourself: UILabel!
 //    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -34,13 +36,12 @@ class ThirdOnboardingScreen: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        commonInit()
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        commonInit()
+
     }
     
     override func layoutSubviews() {

@@ -8,13 +8,14 @@
 
 import Foundation
 import UIKit
+import KeychainSwift
 
 class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     // Used to test the embedding of a page view controller
     
     //    var pageViewController = OnboardingPageViewController()
     lazy var pageViewController: OnboardingPageViewController = self.createOnboardingPageViewController()
-    
+    lazy var keychain = KeychainSwift()
     lazy var transitionButton: TouchableBounceView = createTouchableBounceButton(withText: "Next")
     lazy var blurView: UIVisualEffectView = self.createBlurView()
     lazy var modalView: LinksModalView = self.createModalView()
@@ -26,20 +27,20 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     
     var user: User?
     weak var coordinator: MainCoordinator?
- 
     
-//    init(user: User?) {
-//        self.user = user
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    
-//    convenience init() {
-//        self.init(user: nil)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
+    
+    //    init(user: User?) {
+    //        self.user = user
+    //        super.init(nibName: nil, bundle: nil)
+    //    }
+    //
+    //    convenience init() {
+    //        self.init(user: nil)
+    //    }
+    //
+    //    required init?(coder aDecoder: NSCoder) {
+    //        super.init(coder: aDecoder)
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         self.addChild(pageViewController)
         
         self.tapGesture.delegate = self
-         
+        
         self.view.addSubview(self.pageViewController.view)
         
         pageViewController.didMove(toParent: self)
@@ -59,12 +60,13 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         self.view.backgroundColor = .white
         
         
-        self.pageViewController.modalViewTapClosure = {[weak self] (startingFrame, text) in
+        self.pageViewController.modalViewTapClosure = {[unowned self] (startingFrame, text) in
             print("Page view controller tap closure")
             // MARK: TODO Have to add a blur view and ANIMATE THE BLUR VIEW
-            self?.startingFrame = startingFrame
-            self?.layoutBlurView()
-            self?.layoutModalView()
+            self.keychain.set(text ?? "", forKey: "linkName")
+            self.startingFrame = startingFrame
+            self.layoutBlurView()
+            self.layoutModalView()
             
             // MARK: Have to add modal view as well
         }
@@ -81,9 +83,10 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
                 self.coordinator?.setCommunicatedUser(withUser: user)
             }
             
-//            self.coordinator?.setCommunicatedUser(withUser: self.user!)
+            //            self.coordinator?.setCommunicatedUser(withUser: self.user!)
             print(languages)
         }
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -140,6 +143,8 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             self.modalView.containerView.usernameTextField.text = ""
             
         }
+        
+        
     }
 }
 
@@ -218,7 +223,36 @@ extension OnboardingViewController {
         UIView.animate(withDuration: 0.5) {
             self.modalView.alpha = 1.0
         }
+        self.modalView.linkTextClosure = {[unowned self] linkText in
+            
+            if let user = self.user {
+                if let linkName = self.keychain.get("linkName") {
+                    switch linkName {
+                    case "Medium":
+                        self.user?.mediumProfileUsername = linkText
+                        self.coordinator?.setCommunicatedUser(withUser: user)
+                    case "Twitter":
+                        self.user?.twitterProfileUsername = linkText
+                        self.coordinator?.setCommunicatedUser(withUser: user)
+                    case "Github":
+                        self.user?.githubProfileUsername = linkText
+                        self.coordinator?.setCommunicatedUser(withUser: user)
+                    case "LinkedIn":
+                        self.user?.linkedInProfileUsername = linkText
+                        self.coordinator?.setCommunicatedUser(withUser: user)
+                    case "Personal Website":
+                        self.user?.personalWebsite = linkText
+                        self.coordinator?.setCommunicatedUser(withUser: user)
+                    default:
+                        break
+                    }
+                }
+            }
+            
+            
+        }
     }
+    
 }
 
 extension OnboardingViewController: UIGestureRecognizerDelegate {

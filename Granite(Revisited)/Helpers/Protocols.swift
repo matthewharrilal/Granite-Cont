@@ -21,3 +21,7 @@ protocol EndEditingDelegate: class {
 protocol DismissModalViewDelegate: class {
     func successHasPlayed()
 }
+
+protocol RelayLinkText: class {
+    func relayLinkText(linkText: String)
+}

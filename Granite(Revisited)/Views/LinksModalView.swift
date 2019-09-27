@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import Lottie
-
+import KeychainSwift
 
 class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     
@@ -17,10 +17,14 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     //    var containerView: LinksModalContainerView!
     
     lazy var containerView = self.createContainerView()
+    lazy var keychain = KeychainSwift()
+    
     @IBOutlet weak var pleaseEnterLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     var exitButton: UIButton!
     var bottomConstraint: NSLayoutConstraint!
+    
+    weak var relayLinkTextDelegate: RelayLinkText?
     
     var animationContainer: UIView!
     
@@ -29,6 +33,7 @@ class LinksModalView: UIView, KeyboardDelegate, EndEditingDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         commonInit() 
     }
     
