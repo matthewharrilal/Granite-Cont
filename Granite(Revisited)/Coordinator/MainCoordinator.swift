@@ -47,6 +47,12 @@ class MainCoordinator: Coordinator {
         // Once we have the user then what ... the next screen that gets created we then pass that to the property made there
     }
     
+    func saveUser() {
+        createUser(withUser: self.communicatedUser) { (user, errror) in
+            print(user, errror)
+        }
+    }
+    
     // MARK: TODO Handle the transition of DO NOT HAVE AN ACCOUNT -> First onboarding screen
     
     func createAccountView() {

@@ -29,19 +29,6 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     weak var coordinator: MainCoordinator?
     
     
-    //    init(user: User?) {
-    //        self.user = user
-    //        super.init(nibName: nil, bundle: nil)
-    //    }
-    //
-    //    convenience init() {
-    //        self.init(user: nil)
-    //    }
-    //
-    //    required init?(coder aDecoder: NSCoder) {
-    //        super.init(coder: aDecoder)
-    //    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,6 +73,13 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             //            self.coordinator?.setCommunicatedUser(withUser: self.user!)
             print(languages)
         }
+        
+        pageViewController.completedOnboardingFlowClosure = {[unowned self] in
+            self.coordinator?.saveUser()
+        }
+        
+        
+        // When the closure that represents that the last onboarding screen has been reached we then send a network request to backend
         
     }
     

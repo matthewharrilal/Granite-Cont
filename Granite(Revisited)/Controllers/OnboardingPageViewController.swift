@@ -20,6 +20,8 @@ class OnboardingPageViewController: UIPageViewController {
     
     var logoImageClosure: ((UIImage, UIColor, String) -> Void)?
     
+    var completedOnboardingFlowClosure: (() -> Void)?
+    
     lazy var orderedViewControllers: [UIViewController] = [FirstOnboardingController(), self.secondOnboardingController, self.thirdOnboardingController]
     var pageControl: UIPageControl = UIPageControl()
     
@@ -37,7 +39,7 @@ class OnboardingPageViewController: UIPageViewController {
         }
         
         self.view.removePageViewGesture()
-       
+        
     }
     
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
@@ -62,9 +64,9 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
         
         
         let previousIndex = viewControllerIndex - 1
-//        guard previousIndex >= 0 else {
-//            return orderedViewControllers.last // Loop the ordered view controllers
-//        }
+        //        guard previousIndex >= 0 else {
+        //            return orderedViewControllers.last // Loop the ordered view controllers
+        //        }
         
         guard self.orderedViewControllers.count > previousIndex else {return nil}
         
@@ -78,9 +80,9 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
         
         let nextIndex = viewControllerIndex + 1
         
-//        guard orderedViewControllers.count != nextIndex else {
-//            return orderedViewControllers.first // Loop the ordered view controllers
-//        }
+        //        guard orderedViewControllers.count != nextIndex else {
+        //            return orderedViewControllers.first // Loop the ordered view controllers
+        //        }
         
         guard self.orderedViewControllers.count > nextIndex else {return nil}
         
@@ -115,7 +117,12 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource, UIPageVi
     func nextPage() {
         guard let currentViewController = self.viewControllers?.first,
             let nextViewController = self.dataSource?.pageViewController(self, viewControllerAfter: currentViewController)
-            else {return}
+            else {
+                
+                // Use closure to relay back to onboarding view controller
+                self.completedOnboardingFlowClosure?()
+                return
+        }
         
         // At point in time where user is transitioning to the next page if the current view controller is language select use closure to transmit those values to the onboarding view controller and it would happen right ther
         

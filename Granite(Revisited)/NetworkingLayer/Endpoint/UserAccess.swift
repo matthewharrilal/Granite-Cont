@@ -42,7 +42,7 @@ extension UserAccess: EndpointType {
             
         case .createUser(let user):
             // MARK: TODO Fix login to take email and not username or VICE VERSA have to remain consistent
-            parameters = ["email": user.email, "username": user.username, "password": user.password, "githubProfile": String(describing: user.githubProfileUsername), "languages": user.languages]
+            parameters = ["email": user.email, "username": user.username, "password": user.password, "githubProfile": String(describing: user.githubProfileUsername),"twitterProfile": String(describing: user.twitterProfileUsername), "mediumProfile": user.mediumProfileUsername, "linkedInProfile": user.linkedInProfileUsername, "personalWebsite": user.personalWebsite, "languages": user.languages]
             
             return .requestParameters(bodyParameters: parameters, urlParameters: nil)
         }
