@@ -180,7 +180,7 @@ extension CreateAccountView {
         
         layoutPasswordTextView()
         
-        layoutConfirmPasswordTextView()
+//        layoutConfirmPasswordTextView()
         
         
         layoutSignUpContainerView()
@@ -430,7 +430,7 @@ extension CreateAccountView {
             make.height.equalTo(55)
             
             make.centerX.equalToSuperview()
-            make.top.equalTo(self.confirmPasswordTextView.snp.bottom).offset(50)
+            make.top.equalTo(self.passwordTextView.snp.bottom).offset(50)
         }
     }
 }

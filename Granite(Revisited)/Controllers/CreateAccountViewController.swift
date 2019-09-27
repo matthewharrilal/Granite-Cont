@@ -16,24 +16,32 @@ class CreateAccountViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     var user: User!
     
+    var keyboardTapClosure: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
         
         self.accountView.fullNameTapClosure = {[weak self] in
             self?.animateFullNameTextView()
+            // Handle keyboard tap
+            
+            self?.keyboardTapClosure?()
         }
         
         self.accountView.tapClosure = {[weak self] in
             self?.animateEmailView()
+            self?.keyboardTapClosure?()
         }
         
         self.accountView.passwordTapClosure = {[weak self] in
             self?.animatePasswordView()
+            self?.keyboardTapClosure?()
         }
         
         self.accountView.confirmPasswordTapClosure = {[weak self] in
             self?.animateConfirmPasswordView()
+            self?.keyboardTapClosure?()
         }
         
         self.accountView.resignedResponder = {[unowned self] textField in
@@ -57,6 +65,13 @@ class CreateAccountViewController: UIViewController {
             }
         }
         
+        
+        self.keyboardTapClosure = {[unowned self] in
+            print("Keyboard is active")
+            NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIWindow.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIWindow.keyboardWillHideNotification, object: nil)
+        }
+        
         self.accountView.signUpContainer.selectBlock = {[unowned self] in
             
             // Need to pass the first name so that we can start the onboarding flow
@@ -68,6 +83,10 @@ class CreateAccountViewController: UIViewController {
             
         }
     }
+    
+    @objc func handleKeyboardNotification() {}
+    
+    @objc func willHideKeyboard() {}
     
     func setUserInformation(fullName: String) {
         // This is at a point in time where the user has filled in all the required text fields therefore we can start populating the user object that is going to be passed through the onboarding flow
