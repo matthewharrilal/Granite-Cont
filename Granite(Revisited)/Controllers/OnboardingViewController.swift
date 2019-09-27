@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import KeychainSwift
+import IQKeyboardManagerSwift
 
 class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     // Used to test the embedding of a page view controller
@@ -27,6 +28,17 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     
     var user: User?
     weak var coordinator: MainCoordinator?
+    
+    var disableKeyboardManager = true {
+        didSet {
+            print("Keyboard Manager")
+            
+            
+            IQKeyboardManager.shared.enable = disableKeyboardManager
+            
+    
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -132,6 +144,8 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
             self.blurView.removeFromSuperview()
             self.view.isUserInteractionEnabled = true
             
+            self.disableKeyboardManager = true
+            
             // MARK: TODO FIX Separation of concerns this file should not know about username text field two subviews down the hierarchy
             self.modalView.containerView.usernameTextField.resignFirstResponder()
             self.modalView.containerView.usernameTextField.text = ""
@@ -208,6 +222,7 @@ extension OnboardingViewController {
     func layoutModalView() {
         self.blurView.contentView.addSubview(self.modalView)
         modalView.successDelegate = self
+        self.disableKeyboardManager = true
         self.modalView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalToSuperview().dividedBy(1.5)

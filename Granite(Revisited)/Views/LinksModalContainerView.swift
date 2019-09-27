@@ -25,6 +25,8 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     lazy var placeholderLabel: UILabel = self.createPlaceholderLabel()
     lazy var usernameTextField: UITextField = self.createUsernameTextField()
     
+    weak var keyboardDelegate: KeyboardDelegate?
+    
     var linkName = "" {
         didSet {
             
@@ -76,7 +78,9 @@ class LinksModalContainerView: UIView, UITextFieldDelegate {
     
     
     @objc func handleTextFieldTap() {
-        
+        if let keyboardDelegate = self.keyboardDelegate {
+            keyboardDelegate.keyboardIsActive()
+        }
         self.placeholderLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         UIView.animate(withDuration: 1.0) {
             self.usernameTextField.placeholder = ""

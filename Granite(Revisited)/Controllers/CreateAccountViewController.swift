@@ -59,6 +59,16 @@ class CreateAccountViewController: UIViewController {
                 return
             }
         }
+        
+        self.accountView.signUpContainer.selectBlock = {[unowned self] in
+            
+            // Need to pass the first name so that we can start the onboarding flow
+            if let fullName = self.accountView.fullNameTextField.text {
+                let firstName = fullName.components(separatedBy: " ")
+                self.setUserInformation(fullName: fullName)
+                self.coordinator?.startOnboardingFlow(name: firstName[0])
+            }
+        }
     }
     
     
