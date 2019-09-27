@@ -25,17 +25,21 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
     var communicatedUserClosure: ((User?) -> Void)?
     
     var user: User?
-    var coordinator: MainCoordinator?
+    weak var coordinator: MainCoordinator?
  
     
-    convenience init(user: User) {
-        self.user = user
-    }
-    
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+//    init(user: User?) {
+//        self.user = user
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    
+//    convenience init() {
+//        self.init(user: nil)
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,12 +76,13 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         }
         
         pageViewController.selectedLanguagesClosure = {[unowned self] languages in
-            guard let user = self.user else {return}
+            if let user = self.user {
+                user.languages = Array(languages)
+                self.coordinator?.setCommunicatedUser(withUser: user)
+            }
             
-            print("Languages \(languages)")
-            user.languages = Array(languages)
-            
-            self.coordinator?.setCommunicatedUser(withUser: user)
+//            self.coordinator?.setCommunicatedUser(withUser: self.user!)
+            print(languages)
         }
     }
     
