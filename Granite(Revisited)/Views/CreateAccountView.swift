@@ -354,6 +354,7 @@ extension CreateAccountView {
         self.passwordStackView.addArrangedSubview(self.passwordTextField)
         passwordTextField.delegate = self
         passwordTextField.tag = 2
+        passwordTextField.isSecureTextEntry = true
         
         self.passwordTextField.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
