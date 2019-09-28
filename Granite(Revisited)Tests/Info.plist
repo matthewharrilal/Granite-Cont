@@ -4,10 +4,6 @@
 <dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>To display developers in your area, we need to know your location!</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>To display developers in your area, we need to know your location!</string>
-	<key>NSLocationUsageDescription</key>
-	<string>To display developers in your area, we need to know your location!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To display developers in your area, we need to know your location!r</string>
 	<key>CFBundleDevelopmentRegion</key>
