@@ -73,16 +73,23 @@ extension LocationViewController {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.currentCoordinate = locations[0].coordinate
+        guard let currentCoordinate = self.currentCoordinate else {return}
+        print(currentCoordinate)
         
-        self.circularRegion = CLCircularRegion(center: self.currentCoordinate, radius: 50, identifier: "region")
+        self.circularRegion = CLCircularRegion(center: currentCoordinate, radius: 50, identifier: "region")
         
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("SOMEONE ENTERED")
     }
     
     func startMonitoringRegion() {
         if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
-            self.circularRegion?.notifyOnEntry
-            self.circularRegion?.notifyOnExit
-            self.locationManager.startMonitoring(for: self.circularRegion)
+            guard let circularRegion = self.circularRegion else {return}
+            circularRegion.notifyOnEntry = true
+            circularRegion.notifyOnExit = true
+            self.locationManager.startMonitoring(for: circularRegion)
         }
     }
 }
