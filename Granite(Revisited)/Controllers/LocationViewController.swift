@@ -16,6 +16,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
     
     lazy var exampleView: UIView = self.createExampleView()
     
+    var currentCoordinate: CLLocationCoordinate2D?
+    var circularRegion: CLCircularRegion?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,10 +67,22 @@ extension LocationViewController {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
+            startMonitoringRegion()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations)
+        self.currentCoordinate = locations[0].coordinate
+        
+        self.circularRegion = CLCircularRegion(center: self.currentCoordinate, radius: 50, identifier: "region")
+        
+    }
+    
+    func startMonitoringRegion() {
+        if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+            self.circularRegion?.notifyOnEntry
+            self.circularRegion?.notifyOnExit
+            self.locationManager.startMonitoring(for: self.circularRegion)
+        }
     }
 }
