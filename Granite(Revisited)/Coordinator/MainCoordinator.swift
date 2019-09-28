@@ -87,6 +87,12 @@ class MainCoordinator: Coordinator {
         self.navigationController.present(secondOnboardingController, animated: true)
         //        self.navigationController.pushViewController(secondOnboardingController, animated: true)
     }
+    
+    func showLocationViewController() {
+        let locationViewController = LocationViewController()
+        
+        self.navigationController.pushViewController(locationViewController, animated: true)
+    }
 }
 
 
