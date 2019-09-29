@@ -66,7 +66,7 @@ extension LocationViewController {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-            locationManager.distanceFilter = CLLocationDistance(exactly: 100.0)!
+            locationManager.distanceFilter = CLLocationDistance(exactly: 60)! // TEN MILES IN METERS
             //nerd
             locationManager.startUpdatingLocation()
             startMonitoringRegion()
@@ -76,8 +76,6 @@ extension LocationViewController {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.currentCoordinate = locations[0].coordinate
         guard let currentCoordinate = self.currentCoordinate else {return}
-        print(currentCoordinate)
-        
          let location = Location(latitude: Float(currentCoordinate.latitude), longitude: Float(currentCoordinate.longitude))
         
     
@@ -91,10 +89,6 @@ extension LocationViewController {
         // Then we fetch all the users in the new location TWO NETWORK Requests
         self.circularRegion = CLCircularRegion(center: currentCoordinate, radius: 50, identifier: "region")
         
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        print("SOMEONE ENTERED")
     }
     
     func startMonitoringRegion() {
