@@ -61,6 +61,18 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
     let userManager = NetworkManager().userAccess
     
     userManager.request(withEndpoint: .authenticateUser(username: user.username, password: user.password)) { (data, response, err) in
+        
+        if let httpResponse = response as? HTTPURLResponse, let fields = httpResponse.allHeaderFields as? [String : String] {
+            let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: response!.url!)
+            //            HTTPCookieStorage.sh aredHTTPCookieStorage.setCookies(cookies, forURL: response!.URL!, mainDocumentURL: nil)
+            for cookie in cookies {
+                var cookieProperties = [String: AnyObject]()
+                
+                print("name: \(cookie.name) value: \(cookie.value)")
+            }
+        }
+        
+        
         if err != nil {
             return completion(nil, err?.localizedDescription)
         }
