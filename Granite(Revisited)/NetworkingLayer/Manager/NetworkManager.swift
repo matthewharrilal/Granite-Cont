@@ -9,6 +9,7 @@
 import Foundation
 
 typealias UserCompletion = (_ user: User?, _ error: String?) -> ()
+typealias LocationCompletion = (_ statusCode: Int?, _ error: String?) -> ()
 
 public struct NetworkManager {
     // In charge of containing our routers for each endpoint
@@ -110,11 +111,15 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
     }
 }
 
-func postLocation(withLatitude latitude: Float, withLongitude longitude: Float) -> Void {
+func postLocation(withLatitude latitude: Float, withLongitude longitude: Float, completion: @escaping LocationCompletion) -> Void {
     let locationManager = NetworkManager().locationManager
     
     locationManager.request(withEndpoint: .postLocation(latitude: latitude, longitude: longitude)) { (data, response, error) in
-        <#code#>
+        if error != nil {
+            return completion(nil, error?.localizedDescription)
+        }
+        
+        // Need to decode data into location model
     }
 }
 

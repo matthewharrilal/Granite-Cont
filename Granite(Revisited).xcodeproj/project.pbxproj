@@ -103,6 +103,7 @@
 		1CCCC1DF2267D8AC0012DA75 /* lazyNight.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CCCC1DE2267D8AC0012DA75 /* lazyNight.json */; };
 		1CCFDC63233EBA4D00AA776B /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCFDC62233EBA4D00AA776B /* LocationViewController.swift */; };
 		1CDA1C72234077D7007BCE4C /* LocationEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA1C71234077D7007BCE4C /* LocationEndpoint.swift */; };
+		1CDA1C7423407FD0007BCE4C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA1C7323407FD0007BCE4C /* Location.swift */; };
 		1CFDB43A22F9F3A400F9228E /* ThirdOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFDB43922F9F3A400F9228E /* ThirdOnboardingController.swift */; };
 		3976AD8F7A28E77D632467A6 /* Pods_Granite_Revisited_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B3489A0C4D9EEF06640D /* Pods_Granite_Revisited_.framework */; };
 		B8CE4BD28BC36E1E373B29F7 /* Pods_Granite_Revisited_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCEA62147E5CE8310AFF610 /* Pods_Granite_Revisited_Tests.framework */; };
@@ -219,6 +220,7 @@
 		1CCCC1DE2267D8AC0012DA75 /* lazyNight.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lazyNight.json; sourceTree = "<group>"; };
 		1CCFDC62233EBA4D00AA776B /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		1CDA1C71234077D7007BCE4C /* LocationEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEndpoint.swift; sourceTree = "<group>"; };
+		1CDA1C7323407FD0007BCE4C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		1CFDB43922F9F3A400F9228E /* ThirdOnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingController.swift; sourceTree = "<group>"; };
 		26370F436F68BA75E87CB213 /* Pods-Granite(Revisited)Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Granite(Revisited)Tests.debug.xcconfig"; path = "Target Support Files/Pods-Granite(Revisited)Tests/Pods-Granite(Revisited)Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7901E567461C465DB3952FBB /* Pods-Granite(Revisited).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Granite(Revisited).debug.xcconfig"; path = "Target Support Files/Pods-Granite(Revisited)/Pods-Granite(Revisited).debug.xcconfig"; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				1C226185227AB0090072A638 /* User.swift */,
+				1CDA1C7323407FD0007BCE4C /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				1CB034A222F6122900EFCC65 /* CreateAccountView.swift in Sources */,
 				1C226186227AB0090072A638 /* User.swift in Sources */,
 				1C83F43C227BE03100BEA884 /* HTTPMethods.swift in Sources */,
+				1CDA1C7423407FD0007BCE4C /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
