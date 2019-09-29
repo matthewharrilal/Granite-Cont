@@ -87,7 +87,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate {
         }
         
         pageViewController.completedOnboardingFlowClosure = {[unowned self] in
-            self.coordinator?.saveUser()
+//            self.coordinator?.saveUser()
             self.coordinator?.showLocationViewController()
         }
         

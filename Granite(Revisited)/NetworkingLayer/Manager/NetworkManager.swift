@@ -9,7 +9,7 @@
 import Foundation
 
 typealias UserCompletion = (_ user: User?, _ error: String?) -> ()
-typealias LocationCompletion = (_ statusCode: Int?, _ error: String?) -> ()
+typealias LocationCompletion = (_ location: Location?, _ error: String?) -> ()
 
 public struct NetworkManager {
     // In charge of containing our routers for each endpoint
@@ -111,15 +111,41 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
     }
 }
 
-func postLocation(withLatitude latitude: Float, withLongitude longitude: Float, completion: @escaping LocationCompletion) -> Void {
+func postLocation(withLocation location: Location, completion: @escaping LocationCompletion) -> Void {
     let locationManager = NetworkManager().locationManager
     
-    locationManager.request(withEndpoint: .postLocation(latitude: latitude, longitude: longitude)) { (data, response, error) in
+    locationManager.request(withEndpoint: .postLocation(latitude: location.latitude, longitude: location.longitude)) { (data, response, error) in
         if error != nil {
+            print("ERROR ------->   \(error?.localizedDescription)")
             return completion(nil, error?.localizedDescription)
         }
         
-        // Need to decode data into location model
+        if let response = response as? HTTPURLResponse {
+            let result = handleNetworkResponse(response)
+            
+            switch result {
+            case .success(let responseDescription):
+                print("Request was success \(responseDescription)")
+                
+                guard let data = data else {
+                    return completion(nil, NetworkResponse.noData.rawValue)
+                }
+                
+                do {
+                    let location = try JSONDecoder().decode(Location.self, from: data)
+                    return completion(location, nil)
+                }
+                    
+                
+                catch {
+                    return completion(nil, NetworkResponse.unableToDecode.rawValue)
+                }
+                
+            case .failure(let responseDescription):
+                print("Request was a failure \(responseDescription)")
+                return completion(nil, NetworkResponse.failed.rawValue)
+            }
+        }
     }
 }
 

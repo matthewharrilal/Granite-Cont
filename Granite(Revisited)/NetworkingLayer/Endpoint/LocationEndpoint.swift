@@ -11,7 +11,7 @@ import KeychainSwift
 var keychain = KeychainSwift()
 
 enum LocationEndpoint {
-    case postLocation(latitude: Float, longitude: Float)
+    case postLocation(latitude: Float, longitude: Float, userID: Int)
 }
 
 extension LocationEndpoint: EndpointType {
@@ -34,8 +34,8 @@ extension LocationEndpoint: EndpointType {
         switch self {
         case .postLocation(let latitude, let longitude):
             // Must have cookie from keychain in order to make authorized request
-            guard let cookie = keychain.get("cookie") else {fatalError("No Cookie Present")}
-            headers = ["Cookie": cookie]
+            guard let cookie = keychain.get("nToken") else {fatalError("No Cookie Present")}
+            headers = ["nToken": cookie]
             parameters = ["latitude": latitude, "longitude": longitude]
             
             return .requestParametersAndHeaders(bodyParameters: parameters, urlParameters: nil, headers: headers)
