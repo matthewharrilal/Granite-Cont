@@ -11,7 +11,7 @@ import KeychainSwift
 var keychain = KeychainSwift()
 
 enum LocationEndpoint {
-    case postLocation(latitude: Float, longitude: Float, userID: Int)
+    case postLocation(latitude: Float, longitude: Float)
 }
 
 extension LocationEndpoint: EndpointType {
