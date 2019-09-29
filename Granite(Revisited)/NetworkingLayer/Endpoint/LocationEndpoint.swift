@@ -29,20 +29,21 @@ extension LocationEndpoint: EndpointType {
     
     var task: HTTPTask {
         var headers: HTTPHeaders?
-        
+        var parameters: Parameters?
         
         switch self {
-        case .postLocation:
+        case .postLocation(let latitude, let longitude):
             // Must have cookie from keychain in order to make authorized request
             guard let cookie = keychain.get("cookie") else {fatalError("No Cookie Present")}
             headers = ["Cookie": cookie]
-            parameters
-            return .requestParametersAndHeaders(bodyParameters: <#T##Parameters?#>, urlParameters: <#T##Parameters?#>, headers: <#T##HTTPHeaders?#>)
+            parameters = ["latitude": latitude, "longitude": longitude]
+            
+            return .requestParametersAndHeaders(bodyParameters: parameters, urlParameters: nil, headers: headers)
         }
     }
     
     var httpMethod: String {
-        <#code#>
+        return HTTPMethods.post.rawValue
     }
     
     

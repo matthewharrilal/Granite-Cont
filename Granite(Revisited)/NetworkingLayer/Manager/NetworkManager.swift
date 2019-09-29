@@ -68,6 +68,7 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
             for cookie in cookies {
                 
                 print("name: \(cookie.name) value: \(cookie.value), ... \(cookie)")
+                keychain.set(cookie.value, forKey: cookie.name)
             }
         }
         
