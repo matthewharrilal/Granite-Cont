@@ -65,7 +65,9 @@ extension LocationViewController {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            locationManager.distanceFilter = CLLocationDistance(exactly: 50.0)!
+            //nerd
             locationManager.startUpdatingLocation()
             startMonitoringRegion()
         }
@@ -76,6 +78,9 @@ extension LocationViewController {
         guard let currentCoordinate = self.currentCoordinate else {return}
         print(currentCoordinate)
         
+        // Update occurs every 50 meters thefore a network request will happen to save the users location
+        
+        // Then we fetch all the users in the new location TWO NETWORK Requests
         self.circularRegion = CLCircularRegion(center: currentCoordinate, radius: 50, identifier: "region")
         
     }
