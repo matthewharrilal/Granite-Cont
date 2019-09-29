@@ -66,9 +66,8 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
             let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: response!.url!)
             //            HTTPCookieStorage.sh aredHTTPCookieStorage.setCookies(cookies, forURL: response!.URL!, mainDocumentURL: nil)
             for cookie in cookies {
-                var cookieProperties = [String: AnyObject]()
                 
-                print("name: \(cookie.name) value: \(cookie.value)")
+                print("name: \(cookie.name) value: \(cookie.value), ... \(cookie)")
             }
         }
         

@@ -54,7 +54,6 @@ extension UserAccess: EndpointType {
             if user.personalWebsite != "" {parameters?["personalWebsite"] = String(describing: user.personalWebsite)}
             
             
-            
             return .requestParameters(bodyParameters: parameters, urlParameters: nil)
         }
     }
