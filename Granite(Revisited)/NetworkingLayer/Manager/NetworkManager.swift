@@ -13,6 +13,7 @@ typealias UserCompletion = (_ user: User?, _ error: String?) -> ()
 public struct NetworkManager {
     // In charge of containing our routers for each endpoint
     let userAccess = Router<UserAccess>()
+    let locationManager = Router<LocationEndpoint>()
 }
 
 
@@ -106,6 +107,14 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
             }
             
         }
+    }
+}
+
+func postLocation(withLatitude latitude: Float, withLongitude longitude: Float) -> Void {
+    let locationManager = NetworkManager().locationManager
+    
+    locationManager.request(withEndpoint: .postLocation(latitude: latitude, longitude: longitude)) { (data, response, error) in
+        <#code#>
     }
 }
 
