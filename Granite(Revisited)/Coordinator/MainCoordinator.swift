@@ -91,7 +91,10 @@ class MainCoordinator: Coordinator {
     func showLocationViewController() {
         let locationViewController = LocationViewController()
         
-        self.navigationController.pushViewController(locationViewController, animated: true)
+        DispatchQueue.main.async {
+            self.navigationController.pushViewController(locationViewController, animated: true)
+        }
+        
     }
 }
 

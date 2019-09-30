@@ -18,8 +18,8 @@ class UserLocations: Decodable {
         self.locations = locations
     }
     
-    private enum UserLocationKeys: CodingKey {
-        case locations
+    private enum UserLocationKeys: String, CodingKey {
+        case locations = "location"
         case user
     }
     
