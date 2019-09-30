@@ -31,5 +31,7 @@ class Location: Decodable {
         self.init(latitude: latitude, longitude: longitude)
     }
 
+    
+    
 }
 

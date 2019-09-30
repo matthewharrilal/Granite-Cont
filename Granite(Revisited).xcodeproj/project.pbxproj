@@ -48,6 +48,7 @@
 		1C83F43C227BE03100BEA884 /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F43B227BE03100BEA884 /* HTTPMethods.swift */; };
 		1C83F43E227CD0AD00BEA884 /* PulsatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F43D227CD0AD00BEA884 /* PulsatingButton.swift */; };
 		1C83F4782280C64800BEA884 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F4772280C64800BEA884 /* UIView+Layout.swift */; };
+		1C88E6D0234192A300304A43 /* UserLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C88E6CF234192A300304A43 /* UserLocations.swift */; };
 		1CA0F7CC229DF2C700089583 /* SecondOnboardingScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA0F7CB229DF2C700089583 /* SecondOnboardingScreen.xib */; };
 		1CA0F7CE229DF2D600089583 /* SecondOnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7CD229DF2D600089583 /* SecondOnboardingScreen.swift */; };
 		1CA0F7D8229E110900089583 /* SecondOnboardingScreenCollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0F7D7229E110900089583 /* SecondOnboardingScreenCollectionView+Extension.swift */; };
@@ -161,6 +162,7 @@
 		1C83F43B227BE03100BEA884 /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
 		1C83F43D227CD0AD00BEA884 /* PulsatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsatingButton.swift; sourceTree = "<group>"; };
 		1C83F4772280C64800BEA884 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		1C88E6CF234192A300304A43 /* UserLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocations.swift; sourceTree = "<group>"; };
 		1CA0F7CB229DF2C700089583 /* SecondOnboardingScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondOnboardingScreen.xib; sourceTree = "<group>"; };
 		1CA0F7CD229DF2D600089583 /* SecondOnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingScreen.swift; sourceTree = "<group>"; };
 		1CA0F7D7229E110900089583 /* SecondOnboardingScreenCollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondOnboardingScreenCollectionView+Extension.swift"; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 			children = (
 				1C226185227AB0090072A638 /* User.swift */,
 				1CDA1C7323407FD0007BCE4C /* Location.swift */,
+				1C88E6CF234192A300304A43 /* UserLocations.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				1C31230622F8701700E4B112 /* OnboardingPageViewController.swift in Sources */,
 				1C83F429227BCC2900BEA884 /* EndpointType.swift in Sources */,
 				1CA0F7E2229EDB3A00089583 /* LanguagesCollectionViewCell.swift in Sources */,
+				1C88E6D0234192A300304A43 /* UserLocations.swift in Sources */,
 				1CCCC1D52267CD340012DA75 /* LoginView.swift in Sources */,
 				1CB034FA22F69A3B00EFCC65 /* TouchableBounceView.swift in Sources */,
 				1CA0F7EE22A0811600089583 /* ThirdOnboardingScreen+CollectionViewExtension.swift in Sources */,

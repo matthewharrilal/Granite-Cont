@@ -84,6 +84,15 @@ extension LocationViewController {
             print(location, error)
         }
         
+        
+        getUserLocations { (userLocations, error) in
+            guard error == nil else {return}
+            if let locations = userLocations?.locations {
+                for location in locations {
+                    print(location.latitude, location.longitude)
+                }
+            }
+        }
         // Update occurs every 50 meters thefore a network request will happen to save the users location
         
         // Then we fetch all the users in the new location TWO NETWORK Requests

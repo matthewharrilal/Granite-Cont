@@ -10,6 +10,7 @@ import Foundation
 
 typealias UserCompletion = (_ user: User?, _ error: String?) -> ()
 typealias LocationCompletion = (_ location: Location?, _ error: String?) -> ()
+typealias UserLocationCompletion = (_ user: UserLocations?, _ error: String?) -> ()
 
 public struct NetworkManager {
     // In charge of containing our routers for each endpoint
@@ -111,10 +112,49 @@ func authenticateUser(withUser user: User?, completion: @escaping UserCompletion
     }
 }
 
-func postLocation(withLocation location: Location, completion: @escaping LocationCompletion) -> Void {
+
+func getUserLocations(completion: @escaping UserLocationCompletion) -> Void {
     let locationManager = NetworkManager().locationManager
     
+    locationManager.request(withEndpoint: .getLocation) { (data, response, error) in
+        if error != nil {
+            return completion(nil, error?.localizedDescription)
+        }
+        if let response = response as? HTTPURLResponse {
+            let result = handleNetworkResponse(response)
+            
+            switch result {
+            case .success(let responseDescription):
+                print("Request was success \(responseDescription)")
+                
+                guard let data = data else {
+                    return completion(nil, NetworkResponse.noData.rawValue)
+                }
+                
+                do {
+                    let userLocations = try JSONDecoder().decode(UserLocations.self, from: data)
+                    return completion(userLocations, nil)
+                }
+                    
+                    
+                catch {
+                    return completion(nil, NetworkResponse.unableToDecode.rawValue)
+                }
+                
+            case .failure(let responseDescription):
+                print("Request was a failure \(responseDescription)")
+                return completion(nil, NetworkResponse.failed.rawValue)
+            }
+        }
+    }
+}
+
+func postLocation(withLocation location: Location, completion: @escaping LocationCompletion) -> Void {
+    let locationManager = NetworkManager().locationManager
+    let semaphore = DispatchSemaphore(value: 0)
+    
     locationManager.request(withEndpoint: .postLocation(latitude: location.latitude, longitude: location.longitude)) { (data, response, error) in
+        semaphore.signal()
         if error != nil {
             print("ERROR ------->   \(error?.localizedDescription)")
             return completion(nil, error?.localizedDescription)
@@ -147,6 +187,7 @@ func postLocation(withLocation location: Location, completion: @escaping Locatio
             }
         }
     }
+     semaphore.wait(timeout: .distantFuture)
 }
 
 func createUser(withUser user: User?, completion: @escaping UserCompletion) -> Void {
