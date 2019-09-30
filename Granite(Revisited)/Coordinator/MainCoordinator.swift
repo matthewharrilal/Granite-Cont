@@ -49,7 +49,7 @@ class MainCoordinator: Coordinator {
     
     func saveUser() {
         createUser(withUser: self.communicatedUser) { (user, errror) in
-            print(user, errror)
+            self.showLocationViewController()
         }
     }
     

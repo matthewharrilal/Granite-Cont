@@ -155,7 +155,19 @@ func createUser(withUser user: User?, completion: @escaping UserCompletion) -> V
     
     let userManager = NetworkManager().userAccess
     
+    
+    
     userManager.request(withEndpoint: .createUser(user: user)) { (data, response, err) in
+        if let httpResponse = response as? HTTPURLResponse, let fields = httpResponse.allHeaderFields as? [String : String] {
+            let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: response!.url!)
+            //            HTTPCookieStorage.sh aredHTTPCookieStorage.setCookies(cookies, forURL: response!.URL!, mainDocumentURL: nil)
+            for cookie in cookies {
+                
+                print("name: \(cookie.name) value: \(cookie.value), ... \(cookie)")
+                keychain.set(cookie.value, forKey: cookie.name)
+            }
+        }
+        
         if err != nil {
             return completion(nil, err?.localizedDescription)
         }
