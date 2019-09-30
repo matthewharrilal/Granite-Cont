@@ -66,7 +66,7 @@ extension LocationViewController {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-            locationManager.distanceFilter = CLLocationDistance(exactly: 60)! // TEN MILES IN METERS
+            locationManager.distanceFilter = CLLocationDistance(exactly: 16093.4)! // TEN MILES IN METERS
             //nerd
             locationManager.startUpdatingLocation()
             startMonitoringRegion()

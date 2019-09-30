@@ -65,6 +65,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         authenticateUser(withUser: user) { (user, err) in
             print(user?.languages, err)
+            self.coordinator?.showLocationViewController()
         }
     }
 
